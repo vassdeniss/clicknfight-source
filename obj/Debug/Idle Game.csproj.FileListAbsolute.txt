@@ -1,0 +1,14 @@
+F:\VS Projects\Idle Game\bin\Debug\Idle Game.exe.config
+F:\VS Projects\Idle Game\bin\Debug\Idle Game.exe
+F:\VS Projects\Idle Game\bin\Debug\Idle Game.pdb
+F:\VS Projects\Idle Game\obj\Debug\Idle Game.csprojAssemblyReference.cache
+F:\VS Projects\Idle Game\obj\Debug\Idle_Game.Form1.resources
+F:\VS Projects\Idle Game\obj\Debug\Idle_Game.Properties.Resources.resources
+F:\VS Projects\Idle Game\obj\Debug\Idle Game.csproj.GenerateResource.cache
+F:\VS Projects\Idle Game\obj\Debug\Idle Game.csproj.CoreCompileInputs.cache
+F:\VS Projects\Idle Game\obj\Debug\Idle Game.exe
+F:\VS Projects\Idle Game\obj\Debug\Idle Game.pdb
+F:\VS Projects\Idle Game\obj\Debug\Idle_Game.Form3.resources
+F:\VS Projects\Idle Game\obj\Debug\Idle_Game.Engine.resources
+F:\VS Projects\Idle Game\obj\Debug\Idle_Game.Upgrades.resources
+F:\VS Projects\Idle Game\obj\Debug\Idle_Game.Inventory.resources
