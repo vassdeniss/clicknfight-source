@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Camping : Form
     {
@@ -26,7 +26,7 @@ namespace Idle_Game
         public Camping()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = ClickNFight.Properties.Resources.icon;
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media; 
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Boss : Form
     {
@@ -18,15 +18,15 @@ namespace Idle_Game
         Random bRandom = new Random();
         int bossDamageInflict;
         int finalHealth = Engine.totalHealth;
-        SoundPlayer victory = new SoundPlayer(Idle_Game.Properties.Resources.victory);
-        SoundPlayer battle = new SoundPlayer(Idle_Game.Properties.Resources.battle); 
+        SoundPlayer victory = new SoundPlayer(ClickNFight.Properties.Resources.victory);
+        SoundPlayer battle = new SoundPlayer(ClickNFight.Properties.Resources.battle); 
         Form1 god = new Form1(); 
 
         public Boss()
         {
             InitializeComponent();
             this.ControlBox = false;
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = ClickNFight.Properties.Resources.icon;
             hp.Text = "HItPoints: " + finalHealth.ToString() + " / " + Engine.totalHealth;
             healthBar.Maximum = Engine.totalHealth;
             healthBar.Value = healthBar.Maximum;
@@ -119,7 +119,7 @@ namespace Idle_Game
                 }
                 else if (potionMenu2.SelectedItem.ToString() == "Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
+                    SoundPlayer heal = new SoundPlayer(ClickNFight.Properties.Resources.bottle);
                     heal.Play();
 
                     Engine.potion = Engine.potion - 1;
@@ -145,7 +145,7 @@ namespace Idle_Game
                 }
                 else if (potionMenu2.SelectedItem.ToString() == "Upgraded Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
+                    SoundPlayer heal = new SoundPlayer(ClickNFight.Properties.Resources.bottle);
                     heal.Play();
 
                     Engine.upgradedPotion = Engine.upgradedPotion - 1;
@@ -172,7 +172,7 @@ namespace Idle_Game
                 }
                 else if (potionMenu2.SelectedItem.ToString() == "Super Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
+                    SoundPlayer heal = new SoundPlayer(ClickNFight.Properties.Resources.bottle);
                     heal.Play();
 
                     Engine.superPotion = Engine.superPotion - 1;
@@ -198,7 +198,7 @@ namespace Idle_Game
                 }
                 else if (potionMenu2.SelectedItem.ToString() == "Ultra Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
+                    SoundPlayer heal = new SoundPlayer(ClickNFight.Properties.Resources.bottle);
                     heal.Play();
 
                     Engine.ultraPotion = Engine.ultraPotion - 1;
@@ -235,7 +235,7 @@ namespace Idle_Game
             Form1 buttonOwO = new Form1();
 
             Engine.isBossDead = true;
-            Engine.count = Engine.count + 1000000;
+            Engine.currency = Engine.currency + 1000000;
             Engine.excalibur = 1;
             Engine.excaliburAdd = 999;
             buttonOwO.newGame.Visible = true;

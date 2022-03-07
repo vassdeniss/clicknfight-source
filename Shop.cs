@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media; 
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Shop : Form
     {
         public Shop()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = ClickNFight.Properties.Resources.icon;
         }
 
         // All button event handlerer but the potions
@@ -33,12 +33,12 @@ namespace Idle_Game
                 {
                     var limit = MessageBox.Show("You have reached the buy limit", "Warning!", MessageBoxButtons.OK);
                 }
-                else if (Engine.count >= 50)
+                else if (Engine.currency >= 50)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play(); 
                     Engine.woodenSword++;
-                    Engine.count = Engine.count - 50;
+                    Engine.currency = Engine.currency - 50;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -55,12 +55,12 @@ namespace Idle_Game
                 {
                     var limit = MessageBox.Show("You have reached the buy limit", "Warning!", MessageBoxButtons.OK);
                 }
-                else if (Engine.count >= 200)
+                else if (Engine.currency >= 200)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.stoneSword++;
-                    Engine.count = Engine.count - 200;
+                    Engine.currency = Engine.currency - 200;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -77,12 +77,12 @@ namespace Idle_Game
                 {
                     var limit = MessageBox.Show("You have reached the buy limit", "Warning!", MessageBoxButtons.OK);
                 }
-                else if (Engine.count >= 350)
+                else if (Engine.currency >= 350)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.ironSword++;
-                    Engine.count = Engine.count - 350;
+                    Engine.currency = Engine.currency - 350;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -99,12 +99,12 @@ namespace Idle_Game
                 {
                     var limit = MessageBox.Show("You have reached the buy limit", "Warning!", MessageBoxButtons.OK);
                 }
-                else if (Engine.count >= 500)
+                else if (Engine.currency >= 500)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.diamondSword++;
-                    Engine.count = Engine.count - 500;
+                    Engine.currency = Engine.currency - 500;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -117,12 +117,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyAR))
             {
-                if (Engine.count >= 30)
+                if (Engine.currency >= 30)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.airRunes++;
-                    Engine.count = Engine.count - 30;
+                    Engine.currency = Engine.currency - 30;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -135,12 +135,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyFR))
             {
-                if (Engine.count >= 50)
+                if (Engine.currency >= 50)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.fireRunes++;
-                    Engine.count = Engine.count - 50;
+                    Engine.currency = Engine.currency - 50;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -153,12 +153,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyER))
             {
-                if (Engine.count >= 50)
+                if (Engine.currency >= 50)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play(); 
                     Engine.earthRunes++;
-                    Engine.count = Engine.count - 50;
+                    Engine.currency = Engine.currency - 50;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -171,12 +171,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyMR))
             {
-                if (Engine.count >= 50)
+                if (Engine.currency >= 50)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.mindRunes++;
-                    Engine.count = Engine.count - 50;
+                    Engine.currency = Engine.currency - 50;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -189,12 +189,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyWR))
             {
-                if (Engine.count >= 60)
+                if (Engine.currency >= 60)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.waterRunes++; 
-                    Engine.count = Engine.count - 60;
+                    Engine.currency = Engine.currency - 60;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -207,12 +207,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyLR))
             {
-                if (Engine.count >= 60)
+                if (Engine.currency >= 60)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.lavaRunes++;
-                    Engine.count = Engine.count - 60;
+                    Engine.currency = Engine.currency - 60;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -225,12 +225,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyNR))
             {
-                if (Engine.count >= 60)
+                if (Engine.currency >= 60)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.natureRunes++;
-                    Engine.count = Engine.count - 60;
+                    Engine.currency = Engine.currency - 60;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -243,12 +243,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyElR))
             {
-                if (Engine.count >= 70)
+                if (Engine.currency >= 70)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.electricRunes++;
-                    Engine.count = Engine.count - 70;
+                    Engine.currency = Engine.currency - 70;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -261,12 +261,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buySR))
             {
-                if (Engine.count >= 80)
+                if (Engine.currency >= 80)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.steamRunes++;
-                    Engine.count = Engine.count - 80;
+                    Engine.currency = Engine.currency - 80;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -279,12 +279,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyRR))
             {
-                if (Engine.count >= 80)
+                if (Engine.currency >= 80)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.reviveRunes++;
-                    Engine.count = Engine.count - 80;
+                    Engine.currency = Engine.currency - 80;
                     if (UpdateScreenInterface != null)
                     {
                         UpdateScreenInterface.UpdadeScreen();
@@ -297,12 +297,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buySP))
             {
-                if (Engine.count >= 100 && Engine.silverOreTake >= 20 && Engine.silverPick == false)
+                if (Engine.currency >= 100 && Engine.silverOreTake >= 20 && Engine.silverPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.silverPick = true;
-                    Engine.count = Engine.count - 100;
+                    Engine.currency = Engine.currency - 100;
                     Engine.silverOreTake = Engine.silverOreTake - 20;
                     if (UpdateScreenInterface != null)
                     {
@@ -320,12 +320,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyGP))
             {
-                if (Engine.count >= 200 && Engine.goldOreTake >= 30 && Engine.goldPick == false)
+                if (Engine.currency >= 200 && Engine.goldOreTake >= 30 && Engine.goldPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.goldPick = true;
-                    Engine.count = Engine.count - 200;
+                    Engine.currency = Engine.currency - 200;
                     Engine.goldOreTake = Engine.goldOreTake - 30;
                     if (UpdateScreenInterface != null)
                     {
@@ -343,12 +343,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyPP))
             {
-                if (Engine.count >= 300 && Engine.platinumOreTake >= 40 && Engine.platPick == false)
+                if (Engine.currency >= 300 && Engine.platinumOreTake >= 40 && Engine.platPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.platPick = true;
-                    Engine.count = Engine.count - 300;
+                    Engine.currency = Engine.currency - 300;
                     Engine.platinumOreTake = Engine.platinumOreTake - 40;
                     if (UpdateScreenInterface != null)
                     {
@@ -366,12 +366,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buyCP))
             {
-                if (Engine.count >= 400 && Engine.cobaltOreTake >= 50 && Engine.cobPick == false)
+                if (Engine.currency >= 400 && Engine.cobaltOreTake >= 50 && Engine.cobPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.cobPick = true;
-                    Engine.count = Engine.count - 400;
+                    Engine.currency = Engine.currency - 400;
                     Engine.cobaltOreTake = Engine.cobaltOreTake - 50;
                     if (UpdateScreenInterface != null)
                     {
@@ -389,12 +389,12 @@ namespace Idle_Game
             }
             else if (owo.Equals(buySdP))
             {
-                if (Engine.count >= 500 && Engine.starOreTake >= 60 && Engine.starPick == false)
+                if (Engine.currency >= 500 && Engine.starOreTake >= 60 && Engine.starPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                     coin.Play();
                     Engine.starPick = true;
-                    Engine.count = Engine.count - 500;
+                    Engine.currency = Engine.currency - 500;
                     Engine.starOreTake = Engine.starOreTake - 70;
                     if (UpdateScreenInterface != null)
                     {
@@ -414,12 +414,12 @@ namespace Idle_Game
 
         private void buyPT_click(object sender, EventArgs e)
         {
-            if (Engine.count >= 15)
+            if (Engine.currency >= 15)
             {
-                SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                 coin.Play();
                 Engine.potion++;
-                Engine.count = Engine.count - 15;
+                Engine.currency = Engine.currency - 15;
                 if (updateNormalPotion != null)
                 {
                     updateNormalPotion.UpdateScreenPotion(); 
@@ -433,12 +433,12 @@ namespace Idle_Game
 
         private void buyUHP_Click(object sender, EventArgs e)
         {
-            if (Engine.count >= 30)
+            if (Engine.currency >= 30)
             {
-                SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                 coin.Play();
                 Engine.upgradedPotion++;
-                Engine.count = Engine.count - 30;
+                Engine.currency = Engine.currency - 30;
                 if (updatePotion != null)
                 {
                     updatePotion.UpdateScreenUpgradedPotion();
@@ -452,12 +452,12 @@ namespace Idle_Game
 
         private void buySHP_Click(object sender, EventArgs e)
         {
-            if (Engine.count >= 60)
+            if (Engine.currency >= 60)
             {
-                SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                 coin.Play();
                 Engine.superPotion++;
-                Engine.count = Engine.count - 60;
+                Engine.currency = Engine.currency - 60;
                 if (updateSuperPotion != null)
                 {
                     updateSuperPotion.UpdateScreenSuperPotion();
@@ -471,12 +471,12 @@ namespace Idle_Game
 
         private void buyUUHP_Click(object sender, EventArgs e)
         {
-            if (Engine.count >= 100)
+            if (Engine.currency >= 100)
             {
-                SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin);
                 coin.Play();
                 Engine.ultraPotion++;
-                Engine.count = Engine.count - 100;
+                Engine.currency = Engine.currency - 100;
                 if (updateUltraPotion != null)
                 {
                     updateUltraPotion.UpdateScreenUltraPotion();
@@ -508,11 +508,11 @@ namespace Idle_Game
                     }
                     else
                     {
-                        SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin2);
+                        SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin2);
                         coin.Play();
                         decimal profit = orePickSilver.Value * 10;
                         Engine.silverOreTake = Engine.silverOreTake - System.Convert.ToInt32(orePickSilver.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
+                        Engine.currency = Engine.currency + System.Convert.ToInt32(profit);
                         if (UpdateScreenInterface != null)
                         {
                             UpdateScreenInterface.UpdadeScreen();
@@ -538,11 +538,11 @@ namespace Idle_Game
                     }
                     else
                     {
-                        SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin2);
+                        SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin2);
                         coin.Play();
                         decimal profit = orePickGold.Value * 20;
                         Engine.goldOreTake = Engine.goldOreTake - System.Convert.ToInt32(orePickGold.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
+                        Engine.currency = Engine.currency + System.Convert.ToInt32(profit);
                         if (UpdateScreenInterface != null)
                         {
                             UpdateScreenInterface.UpdadeScreen();
@@ -568,11 +568,11 @@ namespace Idle_Game
                     }
                     else
                     {
-                        SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin2);
+                        SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin2);
                         coin.Play();
                         decimal profit = orePickPlat.Value * 30;
                         Engine.platinumOreTake = Engine.platinumOreTake - System.Convert.ToInt32(orePickPlat.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
+                        Engine.currency = Engine.currency + System.Convert.ToInt32(profit);
                         if (UpdateScreenInterface != null)
                         {
                             UpdateScreenInterface.UpdadeScreen();
@@ -598,11 +598,11 @@ namespace Idle_Game
                     }
                     else
                     {
-                        SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin2);
+                        SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin2);
                         coin.Play();
                         decimal profit = orePickCob.Value * 40;
                         Engine.cobaltOreTake = Engine.cobaltOreTake - System.Convert.ToInt32(orePickCob.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
+                        Engine.currency = Engine.currency + System.Convert.ToInt32(profit);
                         if (UpdateScreenInterface != null)
                         {
                             UpdateScreenInterface.UpdadeScreen();
@@ -628,11 +628,11 @@ namespace Idle_Game
                     }
                     else
                     {
-                        SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin2);
+                        SoundPlayer coin = new SoundPlayer(ClickNFight.Properties.Resources.coin2);
                         coin.Play();
                         decimal profit = orePickStar.Value * 50;
                         Engine.starOreTake = Engine.starOreTake - System.Convert.ToInt32(orePickStar.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
+                        Engine.currency = Engine.currency + System.Convert.ToInt32(profit);
                         if (UpdateScreenInterface != null)
                         {
                             UpdateScreenInterface.UpdadeScreen();

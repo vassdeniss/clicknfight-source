@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Mine : Form
     {
@@ -43,7 +43,7 @@ namespace Idle_Game
         public Mine()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = ClickNFight.Properties.Resources.icon;
 
             cbPick.Items.Add("Copper Pickaxe");
             cbOre.Items.Add("Silver Ore");

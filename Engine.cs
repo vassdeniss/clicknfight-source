@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public class Engine
     {
         public static int level = 1;
 
-        public static double count;
-        public static double count2;
+        public static double currency;
+        public static double kills;
         public static double count3;
 
         public static int XP;

@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class PatchNotes : Form
     {
         public PatchNotes()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = ClickNFight.Properties.Resources.icon;
         }
 
         private void button1_Click(object sender, EventArgs e)

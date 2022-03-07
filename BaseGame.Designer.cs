@@ -1,4 +1,4 @@
-﻿namespace Idle_Game
+﻿namespace ClickNFight
 {
     partial class Form1
     {
@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BT1 = new System.Windows.Forms.Button();
-            this.LB1 = new System.Windows.Forms.Label();
-            this.LB2 = new System.Windows.Forms.Label();
+            this.fightButton = new System.Windows.Forms.Button();
+            this.currencyString = new System.Windows.Forms.Label();
+            this.monsterKillsString = new System.Windows.Forms.Label();
             this.BT2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.BT3 = new System.Windows.Forms.Button();
             this.easterAndrej = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.hitpointsString = new System.Windows.Forms.Label();
             this.info = new System.Windows.Forms.Label();
             this.gpKill = new System.Windows.Forms.Label();
             this.potionMenu = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.noH = new System.Windows.Forms.Label();
-            this.defence = new System.Windows.Forms.Label();
+            this.defenceString = new System.Windows.Forms.Label();
             this.healthBar = new System.Windows.Forms.ProgressBar();
             this.btMagic = new System.Windows.Forms.Button();
             this.CPS = new System.Windows.Forms.Label();
@@ -50,46 +50,46 @@
             this.finalBoss = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.levelText = new System.Windows.Forms.Label();
+            this.levelString = new System.Windows.Forms.Label();
             this.newGame = new System.Windows.Forms.Button();
             this.newPlus = new System.Windows.Forms.Label();
             this.btMine = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.nameSave = new System.Windows.Forms.Label();
             this.btCamp = new System.Windows.Forms.Button();
-            this.xpTracker = new System.Windows.Forms.Label();
+            this.xpString = new System.Windows.Forms.Label();
             this.xpGot = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // BT1
+            // fightButton
             // 
-            this.BT1.Location = new System.Drawing.Point(188, 12);
-            this.BT1.Name = "BT1";
-            this.BT1.Size = new System.Drawing.Size(169, 85);
-            this.BT1.TabIndex = 0;
-            this.BT1.Text = "Fight!";
-            this.BT1.UseVisualStyleBackColor = true;
-            this.BT1.Click += new System.EventHandler(this.BT1_Click);
+            this.fightButton.Location = new System.Drawing.Point(188, 12);
+            this.fightButton.Name = "fightButton";
+            this.fightButton.Size = new System.Drawing.Size(169, 85);
+            this.fightButton.TabIndex = 0;
+            this.fightButton.Text = "Fight!";
+            this.fightButton.UseVisualStyleBackColor = true;
+            this.fightButton.Click += new System.EventHandler(this.FightButton_Click);
             // 
             // LB1
             // 
-            this.LB1.AutoSize = true;
-            this.LB1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB1.Location = new System.Drawing.Point(363, 41);
-            this.LB1.Name = "LB1";
-            this.LB1.Size = new System.Drawing.Size(144, 29);
-            this.LB1.TabIndex = 1;
-            this.LB1.Text = "Clickerency:";
+            this.currencyString.AutoSize = true;
+            this.currencyString.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currencyString.Location = new System.Drawing.Point(363, 41);
+            this.currencyString.Name = "LB1";
+            this.currencyString.Size = new System.Drawing.Size(144, 29);
+            this.currencyString.TabIndex = 1;
+            this.currencyString.Text = "Clickerency:";
             // 
             // LB2
             // 
-            this.LB2.AutoSize = true;
-            this.LB2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB2.Location = new System.Drawing.Point(363, 12);
-            this.LB2.Name = "LB2";
-            this.LB2.Size = new System.Drawing.Size(186, 29);
-            this.LB2.TabIndex = 2;
-            this.LB2.Text = "Monsters Killed:";
+            this.monsterKillsString.AutoSize = true;
+            this.monsterKillsString.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monsterKillsString.Location = new System.Drawing.Point(363, 12);
+            this.monsterKillsString.Name = "LB2";
+            this.monsterKillsString.Size = new System.Drawing.Size(186, 29);
+            this.monsterKillsString.TabIndex = 2;
+            this.monsterKillsString.Text = "Monsters Killed:";
             // 
             // BT2
             // 
@@ -99,7 +99,7 @@
             this.BT2.TabIndex = 3;
             this.BT2.Text = "Shop!";
             this.BT2.UseVisualStyleBackColor = true;
-            this.BT2.Click += new System.EventHandler(this.BT2_Click);
+            this.BT2.Click += new System.EventHandler(this.ShopButton_Click);
             // 
             // label1
             // 
@@ -120,7 +120,7 @@
             this.BT3.TabIndex = 5;
             this.BT3.Text = "Inventory!";
             this.BT3.UseVisualStyleBackColor = true;
-            this.BT3.Click += new System.EventHandler(this.BT3_Click);
+            this.BT3.Click += new System.EventHandler(this.InventoryButton_Click);
             // 
             // easterAndrej
             // 
@@ -136,13 +136,13 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(363, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 29);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "HitPoints:";
+            this.hitpointsString.AutoSize = true;
+            this.hitpointsString.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hitpointsString.Location = new System.Drawing.Point(363, 70);
+            this.hitpointsString.Name = "label5";
+            this.hitpointsString.Size = new System.Drawing.Size(115, 29);
+            this.hitpointsString.TabIndex = 9;
+            this.hitpointsString.Text = "HitPoints:";
             // 
             // info
             // 
@@ -192,7 +192,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "Heal!";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.HealButton_Click);
             // 
             // noH
             // 
@@ -206,12 +206,12 @@
             // 
             // defence
             // 
-            this.defence.AutoSize = true;
-            this.defence.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.defence.Location = new System.Drawing.Point(363, 103);
-            this.defence.Name = "defence";
-            this.defence.Size = new System.Drawing.Size(0, 29);
-            this.defence.TabIndex = 18;
+            this.defenceString.AutoSize = true;
+            this.defenceString.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.defenceString.Location = new System.Drawing.Point(363, 103);
+            this.defenceString.Name = "defence";
+            this.defenceString.Size = new System.Drawing.Size(0, 29);
+            this.defenceString.TabIndex = 18;
             // 
             // healthBar
             // 
@@ -230,7 +230,7 @@
             this.btMagic.TabIndex = 20;
             this.btMagic.Text = "Magic!";
             this.btMagic.UseVisualStyleBackColor = true;
-            this.btMagic.Click += new System.EventHandler(this.button2_Click);
+            this.btMagic.Click += new System.EventHandler(this.MagiButton_Click);
             // 
             // CPS
             // 
@@ -250,7 +250,7 @@
             this.btCrafting.TabIndex = 22;
             this.btCrafting.Text = "RuneCrafting!";
             this.btCrafting.UseVisualStyleBackColor = true;
-            this.btCrafting.Click += new System.EventHandler(this.btCrafting_Click);
+            this.btCrafting.Click += new System.EventHandler(this.CraftingButton_Click);
             // 
             // finalBoss
             // 
@@ -273,7 +273,7 @@
             this.button2.TabIndex = 24;
             this.button2.Text = "Save";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_2);
+            this.button2.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // button3
             // 
@@ -285,17 +285,17 @@
             this.button3.TabIndex = 25;
             this.button3.Text = "Load";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.LoadButton_Click);
             // 
             // levelText
             // 
-            this.levelText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.levelText.AutoSize = true;
-            this.levelText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.levelText.Location = new System.Drawing.Point(704, 396);
-            this.levelText.Name = "levelText";
-            this.levelText.Size = new System.Drawing.Size(0, 29);
-            this.levelText.TabIndex = 26;
+            this.levelString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.levelString.AutoSize = true;
+            this.levelString.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.levelString.Location = new System.Drawing.Point(704, 396);
+            this.levelString.Name = "levelText";
+            this.levelString.Size = new System.Drawing.Size(0, 29);
+            this.levelString.TabIndex = 26;
             // 
             // newGame
             // 
@@ -307,7 +307,7 @@
             this.newGame.Text = "New Game ";
             this.newGame.UseVisualStyleBackColor = true;
             this.newGame.Visible = false;
-            this.newGame.Click += new System.EventHandler(this.newGame_Click);
+            this.newGame.Click += new System.EventHandler(this.NewGame_Click);
             // 
             // newPlus
             // 
@@ -328,7 +328,7 @@
             this.btMine.TabIndex = 30;
             this.btMine.Text = "Mine!";
             this.btMine.UseVisualStyleBackColor = true;
-            this.btMine.Click += new System.EventHandler(this.btMine_Click);
+            this.btMine.Click += new System.EventHandler(this.MineButton_Click);
             // 
             // button4
             // 
@@ -340,7 +340,7 @@
             this.button4.TabIndex = 31;
             this.button4.Text = "Exit!";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // nameSave
             // 
@@ -361,17 +361,17 @@
             this.btCamp.TabIndex = 33;
             this.btCamp.Text = "Camping!";
             this.btCamp.UseVisualStyleBackColor = true;
-            this.btCamp.Click += new System.EventHandler(this.btCamp_Click);
+            this.btCamp.Click += new System.EventHandler(this.CampButton_Click);
             // 
             // xpTracker
             // 
-            this.xpTracker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.xpTracker.AutoSize = true;
-            this.xpTracker.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xpTracker.Location = new System.Drawing.Point(704, 440);
-            this.xpTracker.Name = "xpTracker";
-            this.xpTracker.Size = new System.Drawing.Size(0, 29);
-            this.xpTracker.TabIndex = 34;
+            this.xpString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.xpString.AutoSize = true;
+            this.xpString.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xpString.Location = new System.Drawing.Point(704, 440);
+            this.xpString.Name = "xpTracker";
+            this.xpString.Size = new System.Drawing.Size(0, 29);
+            this.xpString.TabIndex = 34;
             // 
             // xpGot
             // 
@@ -389,14 +389,14 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(856, 585);
             this.Controls.Add(this.xpGot);
-            this.Controls.Add(this.xpTracker);
+            this.Controls.Add(this.xpString);
             this.Controls.Add(this.btCamp);
             this.Controls.Add(this.nameSave);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btMine);
             this.Controls.Add(this.newPlus);
             this.Controls.Add(this.newGame);
-            this.Controls.Add(this.levelText);
+            this.Controls.Add(this.levelString);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.finalBoss);
@@ -404,21 +404,21 @@
             this.Controls.Add(this.CPS);
             this.Controls.Add(this.btMagic);
             this.Controls.Add(this.healthBar);
-            this.Controls.Add(this.defence);
+            this.Controls.Add(this.defenceString);
             this.Controls.Add(this.noH);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.potionMenu);
             this.Controls.Add(this.gpKill);
             this.Controls.Add(this.info);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.hitpointsString);
             this.Controls.Add(this.easterAndrej);
             this.Controls.Add(this.BT3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BT2);
-            this.Controls.Add(this.LB2);
-            this.Controls.Add(this.LB1);
-            this.Controls.Add(this.BT1);
+            this.Controls.Add(this.monsterKillsString);
+            this.Controls.Add(this.currencyString);
+            this.Controls.Add(this.fightButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Click \'n Fight: The Fantasy Clicker RPG";
@@ -430,24 +430,24 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label LB2;
+        private System.Windows.Forms.Label monsterKillsString;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label LB1;
-        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label currencyString;
+        public System.Windows.Forms.Label hitpointsString;
         public System.Windows.Forms.Label info;
         public System.Windows.Forms.Label gpKill;
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.ComboBox potionMenu;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label noH;
-        public System.Windows.Forms.Label defence;
+        public System.Windows.Forms.Label defenceString;
         public System.Windows.Forms.Label CPS;
         public System.Windows.Forms.ProgressBar healthBar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label levelText;
+        private System.Windows.Forms.Label levelString;
         public System.Windows.Forms.Button newGame;
-        public System.Windows.Forms.Button BT1;
+        public System.Windows.Forms.Button fightButton;
         public System.Windows.Forms.Button BT2;
         public System.Windows.Forms.Button BT3;
         public System.Windows.Forms.Button btMagic;
@@ -459,7 +459,7 @@
         public System.Windows.Forms.Label easterAndrej;
         public System.Windows.Forms.Button btMine;
         public System.Windows.Forms.Button btCamp;
-        private System.Windows.Forms.Label xpTracker;
+        private System.Windows.Forms.Label xpString;
         public System.Windows.Forms.Label xpGot;
     }
 }

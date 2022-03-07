@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class CampingNight : Form
     {
@@ -423,7 +423,7 @@ namespace Idle_Game
                             updateVitals.UpdadeScreen(); 
                         }
                         int moneyLoss = attack.Next(200, 501);
-                        Engine.count = Engine.count - moneyLoss;
+                        Engine.currency = Engine.currency - moneyLoss;
                         MessageBox.Show("You lost " + moneyLoss + " Clicks!", "Congratulations! You are a winner!", MessageBoxButtons.OK);
                         if (updateVitals != null)
                         {

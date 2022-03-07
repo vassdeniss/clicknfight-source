@@ -1,28 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class NewGame : Form
     {
         public NewGame()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            Icon = ClickNFight.Properties.Resources.icon;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Engine.level = 1;
-            Engine.count = 0;
-            Engine.count2 = 0;
+            Engine.currency = 0;
+            Engine.kills = 0;
             Engine.count3 = 0;
             Engine.XP = 0;
             Engine.totalXP = 250;
@@ -116,8 +109,8 @@ namespace Idle_Game
         private void button3_Click(object sender, EventArgs e)
         {
             Engine.level = 1;
-            Engine.count = 0;
-            Engine.count2 = 0;
+            Engine.currency = 0;
+            Engine.kills = 0;
             Engine.count3 = 0;
             Engine.XP = 0;
             Engine.totalXP = 250;
@@ -201,8 +194,8 @@ namespace Idle_Game
         private void button2_Click(object sender, EventArgs e)
         {
             Engine.level = 1;
-            Engine.count = 0;
-            Engine.count2 = 0;
+            Engine.currency = 0;
+            Engine.kills = 0;
             Engine.count3 = 0;
             Engine.XP = 0;
             Engine.totalXP = 250;
@@ -309,8 +302,8 @@ namespace Idle_Game
         private void newGamePlusHP2_Click(object sender, EventArgs e)
         {
             Engine.level = 1;
-            Engine.count = 0;
-            Engine.count2 = 0;
+            Engine.currency = 0;
+            Engine.kills = 0;
             Engine.count3 = 0;
             Engine.XP = 0;
             Engine.totalXP = 250;
@@ -403,8 +396,8 @@ namespace Idle_Game
         private void newGamePlusDef2_Click(object sender, EventArgs e)
         {
             Engine.level = 1;
-            Engine.count = 0;
-            Engine.count2 = 0;
+            Engine.currency = 0;
+            Engine.kills = 0;
             Engine.count3 = 0;
             Engine.XP = 0;
             Engine.totalXP = 250;
@@ -487,8 +480,8 @@ namespace Idle_Game
         private void newGamePlusCPS2_Click(object sender, EventArgs e)
         {
             Engine.level = 1;
-            Engine.count = 0;
-            Engine.count2 = 0;
+            Engine.currency = 0;
+            Engine.kills = 0;
             Engine.count3 = 0;
             Engine.XP = 0;
             Engine.totalXP = 250;
@@ -573,8 +566,8 @@ namespace Idle_Game
         private void button3_Click_1(object sender, EventArgs e)
         {
             Engine.level = 1;
-            Engine.count = 0;
-            Engine.count2 = 0;
+            Engine.currency = 0;
+            Engine.kills = 0;
             Engine.count3 = 0;
             Engine.XP = 0;
             Engine.totalXP = 250;
@@ -667,8 +660,8 @@ namespace Idle_Game
         private void button1_Click_1(object sender, EventArgs e)
         {
             Engine.level = 1;
-            Engine.count = 0;
-            Engine.count2 = 0;
+            Engine.currency = 0;
+            Engine.kills = 0;
             Engine.count3 = 0;
             Engine.XP = 0;
             Engine.totalXP = 250;
@@ -751,8 +744,8 @@ namespace Idle_Game
         private void button2_Click_1(object sender, EventArgs e)
         {
             Engine.level = 1;
-            Engine.count = 0;
-            Engine.count2 = 0;
+            Engine.currency = 0;
+            Engine.kills = 0;
             Engine.count3 = 0;
             Engine.XP = 0;
             Engine.totalXP = 250;

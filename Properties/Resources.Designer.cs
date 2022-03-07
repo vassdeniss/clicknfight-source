@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Idle_Game.Properties {
+namespace ClickNFight.Properties {
     using System;
     
     

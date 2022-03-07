@@ -9,14 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Inventory : Form
     {   
         public Inventory()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = ClickNFight.Properties.Resources.icon;
 
             textBox2.Text = "Consumables:";
             neznam.Text = "Weapons:";

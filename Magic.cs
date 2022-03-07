@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Magic : Form
     {
         public Magic()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = ClickNFight.Properties.Resources.icon;
             ToolTip description = new ToolTip();
             description.SetToolTip(fireBolt, "2 Air and 3 Fire Runes" + "\r\n" + "+ 5 (Invinsible) Clicks Per Second" + "\r\n" +
                 "Duration: 1 minute" + "\r\n" + "Cooldown: 5 Minutes");

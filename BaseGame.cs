@@ -1,43 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using System.Media;
-using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using System.IO;
 using System.Security.Cryptography;
+using ClickNFight.Models;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Form1 : Form, Interfaces
     {
         double please;
         double newDamage;
         string sSourceData;
-        byte[] tmpSource, tmpHash, tmpNewHash;
+        byte[] tmpSource, tmpHash;
         string sSourceData2;
-        byte[] tmpSource2, tmpHash2, tmpNewHash2;
+        byte[] tmpSource2, tmpNewHash2;
         bool hpCheat = false;
         bool clickCheat = false;
         bool levelCheat = false;
         bool defenceCheat = false;
 
-        // Instances 
-
-        Magic idk = new Magic();
-        Shop f2 = new Shop();
+        Magic magic = new Magic();
+        Shop shop = new Shop();
         Crafting runeCrafting = new Crafting();
         Camping camp = new Camping();
-
-        // Instances 
 
         protected override void WndProc(ref Message m)
         {
@@ -56,16 +44,18 @@ namespace Idle_Game
         public Form1()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
-            this.KeyPreview = true;
-            label5.Text = "HItPoints: " + Engine.health.ToString() + " / " + Engine.totalHealth;
-            defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
-            healthBar.Maximum = 100 + 100;
+            Icon = Properties.Resources.icon;
+            KeyPreview = true;
+
+            hitpointsString.Text = UpdateUIHelper.Health;
+            defenceString.Text = $"Defence: {Engine.defence} (Decreases damage by {Engine.defenceReduction})";
+            healthBar.Maximum = 200;
             healthBar.Value = healthBar.Maximum;
-            levelText.Text = "Level: " + Engine.level + "/" + "10";
-            xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+            levelString.Text = $"Level: {Engine.level} / 10";
+            xpString.Text = $"XP: {Engine.XP} / {Engine.totalXP}";
         }
 
+        // Cheat codes
         private void Keydown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.Alt && e.Shift && e.KeyCode == Keys.H)
@@ -75,7 +65,7 @@ namespace Idle_Game
                 {
                     Engine.health = Engine.totalHealth;
                     healthBar.Value = healthBar.Maximum;
-                    label5.Text = "HItPoints: " + Engine.health.ToString() + " / " + Engine.totalHealth;
+                    hitpointsString.Text = UpdateUIHelper.Health;
                 }
             }
             else if (e.Control && e.Alt && e.Shift && e.KeyCode == Keys.C)
@@ -83,8 +73,8 @@ namespace Idle_Game
                 clickCheat = true;
                 if (clickCheat == true)
                 {
-                    Engine.count = Engine.count + 1000;
-                    LB1.Text = "Clickerency: " + Engine.count.ToString();
+                    Engine.currency = Engine.currency + 1000;
+                    currencyString.Text = "Clickerency: " + Engine.currency.ToString();
                 }
             }
             else if (e.Control && e.Alt && e.Shift && e.KeyCode == Keys.L)
@@ -93,7 +83,7 @@ namespace Idle_Game
                 if (levelCheat == true)
                 {
                     Engine.level = 10;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     btMagic.Enabled = true;
                     btCamp.Enabled = true;
                     btMine.Enabled = true;
@@ -106,25 +96,21 @@ namespace Idle_Game
                 if (defenceCheat == true)
                 {
                     Engine.defenceReduction = Engine.defenceReduction + 10;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                 }
             }
         }
 
-        // Update potion count money and defence count 
-
-        public void nameUpdate()
+        public void NameUpdate()
         {
             easterAndrej.Visible = true;
         }
 
-        void Interfaces.UpdadeScreen()
+        public void UpdadeScreen()
         {
-            LB1.Text = "Clickerency: " + Engine.count.ToString();
-
-            LB2.Text = "Monsters Killed: " + Engine.count2.ToString();
-
-            defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+            currencyString.Text = $"Clickerency: {Engine.currency}";
+            monsterKillsString.Text = $"Monsters Killed: {Engine.kills}";
+            defenceString.Text = $"Defence: {Engine.defence} (Decreases damage by {Engine.defenceReduction})";
 
             string work = "Clicks Per Second: ";
             please = 1;
@@ -288,16 +274,15 @@ namespace Idle_Game
         }
 
         // Updates player hp with heal spells
-
-        void Interfaces.UpdateScreenHeal()
+        public void UpdateScreenHeal()
         {
             healthBar.Maximum = Engine.totalHealth;
 
             try
             {
-                healthBar.Value = healthBar.Value + 10;
+                healthBar.Value += 10;
             }
-            catch (Exception e11)
+            catch (Exception)
             {
                 healthBar.Value = Engine.totalHealth;
             }
@@ -307,7 +292,7 @@ namespace Idle_Game
                 Engine.health = Engine.totalHealth;
             }
 
-            label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+            hitpointsString.Text = UpdateUIHelper.Health;
         }
 
         public void UpdateScreenHeal2()
@@ -316,9 +301,9 @@ namespace Idle_Game
 
             try
             {
-                healthBar.Value = healthBar.Value + 20;
+                healthBar.Value += 20;
             }
-            catch (Exception e11)
+            catch (Exception)
             {
                 healthBar.Value = Engine.totalHealth;
             }
@@ -328,7 +313,7 @@ namespace Idle_Game
                 Engine.health = Engine.totalHealth;
             }
 
-            label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+            hitpointsString.Text = UpdateUIHelper.Health;
         }
 
         public void UpdateScreenHeal3()
@@ -337,9 +322,9 @@ namespace Idle_Game
 
             try
             {
-                healthBar.Value = healthBar.Value + 40;
+                healthBar.Value += 40;
             }
-            catch (Exception e11)
+            catch (Exception)
             {
                 healthBar.Value = Engine.totalHealth;
             }
@@ -349,51 +334,36 @@ namespace Idle_Game
                 Engine.health = Engine.totalHealth;
             }
 
-            label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+            hitpointsString.Text = UpdateUIHelper.Health;
         }
 
-        // Updates only the health potion
-
-        void Interfaces.UpdateScreenPotion()
+        public void UpdateScreenPotion()
         {
             potionMenu.Items.Add("Health Potion");
-
-            LB1.Text = "Clickerency: " + Engine.count.ToString();
+            currencyString.Text = $"Clickerency: {Engine.currency}";
         }
 
-        // Updates only the upgraded health potion 
-
-        void Interfaces.UpdateScreenUpgradedPotion()
+        public void UpdateScreenUpgradedPotion()
         {
             potionMenu.Items.Add("Upgraded Health Potion");
-
-            LB1.Text = "Clickerency: " + Engine.count.ToString();
+            currencyString.Text = $"Clickerency: {Engine.currency}";
         }
 
-        // Updates only the super health potion 
-
-        void Interfaces.UpdateScreenSuperPotion()
+        public void UpdateScreenSuperPotion()
         {
             potionMenu.Items.Add("Super Health Potion");
-
-            LB1.Text = "Clickerency: " + Engine.count.ToString();
+            currencyString.Text = $"Clickerency: {Engine.currency}";
         }
 
-        // Updates only the ultra health potion
-
-        void Interfaces.UpdateScreenUltraPotion()
+        public void UpdateScreenUltraPotion()
         {
             potionMenu.Items.Add("Ultra Health Potion");
-
-            LB1.Text = "Clickerency: " + Engine.count.ToString();
+            currencyString.Text = $"Clickerency: {Engine.currency}";
         }
 
-        void Interfaces.UpdateScreenButton()
-        {
-            newGame.Visible = true;
-        }
+        public void UpdateScreenButton() => newGame.Visible = true;
 
-        void Interfaces.UpdateScreenButtonOff()
+        public void UpdateScreenButtonOff()
         {
             newGame.Visible = false;
             finalBoss.Enabled = false;
@@ -402,13 +372,13 @@ namespace Idle_Game
             btMine.Enabled = false;
             btCamp.Enabled = false;
             potionMenu.Items.Clear();
-            LB1.Text = "Clickerency: " + Engine.count.ToString();
+            currencyString.Text = $"Clickerency: {Engine.currency}";
 
-            LB2.Text = "Monsters Killed: " + Engine.count2.ToString();
+            monsterKillsString.Text = "Monsters Killed: " + Engine.kills.ToString();
 
-            defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+            defenceString.Text = $"Defence: {Engine.defence} (Decreases damage by {Engine.defenceReduction})";
 
-            label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+            hitpointsString.Text = UpdateUIHelper.Health;
 
             if (Engine.isNewGameOn2 == true || Engine.isNewGameDefenceOn2 == true || Engine.isNewGameClicksOn2 == true)
             {
@@ -429,8 +399,8 @@ namespace Idle_Game
 
             info.Text = "";
             gpKill.Text = "";
-            levelText.Text = "Level: " + Engine.level + "/" + "10";
-            xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+            levelString.Text = "Level: " + Engine.level + "/" + "10";
+            xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
             xpGot.Text = "";
 
             healthBar.Maximum = Engine.totalHealth;
@@ -446,13 +416,13 @@ namespace Idle_Game
             btMine.Enabled = false;
             btCamp.Enabled = false;
             potionMenu.Items.Clear();
-            LB1.Text = "Clickerency: " + Engine.count.ToString();
+            currencyString.Text = "Clickerency: " + Engine.currency.ToString();
 
-            LB2.Text = "Monsters Killed: " + Engine.count2.ToString();
+            monsterKillsString.Text = "Monsters Killed: " + Engine.kills.ToString();
 
-            defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+            defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
 
-            label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+            hitpointsString.Text = UpdateUIHelper.Health;
 
             if (Engine.isNewGameOn2 == true || Engine.isNewGameDefenceOn2 == true || Engine.isNewGameClicksOn2 == true)
             {
@@ -467,8 +437,8 @@ namespace Idle_Game
                 }
             }
 
-            levelText.Text = "Level: " + Engine.level + "/" + "10";
-            xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+            levelString.Text = "Level: " + Engine.level + "/" + "10";
+            xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
             xpGot.Text = "";
 
             string work = "Clicks Per Second: ";
@@ -488,13 +458,13 @@ namespace Idle_Game
             btMine.Enabled = false;
             btCamp.Enabled = false;
             potionMenu.Items.Clear();
-            LB1.Text = "Clickerency: " + Engine.count.ToString();
+            currencyString.Text = "Clickerency: " + Engine.currency.ToString();
 
-            LB2.Text = "Monsters Killed: " + Engine.count2.ToString();
+            monsterKillsString.Text = "Monsters Killed: " + Engine.kills.ToString();
 
-            defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+            defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
 
-            label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+            hitpointsString.Text = UpdateUIHelper.Health;
 
             if (Engine.isNewGameOn2 == true || Engine.isNewGameDefenceOn2 == true || Engine.isNewGameClicksOn2 == true)
             {
@@ -509,8 +479,8 @@ namespace Idle_Game
                 }
             }
 
-            levelText.Text = "Level: " + Engine.level + "/" + "10";
-            xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+            levelString.Text = "Level: " + Engine.level + "/" + "10";
+            xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
             xpGot.Text = "";
 
             string work = "Clicks Per Second: ";
@@ -678,7 +648,7 @@ namespace Idle_Game
             gpKill.Text = "";
         }
 
-        private void BT1_Click(object sender, EventArgs e)
+        private void FightButton_Click(object sender, EventArgs e)
         {
             Random dmgGold = new Random();
 
@@ -744,12 +714,9 @@ namespace Idle_Game
 
             newDamage = Engine.damage - Engine.defenceReduction;
 
-            if (newDamage < 0)
-            {
-                newDamage = 0;
-            }
+            if (newDamage < 0) newDamage = 0;
 
-            Engine.count = Engine.count + Engine.money;
+            Engine.currency += Engine.money;
 
             if (Engine.isBossDead == true)
             {
@@ -773,9 +740,9 @@ namespace Idle_Game
             {
                 try
                 {
-                    healthBar.Value = healthBar.Value - Engine.damage;
+                    healthBar.Value -= Engine.damage;
                 }
-                catch (Exception e3)
+                catch (Exception)
                 {
                     healthBar.Value = 0;
                 }
@@ -785,57 +752,45 @@ namespace Idle_Game
             {
                 try
                 {
-                    int owo = System.Convert.ToInt32(newDamage);
-                    healthBar.Value = healthBar.Value - owo;
+                    healthBar.Value -= (int)newDamage;
                 }
-                catch (Exception e4)
+                catch (Exception)
                 {
                     healthBar.Value = 0;
                 }
             }
 
-            label5.Text = "HItPoints: " + Engine.health.ToString() + " / " + Engine.totalHealth;
+            hitpointsString.Text = UpdateUIHelper.Health;
 
-            if (Engine.damage == 1)
-            {
-                info.Text = "You have suffered " + Engine.damage + " point of damage";
-            }
-            else
-            {
-                info.Text = "You have suffered " + Engine.damage + " points of damage";
-            }
+            string damagePointsText = Engine.damage == 1 ? "point" : "points";
+            info.Text = $"You have suffered {Engine.damage} {damagePointsText} of damage!";
 
-            if (Engine.money == 1)
-            {
-                gpKill.Text = "You got " + Engine.money + " click from that monster";
-            }
-            else
-            {
-                gpKill.Text = "You got " + Engine.money + " clicks from that monster";
-            }
+            string moneyText = Engine.money == 1 ? "click" : "clicks";
+            gpKill.Text = $"You got {Engine.money} {moneyText} from that monster!";
 
             // Weapon damage adders 
+            // TODO: Method
 
             Engine.woodenSwordAdd = Engine.woodenSword * 0.5;
             Engine.stoneSwordAdd = Engine.stoneSword * 1;
             Engine.ironSwordAdd = Engine.ironSword * 2;
             Engine.diamondSwordAdd = Engine.diamondSword * 4;
-            Engine.count2 = Engine.count2 + Engine.woodenSwordAdd;
-            Engine.count2 = Engine.count2 + Engine.stoneSwordAdd;
-            Engine.count2 = Engine.count2 + Engine.ironSwordAdd;
-            Engine.count2 = Engine.count2 + Engine.diamondSwordAdd;
-            Engine.count2 = Engine.count2 + Engine.excaliburAdd; 
-            Engine.count2 = Engine.count2 + Engine.fireboltAdd;
-            Engine.count2 = Engine.count2 + Engine.waterwaveAdd;
-            Engine.count2 = Engine.count2 + Engine.voltswtichAdd;
-            Engine.count2 = Engine.count2 + Engine.newgameAdd;
-            Engine.count2 = Engine.count2 + Engine.silverSwordAdd;
-            Engine.count2 = Engine.count2 + Engine.goldSwordAdd;
-            Engine.count2 = Engine.count2 + Engine.platinumSwordAdd;
-            Engine.count2 = Engine.count2 + Engine.cobaltSwordAdd;
-            Engine.count2 = Engine.count2 + Engine.starSwordAdd;
+            Engine.kills = Engine.kills + Engine.woodenSwordAdd;
+            Engine.kills = Engine.kills + Engine.stoneSwordAdd;
+            Engine.kills = Engine.kills + Engine.ironSwordAdd;
+            Engine.kills = Engine.kills + Engine.diamondSwordAdd;
+            Engine.kills = Engine.kills + Engine.excaliburAdd; 
+            Engine.kills = Engine.kills + Engine.fireboltAdd;
+            Engine.kills = Engine.kills + Engine.waterwaveAdd;
+            Engine.kills = Engine.kills + Engine.voltswtichAdd;
+            Engine.kills = Engine.kills + Engine.newgameAdd;
+            Engine.kills = Engine.kills + Engine.silverSwordAdd;
+            Engine.kills = Engine.kills + Engine.goldSwordAdd;
+            Engine.kills = Engine.kills + Engine.platinumSwordAdd;
+            Engine.kills = Engine.kills + Engine.cobaltSwordAdd;
+            Engine.kills = Engine.kills + Engine.starSwordAdd;
 
-
+            // TODO: METHOD
             double xpMultiplyer = 1 + Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd +
                 Engine.fireboltAdd + Engine.waterwaveAdd + Engine.voltswtichAdd + Engine.newgameAdd + Engine.silverSwordAdd + Engine.goldSwordAdd + 
                 Engine.platinumSwordAdd + Engine.cobaltSwordAdd + Engine.starSwordAdd;
@@ -844,16 +799,13 @@ namespace Idle_Game
             double xpGive = xpGiveRandom.Next(1, 6);
 
             double xpGain = xpMultiplyer * xpGive;
+            Engine.XP += (int)xpGain;
+            xpGot.Text = $"You gained {xpGain} XP from that monster!";
+            xpString.Text = $"XP: {Engine.XP}/{Engine.totalXP}";
 
-            Engine.XP = Engine.XP + System.Convert.ToInt32(xpGain);
-
-            xpGot.Text = "You gained " + xpGain + " XP from that monster";
-
-            xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
-
-            Engine.count2++;
-            LB1.Text = "Clickerency: " + Engine.count.ToString();
-            LB2.Text = "Monsters Killed: " + Engine.count2.ToString();
+            Engine.kills++;
+            currencyString.Text = "Clickerency: " + Engine.currency.ToString();
+            monsterKillsString.Text = "Monsters Killed: " + Engine.kills.ToString();
 
             // CPS Counter 
 
@@ -1017,8 +969,6 @@ namespace Idle_Game
                 }
             }
 
-            // Code for levels
-
             if (Engine.level < 2)
             {
                 if (Engine.XP >= Engine.totalXP)
@@ -1026,16 +976,16 @@ namespace Idle_Game
                     Engine.level++;
                     Engine.totalHealth = Engine.totalHealth + 10;
                     Engine.health = Engine.totalHealth;
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = UpdateUIHelper.Health;
                     Engine.defence = Engine.defence + 1;
                     Engine.defenceReduction = Engine.defenceReduction + 1;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                     healthBar.Maximum = Engine.totalHealth;
                     healthBar.Value = Engine.totalHealth;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     Engine.totalXP = Engine.totalXP + 50;
                     Engine.XP = 0;
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
                     MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked:" + "\r\n" + "\r\n" +
                     "- Wooden Sword" + "\r\n" + "\r\n" + "+ 10 Total HP" + "\r\n" + "+ 1 Total Defence" + "\r\n" + "\r\n" + "Health Restored!", "Congratulations!",
                     MessageBoxButtons.OK);
@@ -1049,17 +999,17 @@ namespace Idle_Game
                     Engine.level++;
                     Engine.totalHealth = Engine.totalHealth + 20;
                     Engine.health = Engine.totalHealth;
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = UpdateUIHelper.Health;
                     Engine.defence = Engine.defence + 1;
                     Engine.defenceReduction = Engine.defenceReduction + 1;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                     healthBar.Maximum = healthBar.Maximum + 20;
                     healthBar.Value = Engine.totalHealth;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     btMine.Enabled = true;
                     Engine.totalXP = Engine.totalXP + 50;
                     Engine.XP = 0;
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
                     MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked: " + "\r\n" + "\r\n" + "- Mining!"
                     + "\r\n" + "- Stone Sword" + "\r\n" + "- Upgraded Health Potion" + "\r\n" + "\r\n" + "+ 20 Total HP" + "\r\n" + "+ 1 Total Defence" 
                     + "\r\n" + "\r\n" + "Health Restored!", "Congratulations!", MessageBoxButtons.OK);
@@ -1073,16 +1023,16 @@ namespace Idle_Game
                     Engine.level++;
                     Engine.totalHealth = Engine.totalHealth + 30;
                     Engine.health = Engine.totalHealth;
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = UpdateUIHelper.Health;
                     Engine.defence = Engine.defence + 1;
                     Engine.defenceReduction = Engine.defenceReduction + 1;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                     healthBar.Maximum = healthBar.Maximum + 30;
                     healthBar.Value = Engine.totalHealth;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     Engine.totalXP = Engine.totalXP + 50;
                     Engine.XP = 0;
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
                     MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked: " + "\r\n" + "\r\n" +
                     "- Silver Pickaxe" + "\r\n" + "- Gold Ore!" + "\r\n" + "- Iron Sword" + "\r\n" + "\r\n" + "+ 30 Total HP" + "\r\n" + "+ 1 Total Defence"
                     + "\r\n" + "\r\n" + "Health Restored!", "Congratulations!", MessageBoxButtons.OK);
@@ -1097,16 +1047,16 @@ namespace Idle_Game
                     btMagic.Enabled = true;
                     Engine.totalHealth = Engine.totalHealth + 40;
                     Engine.health = Engine.totalHealth;
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
                     Engine.defence = Engine.defence + 1;
                     Engine.defenceReduction = Engine.defenceReduction + 1;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                     healthBar.Maximum = healthBar.Maximum + 40;
                     healthBar.Value = Engine.totalHealth;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     Engine.totalXP = Engine.totalXP + 50;
                     Engine.XP = 0;
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
                     MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked:" + "\r\n" + "\r\n" + "- Golden Pickaxe" + "\r\n" 
                     + "- Magic" + "\r\n" + "- Air Runes" + "\r\n" + "- Fire Runes" + "\r\n" + "- Super Health Potion" + "\r\n" + "\r\n" + "+ 40 Total HP" + "\r\n" + "+ 1 Total Defence"
                     + "\r\n" + "\r\n" + "Health Restored!", "Congratulations!", MessageBoxButtons.OK);
@@ -1120,17 +1070,17 @@ namespace Idle_Game
                     Engine.level++;
                     Engine.totalHealth = Engine.totalHealth + 50;
                     Engine.health = Engine.totalHealth;
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
                     Engine.defence = Engine.defence + 1;
                     Engine.defenceReduction = Engine.defenceReduction + 1;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                     healthBar.Maximum = healthBar.Maximum + 50;
                     healthBar.Value = Engine.totalHealth;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     btCamp.Enabled = true;
                     Engine.totalXP = Engine.totalXP + 50;
                     Engine.XP = 0;
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
                     MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked:" + "\r\n" + "\r\n" + "- Camping" + "\r\n" +
                     "- Platinum Pickaxe" + "\r\n" + "- Defence Up spell!" + "\r\n" + "- Earth Runes" + "\r\n" + "- Healara spell!" + "\r\n" + "- Mind Runes" + "\r\n"
                     + "- Diamond Sword" + "\r\n" + "\r\n" + "+ 50 Total HP" + "\r\n" + "+ 1 Total Defence" 
@@ -1145,17 +1095,17 @@ namespace Idle_Game
                     Engine.level++;
                     Engine.totalHealth = Engine.totalHealth + 60;
                     Engine.health = Engine.totalHealth;
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
                     Engine.defence = Engine.defence + 1;
                     Engine.defenceReduction = Engine.defenceReduction + 1;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                     healthBar.Maximum = healthBar.Maximum + 60;
                     healthBar.Value = Engine.totalHealth;
                     btCrafting.Enabled = true;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     Engine.totalXP = Engine.totalXP + 50;
                     Engine.XP = 0;
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
                     MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked:" + "\r\n" + "\r\n" + "- Crafting" + "\r\n" 
                     + "- Cobalt Pickaxe" + "\r\n" + "- Water Wave Spell!" + "\r\n" + "- Water Runes" + "\r\n" + "- Extra Defence Spell" + "\r\n" + "- Cosmic Runes" 
                     + "\r\n" + "- Lava Runes" + "\r\n" + "- Ultra Health Potion" + "\r\n" + "\r\n" + "+ 60 Total HP" + "\r\n" + "+ 1 Total Defence" 
@@ -1170,16 +1120,16 @@ namespace Idle_Game
                     Engine.level++;
                     Engine.totalHealth = Engine.totalHealth + 70;
                     Engine.health = Engine.totalHealth;
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
                     Engine.defence = Engine.defence + 1;
                     Engine.defenceReduction = Engine.defenceReduction + 1;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                     healthBar.Maximum = healthBar.Maximum + 70;
                     healthBar.Value = Engine.totalHealth;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     Engine.totalXP = Engine.totalXP + 50;
                     Engine.XP = 0;
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
                     MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked:" + "\r\n" + "\r\n" + "- Star Pickaxe" + "\r\n" 
                     + "- Cureraga Spell" + "\r\n" + "- Nature Runes" + "\r\n" + "- Life Runes" + "\r\n" + "\r\n" + "+ 70 Total HP" + "\r\n" + "+ 1 Total Defence"
                     + "\r\n" + "\r\n" + "Health Restored!", "Congratulations!", MessageBoxButtons.OK);
@@ -1193,16 +1143,16 @@ namespace Idle_Game
                     Engine.level++;
                     Engine.totalHealth = Engine.totalHealth + 80;
                     Engine.health = Engine.totalHealth;
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
                     Engine.defence = Engine.defence + 1;
                     Engine.defenceReduction = Engine.defenceReduction + 1;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                     healthBar.Maximum = healthBar.Maximum + 80;
                     healthBar.Value = Engine.totalHealth;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     Engine.totalXP = Engine.totalXP + 50;
                     Engine.XP = 0;
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
                     MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked:" + "\r\n" + "\r\n" 
                     + "- Volt Switch Spell" + "\r\n" + "- Electric Runes" + "\r\n" + "- Wrath Runes" + "\r\n" + "\r\n" + "+ 80 Total HP" + "\r\n" + "+ 1 Total Defence"
                     + "\r\n" + "\r\n" + "Health Restored!", "Congratulations!", MessageBoxButtons.OK);
@@ -1216,16 +1166,16 @@ namespace Idle_Game
                     Engine.level++;
                     Engine.totalHealth = Engine.totalHealth + 90;
                     Engine.health = Engine.totalHealth;
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
                     Engine.defence = Engine.defence + 1;
                     Engine.defenceReduction = Engine.defenceReduction + 1;
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                     healthBar.Maximum = healthBar.Maximum + 90;
                     healthBar.Value = Engine.totalHealth;
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
                     Engine.totalXP = Engine.totalXP + 50;
                     Engine.XP = 0;
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
                     MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked:" + "\r\n" + "\r\n" + "- Max Defence Spell!" 
                     + "\r\n" + "- Steam Runes!" + "\r\n" + "- Astral Runes!" + "\r\n" + "- ReArise Spell!" + "\r\n" + "- Revive Runes!" + "\r\n" + "- Soul Runes!" + "\r\n" 
                     + "\r\n" + "+ 90 Total HP" + "\r\n" + "+ 1 Total Defence" + "\r\n" + "\r\n" + "Health Restored!", "Congratulations!", MessageBoxButtons.OK);
@@ -1240,130 +1190,130 @@ namespace Idle_Game
             if (Engine.health <= 0)
             {
                 Engine.health = Engine.totalHealth - Engine.totalHealth;
-                label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
-                Death gOver = new Death();
-                gOver.ShowDialog();
+                hitpointsString.Text = UpdateUIHelper.Health;
+                new Death().ShowDialog();
             }
         }
 
-        private void BT2_Click(object sender, EventArgs e)
+        private void ShopButton_Click(object sender, EventArgs e)
         {
             if (Engine.level >= 2)
             {
-                f2.buySword.Enabled = true;
+                shop.buySword.Enabled = true;
             }
 
             if (Engine.level >= 3)
             {
-                f2.buySW.Enabled = true;
-                f2.buyUPT.Enabled = true;
+                shop.buySW.Enabled = true;
+                shop.buyUPT.Enabled = true;
             }
 
             if (Engine.level >= 4)
             {
-                f2.buySP.Enabled = true;
-                f2.buyIS.Enabled = true;
+                shop.buySP.Enabled = true;
+                shop.buyIS.Enabled = true;
             }
 
             if (Engine.level >= 5)
             {
-                f2.buyFR.Enabled = true;
-                f2.buyAR.Enabled = true;
-                f2.buySHP.Enabled = true;
-                f2.buyGP.Enabled = true;
+                shop.buyFR.Enabled = true;
+                shop.buyAR.Enabled = true;
+                shop.buySHP.Enabled = true;
+                shop.buyGP.Enabled = true;
             }
 
             if (Engine.level >= 6)
             {
-                f2.buyER.Enabled = true;
-                f2.buyDS.Enabled = true;
-                f2.buyMR.Enabled = true;
-                f2.buyPP.Enabled = true;
+                shop.buyER.Enabled = true;
+                shop.buyDS.Enabled = true;
+                shop.buyMR.Enabled = true;
+                shop.buyPP.Enabled = true;
             }
 
             if (Engine.level >= 7)
             {
-                f2.buyWR.Enabled = true;
-                f2.buyUUHP.Enabled = true;
-                f2.buyLR.Enabled = true;
-                f2.buyCP.Enabled = true;
+                shop.buyWR.Enabled = true;
+                shop.buyUUHP.Enabled = true;
+                shop.buyLR.Enabled = true;
+                shop.buyCP.Enabled = true;
             }
 
             if (Engine.level >= 8)
             {
-                f2.buyNR.Enabled = true;
-                f2.buySdP.Enabled = true;
+                shop.buyNR.Enabled = true;
+                shop.buySdP.Enabled = true;
             }
 
             if (Engine.level >= 9)
             {
-                f2.buyElR.Enabled = true;
+                shop.buyElR.Enabled = true;
             }
 
             if (Engine.level >= 10)
             {
-                f2.buySR.Enabled = true;
-                f2.buyRR.Enabled = true;
+                shop.buySR.Enabled = true;
+                shop.buyRR.Enabled = true;
             }
 
-            f2.UpdateScreenInterface = this;
-            f2.updateNormalPotion = this;
-            f2.updatePotion = this;
-            f2.updateSuperPotion = this;
-            f2.updateUltraPotion = this;
-            f2.ShowDialog();
+            shop.UpdateScreenInterface = this;
+            shop.updateNormalPotion = this;
+            shop.updatePotion = this;
+            shop.updateSuperPotion = this;
+            shop.updateUltraPotion = this;
+            shop.ShowDialog();
         }
 
-        private void BT3_Click(object sender, EventArgs e)
+        private void InventoryButton_Click(object sender, EventArgs e)
         {
-            Inventory f4 = new Inventory();
-            f4.ShowDialog();
+            Inventory inventory = new Inventory();
+            inventory.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void MagiButton_Click(object sender, EventArgs e)
         {
-            idk.owo = this;
-            idk.healPlayer = this;
-            idk.healPlayer2 = this;
-            idk.healPlayer3 = this;
+            magic.owo = this;
+            magic.healPlayer = this;
+            magic.healPlayer2 = this;
+            magic.healPlayer3 = this;
 
-            if (idk.healaraCooldown.Enabled == true || idk.defenceCooldown.Enabled == true || idk.waterCooldown.Enabled == true
-                || idk.extraDefenceCooldown.Enabled == true || idk.voltCooldown.Enabled == true || idk.defenceCooldown3.Enabled == true
-                || idk.reariseCooldown.Enabled == true)
+            if (magic.healaraCooldown.Enabled == true
+                || magic.defenceCooldown.Enabled == true
+                || magic.waterCooldown.Enabled == true
+                || magic.extraDefenceCooldown.Enabled == true
+                || magic.voltCooldown.Enabled == true
+                || magic.defenceCooldown3.Enabled == true
+                || magic.reariseCooldown.Enabled == true)
             {
-                idk.ShowDialog();
+                magic.ShowDialog();
             }
-            else
+            else if (Engine.level >= 6)
             {
-                if (Engine.level >= 6)
+                magic.defenceUp.Enabled = true;
+                magic.healara.Enabled = true;
+                if (Engine.level >= 7)
                 {
-                    idk.defenceUp.Enabled = true;
-                    idk.healara.Enabled = true;
-                    if (Engine.level >= 7)
+                    magic.waterWave.Enabled = true;
+                    magic.exDefence.Enabled = true;
+                    if (Engine.level >= 8)
                     {
-                        idk.waterWave.Enabled = true;
-                        idk.exDefence.Enabled = true;
-                        if (Engine.level >= 8)
+                        magic.cureraga.Enabled = true;
+                        if (Engine.level >= 9)
                         {
-                            idk.cureraga.Enabled = true;
-                            if (Engine.level >= 9)
+                            magic.voltSwtich.Enabled = true;
+                            if (Engine.level >= 10)
                             {
-                                idk.voltSwtich.Enabled = true;
-                                if (Engine.level >= 10)
-                                {
-                                    idk.maxDefence.Enabled = true;
-                                    idk.rearise.Enabled = true;
-                                }
+                                magic.maxDefence.Enabled = true;
+                                magic.rearise.Enabled = true;
                             }
                         }
                     }
-                    idk.ShowDialog();
                 }
-                else idk.ShowDialog(); 
+                
+                magic.ShowDialog(); 
             }
         }
 
-        private void btCrafting_Click(object sender, EventArgs e)
+        private void CraftingButton_Click(object sender, EventArgs e)
         {
             if (Engine.level >= 8)
             {
@@ -1396,143 +1346,104 @@ namespace Idle_Game
             boss.ShowDialog();
         }
 
-        private void newGame_Click(object sender, EventArgs e)
+        private void NewGame_Click(object sender, EventArgs e)
         {
-            NewGame newGame = new NewGame();
-            newGame.button = this;
-            newGame.update = this;
-            newGame.newClicks = this;
+            NewGame newGame = new NewGame() { button = this, update = this, newClicks = this };
             newGame.ShowDialog();
         }
 
-        private void btMine_Click(object sender, EventArgs e)
+        private void MineButton_Click(object sender, EventArgs e)
         {
-            Mine mine = new Mine();
-            mine.newSwords = this;
+            Mine mine = new Mine() { newSwords = this };
             mine.ShowDialog();
         }
 
-        private void btCamp_Click(object sender, EventArgs e)
+        private void CampButton_Click(object sender, EventArgs e)
         {
             CampingNight night = new CampingNight();
             night.updateVitals = this;
             camp.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void HealButton_Click(object sender, EventArgs e)
         {
             if (potionMenu.SelectedIndex > -1)
             {
                 if (Engine.health == Engine.totalHealth)
                 {
                     noH.Visible = true;
-                    noH.Text = "You have maximum health"; 
+                    noH.Text = "You have maximum health";
+                    return;
                 }
-                else if (potionMenu.SelectedItem.ToString() == "Health Potion")
-                {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
-                    heal.Play(); 
 
-                    Engine.potion = Engine.potion - 1; 
-                    noH.Visible = false;
-                    Engine.health = Engine.health + 10;
+                SoundPlayer heal = new SoundPlayer(Properties.Resources.bottle);
+                heal.Play();
+                noH.Visible = false;
+
+                if (potionMenu.SelectedItem.ToString() == "Health Potion")
+                {
+                    Engine.potion -= 1; 
+                    Engine.health += 10;
 
                     try
                     {
-                        healthBar.Value = healthBar.Value + 10;
+                        healthBar.Value += 10;
                     }
-                    catch (Exception e1)
+                    catch (Exception)
                     {
                         healthBar.Value = Engine.totalHealth;
                     }
- 
-                    if (Engine.health > Engine.totalHealth)
-                    {
-                       Engine.health = Engine.totalHealth;
-                    }
-
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
-                    potionMenu.Items.Remove(potionMenu.SelectedItem);
                 }
                 else if (potionMenu.SelectedItem.ToString() == "Upgraded Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
-                    heal.Play();
-
-                    Engine.upgradedPotion = Engine.upgradedPotion - 1;
-                    noH.Visible = false;
-                    Engine.health = Engine.health + 25;
+                    Engine.upgradedPotion -= 1;
+                    Engine.health += 25;
 
                     try
                     {
-                        healthBar.Value = healthBar.Value + 25;
+                        healthBar.Value += 25;
                     }
-                    catch (Exception e2)
+                    catch (Exception)
                     {
                         healthBar.Value = Engine.totalHealth;
                     }
-
-                    
-                    if (Engine.health > Engine.totalHealth)
-                    {
-                        Engine.health = Engine.totalHealth;
-                    }
-
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
-                    potionMenu.Items.Remove(potionMenu.SelectedItem);
                 }
                 else if (potionMenu.SelectedItem.ToString() == "Super Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
-                    heal.Play();
-
-                    Engine.superPotion = Engine.superPotion - 1;
-                    noH.Visible = false;
-                    Engine.health = Engine.health + 55; 
+                    Engine.superPotion -= 1;
+                    Engine.health += 55; 
 
                     try
                     {
-                        healthBar.Value = healthBar.Value + 55;
+                        healthBar.Value += 55;
                     }
-                    catch (Exception e10)
+                    catch (Exception)
                     {
                         healthBar.Value = Engine.totalHealth;
                     }
-
-                    if (Engine.health > Engine.totalHealth)
-                    {
-                        Engine.health = Engine.totalHealth; 
-                    }
-
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
-                    potionMenu.Items.Remove(potionMenu.SelectedItem);
                 }
                 else if (potionMenu.SelectedItem.ToString() == "Ultra Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
-                    heal.Play();
-
-                    Engine.ultraPotion = Engine.ultraPotion - 1;
-                    noH.Visible = false;
-                    Engine.health = Engine.health + 115;
+                    Engine.ultraPotion -= 1;
+                    Engine.health += 115;
 
                     try
                     {
-                        healthBar.Value = healthBar.Value + 115;
+                        healthBar.Value += 115;
                     }
-                    catch (Exception e10)
+                    catch (Exception)
                     {
                         healthBar.Value = Engine.totalHealth;
                     }
-
-                    if (Engine.health > Engine.totalHealth)
-                    {
-                        Engine.health = Engine.totalHealth;
-                    }
-
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
-                    potionMenu.Items.Remove(potionMenu.SelectedItem);
                 }
+
+                if (Engine.health > Engine.totalHealth)
+                {
+                    Engine.health = Engine.totalHealth;
+                }
+
+                hitpointsString.Text = UpdateUIHelper.Health;
+                potionMenu.Items.Remove(potionMenu.SelectedItem);
             }
             else 
             {
@@ -1541,40 +1452,20 @@ namespace Idle_Game
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
-            var confirm = MessageBox.Show("Are you sure? Any unsaved progress will be lost!", "Warning!", MessageBoxButtons.YesNo); 
-            if (confirm == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            DialogResult dialog = MessageBox.Show("Are you sure? Any unsaved progress will be lost!", "Warning!", MessageBoxButtons.YesNo); 
+
+            if (dialog == DialogResult.Yes) Application.Exit();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (Engine.name == "GCND")
+            nameSave.Text = $"{Engine.name}'s Save";
+            if (Engine.name == "GCND" || Engine.name == "Green Cyborg Ninja Dude"
+                || Engine.name == "Andrej" || Engine.name == "Green" || Engine.name == "Ando")
             {
-                nameSave.Text = Engine.name + "'s Save";
                 easterAndrej.Visible = true;
-            }
-            else if (Engine.name == "Green Cyborg Ninja Dude")
-            {
-                nameSave.Text = Engine.name + "'s Save";
-                easterAndrej.Visible = true;
-            }
-            else if (Engine.name == "Andrej")
-            {
-                nameSave.Text = Engine.name + "'s Save";
-                easterAndrej.Visible = true;
-            }
-            else if (Engine.name == "Green")
-            {
-                nameSave.Text = Engine.name + "'s Save";
-                easterAndrej.Visible = true;
-            }
-            else
-            {
-                nameSave.Text = Engine.name + "'s Save";
             }
 
             CPS.Text = "Clicks Per Second: 1";
@@ -1584,13 +1475,13 @@ namespace Idle_Game
             {
                 btMagic.Enabled = true;
                 Engine.level = 9;
-                Engine.count2 = 99;
+                Engine.kills = 99;
                 Engine.airRunes = 100;
                 Engine.fireRunes = 100;
                 Engine.mindRunes = 100;
                 Engine.waterRunes = 100;
                 Engine.bloodRunes = 100;
-                Engine.count = 500;
+                Engine.currency = 500;
                 Engine.cosmicRunes = 100;
                 Engine.earthRunes = 100;
                 Engine.lavaRunes = 100;
@@ -1638,11 +1529,11 @@ namespace Idle_Game
             }
         }
 
-        private void button2_Click_2(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("This will overwrite the previous save! Are you sure you want to save?", "Warning!", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("This will overwrite the previous save! Are you sure you want to save?", "Warning!", MessageBoxButtons.YesNo);
 
-            if (confirmResult == DialogResult.Yes)
+            if (dialog == DialogResult.Yes)
             {
                 Engine.items = new string[potionMenu.Items.Count];
                 for (int i = 0; i < potionMenu.Items.Count; i++)
@@ -1650,11 +1541,11 @@ namespace Idle_Game
                     Engine.items[i] = potionMenu.Items[i].ToString();
                 }
 
-                saving save = new saving
+                Saving save = new Saving
                 {
                     level = Engine.level,
-                    count = Engine.count,
-                    count2 = Engine.count2,
+                    count = Engine.currency,
+                    count2 = Engine.kills,
                     count3 = Engine.count3,
                     money = Engine.money,
                     health = Engine.health,
@@ -1749,32 +1640,25 @@ namespace Idle_Game
                     isNewGameClicksOn3 = Engine.isNewGameClicksOn3
                 };
 
+                string applicationPath = Application.StartupPath;
+
                 string JSONsave = JsonConvert.SerializeObject(save);
-                string directoryPath = string.Format(@"Saves\", Application.StartupPath);
-                string path = String.Format(@"{0}\Saves\" + Engine.name + "'s Save.json", Application.StartupPath);
-                string path2 = String.Format(@"{0}\Saves\" + Engine.name + "'s MD5Hash.txt", Application.StartupPath);
+                string directoryPath = string.Format(@"Saves\", applicationPath);
+                string savePath = $@"{applicationPath}\Saves\{Engine.name}'s Save.json";
+                string saveHashPath = $@"{applicationPath}\Saves\{Engine.name}'s MD5Hash.json";
 
-                DirectoryInfo saves = Directory.CreateDirectory(directoryPath);
-
-                if (File.Exists(path))
+                if (File.Exists(savePath))
                 {
-                    File.Delete(path);
-                    using (var tw = new StreamWriter(path, true))
-                    {
-                        tw.WriteLine(JSONsave.ToString());
-                        tw.Close();
-                    }
-                }
-                else if (!File.Exists(path))
-                {
-                    using (var tw = new StreamWriter(path, true))
-                    {
-                        tw.WriteLine(JSONsave.ToString());
-                        tw.Close();
-                    }
+                    File.Delete(savePath);
                 }
 
-                sSourceData = String.Format(path);
+                using (StreamWriter sw = new StreamWriter(savePath, true))
+                {
+                    sw.WriteLine(JSONsave.ToString());
+                    sw.Close();
+                }
+
+                sSourceData = string.Format(savePath);
                 tmpSource = File.ReadAllBytes(sSourceData);
                 tmpHash = new MD5CryptoServiceProvider().ComputeHash(tmpSource);
 
@@ -1785,22 +1669,15 @@ namespace Idle_Game
                     sOutput.Append(tmpHash[j].ToString("X2"));
                 }
 
-                if (File.Exists(path2))
+                if (File.Exists(saveHashPath))
                 {
-                    File.Delete(path2);
-                    using (var tw = new StreamWriter(path2, true))
-                    {
-                        tw.WriteLine(sOutput.ToString());
-                        tw.Close();
-                    }
+                    File.Delete(saveHashPath);
                 }
-                else if (!File.Exists(path2))
+
+                using (StreamWriter sw = new StreamWriter(saveHashPath, true))
                 {
-                    using (var tw = new StreamWriter(path2, true))
-                    {
-                        tw.WriteLine(sOutput.ToString());
-                        tw.Close();
-                    }
+                    sw.WriteLine(sOutput.ToString());
+                    sw.Close();
                 }
 
                 string path3 = String.Format(@"{0}\Saves\" + Engine.name + "'s MD5Hash.txt", Application.StartupPath);
@@ -1808,14 +1685,14 @@ namespace Idle_Game
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void LoadButton_Click(object sender, EventArgs e)
         {
-            bool bEqual = false;
-            string path = String.Format(@"{0}\Saves\" + Engine.name + "'s Save.json", Application.StartupPath);
+            bool hasNotBeenTampered = false;
+            string path = $@"{Application.StartupPath}\Savse\{Engine.name}'s Save.json";
 
             try
             {
-                sSourceData2 = String.Format(path);
+                sSourceData2 = string.Format(path);
                 tmpSource2 = File.ReadAllBytes(sSourceData2);
                 tmpNewHash2 = new MD5CryptoServiceProvider().ComputeHash(tmpSource2);
 
@@ -1827,7 +1704,7 @@ namespace Idle_Game
                 }
 
                 string md5 = "";
-                string path2 = String.Format(@"{0}\Saves\" + Engine.name + "'s MD5Hash.txt", Application.StartupPath);
+                string path2 = string.Format(@"{0}\Saves\" + Engine.name + "'s MD5Hash.txt", Application.StartupPath);
 
                 using (var tw = new StreamReader(path2, true))
                 {
@@ -1849,28 +1726,31 @@ namespace Idle_Game
                     {
                         i += 1;
                     }
+
                     if (i == sOutput2.Length)
                     {
-                        bEqual = true;
+                        hasNotBeenTampered = true;
                     }
                 }
 
-                var confirmResult = MessageBox.Show("Are you sure you want to load your saved game? Any unsaved progress will be lost!", "Warning!", MessageBoxButtons.YesNo);
+                DialogResult confirmResult = MessageBox.Show("Are you sure you want to load your saved game? Any unsaved progress will be lost!", "Warning!", MessageBoxButtons.YesNo);
 
-                if (confirmResult == DialogResult.Yes && bEqual == true)
+                if (confirmResult == DialogResult.Yes && hasNotBeenTampered == true)
                 {
                     string json = "";
-                    string path3 = String.Format(@"{0}\Saves\" + Engine.name + "'s Save.json", Application.StartupPath);
-                    using (var tw = new StreamReader(path3, true))
+                    string path3 = string.Format(@"{0}\Saves\" + Engine.name + "'s Save.json", Application.StartupPath);
+
+                    using (StreamReader sr = new StreamReader(path3, true))
                     {
-                        json = tw.ReadToEnd();
-                        tw.Close();
+                        json = sr.ReadToEnd();
+                        sr.Close();
                     }
-                    saving load = JsonConvert.DeserializeObject<saving>(json);
+
+                    Saving load = JsonConvert.DeserializeObject<Saving>(json);
 
                     Engine.level = load.level;
-                    Engine.count = load.count;
-                    Engine.count2 = load.count2;
+                    Engine.currency = load.count;
+                    Engine.kills = load.count2;
                     Engine.count3 = load.count3;
                     Engine.money = load.money;
                     Engine.health = load.health;
@@ -1921,21 +1801,25 @@ namespace Idle_Game
                     Engine.isNewGameClicksOn = load.isNewGameClicksOn;
                     Engine.isNewGameClicksOn2 = load.isNewGameClicksOn2;
                     Engine.isNewGameClicksOn3 = load.isNewGameClicksOn3;
+
                     if (Engine.isNewGameOn == true)
                     {
                         healthBar.Maximum = 220;
                         healthBar.Value = 220;
                     }
+
                     if (Engine.isNewGameOn2 == true)
                     {
                         healthBar.Maximum = Engine.totalHealth;
                         healthBar.Value = Engine.totalHealth;
                     }
+
                     if (Engine.isNewGameOn3 == true)
                     {
                         healthBar.Maximum = Engine.totalHealth;
                         healthBar.Value = Engine.totalHealth;
                     }
+
                     healthBar.Maximum = load.barMaximum;
                     healthBar.Value = load.bar;
                     Engine.items = load.items;
@@ -1984,17 +1868,17 @@ namespace Idle_Game
                         potionMenu.Items.Add(Engine.items[i]);
                     }
 
-                    LB1.Text = "Clickerency: " + Engine.count.ToString();
+                    currencyString.Text = "Clickerency: " + Engine.currency.ToString();
 
-                    LB2.Text = "Monsters Killed: " + Engine.count2.ToString();
+                    monsterKillsString.Text = "Monsters Killed: " + Engine.kills.ToString();
 
-                    defence.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+                    defenceString.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
 
-                    label5.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
+                    hitpointsString.Text = UpdateUIHelper.Health;
 
-                    levelText.Text = "Level: " + Engine.level + "/" + "10";
+                    levelString.Text = "Level: " + Engine.level + "/" + "10";
 
-                    xpTracker.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
+                    xpString.Text = "XP: " + Engine.XP + "/" + Engine.totalXP;
 
                     if (Engine.isNewGameOn2 == true || Engine.isNewGameDefenceOn2 == true || Engine.isNewGameClicksOn2 == true)
                     {
@@ -2170,13 +2054,12 @@ namespace Idle_Game
                         }
                     }
                 }
-
-                else if (confirmResult == DialogResult.Yes && bEqual == false)
+                else if (confirmResult == DialogResult.Yes && hasNotBeenTampered == false)
                 {
-                    MessageBox.Show("Save has been tampered with!" + "\r\n" + "Save cannot be loaded." + "\r\n" + "Why cheat?", "Error!", MessageBoxButtons.OK);
+                    MessageBox.Show($"Save has been tampered with!\nSave cannot be loaded.\nWhy cheat?", "Error!", MessageBoxButtons.OK);
                 }
             }
-            catch (Exception e12)
+            catch (Exception)
             {
                 MessageBox.Show("No save file detected!", "Warning!", MessageBoxButtons.OK);
             }

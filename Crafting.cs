@@ -10,27 +10,27 @@ using System.Windows.Forms;
 using System.Media;
 using System.Threading;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Crafting : Form
     {
         public Crafting()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = ClickNFight.Properties.Resources.icon;
         }
 
         private void craftBR_Click(object sender, EventArgs e)
         {
             if (Engine.waterRunes >= 5 && Engine.mindRunes >= 2) 
             {
-                SoundPlayer craft = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft2 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft2 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft2.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft3 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft3 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft3.Play();
                 Engine.waterRunes = Engine.waterRunes - 5;
                 Engine.mindRunes = Engine.mindRunes - 2;
@@ -46,13 +46,13 @@ namespace Idle_Game
         {
             if (Engine.airRunes >= 2 && Engine.lavaRunes >= 5 && Engine.mindRunes >= 2)
             {
-                SoundPlayer craft = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft2 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft2 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft2.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft3 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft3 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft3.Play();
                 Engine.airRunes = Engine.airRunes - 2;
                 Engine.lavaRunes = Engine.lavaRunes - 5;
@@ -69,13 +69,13 @@ namespace Idle_Game
         {
             if (Engine.airRunes >= 3 && Engine.natureRunes >= 6 && Engine.mindRunes >= 3)
             {
-                SoundPlayer craft = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft2 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft2 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft2.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft3 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft3 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft3.Play();
                 Engine.airRunes = Engine.airRunes - 3;
                 Engine.natureRunes = Engine.natureRunes - 6;
@@ -92,13 +92,13 @@ namespace Idle_Game
         {
             if (Engine.airRunes >= 4 && Engine.electricRunes >= 1 && Engine.mindRunes >= 4 && Engine.bloodRunes >= 7) 
             {
-                SoundPlayer craft = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft2 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft2 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft2.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft3 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft3 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft3.Play();
                 Engine.airRunes = Engine.airRunes - 4;
                 Engine.electricRunes = Engine.electricRunes - 1;
@@ -116,13 +116,13 @@ namespace Idle_Game
         {
             if (Engine.airRunes >= 5 && Engine.steamRunes >= 1 && Engine.mindRunes >= 5 && Engine.cosmicRunes >= 8)
             {
-                SoundPlayer craft = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft2 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft2 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft2.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft3 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft3 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft3.Play();
                 Engine.airRunes = Engine.airRunes - 5;
                 Engine.steamRunes = Engine.steamRunes - 1;
@@ -141,13 +141,13 @@ namespace Idle_Game
         {
             if (Engine.airRunes >= 5 && Engine.mindRunes >= 5 && Engine.reviveRunes >= 1 && Engine.lifeRunes >= 8)
             {
-                SoundPlayer craft = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft2 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft2 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft2.Play();
                 Thread.Sleep(400);
-                SoundPlayer craft3 = new SoundPlayer(Idle_Game.Properties.Resources.metal);
+                SoundPlayer craft3 = new SoundPlayer(ClickNFight.Properties.Resources.metal);
                 craft3.Play();
                 Engine.airRunes = Engine.airRunes - 5;
                 Engine.reviveRunes = Engine.reviveRunes - 1;
