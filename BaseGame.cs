@@ -1,23 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Media;
-using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 using System.IO;
+using System.Media;
 using System.Security.Cryptography;
+using System.Text;
+using System.Windows.Forms;
+using Newtonsoft.Json;
 
-namespace Idle_Game
+namespace ClickNFight
 {
-    public partial class Form1 : Form, Interfaces
+    public partial class Form1 : Form, IUiRefreshers
     {
         double please;
         string sSourceData;
@@ -35,29 +26,16 @@ namespace Idle_Game
         // Instances 
 
         Magic idk = new Magic();
-        Shop f2 = new Shop();
         Crafting runeCrafting = new Crafting();
         Camping camp = new Camping();
 
-        // Instances 
-
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case 0x84:
-                    base.WndProc(ref m);
-                    if ((int)m.Result == 0x1)
-                        m.Result = (IntPtr)0x2;
-                    return;
-            }
-
-            base.WndProc(ref m);
-        }
-
         public Form1()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             this.hero = new Hero();
             this.monster = new Monster();
@@ -100,7 +78,7 @@ namespace Idle_Game
                     magicMenuButton.Enabled = true;
                     campMenuButton.Enabled = true;
                     mineMenuButton.Enabled = true;
-                    btCrafting.Enabled = true;
+                    runeCraftingButton.Enabled = true;
                 }
             }
             else if (e.Control && e.Alt && e.Shift && e.KeyCode == Keys.D)
@@ -114,180 +92,182 @@ namespace Idle_Game
             }
         }
 
-        void Interfaces.UpdadeScreen()
+        void IUiRefreshers.UpdateUi()
         {
-            int defence = 0;
+            this.UpdateUI();
 
-            clickerencyLabel.Text = "Clickerency: " + Engine.count.ToString();
+            //int defence = 0;
 
-            monstersSlainLabel.Text = "Monsters Killed: " + Engine.monstersSlain.ToString();
+            //clickerencyLabel.Text = "Clickerency: " + Engine.count.ToString();
 
-            defenceLabel.Text = "Defence: " + defence + " (Decreases damage by " + Engine.defenceReduction + ")";
+            //monstersSlainLabel.Text = "Monsters Killed: " + Engine.monstersSlain.ToString();
 
-            string work = "Clicks Per Second: ";
-            please = 1;
-            CPS.Text = work + please;
+            //defenceLabel.Text = "Defence: " + defence + " (Decreases damage by " + Engine.defenceReduction + ")";
 
-            if (Engine.isNewGameClicksOn3 == true)
-            {
-                string workClicks = "Clicks Per Second: ";
-                please = 15;
-                CPS.Text = workClicks + please;
-                if (Engine.woodenSword > 0)
-                {
-                    please = Engine.woodenSwordAdd + 1;
-                    CPS.Text = work + please;
-                    if (Engine.stoneSword > 0)
-                    {
-                        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + 1;
-                        CPS.Text = work + please;
-                        if (Engine.ironSword > 0)
-                        {
-                            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + 1;
-                            CPS.Text = work + please;
-                            if (Engine.diamondSword > 0)
-                            {
-                                Engine.diamondSwordAdd = Engine.diamondSword * 4;
-                                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + 1;
-                                CPS.Text = work + please;
-                                if (Engine.excalibur > 0)
-                                {
-                                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd + 1;
-                                    CPS.Text = work + please;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else if (Engine.isNewGameClicksOn2 == true)
-            {
-                string workClicks = "Clicks Per Second: ";
-                please = 10;
-                CPS.Text = workClicks + please;
-                if (Engine.woodenSword > 0)
-                {
-                    please = Engine.woodenSwordAdd + 1;
-                    CPS.Text = work + please;
-                    if (Engine.stoneSword > 0)
-                    {
-                        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + 1;
-                        CPS.Text = work + please;
-                        if (Engine.ironSword > 0)
-                        {
-                            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + 1;
-                            CPS.Text = work + please;
-                            if (Engine.diamondSword > 0)
-                            {
-                                Engine.diamondSwordAdd = Engine.diamondSword * 4;
-                                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + 1;
-                                CPS.Text = work + please;
-                                if (Engine.excalibur > 0)
-                                {
-                                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd + 1;
-                                    CPS.Text = work + please;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else if (Engine.isNewGameClicksOn == true)
-            {
-                string workClicks = "Clicks Per Second: ";
-                please = 5;
-                CPS.Text = workClicks + please;
-                if (Engine.woodenSword > 0)
-                {
-                    please = Engine.woodenSwordAdd + 1;
-                    CPS.Text = work + please;
-                    if (Engine.stoneSword > 0)
-                    {
-                        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + 1;
-                        CPS.Text = work + please;
-                        if (Engine.ironSword > 0)
-                        {
-                            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + 1;
-                            CPS.Text = work + please;
-                            if (Engine.diamondSword > 0)
-                            {
-                                Engine.diamondSwordAdd = Engine.diamondSword * 4;
-                                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + 1;
-                                CPS.Text = work + please;
-                                if (Engine.excalibur > 0)
-                                {
-                                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd + 1;
-                                    CPS.Text = work + please;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else if (Engine.woodenSword > 0)
-            {
-                Engine.woodenSwordAdd = Engine.woodenSword * 0.5;
-                please = Engine.woodenSwordAdd + 1;
-                CPS.Text = work + please;
-                if (Engine.stoneSword > 0)
-                {
-                    Engine.stoneSwordAdd = Engine.stoneSword * 1;
-                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + 1;
-                    CPS.Text = work + please;
-                    if (Engine.ironSword > 0)
-                    {
-                        Engine.ironSwordAdd = Engine.ironSword * 2;
-                        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + 1;
-                        CPS.Text = work + please;
-                        if (Engine.diamondSword > 0)
-                        {
-                            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + 1;
-                            CPS.Text = work + please;
-                            if (Engine.excalibur > 0)
-                            {
-                                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd + 1;
-                                CPS.Text = work + please;
-                            }
-                        }
-                    }
-                }
-            }
+            //string work = "Clicks Per Second: ";
+            //please = 1;
+            //CPS.Text = work + please;
 
-            if (Engine.silverSword == true)
-            {
-                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
-                Engine.silverSwordAdd + 1;
-                CPS.Text = work + please;
-                if (Engine.goldSword == true)
-                {
-                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
-                    Engine.silverSwordAdd + Engine.goldSwordAdd + 1;
-                    CPS.Text = work + please;
-                    if (Engine.platinumSword == true)
-                    {
-                        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
-                        Engine.silverSwordAdd + Engine.goldSwordAdd + Engine.platinumSwordAdd + 1;
-                        CPS.Text = work + please;
-                        if (Engine.cobaltSword == true)
-                        {
-                            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
-                            Engine.silverSwordAdd + Engine.goldSwordAdd + Engine.platinumSwordAdd + Engine.cobaltSwordAdd + 1;
-                            CPS.Text = work + please;
-                            if (Engine.starSword == true)
-                            {
-                                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
-                                Engine.silverSwordAdd + Engine.goldSwordAdd + Engine.platinumSwordAdd + Engine.cobaltSwordAdd + Engine.starSwordAdd + 1;
-                                CPS.Text = work + please;
-                            }
-                        }
-                    }
-                }
-            }
+            //if (Engine.isNewGameClicksOn3 == true)
+            //{
+            //    string workClicks = "Clicks Per Second: ";
+            //    please = 15;
+            //    CPS.Text = workClicks + please;
+            //    if (Engine.woodenSword > 0)
+            //    {
+            //        please = Engine.woodenSwordAdd + 1;
+            //        CPS.Text = work + please;
+            //        if (Engine.stoneSword > 0)
+            //        {
+            //            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + 1;
+            //            CPS.Text = work + please;
+            //            if (Engine.ironSword > 0)
+            //            {
+            //                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + 1;
+            //                CPS.Text = work + please;
+            //                if (Engine.diamondSword > 0)
+            //                {
+            //                    Engine.diamondSwordAdd = Engine.diamondSword * 4;
+            //                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + 1;
+            //                    CPS.Text = work + please;
+            //                    if (Engine.excalibur > 0)
+            //                    {
+            //                        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd + 1;
+            //                        CPS.Text = work + please;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //else if (Engine.isNewGameClicksOn2 == true)
+            //{
+            //    string workClicks = "Clicks Per Second: ";
+            //    please = 10;
+            //    CPS.Text = workClicks + please;
+            //    if (Engine.woodenSword > 0)
+            //    {
+            //        please = Engine.woodenSwordAdd + 1;
+            //        CPS.Text = work + please;
+            //        if (Engine.stoneSword > 0)
+            //        {
+            //            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + 1;
+            //            CPS.Text = work + please;
+            //            if (Engine.ironSword > 0)
+            //            {
+            //                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + 1;
+            //                CPS.Text = work + please;
+            //                if (Engine.diamondSword > 0)
+            //                {
+            //                    Engine.diamondSwordAdd = Engine.diamondSword * 4;
+            //                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + 1;
+            //                    CPS.Text = work + please;
+            //                    if (Engine.excalibur > 0)
+            //                    {
+            //                        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd + 1;
+            //                        CPS.Text = work + please;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //else if (Engine.isNewGameClicksOn == true)
+            //{
+            //    string workClicks = "Clicks Per Second: ";
+            //    please = 5;
+            //    CPS.Text = workClicks + please;
+            //    if (Engine.woodenSword > 0)
+            //    {
+            //        please = Engine.woodenSwordAdd + 1;
+            //        CPS.Text = work + please;
+            //        if (Engine.stoneSword > 0)
+            //        {
+            //            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + 1;
+            //            CPS.Text = work + please;
+            //            if (Engine.ironSword > 0)
+            //            {
+            //                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + 1;
+            //                CPS.Text = work + please;
+            //                if (Engine.diamondSword > 0)
+            //                {
+            //                    Engine.diamondSwordAdd = Engine.diamondSword * 4;
+            //                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + 1;
+            //                    CPS.Text = work + please;
+            //                    if (Engine.excalibur > 0)
+            //                    {
+            //                        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd + 1;
+            //                        CPS.Text = work + please;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //else if (Engine.woodenSword > 0)
+            //{
+            //    Engine.woodenSwordAdd = Engine.woodenSword * 0.5;
+            //    please = Engine.woodenSwordAdd + 1;
+            //    CPS.Text = work + please;
+            //    if (Engine.stoneSword > 0)
+            //    {
+            //        Engine.stoneSwordAdd = Engine.stoneSword * 1;
+            //        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + 1;
+            //        CPS.Text = work + please;
+            //        if (Engine.ironSword > 0)
+            //        {
+            //            Engine.ironSwordAdd = Engine.ironSword * 2;
+            //            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + 1;
+            //            CPS.Text = work + please;
+            //            if (Engine.diamondSword > 0)
+            //            {
+            //                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + 1;
+            //                CPS.Text = work + please;
+            //                if (Engine.excalibur > 0)
+            //                {
+            //                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd + 1;
+            //                    CPS.Text = work + please;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            //if (Engine.silverSword == true)
+            //{
+            //    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
+            //    Engine.silverSwordAdd + 1;
+            //    CPS.Text = work + please;
+            //    if (Engine.goldSword == true)
+            //    {
+            //        please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
+            //        Engine.silverSwordAdd + Engine.goldSwordAdd + 1;
+            //        CPS.Text = work + please;
+            //        if (Engine.platinumSword == true)
+            //        {
+            //            please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
+            //            Engine.silverSwordAdd + Engine.goldSwordAdd + Engine.platinumSwordAdd + 1;
+            //            CPS.Text = work + please;
+            //            if (Engine.cobaltSword == true)
+            //            {
+            //                please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
+            //                Engine.silverSwordAdd + Engine.goldSwordAdd + Engine.platinumSwordAdd + Engine.cobaltSwordAdd + 1;
+            //                CPS.Text = work + please;
+            //                if (Engine.starSword == true)
+            //                {
+            //                    please = Engine.woodenSwordAdd + Engine.stoneSwordAdd + Engine.ironSwordAdd + Engine.diamondSwordAdd + Engine.excaliburAdd +
+            //                    Engine.silverSwordAdd + Engine.goldSwordAdd + Engine.platinumSwordAdd + Engine.cobaltSwordAdd + Engine.starSwordAdd + 1;
+            //                    CPS.Text = work + please;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         // Updates player hp with heal spells
 
-        void Interfaces.UpdateScreenHeal()
+        void IUiRefreshers.UpdateScreenHeal()
         {
             healthBar.Maximum = Engine.totalHealth;
 
@@ -352,7 +332,7 @@ namespace Idle_Game
 
         // Updates only the health potion
 
-        void Interfaces.UpdateScreenPotion()
+        void IUiRefreshers.UpdateScreenPotion()
         {
             potionMenu.Items.Add("Health Potion");
 
@@ -361,7 +341,7 @@ namespace Idle_Game
 
         // Updates only the upgraded health potion 
 
-        void Interfaces.UpdateScreenUpgradedPotion()
+        void IUiRefreshers.UpdateScreenUpgradedPotion()
         {
             potionMenu.Items.Add("Upgraded Health Potion");
 
@@ -370,7 +350,7 @@ namespace Idle_Game
 
         // Updates only the super health potion 
 
-        void Interfaces.UpdateScreenSuperPotion()
+        void IUiRefreshers.UpdateScreenSuperPotion()
         {
             potionMenu.Items.Add("Super Health Potion");
 
@@ -379,24 +359,24 @@ namespace Idle_Game
 
         // Updates only the ultra health potion
 
-        void Interfaces.UpdateScreenUltraPotion()
+        void IUiRefreshers.UpdateScreenUltraPotion()
         {
             potionMenu.Items.Add("Ultra Health Potion");
 
             clickerencyLabel.Text = "Clickerency: " + Engine.count.ToString();
         }
 
-        void Interfaces.UpdateScreenButton()
+        void IUiRefreshers.UpdateScreenButton()
         {
-            newGame.Visible = true;
+            newGameButton.Visible = true;
         }
 
-        void Interfaces.UpdateScreenButtonOff()
+        void IUiRefreshers.UpdateScreenButtonOff()
         {
-            newGame.Visible = false;
-            finalBoss.Enabled = false;
+            newGameButton.Visible = false;
+            finalBossButton.Enabled = false;
             magicMenuButton.Enabled = false;
-            btCrafting.Enabled = false;
+            runeCraftingButton.Enabled = false;
             mineMenuButton.Enabled = false;
             campMenuButton.Enabled = false;
             potionMenu.Items.Clear();
@@ -435,12 +415,12 @@ namespace Idle_Game
             healthBar.Value = Engine.totalHealth;
         }
 
-        void Interfaces.UpdateScreenNewGame()
+        void IUiRefreshers.UpdateScreenNewGame()
         {
-            newGame.Visible = false;
-            finalBoss.Enabled = false;
+            newGameButton.Visible = false;
+            finalBossButton.Enabled = false;
             magicMenuButton.Enabled = false;
-            btCrafting.Enabled = false;
+            runeCraftingButton.Enabled = false;
             mineMenuButton.Enabled = false;
             campMenuButton.Enabled = false;
             potionMenu.Items.Clear();
@@ -477,12 +457,12 @@ namespace Idle_Game
             clickerencyEarnedLabel.Text = "";
         }
 
-        void Interfaces.UpdateScreenNewGameClicks()
+        void IUiRefreshers.UpdateScreenNewGameClicks()
         {
-            newGame.Visible = false;
-            finalBoss.Enabled = false;
+            newGameButton.Visible = false;
+            finalBossButton.Enabled = false;
             magicMenuButton.Enabled = false;
-            btCrafting.Enabled = false;
+            runeCraftingButton.Enabled = false;
             mineMenuButton.Enabled = false;
             campMenuButton.Enabled = false;
             potionMenu.Items.Clear();
@@ -678,10 +658,14 @@ namespace Idle_Game
 
         private void BT2_Click(object sender, EventArgs e)
         {
-            if (Engine.level >= 2)
-            {
-                f2.buySword.Enabled = true;
-            }
+            Shop f2 = new Shop(this.hero);
+
+            f2.buySword.Enabled = true;
+
+            //if (Engine.level >= 2)
+            //{
+            //    f2.buySword.Enabled = true;
+            //}
 
             if (Engine.level >= 3)
             {
@@ -736,12 +720,16 @@ namespace Idle_Game
                 f2.buyRR.Enabled = true;
             }
 
-            f2.UpdateScreenInterface = this;
-            f2.updateNormalPotion = this;
-            f2.updatePotion = this;
-            f2.updateSuperPotion = this;
-            f2.updateUltraPotion = this;
+            f2.screenUpdate = this;
+
+            //f2.UpdateScreenInterface = this;
+            //f2.updateNormalPotion = this;
+            //f2.updatePotion = this;
+            //f2.updateSuperPotion = this;
+            //f2.updateUltraPotion = this;
             f2.ShowDialog();
+
+            this.UpdateUI();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -854,9 +842,9 @@ namespace Idle_Game
                 }
                 else if (potionMenu.SelectedItem.ToString() == "Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
+                    SoundPlayer heal = new SoundPlayer(Properties.Resources.bottle);
                     heal.Play();
-
+                    
                     Engine.potion = Engine.potion - 1;
                     noH.Visible = false;
                     Engine.health = Engine.health + 10;
@@ -880,7 +868,7 @@ namespace Idle_Game
                 }
                 else if (potionMenu.SelectedItem.ToString() == "Upgraded Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
+                    SoundPlayer heal = new SoundPlayer(Properties.Resources.bottle);
                     heal.Play();
 
                     Engine.upgradedPotion = Engine.upgradedPotion - 1;
@@ -907,7 +895,7 @@ namespace Idle_Game
                 }
                 else if (potionMenu.SelectedItem.ToString() == "Super Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
+                    SoundPlayer heal = new SoundPlayer(Properties.Resources.bottle);
                     heal.Play();
 
                     Engine.superPotion = Engine.superPotion - 1;
@@ -933,7 +921,7 @@ namespace Idle_Game
                 }
                 else if (potionMenu.SelectedItem.ToString() == "Ultra Health Potion")
                 {
-                    SoundPlayer heal = new SoundPlayer(Idle_Game.Properties.Resources.bottle);
+                    SoundPlayer heal = new SoundPlayer(Properties.Resources.bottle);
                     heal.Play();
 
                     Engine.ultraPotion = Engine.ultraPotion - 1;
@@ -963,41 +951,6 @@ namespace Idle_Game
                 noH.Visible = true;
                 noH.Text = "You don't have a potion to use";
             }
-        }
-
-        class Hero
-        {
-            public Hero()
-            {
-                this.Level = 1;
-                this.MaxHealth = this.Health = 200;
-                this.Defence = 0;
-                this.DefenceReduction = 0;
-                this.CurrentXp = 0;
-                this.TotalXp = 250;
-                this.Cps = 0;
-                this.MonstersSlain = 0;
-            }
-
-            public int Level { get; set; }
-
-            public int MaxHealth { get; set; }
-
-            public int Health { get; set; }
-
-            public int Defence { get; set; }
-
-            public int DefenceReduction { get; set; }
-
-            public int CurrentXp { get; set; }
-
-            public int TotalXp { get; set; }
-
-            public int Cps { get; set; }
-
-            public int MonstersSlain { get; set; }
-
-            public double Clickerency { get; set; }
         }
 
         class Monster
@@ -1074,6 +1027,12 @@ namespace Idle_Game
                         MessageBoxButtons.OK);
                     this.campMenuButton.Enabled = true;
                     break;
+                case 7:
+                    MessageBox.Show("You have leveled up! You are now level 7!\nYou have unlocked:\n\n- Rune Crafting\n- Cobalt Pickaxe\n- Water Wave Spell!\n- Water Runes\n- Extra Defence Spell\n- Cosmic Runes\n- Lava Runes\n- Ultra Health Potion\n\n+ 60 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
+                        "Congratulations!",
+                        MessageBoxButtons.OK);
+                    this.runeCraftingButton.Enabled = true;
+                    break;
                 case 8:
                     MessageBox.Show("You have leveled up! You are now level 8!\nYou have unlocked:\n\n- Star Pickaxe\n- Cureraga Spell\n- Nature Runes\n- Life Runes\n\n+ 70 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
                         "Congratulations!",
@@ -1083,6 +1042,12 @@ namespace Idle_Game
                     MessageBox.Show("You have leveled up! You are now level 9!\nYou have unlocked:\n\n- Volt Switch Spell\n- Electric Runes\n- Wrath Runes\n\n+ 80 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
                         "Congratulations!",
                         MessageBoxButtons.OK);
+                    break;
+                case 10:
+                    MessageBox.Show("You have leveled up! You are now level 10!\nYou have unlocked:\n\n- Max Defence Spell!\n- Steam Runes!\n- Astral Runes!\n- ReArise Spell!\n- Revive Runes!\n- Soul Runes!\n\n+ 90 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
+                        "Congratulations!",
+                        MessageBoxButtons.OK);
+                    this.finalBossButton.Enabled = true;
                     break;
             }
         }
@@ -1362,30 +1327,13 @@ namespace Idle_Game
                 this.LevelUpHero();
             }
 
-            if (Engine.level < 7)
-            {
-                if (Engine.XP >= Engine.totalXP)
-                {
-                    btCrafting.Enabled = true;
-                    MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked:" + "\r\n" + "\r\n" + "- Crafting" + "\r\n"
-                    + "- Cobalt Pickaxe" + "\r\n" + "- Water Wave Spell!" + "\r\n" + "- Water Runes" + "\r\n" + "- Extra Defence Spell" + "\r\n" + "- Cosmic Runes"
-                    + "\r\n" + "- Lava Runes" + "\r\n" + "- Ultra Health Potion" + "\r\n" + "\r\n" + "+ 60 Total HP" + "\r\n" + "+ 1 Total Defence"
-                    + "\r\n" + "\r\n" + "Health Restored!", "Congratulations!", MessageBoxButtons.OK);
-                }
-            }
-
-            MessageBox.Show("You have leveled up! You are now level " + Engine.level + "!" + "\r\n" + "You have unlocked:" + "\r\n" + "\r\n" + "- Max Defence Spell!"
-                            + "\r\n" + "- Steam Runes!" + "\r\n" + "- Astral Runes!" + "\r\n" + "- ReArise Spell!" + "\r\n" + "- Revive Runes!" + "\r\n" + "- Soul Runes!" + "\r\n"
-                            + "\r\n" + "+ 90 Total HP" + "\r\n" + "+ 1 Total Defence" + "\r\n" + "\r\n" + "Health Restored!", "Congratulations!", MessageBoxButtons.OK);
-            finalBoss.Enabled = true;
-
             this.UpdateUI();
         }
 
         // Refactored
         private void InventoryButton_Click(object sender, EventArgs e)
         {
-            Inventory inventory = new Inventory();
+            Inventory inventory = new Inventory(this.hero);
             inventory.ShowDialog();
         }
 
@@ -1454,14 +1402,14 @@ namespace Idle_Game
                 Engine.lavaRunes = 100;
                 Engine.lifeRunes = 100;
                 Engine.natureRunes = 100;
-                btCrafting.Enabled = true;
+                runeCraftingButton.Enabled = true;
                 Engine.wrathRunes = 100;
                 Engine.electricRunes = 100;
                 Engine.steamRunes = 100;
                 Engine.astralRunes = 100;
                 Engine.reviveRunes = 100;
                 Engine.soulRunes = 100;
-                finalBoss.Enabled = true;
+                finalBossButton.Enabled = true;
                 Engine.woodenSword = 10;
                 Engine.stoneSword = 7;
                 Engine.ironSword = 5;
@@ -1492,7 +1440,7 @@ namespace Idle_Game
                 Engine.potion = 300;
                 Engine.airRunes = 300;
                 Engine.woodenSword = 2;
-                newGame.Visible = true;
+                newGameButton.Visible = true;
             }
             #endregion
         }
@@ -1558,12 +1506,12 @@ namespace Idle_Game
                     bar = healthBar.Value,
                     barMaximum = healthBar.Maximum,
                     items = Engine.items,
-                    buttonOn = newGame.Visible,
+                    buttonOn = newGameButton.Visible,
                     isNewGameOn = Engine.isNewGameOn,
                     isNewGameClicksOn = Engine.isNewGameClicksOn,
                     newgameAdd = Engine.newgameAdd,
                     isNewGameDefenceOn = Engine.isNewGameDefenceOn,
-                    FinalBoss = finalBoss.Enabled,
+                    FinalBoss = finalBossButton.Enabled,
                     Magic = magicMenuButton.Enabled,
                     Runes = runeCrafting.Enabled,
                     Mine = mineMenuButton.Enabled,
@@ -1798,9 +1746,9 @@ namespace Idle_Game
                     healthBar.Maximum = load.barMaximum;
                     healthBar.Value = load.bar;
                     Engine.items = load.items;
-                    newGame.Visible = load.buttonOn;
+                    newGameButton.Visible = load.buttonOn;
                     Engine.newgameAdd = load.newgameAdd;
-                    finalBoss.Enabled = load.FinalBoss;
+                    finalBossButton.Enabled = load.FinalBoss;
                     magicMenuButton.Enabled = load.Magic;
                     runeCrafting.Enabled = load.Runes;
                     mineMenuButton.Enabled = load.Mine;

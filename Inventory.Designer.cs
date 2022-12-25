@@ -1,4 +1,4 @@
-﻿namespace Idle_Game
+﻿namespace ClickNFight
 {
     partial class Inventory
     {
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.neznam = new System.Windows.Forms.TextBox();
+            this.potionsTextBox = new System.Windows.Forms.TextBox();
+            this.weaponsTextBox = new System.Windows.Forms.TextBox();
             this.runes = new System.Windows.Forms.TextBox();
             this.ores = new System.Windows.Forms.TextBox();
             this.picks = new System.Windows.Forms.TextBox();
@@ -37,31 +37,31 @@
             // 
             // textBox2
             // 
-            this.textBox2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.textBox2.Location = new System.Drawing.Point(12, 12);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(193, 212);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.TabStop = false;
+            this.potionsTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.potionsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.potionsTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.potionsTextBox.Location = new System.Drawing.Point(12, 12);
+            this.potionsTextBox.Multiline = true;
+            this.potionsTextBox.Name = "potionsTextBox";
+            this.potionsTextBox.ReadOnly = true;
+            this.potionsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.potionsTextBox.Size = new System.Drawing.Size(193, 212);
+            this.potionsTextBox.TabIndex = 2;
+            this.potionsTextBox.TabStop = false;
             // 
             // neznam
             // 
-            this.neznam.Cursor = System.Windows.Forms.Cursors.Default;
-            this.neznam.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.neznam.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.neznam.Location = new System.Drawing.Point(211, 12);
-            this.neznam.Multiline = true;
-            this.neznam.Name = "neznam";
-            this.neznam.ReadOnly = true;
-            this.neznam.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.neznam.Size = new System.Drawing.Size(216, 212);
-            this.neznam.TabIndex = 3;
-            this.neznam.TabStop = false;
+            this.weaponsTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.weaponsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weaponsTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.weaponsTextBox.Location = new System.Drawing.Point(211, 12);
+            this.weaponsTextBox.Multiline = true;
+            this.weaponsTextBox.Name = "weaponsTextBox";
+            this.weaponsTextBox.ReadOnly = true;
+            this.weaponsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.weaponsTextBox.Size = new System.Drawing.Size(216, 212);
+            this.weaponsTextBox.TabIndex = 3;
+            this.weaponsTextBox.TabStop = false;
             // 
             // runes
             // 
@@ -113,8 +113,8 @@
             this.Controls.Add(this.picks);
             this.Controls.Add(this.ores);
             this.Controls.Add(this.runes);
-            this.Controls.Add(this.neznam);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.weaponsTextBox);
+            this.Controls.Add(this.potionsTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Inventory";
             this.Text = "Inventory!";
@@ -125,8 +125,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox neznam;
+        private System.Windows.Forms.TextBox potionsTextBox;
+        private System.Windows.Forms.TextBox weaponsTextBox;
         private System.Windows.Forms.TextBox runes;
         private System.Windows.Forms.TextBox ores;
         private System.Windows.Forms.TextBox picks;

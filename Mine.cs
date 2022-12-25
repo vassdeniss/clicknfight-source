@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Mine : Form
     {
@@ -43,7 +36,7 @@ namespace Idle_Game
         public Mine()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = Properties.Resources.icon;
 
             cbPick.Items.Add("Copper Pickaxe");
             cbOre.Items.Add("Silver Ore");
@@ -793,7 +786,7 @@ namespace Idle_Game
                     Engine.silverSwordAdd = 1;
                     if (newSwords != null)
                     {
-                        newSwords.UpdadeScreen();
+                        newSwords.UpdateUi();
                     }
                     var yay = MessageBox.Show("You have unlocked The SIlver Sword!", "Congratulations!", MessageBoxButtons.OK);
                 }
@@ -807,7 +800,7 @@ namespace Idle_Game
                     var yay = MessageBox.Show("You have unlocked The Gold Sword!", "Congratulations!", MessageBoxButtons.OK);
                     if (newSwords != null)
                     {
-                        newSwords.UpdadeScreen();
+                        newSwords.UpdateUi();
                     }
                 }
             }
@@ -820,7 +813,7 @@ namespace Idle_Game
                     var yay = MessageBox.Show("You have unlocked The Platinum Sword!", "Congratulations!", MessageBoxButtons.OK);
                     if (newSwords != null)
                     {
-                        newSwords.UpdadeScreen();
+                        newSwords.UpdateUi();
                     }
                 }
             }
@@ -833,7 +826,7 @@ namespace Idle_Game
                     var yay = MessageBox.Show("You have unlocked The Cobalt Sword!", "Congratulations!", MessageBoxButtons.OK);
                     if (newSwords != null)
                     {
-                        newSwords.UpdadeScreen();
+                        newSwords.UpdateUi();
                     }
                 }
             }
@@ -846,7 +839,7 @@ namespace Idle_Game
                     var yay = MessageBox.Show("You have unlocked The Star Sword!", "Congratulations!", MessageBoxButtons.OK);
                     if (newSwords != null)
                     {
-                        newSwords.UpdadeScreen();
+                        newSwords.UpdateUi();
                     }
                 }
             }
@@ -861,6 +854,6 @@ namespace Idle_Game
             starTotal.Text = "Stardust Ore Mined: " + Engine.starOreTotal;
         }
 
-        public Interfaces newSwords;
+        public IUiRefreshers newSwords;
     }
 } 

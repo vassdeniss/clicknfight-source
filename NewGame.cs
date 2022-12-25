@@ -1,21 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class NewGame : Form
     {
         public NewGame()
         {
-            InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.InitializeComponent();
+            this.Icon = Properties.Resources.icon;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -98,9 +91,9 @@ namespace Idle_Game
             Engine.diamondSword = 999;
 
             Form1 buttonOwO = new Form1();
-            buttonOwO.finalBoss.Enabled = false;
+            buttonOwO.finalBossButton.Enabled = false;
             buttonOwO.magicMenuButton.Enabled = false;
-            buttonOwO.btCrafting.Enabled = false;
+            buttonOwO.runeCraftingButton.Enabled = false;
             buttonOwO.mineMenuButton.Enabled = false;
             buttonOwO.campMenuButton.Enabled = false;
             Engine.isNewGameOn = true;
@@ -183,9 +176,9 @@ namespace Idle_Game
             Engine.diamondSword = 999;
 
             Form1 buttonOwO = new Form1();
-            buttonOwO.finalBoss.Enabled = false;
+            buttonOwO.finalBossButton.Enabled = false;
             buttonOwO.magicMenuButton.Enabled = false;
-            buttonOwO.btCrafting.Enabled = false;
+            buttonOwO.runeCraftingButton.Enabled = false;
             buttonOwO.mineMenuButton.Enabled = false;
             buttonOwO.campMenuButton.Enabled = false;
             Engine.isNewGameDefenceOn = true;
@@ -270,9 +263,9 @@ namespace Idle_Game
             Engine.diamondSword = 999;
 
             Form1 buttonOwO = new Form1();
-            buttonOwO.finalBoss.Enabled = false;
+            buttonOwO.finalBossButton.Enabled = false;
             buttonOwO.magicMenuButton.Enabled = false;
-            buttonOwO.btCrafting.Enabled = false;
+            buttonOwO.runeCraftingButton.Enabled = false;
             buttonOwO.mineMenuButton.Enabled = false;
             buttonOwO.campMenuButton.Enabled = false;
             Engine.isNewGameClicksOn = true;
@@ -285,9 +278,9 @@ namespace Idle_Game
             this.Close();
         }
 
-        public Interfaces button;
-        public Interfaces update;
-        public Interfaces newClicks;
+        public IUiRefreshers button;
+        public IUiRefreshers update;
+        public IUiRefreshers newClicks;
 
         private void NewGame_Load(object sender, EventArgs e)
         {
@@ -385,9 +378,9 @@ namespace Idle_Game
             Engine.stone = 0;
 
             Form1 buttonOwO = new Form1();
-            buttonOwO.finalBoss.Enabled = false;
+            buttonOwO.finalBossButton.Enabled = false;
             buttonOwO.magicMenuButton.Enabled = false;
-            buttonOwO.btCrafting.Enabled = false;
+            buttonOwO.runeCraftingButton.Enabled = false;
             buttonOwO.mineMenuButton.Enabled = false;
             buttonOwO.campMenuButton.Enabled = false;
             Engine.isNewGameOn2 = true;
@@ -469,9 +462,9 @@ namespace Idle_Game
             Engine.stone = 0;
 
             Form1 buttonOwO = new Form1();
-            buttonOwO.finalBoss.Enabled = false;
+            buttonOwO.finalBossButton.Enabled = false;
             buttonOwO.magicMenuButton.Enabled = false;
-            buttonOwO.btCrafting.Enabled = false;
+            buttonOwO.runeCraftingButton.Enabled = false;
             buttonOwO.mineMenuButton.Enabled = false;
             buttonOwO.campMenuButton.Enabled = false;
             Engine.isNewGameDefenceOn2 = true;
@@ -555,9 +548,9 @@ namespace Idle_Game
             Engine.stone = 0;
 
             Form1 buttonOwO = new Form1();
-            buttonOwO.finalBoss.Enabled = false;
+            buttonOwO.finalBossButton.Enabled = false;
             buttonOwO.magicMenuButton.Enabled = false;
-            buttonOwO.btCrafting.Enabled = false;
+            buttonOwO.runeCraftingButton.Enabled = false;
             buttonOwO.mineMenuButton.Enabled = false;
             buttonOwO.campMenuButton.Enabled = false;
             Engine.isNewGameClicksOn2 = true;
@@ -649,9 +642,9 @@ namespace Idle_Game
             Engine.stone = 0;
 
             Form1 buttonOwO = new Form1();
-            buttonOwO.finalBoss.Enabled = false;
+            buttonOwO.finalBossButton.Enabled = false;
             buttonOwO.magicMenuButton.Enabled = false;
-            buttonOwO.btCrafting.Enabled = false;
+            buttonOwO.runeCraftingButton.Enabled = false;
             buttonOwO.mineMenuButton.Enabled = false;
             buttonOwO.campMenuButton.Enabled = false;
             Engine.isNewGameOn3 = true;
@@ -733,9 +726,9 @@ namespace Idle_Game
             Engine.stone = 0;
 
             Form1 buttonOwO = new Form1();
-            buttonOwO.finalBoss.Enabled = false;
+            buttonOwO.finalBossButton.Enabled = false;
             buttonOwO.magicMenuButton.Enabled = false;
-            buttonOwO.btCrafting.Enabled = false;
+            buttonOwO.runeCraftingButton.Enabled = false;
             buttonOwO.mineMenuButton.Enabled = false;
             buttonOwO.campMenuButton.Enabled = false;
             Engine.isNewGameDefenceOn3 = true;
@@ -819,9 +812,9 @@ namespace Idle_Game
             Engine.stone = 0;
 
             Form1 buttonOwO = new Form1();
-            buttonOwO.finalBoss.Enabled = false;
+            buttonOwO.finalBossButton.Enabled = false;
             buttonOwO.magicMenuButton.Enabled = false;
-            buttonOwO.btCrafting.Enabled = false;
+            buttonOwO.runeCraftingButton.Enabled = false;
             buttonOwO.mineMenuButton.Enabled = false;
             buttonOwO.campMenuButton.Enabled = false;
             Engine.isNewGameClicksOn3 = true;

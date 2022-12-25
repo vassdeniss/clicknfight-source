@@ -1,118 +1,81 @@
-﻿using Microsoft.CSharp.RuntimeBinder;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Inventory : Form
-    {   
+    {
+        private readonly Hero hero;
+
         public Inventory()
         {
-            InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.InitializeComponent();
+            this.Icon = Properties.Resources.icon;
+        }
 
-            textBox2.Text = "Consumables:";
-            neznam.Text = "Weapons:";
+        public Inventory(Hero hero)
+            : this()
+        {
+            this.hero = hero;
+
+            this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Potions);
+            this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Weapons);
+
             runes.Text = "Runes:";
             ores.Text = "Ingots:";
             picks.Text = "Pickaxes:";
 
+            // "Upgraded Health Potion" "Heal Value: 25"
+            // "Super Health Potion" "Heal Value: 55"
+            // "Ultra Health Potion" "Heal Value: 115"
 
-            if (Engine.potion > 0)
-            { 
-                string invPT = "\r\n" + "Health Potion" + "\r\n" + "Count: " + Engine.potion + "\r\n" + "Heal Value: 10" + "\r\n";
-                textBox2.Text += invPT; 
-            }
-
-            if (Engine.upgradedPotion > 0)
-            {
-                string invUPT = "\r\n" + "Upgraded Health Potion" + "\r\n" + "Count: " + Engine.upgradedPotion + "\r\n" + "Heal Value: 25" + "\r\n";
-                textBox2.Text += invUPT; 
-            }
-
-            if (Engine.superPotion > 0)
-            {
-                string invSPT = "\r\n" + "Super Health Potion" + "\r\n" + "Count: " + Engine.superPotion + "\r\n" + "Heal Value: 55" + "\r\n";
-                textBox2.Text += invSPT;
-            }
-
-            if (Engine.ultraPotion > 0)
-            {
-                string invUUPT = "\r\n" + "Ultra Health Potion" + "\r\n" + "Count: " + Engine.ultraPotion + "\r\n" + "Heal Value: 115" + "\r\n";
-                textBox2.Text += invUUPT; 
-            }
-
-            if (Engine.woodenSword > 0)
-            {
-                string invWS = "\r\n" + "Wooden Sword" + "\r\n" + "Count: " + Engine.woodenSword + "/" + "10" + "\r\n" + "Total Damage: " + Engine.woodenSword * 0.5 + "\r\n";
-                neznam.Text += invWS; 
-            }
-
-            if (Engine.stoneSword > 0)
-            {
-                string invSS = "\r\n" + "Stone Sword" + "\r\n" + "Count: " + Engine.stoneSword + "/" + "7" + "\r\n" + "Total Damage: " + Engine.stoneSword * 1 + "\r\n";
-                neznam.Text += invSS; 
-            }
-
-            if (Engine.ironSword > 0)
-            {
-                string invIS = "\r\n" + "Iron Sword" + "\r\n" + "Count: " + Engine.ironSword + "/" + "5" + "\r\n" + "Total Damage: " + Engine.ironSword * 2 + "\r\n";
-                neznam.Text += invIS;
-            }
-
-            if (Engine.diamondSword > 0)
-            {
-                string invDS = "\r\n" + "Diamond Sword" + "\r\n" + "Count: " + Engine.diamondSword + "/" + "3" + "\r\n" + "Total Damage: " + Engine.diamondSword * 4 + "\r\n";
-                neznam.Text += invDS;
-            }
+            // "Wooden Sword" "Total Damage: " + Engine.woodenSword * 0.5, 10
+            // "Stone Sword" "Total Damage: " + Engine.stoneSword * 1, 7
+            // "Iron Sword" "Total Damage: " + Engine.ironSword * 2, 5;
+            // "Diamond Sword" "Total Damage: " + Engine.diamondSword * 4, 3;
 
             if (Engine.silverSword == true)
             {
                 string invSS = "\r\n" + "Silver Sword" + "\r\n" + "Total Damage: 1" + "\r\n";
-                neznam.Text += invSS;
+                weaponsTextBox.Text += invSS;
             }
 
             if (Engine.goldSword == true)
             {
                 string invGS = "\r\n" + "Gold Sword" + "\r\n" + "Total Damage: 2" + "\r\n";
-                neznam.Text += invGS;
+                weaponsTextBox.Text += invGS;
             }
 
             if (Engine.platinumSword == true)
             {
                 string invPS = "\r\n" + "Platinum Sword" + "\r\n" + "Total Damage: 3" + "\r\n";
-                neznam.Text += invPS;
+                weaponsTextBox.Text += invPS;
             }
 
             if (Engine.cobaltSword == true)
             {
                 string invCS = "\r\n" + "Cobalt Sword" + "\r\n" + "Total Damage: 4" + "\r\n";
-                neznam.Text += invCS;
+                weaponsTextBox.Text += invCS;
             }
 
             if (Engine.starSword == true)
             {
                 string invSS = "\r\n" + "Star Sword" + "\r\n" + "Total Damage: 5" + "\r\n";
-                neznam.Text += invSS;
+                weaponsTextBox.Text += invSS;
             }
 
             if (Engine.excalibur > 0)
             {
                 string invEX = "\r\n" + "Excalibur" + "\r\n" + "Total Damage: 999" + "\r\n";
-                neznam.Text += invEX; 
+                weaponsTextBox.Text += invEX;
             }
 
             if (Engine.airRunes > 0)
             {
                 string invAR = "\r\n" + "Air Runes" + "\r\n" + "Count: " + Engine.airRunes + "\r\n";
-                runes.Text += invAR; 
+                runes.Text += invAR;
             }
 
             if (Engine.fireRunes > 0)
@@ -160,13 +123,13 @@ namespace Idle_Game
             if (Engine.steamRunes > 0)
             {
                 string invSR = "\r\n" + "Steam Runes" + "\r\n" + "Count: " + Engine.steamRunes + "\r\n";
-                runes.Text += invSR; 
+                runes.Text += invSR;
             }
 
             if (Engine.reviveRunes > 0)
             {
                 string invRR = "\r\n" + "Revive Runes" + "\r\n" + "Count: " + Engine.reviveRunes + "\r\n";
-                runes.Text += invRR; 
+                runes.Text += invRR;
             }
 
             if (Engine.bloodRunes > 0)
@@ -190,7 +153,7 @@ namespace Idle_Game
             if (Engine.wrathRunes > 0)
             {
                 string invWR = "\r\n" + "Wrath Runes" + "\r\n" + "Count: " + Engine.wrathRunes + "\r\n";
-                runes.Text += invWR; 
+                runes.Text += invWR;
             }
 
             if (Engine.astralRunes > 0)
@@ -270,6 +233,31 @@ namespace Idle_Game
                 string invSO = "\r\n" + "Star Ingots" + "\r\n" + "Count: " + Engine.starOreTake + "\r\n";
                 ores.Text += invSO;
             }
+        }
+
+        private string GenerateText<T>(string labelText, ICollection<T> collection)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(labelText);
+            Dictionary<string, int> dic = new Dictionary<string, int>();
+            foreach (T item in collection)
+            {
+                if (!dic.ContainsKey(item.ToString()))
+                {
+                    dic.Add(item.ToString(), 0);
+                }
+
+                dic[item.ToString()]++;
+            }
+
+            foreach (KeyValuePair<string, int> descriptionCount in dic)
+            {
+                sb.AppendLine(descriptionCount.Key);
+                sb.AppendLine($"Count: {descriptionCount.Value}");
+            }
+
+            return sb.ToString();
         }
     }
 }

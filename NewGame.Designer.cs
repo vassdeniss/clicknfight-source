@@ -1,4 +1,4 @@
-﻿namespace Idle_Game
+﻿namespace ClickNFight
 {
     partial class NewGame
     {

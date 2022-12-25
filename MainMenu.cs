@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Media;
+using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class MainMenu : Form
     {
-        SoundPlayer main = new SoundPlayer(Idle_Game.Properties.Resources.mainMenu);
+        SoundPlayer main = new SoundPlayer(Properties.Resources.mainMenu);
 
         public MainMenu()
         {
-            InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Icon = Properties.Resources.icon;
         }
 
         private void Keydown(object sender, KeyEventArgs e)
@@ -45,20 +43,6 @@ namespace Idle_Game
             }
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case 0x84:
-                    base.WndProc(ref m);
-                    if ((int)m.Result == 0x1)
-                        m.Result = (IntPtr)0x2;
-                    return;
-            }
-
-            base.WndProc(ref m);
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             PatchNotes notes = new PatchNotes();
@@ -82,7 +66,7 @@ namespace Idle_Game
         {
             Name nameSelect = new Name();
             nameSelect.ShowDialog();
-            main.Play(); 
+            this.main.Play();
         }
 
         private void button4_Click(object sender, EventArgs e)

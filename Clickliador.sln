@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clickliador", "Clickliador.csproj", "{BAC75D2D-20CF-419A-845D-ED84E7C5F9FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClickNFight", "ClickNFight.csproj", "{BAC75D2D-20CF-419A-845D-ED84E7C5F9FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

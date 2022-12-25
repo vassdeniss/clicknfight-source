@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Idle_Game
+﻿namespace ClickNFight
 {
-    public interface Interfaces
+    public interface IUiRefreshers
     {
         void UpdateScreenPotion();
         void UpdateScreenUpgradedPotion();
         void UpdateScreenSuperPotion();
         void UpdateScreenUltraPotion();
 
-        void UpdadeScreen();
+        void UpdateUi();
 
         void UpdateScreenHeal();
         void UpdateScreenHeal2();

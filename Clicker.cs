@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
+using System.Windows.Forms;
+using Newtonsoft.Json;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Clicker : Form, ClickerInterfaces
     {
@@ -23,7 +17,7 @@ namespace Idle_Game
         public Clicker()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = Properties.Resources.icon;
             ToolTip cps = new ToolTip();
             double CPS = ClickEngine.clickers * a + ClickEngine.warrior + ClickEngine.knight * 8 + ClickEngine.mage * 47 + ClickEngine.wizard * 260; 
             cps.SetToolTip(btClick, "CPS: " + System.Convert.ToDouble(CPS)); 

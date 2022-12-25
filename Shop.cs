@@ -1,23 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Media;
 using System.Windows.Forms;
-using System.Media; 
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Shop : Form
     {
+        private Hero hero;
+
         public Shop()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.Icon = Properties.Resources.icon;
+        }
+
+        public Shop(Hero hero)
+            : this()
+        {
+            this.hero = hero;
         }
 
         private void allButtons_Click(object sender, EventArgs e)
@@ -26,24 +27,22 @@ namespace Idle_Game
 
             if (button.Equals(this.buySword))
             {
-                if (Engine.woodenSword >= 10)
+                if (this.hero.Weapons.OfType<WoodenSword>().Count() >= 10)
                 {
                     MessageBox.Show("You have reached the buy limit", "Warning!", MessageBoxButtons.OK);
                 }
-                else if (Engine.count >= 50)
+                else if (this.hero.Clickerency >= 50)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play(); 
-                    Engine.woodenSword++;
-                    Engine.count = Engine.count - 50;
-                    if (UpdateScreenInterface != null)
-                    {
-                        UpdateScreenInterface.UpdadeScreen();
-                    }
+
+                    this.hero.Clickerency -= 50;
+                    this.hero.Weapons.Add(new WoodenSword());
+                    this.screenUpdate.UpdateUi();
                 }
                 else
                 {
-                    var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
+                    MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
                 }
             }
             else if (button.Equals(buySW))
@@ -54,13 +53,13 @@ namespace Idle_Game
                 }
                 else if (Engine.count >= 200)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.stoneSword++;
                     Engine.count = Engine.count - 200;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -76,13 +75,13 @@ namespace Idle_Game
                 }
                 else if (Engine.count >= 350)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.ironSword++;
                     Engine.count = Engine.count - 350;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -98,13 +97,13 @@ namespace Idle_Game
                 }
                 else if (Engine.count >= 500)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.diamondSword++;
                     Engine.count = Engine.count - 500;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -116,13 +115,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 30)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.airRunes++;
                     Engine.count = Engine.count - 30;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -134,13 +133,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 50)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.fireRunes++;
                     Engine.count = Engine.count - 50;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -152,13 +151,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 50)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play(); 
                     Engine.earthRunes++;
                     Engine.count = Engine.count - 50;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -170,13 +169,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 50)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.mindRunes++;
                     Engine.count = Engine.count - 50;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -188,13 +187,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 60)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.waterRunes++; 
                     Engine.count = Engine.count - 60;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -206,13 +205,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 60)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.lavaRunes++;
                     Engine.count = Engine.count - 60;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -224,13 +223,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 60)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.natureRunes++;
                     Engine.count = Engine.count - 60;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -242,13 +241,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 70)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.electricRunes++;
                     Engine.count = Engine.count - 70;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -260,13 +259,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 80)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.steamRunes++;
                     Engine.count = Engine.count - 80;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -278,13 +277,13 @@ namespace Idle_Game
             {
                 if (Engine.count >= 80)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.reviveRunes++;
                     Engine.count = Engine.count - 80;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else
@@ -296,14 +295,14 @@ namespace Idle_Game
             {
                 if (Engine.count >= 100 && Engine.silverOreTake >= 20 && Engine.silverPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.silverPick = true;
                     Engine.count = Engine.count - 100;
                     Engine.silverOreTake = Engine.silverOreTake - 20;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else if (Engine.silverPick == true)
@@ -319,14 +318,14 @@ namespace Idle_Game
             {
                 if (Engine.count >= 200 && Engine.goldOreTake >= 30 && Engine.goldPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.goldPick = true;
                     Engine.count = Engine.count - 200;
                     Engine.goldOreTake = Engine.goldOreTake - 30;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else if (Engine.goldPick == true)
@@ -342,14 +341,14 @@ namespace Idle_Game
             {
                 if (Engine.count >= 300 && Engine.platinumOreTake >= 40 && Engine.platPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.platPick = true;
                     Engine.count = Engine.count - 300;
                     Engine.platinumOreTake = Engine.platinumOreTake - 40;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else if (Engine.platPick == true)
@@ -365,14 +364,14 @@ namespace Idle_Game
             {
                 if (Engine.count >= 400 && Engine.cobaltOreTake >= 50 && Engine.cobPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.cobPick = true;
                     Engine.count = Engine.count - 400;
                     Engine.cobaltOreTake = Engine.cobaltOreTake - 50;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else if (Engine.cobPick == true)
@@ -388,14 +387,14 @@ namespace Idle_Game
             {
                 if (Engine.count >= 500 && Engine.starOreTake >= 60 && Engine.starPick == false)
                 {
-                    SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                     coin.Play();
                     Engine.starPick = true;
                     Engine.count = Engine.count - 500;
                     Engine.starOreTake = Engine.starOreTake - 70;
-                    if (UpdateScreenInterface != null)
+                    if (screenUpdate != null)
                     {
-                        UpdateScreenInterface.UpdadeScreen();
+                        screenUpdate.UpdateUi();
                     }
                 }
                 else if (Engine.starPick == true)
@@ -413,7 +412,7 @@ namespace Idle_Game
         {
             if (Engine.count >= 15)
             {
-                SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                 coin.Play();
                 Engine.potion++;
                 Engine.count = Engine.count - 15;
@@ -432,7 +431,7 @@ namespace Idle_Game
         {
             if (Engine.count >= 30)
             {
-                SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                 coin.Play();
                 Engine.upgradedPotion++;
                 Engine.count = Engine.count - 30;
@@ -451,7 +450,7 @@ namespace Idle_Game
         {
             if (Engine.count >= 60)
             {
-                SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                 coin.Play();
                 Engine.superPotion++;
                 Engine.count = Engine.count - 60;
@@ -470,7 +469,7 @@ namespace Idle_Game
         {
             if (Engine.count >= 100)
             {
-                SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin);
+                SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
                 coin.Play();
                 Engine.ultraPotion++;
                 Engine.count = Engine.count - 100;
@@ -505,14 +504,14 @@ namespace Idle_Game
                     }
                     else
                     {
-                        SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin2);
+                        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin2);
                         coin.Play();
                         decimal profit = orePickSilver.Value * 10;
                         Engine.silverOreTake = Engine.silverOreTake - System.Convert.ToInt32(orePickSilver.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (UpdateScreenInterface != null)
+                        if (screenUpdate != null)
                         {
-                            UpdateScreenInterface.UpdadeScreen();
+                            screenUpdate.UpdateUi();
                         }
                     }
                 }
@@ -535,14 +534,14 @@ namespace Idle_Game
                     }
                     else
                     {
-                        SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin2);
+                        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin2);
                         coin.Play();
                         decimal profit = orePickGold.Value * 20;
                         Engine.goldOreTake = Engine.goldOreTake - System.Convert.ToInt32(orePickGold.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (UpdateScreenInterface != null)
+                        if (screenUpdate != null)
                         {
-                            UpdateScreenInterface.UpdadeScreen();
+                            screenUpdate.UpdateUi();
                         }
                     }
                 }
@@ -565,14 +564,14 @@ namespace Idle_Game
                     }
                     else
                     {
-                        SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin2);
+                        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin2);
                         coin.Play();
                         decimal profit = orePickPlat.Value * 30;
                         Engine.platinumOreTake = Engine.platinumOreTake - System.Convert.ToInt32(orePickPlat.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (UpdateScreenInterface != null)
+                        if (screenUpdate != null)
                         {
-                            UpdateScreenInterface.UpdadeScreen();
+                            screenUpdate.UpdateUi();
                         }
                     }
                 }
@@ -595,14 +594,14 @@ namespace Idle_Game
                     }
                     else
                     {
-                        SoundPlayer coin = new SoundPlayer(Idle_Game.Properties.Resources.coin2);
+                        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin2);
                         coin.Play();
                         decimal profit = orePickCob.Value * 40;
                         Engine.cobaltOreTake = Engine.cobaltOreTake - System.Convert.ToInt32(orePickCob.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (UpdateScreenInterface != null)
+                        if (screenUpdate != null)
                         {
-                            UpdateScreenInterface.UpdadeScreen();
+                            screenUpdate.UpdateUi();
                         }
                     }
                 }
@@ -630,9 +629,9 @@ namespace Idle_Game
                         decimal profit = this.orePickStar.Value * 50;
                         Engine.starOreTake = Engine.starOreTake - System.Convert.ToInt32(orePickStar.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (UpdateScreenInterface != null)
+                        if (screenUpdate != null)
                         {
-                            UpdateScreenInterface.UpdadeScreen();
+                            screenUpdate.UpdateUi();
                         }
                     }
                 }
@@ -645,10 +644,10 @@ namespace Idle_Game
 
         // Interfaces 
 
-        public Interfaces UpdateScreenInterface;
-        public Interfaces updateNormalPotion;
-        public Interfaces updatePotion;
-        public Interfaces updateSuperPotion;
-        public Interfaces updateUltraPotion;
+        public IUiRefreshers screenUpdate;
+        public IUiRefreshers updateNormalPotion;
+        public IUiRefreshers updatePotion;
+        public IUiRefreshers updateSuperPotion;
+        public IUiRefreshers updateUltraPotion;
     }
 }

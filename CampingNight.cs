@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class CampingNight : Form
     {
@@ -420,14 +413,14 @@ namespace Idle_Game
                         MessageBox.Show("You lost " + healtLoss + " Health!", "Congratulations!", MessageBoxButtons.OK);
                         if (updateVitals != null)
                         {
-                            updateVitals.UpdadeScreen(); 
+                            updateVitals.UpdateUi(); 
                         }
                         int moneyLoss = attack.Next(200, 501);
                         Engine.count = Engine.count - moneyLoss;
                         MessageBox.Show("You lost " + moneyLoss + " Clicks!", "Congratulations! You are a winner!", MessageBoxButtons.OK);
                         if (updateVitals != null)
                         {
-                            updateVitals.UpdadeScreen();
+                            updateVitals.UpdateUi();
                         }
 
                         this.Close();
@@ -436,6 +429,6 @@ namespace Idle_Game
             }
         }
 
-        public Interfaces updateVitals;
+        public IUiRefreshers updateVitals;
     }
 }

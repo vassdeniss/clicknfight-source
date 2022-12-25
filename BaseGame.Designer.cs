@@ -1,4 +1,4 @@
-﻿namespace Idle_Game
+﻿namespace ClickNFight
 {
     partial class Form1
     {
@@ -46,12 +46,12 @@
             this.healthBar = new System.Windows.Forms.ProgressBar();
             this.magicMenuButton = new System.Windows.Forms.Button();
             this.CPS = new System.Windows.Forms.Label();
-            this.btCrafting = new System.Windows.Forms.Button();
-            this.finalBoss = new System.Windows.Forms.Button();
+            this.runeCraftingButton = new System.Windows.Forms.Button();
+            this.finalBossButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.levelLabel = new System.Windows.Forms.Label();
-            this.newGame = new System.Windows.Forms.Button();
+            this.newGameButton = new System.Windows.Forms.Button();
             this.newPlus = new System.Windows.Forms.Label();
             this.mineMenuButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
@@ -241,27 +241,27 @@
             this.CPS.Size = new System.Drawing.Size(0, 29);
             this.CPS.TabIndex = 21;
             // 
-            // btCrafting
+            // runeCraftingButton
             // 
-            this.btCrafting.Enabled = false;
-            this.btCrafting.Location = new System.Drawing.Point(13, 193);
-            this.btCrafting.Name = "btCrafting";
-            this.btCrafting.Size = new System.Drawing.Size(169, 85);
-            this.btCrafting.TabIndex = 22;
-            this.btCrafting.Text = "RuneCrafting!";
-            this.btCrafting.UseVisualStyleBackColor = true;
-            this.btCrafting.Click += new System.EventHandler(this.btCrafting_Click);
+            this.runeCraftingButton.Enabled = false;
+            this.runeCraftingButton.Location = new System.Drawing.Point(13, 193);
+            this.runeCraftingButton.Name = "runeCraftingButton";
+            this.runeCraftingButton.Size = new System.Drawing.Size(169, 85);
+            this.runeCraftingButton.TabIndex = 22;
+            this.runeCraftingButton.Text = "RuneCrafting!";
+            this.runeCraftingButton.UseVisualStyleBackColor = true;
+            this.runeCraftingButton.Click += new System.EventHandler(this.btCrafting_Click);
             // 
-            // finalBoss
+            // finalBossButton
             // 
-            this.finalBoss.Enabled = false;
-            this.finalBoss.Location = new System.Drawing.Point(13, 12);
-            this.finalBoss.Name = "finalBoss";
-            this.finalBoss.Size = new System.Drawing.Size(169, 85);
-            this.finalBoss.TabIndex = 23;
-            this.finalBoss.Text = "Final Boss!";
-            this.finalBoss.UseVisualStyleBackColor = true;
-            this.finalBoss.Click += new System.EventHandler(this.button2_Click_1);
+            this.finalBossButton.Enabled = false;
+            this.finalBossButton.Location = new System.Drawing.Point(13, 12);
+            this.finalBossButton.Name = "finalBossButton";
+            this.finalBossButton.Size = new System.Drawing.Size(169, 85);
+            this.finalBossButton.TabIndex = 23;
+            this.finalBossButton.Text = "Final Boss!";
+            this.finalBossButton.UseVisualStyleBackColor = true;
+            this.finalBossButton.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button2
             // 
@@ -297,17 +297,17 @@
             this.levelLabel.Size = new System.Drawing.Size(0, 29);
             this.levelLabel.TabIndex = 26;
             // 
-            // newGame
+            // newGameButton
             // 
-            this.newGame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.newGame.Location = new System.Drawing.Point(490, 396);
-            this.newGame.Name = "newGame";
-            this.newGame.Size = new System.Drawing.Size(174, 85);
-            this.newGame.TabIndex = 27;
-            this.newGame.Text = "New Game ";
-            this.newGame.UseVisualStyleBackColor = true;
-            this.newGame.Visible = false;
-            this.newGame.Click += new System.EventHandler(this.newGame_Click);
+            this.newGameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.newGameButton.Location = new System.Drawing.Point(490, 396);
+            this.newGameButton.Name = "newGameButton";
+            this.newGameButton.Size = new System.Drawing.Size(174, 85);
+            this.newGameButton.TabIndex = 27;
+            this.newGameButton.Text = "New Game ";
+            this.newGameButton.UseVisualStyleBackColor = true;
+            this.newGameButton.Visible = false;
+            this.newGameButton.Click += new System.EventHandler(this.newGame_Click);
             // 
             // newPlus
             // 
@@ -395,12 +395,12 @@
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.mineMenuButton);
             this.Controls.Add(this.newPlus);
-            this.Controls.Add(this.newGame);
+            this.Controls.Add(this.newGameButton);
             this.Controls.Add(this.levelLabel);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.finalBoss);
-            this.Controls.Add(this.btCrafting);
+            this.Controls.Add(this.finalBossButton);
+            this.Controls.Add(this.runeCraftingButton);
             this.Controls.Add(this.CPS);
             this.Controls.Add(this.magicMenuButton);
             this.Controls.Add(this.healthBar);
@@ -419,7 +419,7 @@
             this.Controls.Add(this.monstersSlainLabel);
             this.Controls.Add(this.clickerencyLabel);
             this.Controls.Add(this.fightButton);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "Click \'n Fight: The Fantasy Clicker RPG";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -446,13 +446,13 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label levelLabel;
-        public System.Windows.Forms.Button newGame;
+        public System.Windows.Forms.Button newGameButton;
         public System.Windows.Forms.Button fightButton;
         public System.Windows.Forms.Button BT2;
         public System.Windows.Forms.Button InventoryButton;
         public System.Windows.Forms.Button magicMenuButton;
-        public System.Windows.Forms.Button btCrafting;
-        public System.Windows.Forms.Button finalBoss;
+        public System.Windows.Forms.Button runeCraftingButton;
+        public System.Windows.Forms.Button finalBossButton;
         public System.Windows.Forms.Label newPlus;
         private System.Windows.Forms.Button exitButton;
         public System.Windows.Forms.Label nameSave;

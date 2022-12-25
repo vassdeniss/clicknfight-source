@@ -1,21 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Idle_Game
+namespace ClickNFight
 {
     public partial class Magic : Form
     {
         public Magic()
         {
             InitializeComponent();
-            this.Icon = Idle_Game.Properties.Resources.icon;
+            this.Icon = Properties.Resources.icon;
             ToolTip description = new ToolTip();
             description.SetToolTip(fireBolt, "2 Air and 3 Fire Runes" + "\r\n" + "+ 5 (Invinsible) Clicks Per Second" + "\r\n" +
                 "Duration: 1 minute" + "\r\n" + "Cooldown: 5 Minutes");
@@ -86,7 +79,7 @@ namespace Idle_Game
 
                 if (owo != null)
                 {
-                    owo.UpdadeScreen();
+                    owo.UpdateUi();
                 }
 
                 defenceCooldown.Interval = 300000;
@@ -116,7 +109,7 @@ namespace Idle_Game
 
             if (owo != null)
             {
-                owo.UpdadeScreen();
+                owo.UpdateUi();
             }
 
             defenceBoost.Stop();
@@ -133,7 +126,7 @@ namespace Idle_Game
 
                 if (owo != null)
                 {
-                    owo.UpdadeScreen();
+                    owo.UpdateUi();
                 }
 
                 extraDefenceCooldown.Interval = 600000;
@@ -163,7 +156,7 @@ namespace Idle_Game
 
             if (owo != null)
             {
-                owo.UpdadeScreen();
+                owo.UpdateUi();
             }
 
             defenceBoost2.Enabled = false;
@@ -182,7 +175,7 @@ namespace Idle_Game
 
                 if (owo != null)
                 {
-                    owo.UpdadeScreen();
+                    owo.UpdateUi();
                 }
 
                 defenceCooldown3.Interval = 900000;
@@ -212,7 +205,7 @@ namespace Idle_Game
 
             if (owo != null)
             {
-                owo.UpdadeScreen();
+                owo.UpdateUi();
             }
 
             defenceBoost3.Enabled = false;
@@ -435,9 +428,9 @@ namespace Idle_Game
 
 
 
-        public Interfaces owo;
-        public Interfaces healPlayer;
-        public Interfaces healPlayer2;
-        public Interfaces healPlayer3;
+        public IUiRefreshers owo;
+        public IUiRefreshers healPlayer;
+        public IUiRefreshers healPlayer2;
+        public IUiRefreshers healPlayer3;
     }
 }
