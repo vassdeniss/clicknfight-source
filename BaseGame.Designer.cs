@@ -40,8 +40,8 @@
             this.clickerencyEarnedLabel = new System.Windows.Forms.Label();
             this.potionMenu = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.noH = new System.Windows.Forms.Label();
+            this.healButton = new System.Windows.Forms.Button();
+            this.maxHealthLabel = new System.Windows.Forms.Label();
             this.defenceLabel = new System.Windows.Forms.Label();
             this.healthBar = new System.Windows.Forms.ProgressBar();
             this.magicMenuButton = new System.Windows.Forms.Button();
@@ -170,7 +170,7 @@
             this.potionMenu.Name = "potionMenu";
             this.potionMenu.Size = new System.Drawing.Size(232, 21);
             this.potionMenu.TabIndex = 14;
-            this.potionMenu.Text = "Potions";
+            this.potionMenu.Text = "Select Potion";
             // 
             // label7
             // 
@@ -183,26 +183,26 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Equipment:";
             // 
-            // button1
+            // healButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(251, 448);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(169, 21);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Heal!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.healButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.healButton.Location = new System.Drawing.Point(251, 448);
+            this.healButton.Name = "healButton";
+            this.healButton.Size = new System.Drawing.Size(169, 21);
+            this.healButton.TabIndex = 16;
+            this.healButton.Text = "Heal!";
+            this.healButton.UseVisualStyleBackColor = true;
+            this.healButton.Click += new System.EventHandler(this.HealButton_Click);
             // 
             // noH
             // 
-            this.noH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.noH.AutoSize = true;
-            this.noH.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noH.Location = new System.Drawing.Point(8, 375);
-            this.noH.Name = "noH";
-            this.noH.Size = new System.Drawing.Size(0, 29);
-            this.noH.TabIndex = 17;
+            this.maxHealthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.maxHealthLabel.AutoSize = true;
+            this.maxHealthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxHealthLabel.Location = new System.Drawing.Point(8, 375);
+            this.maxHealthLabel.Name = "maxHealthLabel";
+            this.maxHealthLabel.Size = new System.Drawing.Size(0, 29);
+            this.maxHealthLabel.TabIndex = 17;
             // 
             // defenceLabel
             // 
@@ -405,8 +405,8 @@
             this.Controls.Add(this.magicMenuButton);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.defenceLabel);
-            this.Controls.Add(this.noH);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.maxHealthLabel);
+            this.Controls.Add(this.healButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.potionMenu);
             this.Controls.Add(this.clickerencyEarnedLabel);
@@ -438,8 +438,8 @@
         public System.Windows.Forms.Label clickerencyEarnedLabel;
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.ComboBox potionMenu;
-        private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Label noH;
+        private System.Windows.Forms.Button healButton;
+        public System.Windows.Forms.Label maxHealthLabel;
         public System.Windows.Forms.Label defenceLabel;
         public System.Windows.Forms.Label CPS;
         public System.Windows.Forms.ProgressBar healthBar;

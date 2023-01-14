@@ -110,9 +110,15 @@
     <Compile Include="ClickerShop.Designer.cs">
       <DependentUpon>ClickerShop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Consumable.cs" />
+    <Compile Include="HeroInventory.cs" />
+    <Compile Include="Items\Consumables\Consumable.cs" />
     <Compile Include="Hero.cs" />
-    <Compile Include="Item.cs" />
+    <Compile Include="Items\Consumables\UpgradedHealthPotion.cs" />
+    <Compile Include="Items\Consumables\ConsumablesSettings.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Weapons\IronSword.cs" />
+    <Compile Include="Items\Weapons\StoneSword.cs" />
+    <Compile Include="Items\Weapons\WeaponsSettings.cs" />
     <Compile Include="MiningOres.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,7 +193,7 @@
     <Compile Include="Inventory.Designer.cs">
       <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Potion.cs" />
+    <Compile Include="Items\Consumables\Potion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="saving.cs" />
     <Compile Include="Shop.cs">
@@ -197,8 +203,8 @@
       <DependentUpon>Shop.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Weapon.cs" />
-    <Compile Include="WoodenSword.cs" />
+    <Compile Include="Items\Weapons\Weapon.cs" />
+    <Compile Include="Items\Weapons\WoodenSword.cs" />
     <EmbeddedResource Include="BaseGame.resx">
       <DependentUpon>BaseGame.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,7 +301,7 @@
     <None Include="Resources\Pokemon.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bottle.wav" />
+    <None Include="Resources\Bottle.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\coin.wav" />
@@ -327,5 +333,6 @@
   <ItemGroup>
     <None Include="Resources\mainMenu.wav" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

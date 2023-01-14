@@ -1,33 +1,42 @@
-﻿using System.Collections.Generic;
-
-namespace ClickNFight
+﻿namespace ClickNFight
 {
     public class Hero
     {
+        private int health;
+
         public Hero()
         {
             this.Level = 1;
-            this.MaxHealth = this.Health = 200;
+            this.MaxHealth = 200;
+            this.Health = 200;
             this.Defence = 0;
             this.DefenceReduction = 0;
             this.CurrentXp = 0;
             this.TotalXp = 250;
             this.Cps = 0;
-            this.MonstersSlain = 0;
+            this.MonstersSlain = 0.0;
             this.Clickerency = 100;
 
-            this.Potions = new List<Consumable>();
-            this.Weapons = new List<Weapon>
-            {
-                new WoodenSword(),
-            };
+            this.Inventory = new HeroInventory();
         }
 
         public int Level { get; set; }
 
         public int MaxHealth { get; set; }
 
-        public int Health { get; set; }
+        public int Health
+        {
+            get => this.health;
+            set
+            {
+                if (value > this.MaxHealth)
+                {
+                    value = this.MaxHealth;
+                }
+
+                this.health = value;
+            }
+        }
 
         public int Defence { get; set; }
 
@@ -39,12 +48,10 @@ namespace ClickNFight
 
         public int Cps { get; set; }
 
-        public int MonstersSlain { get; set; }
+        public double MonstersSlain { get; set; }
 
         public double Clickerency { get; set; }
 
-        public ICollection<Weapon> Weapons { get; set; }
-
-        public ICollection<Consumable> Potions { get; set; }
+        public HeroInventory Inventory { get; set; }
     }
 }

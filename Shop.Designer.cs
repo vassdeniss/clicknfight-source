@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop));
-            this.buySword = new System.Windows.Forms.Button();
-            this.buySW = new System.Windows.Forms.Button();
+            this.buyWoodenSword = new System.Windows.Forms.Button();
+            this.buyStoneSword = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.buyPT = new System.Windows.Forms.Button();
+            this.buyItemButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.buyIS = new System.Windows.Forms.Button();
+            this.buyIronSword = new System.Windows.Forms.Button();
             this.buyUPT = new System.Windows.Forms.Button();
             this.buyFR = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
@@ -76,6 +76,9 @@
             this.orePickStar = new System.Windows.Forms.NumericUpDown();
             this.sellSO = new System.Windows.Forms.Button();
             this.buySdP = new System.Windows.Forms.Button();
+            this.itemPickerComboBox = new System.Windows.Forms.ComboBox();
+            this.itemDescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.orePickGold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orePickSilver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orePickPlat)).BeginInit();
@@ -83,29 +86,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.orePickStar)).BeginInit();
             this.SuspendLayout();
             // 
-            // buySword
+            // buyWoodenSword
             // 
-            this.buySword.Enabled = false;
-            this.buySword.Location = new System.Drawing.Point(704, 56);
-            this.buySword.Name = "buySword";
-            this.buySword.Size = new System.Drawing.Size(98, 22);
-            this.buySword.TabIndex = 0;
-            this.buySword.TabStop = false;
-            this.buySword.Text = "Buy!";
-            this.buySword.UseVisualStyleBackColor = true;
-            this.buySword.Click += new System.EventHandler(this.allButtons_Click);
+            this.buyWoodenSword.Enabled = false;
+            this.buyWoodenSword.Location = new System.Drawing.Point(704, 56);
+            this.buyWoodenSword.Name = "buyWoodenSword";
+            this.buyWoodenSword.Size = new System.Drawing.Size(98, 22);
+            this.buyWoodenSword.TabIndex = 0;
+            this.buyWoodenSword.TabStop = false;
+            this.buyWoodenSword.Text = "Buy!";
+            this.buyWoodenSword.UseVisualStyleBackColor = true;
+            this.buyWoodenSword.Click += new System.EventHandler(this.allButtons_Click);
             // 
-            // buySW
+            // buyStoneSword
             // 
-            this.buySW.Enabled = false;
-            this.buySW.Location = new System.Drawing.Point(704, 153);
-            this.buySW.Name = "buySW";
-            this.buySW.Size = new System.Drawing.Size(98, 22);
-            this.buySW.TabIndex = 4;
-            this.buySW.TabStop = false;
-            this.buySW.Text = "Buy!";
-            this.buySW.UseVisualStyleBackColor = true;
-            this.buySW.Click += new System.EventHandler(this.allButtons_Click);
+            this.buyStoneSword.Enabled = false;
+            this.buyStoneSword.Location = new System.Drawing.Point(704, 153);
+            this.buyStoneSword.Name = "buyStoneSword";
+            this.buyStoneSword.Size = new System.Drawing.Size(98, 22);
+            this.buyStoneSword.TabIndex = 4;
+            this.buyStoneSword.TabStop = false;
+            this.buyStoneSword.Text = "Buy!";
+            this.buyStoneSword.UseVisualStyleBackColor = true;
+            this.buyStoneSword.Click += new System.EventHandler(this.allButtons_Click);
             // 
             // label6
             // 
@@ -117,16 +120,16 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Weapons:";
             // 
-            // buyPT
+            // buyItemButton
             // 
-            this.buyPT.Location = new System.Drawing.Point(289, 56);
-            this.buyPT.Name = "buyPT";
-            this.buyPT.Size = new System.Drawing.Size(98, 22);
-            this.buyPT.TabIndex = 12;
-            this.buyPT.TabStop = false;
-            this.buyPT.Text = "Buy!";
-            this.buyPT.UseVisualStyleBackColor = true;
-            this.buyPT.Click += new System.EventHandler(this.buyPT_click);
+            this.buyItemButton.Location = new System.Drawing.Point(1269, 439);
+            this.buyItemButton.Name = "buyItemButton";
+            this.buyItemButton.Size = new System.Drawing.Size(61, 22);
+            this.buyItemButton.TabIndex = 12;
+            this.buyItemButton.TabStop = false;
+            this.buyItemButton.Text = "Buy!";
+            this.buyItemButton.UseVisualStyleBackColor = true;
+            this.buyItemButton.Click += new System.EventHandler(this.BuyItem_click);
             // 
             // label9
             // 
@@ -138,17 +141,17 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Consumables:";
             // 
-            // buyIS
+            // buyIronSword
             // 
-            this.buyIS.Enabled = false;
-            this.buyIS.Location = new System.Drawing.Point(704, 250);
-            this.buyIS.Name = "buyIS";
-            this.buyIS.Size = new System.Drawing.Size(98, 22);
-            this.buyIS.TabIndex = 23;
-            this.buyIS.TabStop = false;
-            this.buyIS.Text = "Buy!";
-            this.buyIS.UseVisualStyleBackColor = true;
-            this.buyIS.Click += new System.EventHandler(this.allButtons_Click);
+            this.buyIronSword.Enabled = false;
+            this.buyIronSword.Location = new System.Drawing.Point(704, 250);
+            this.buyIronSword.Name = "buyIronSword";
+            this.buyIronSword.Size = new System.Drawing.Size(98, 22);
+            this.buyIronSword.TabIndex = 23;
+            this.buyIronSword.TabStop = false;
+            this.buyIronSword.Text = "Buy!";
+            this.buyIronSword.UseVisualStyleBackColor = true;
+            this.buyIronSword.Click += new System.EventHandler(this.allButtons_Click);
             // 
             // buyUPT
             // 
@@ -606,12 +609,42 @@
             this.buySdP.UseVisualStyleBackColor = true;
             this.buySdP.Click += new System.EventHandler(this.allButtons_Click);
             // 
+            // itemPickerComboBox
+            // 
+            this.itemPickerComboBox.FormattingEnabled = true;
+            this.itemPickerComboBox.Location = new System.Drawing.Point(1269, 412);
+            this.itemPickerComboBox.Name = "itemPickerComboBox";
+            this.itemPickerComboBox.Size = new System.Drawing.Size(134, 21);
+            this.itemPickerComboBox.TabIndex = 128;
+            this.itemPickerComboBox.SelectedIndexChanged += new System.EventHandler(this.ItemPickerComboBox_SelectedIndexChanged);
+            // 
+            // itemDescriptionTextBox
+            // 
+            this.itemDescriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.itemDescriptionTextBox.Location = new System.Drawing.Point(1418, 412);
+            this.itemDescriptionTextBox.Multiline = true;
+            this.itemDescriptionTextBox.Name = "itemDescriptionTextBox";
+            this.itemDescriptionTextBox.Size = new System.Drawing.Size(266, 172);
+            this.itemDescriptionTextBox.TabIndex = 129;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1342, 439);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 22);
+            this.button1.TabIndex = 130;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1690, 959);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.itemDescriptionTextBox);
+            this.Controls.Add(this.itemPickerComboBox);
             this.Controls.Add(this.buySdP);
             this.Controls.Add(this.sellSO);
             this.Controls.Add(this.orePickStar);
@@ -653,12 +686,12 @@
             this.Controls.Add(this.label27);
             this.Controls.Add(this.buyAR);
             this.Controls.Add(this.buyUPT);
-            this.Controls.Add(this.buyIS);
+            this.Controls.Add(this.buyIronSword);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.buyPT);
+            this.Controls.Add(this.buyItemButton);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.buySW);
-            this.Controls.Add(this.buySword);
+            this.Controls.Add(this.buyStoneSword);
+            this.Controls.Add(this.buyWoodenSword);
             this.Name = "Shop";
             this.Text = "       ";
             ((System.ComponentModel.ISupportInitialize)(this.orePickGold)).EndInit();
@@ -674,12 +707,12 @@
         #endregion
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
-        public System.Windows.Forms.Button buySword;
-        public System.Windows.Forms.Button buySW;
-        public System.Windows.Forms.Button buyIS;
+        public System.Windows.Forms.Button buyWoodenSword;
+        public System.Windows.Forms.Button buyStoneSword;
+        public System.Windows.Forms.Button buyIronSword;
         private System.Windows.Forms.Label label27;
         public System.Windows.Forms.Button buyDS;
-        public System.Windows.Forms.Button buyPT;
+        public System.Windows.Forms.Button buyItemButton;
         public System.Windows.Forms.Button buyUPT;
         public System.Windows.Forms.Button buyFR;
         public System.Windows.Forms.Button buyAR;
@@ -719,5 +752,8 @@
         private System.Windows.Forms.NumericUpDown orePickStar;
         public System.Windows.Forms.Button sellSO;
         public System.Windows.Forms.Button buySdP;
+        private System.Windows.Forms.ComboBox itemPickerComboBox;
+        private System.Windows.Forms.TextBox itemDescriptionTextBox;
+        private System.Windows.Forms.Button button1;
     }
 }

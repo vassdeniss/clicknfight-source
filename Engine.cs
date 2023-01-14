@@ -17,13 +17,6 @@
         public static double count;
         public static double count3;
 
-
-
-
-
-        public static int woodenSword;
-        public static int stoneSword;
-        public static int ironSword;
         public static int diamondSword;
         public static int excalibur;
         public static bool silverSword = false;
@@ -32,9 +25,6 @@
         public static bool cobaltSword = false;
         public static bool starSword = false;
 
-        public static double woodenSwordAdd;
-        public static double stoneSwordAdd;
-        public static double ironSwordAdd;
         public static double diamondSwordAdd;
         public static double excaliburAdd;
         public static double fireboltAdd;
@@ -47,7 +37,6 @@
         public static double cobaltSwordAdd;
         public static double starSwordAdd;
 
-        public static int potion;
         public static int upgradedPotion;
         public static int superPotion;
         public static int ultraPotion;

@@ -1,7 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+
+using ClickNFight.Items.Consumables;
+using ClickNFight.Items.Weapons;
 
 namespace ClickNFight
 {
@@ -12,6 +14,11 @@ namespace ClickNFight
         public Inventory()
         {
             this.InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Icon = Properties.Resources.icon;
         }
 
@@ -19,58 +26,23 @@ namespace ClickNFight
             : this()
         {
             this.hero = hero;
-
-            this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Potions);
-            this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Weapons);
+            this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Inventory.Consumables);
+            this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Inventory.Weapons);
 
             runes.Text = "Runes:";
             ores.Text = "Ingots:";
             picks.Text = "Pickaxes:";
 
-            // "Upgraded Health Potion" "Heal Value: 25"
             // "Super Health Potion" "Heal Value: 55"
             // "Ultra Health Potion" "Heal Value: 115"
 
-            // "Wooden Sword" "Total Damage: " + Engine.woodenSword * 0.5, 10
-            // "Stone Sword" "Total Damage: " + Engine.stoneSword * 1, 7
-            // "Iron Sword" "Total Damage: " + Engine.ironSword * 2, 5;
             // "Diamond Sword" "Total Damage: " + Engine.diamondSword * 4, 3;
-
-            if (Engine.silverSword == true)
-            {
-                string invSS = "\r\n" + "Silver Sword" + "\r\n" + "Total Damage: 1" + "\r\n";
-                weaponsTextBox.Text += invSS;
-            }
-
-            if (Engine.goldSword == true)
-            {
-                string invGS = "\r\n" + "Gold Sword" + "\r\n" + "Total Damage: 2" + "\r\n";
-                weaponsTextBox.Text += invGS;
-            }
-
-            if (Engine.platinumSword == true)
-            {
-                string invPS = "\r\n" + "Platinum Sword" + "\r\n" + "Total Damage: 3" + "\r\n";
-                weaponsTextBox.Text += invPS;
-            }
-
-            if (Engine.cobaltSword == true)
-            {
-                string invCS = "\r\n" + "Cobalt Sword" + "\r\n" + "Total Damage: 4" + "\r\n";
-                weaponsTextBox.Text += invCS;
-            }
-
-            if (Engine.starSword == true)
-            {
-                string invSS = "\r\n" + "Star Sword" + "\r\n" + "Total Damage: 5" + "\r\n";
-                weaponsTextBox.Text += invSS;
-            }
-
-            if (Engine.excalibur > 0)
-            {
-                string invEX = "\r\n" + "Excalibur" + "\r\n" + "Total Damage: 999" + "\r\n";
-                weaponsTextBox.Text += invEX;
-            }
+            // "Silver Sword" "Total Damage: 1";
+            // "Gold Sword" "Total Damage: 2";
+            // "Platinum Sword" "Total Damage: 3";
+            // "Cobalt Sword" "Total Damage: 4";
+            // "Star Sword""Total Damage: 5";
+            // "Excalibur" "Total Damage: 999";
 
             if (Engine.airRunes > 0)
             {
