@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Management.Instrumentation;
 using System.Media;
 using System.Windows.Forms;
+
 using ClickNFight.Items;
 using ClickNFight.Items.Weapons;
 
@@ -10,8 +10,8 @@ namespace ClickNFight
 {
     public partial class Shop : Form
     {
-        private Hero hero;
-        private SoundPlayer soundPlayer;
+        private readonly Hero hero;
+        private readonly SoundPlayer soundPlayer;
 
         public Shop()
         {
@@ -34,11 +34,13 @@ namespace ClickNFight
         {
             this.hero = hero;
 
-            // TODO: test
             foreach (Item item in this.hero.Inventory.UnlockedItems)
             {
-                this.itemPickerComboBox.Items.Add(item.Name);
+                this.itemPickerComboBox.Items.Add(item);
             }
+
+            this.itemPickerComboBox.DisplayMember = "Name";
+            this.itemPickerComboBox.Text = "Select an item";
         }
 
         private void allButtons_Click(object sender, EventArgs e)
@@ -420,82 +422,6 @@ namespace ClickNFight
             //}
         }
 
-        private void buyPT_click(object sender, EventArgs e)
-        {
-            if (Engine.count >= 15)
-            {
-                SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-                coin.Play();
-                //Engine.potion++;
-                Engine.count = Engine.count - 15;
-                if (updateNormalPotion != null)
-                {
-                    updateNormalPotion.UpdateScreenPotion(); 
-                }
-            }
-            else
-            {
-                var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            }
-        }
-
-        private void buyUHP_Click(object sender, EventArgs e)
-        {
-            if (Engine.count >= 30)
-            {
-                SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-                coin.Play();
-                Engine.upgradedPotion++;
-                Engine.count = Engine.count - 30;
-                if (updatePotion != null)
-                {
-                    updatePotion.UpdateScreenUpgradedPotion();
-                }
-            }
-            else
-            {
-                var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            }
-        }
-
-        private void buySHP_Click(object sender, EventArgs e)
-        {
-            if (Engine.count >= 60)
-            {
-                SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-                coin.Play();
-                Engine.superPotion++;
-                Engine.count = Engine.count - 60;
-                if (updateSuperPotion != null)
-                {
-                    updateSuperPotion.UpdateScreenSuperPotion();
-                }
-            }
-            else
-            {
-                var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            }
-        }
-
-        private void buyUUHP_Click(object sender, EventArgs e)
-        {
-            if (Engine.count >= 100)
-            {
-                SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-                coin.Play();
-                Engine.ultraPotion++;
-                Engine.count = Engine.count - 100;
-                if (updateUltraPotion != null)
-                {
-                    updateUltraPotion.UpdateScreenUltraPotion();
-                }
-            }
-            else
-            {
-                var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            }
-        }
-
         // Handles all sell buttons
 
         private void allSellButtons_Click(object sender, EventArgs e)
@@ -657,35 +583,47 @@ namespace ClickNFight
         // Interfaces 
 
         public IUiRefreshers screenUpdate;
-        public IUiRefreshers updateNormalPotion;
-        public IUiRefreshers updatePotion;
-        public IUiRefreshers updateSuperPotion;
-        public IUiRefreshers updateUltraPotion;
 
         private void ItemPickerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string itemName = this.itemPickerComboBox.SelectedItem.ToString();
+            // TODO: Use '?'
+            Item item = this.itemPickerComboBox.SelectedItem as Item;
 
-            // TODO: test
-            Item item = this.hero.Inventory.UnlockedItems
-                .First(ul => ul.Name == itemName);
+            //! Temporary
+            if (item is null)
+            {
+                throw new InstanceNotFoundException();
+            }
 
             this.itemDescriptionTextBox.Text = item.ShopInformation();
         }
 
         private void BuyItem_click(object sender, EventArgs e)
         {
-            string itemName = this.itemPickerComboBox.SelectedItem.ToString();
+            if (this.itemPickerComboBox.SelectedIndex is -1)
+            {
+                MessageBox.Show(
+                    "Please select an item from the list!",
+                    "Warning!",
+                    MessageBoxButtons.OK);
+                return;
+            }
 
-            // TODO: test
-            Item item = this.hero.Inventory.UnlockedItems
-                .First(ui => ui.Name == itemName);
+            // TODO: Use '?'
+            Item item = this.itemPickerComboBox.SelectedItem as Item;
+
+            //! Temporary
+            if (item is null)
+            {
+                throw new InstanceNotFoundException();
+            }
 
             if (this.hero.Clickerency < item.BuyPrice)
             {
                 MessageBox.Show("You don't have enough clicks to buy",
                     "Warning!",
                     MessageBoxButtons.OK);
+                return;
             }
 
             this.BuyItem(item);
@@ -694,14 +632,8 @@ namespace ClickNFight
         private void BuyItem(Item item)
         {
             this.soundPlayer.Play();
-
             this.hero.Clickerency -= item.BuyPrice;
-
-            Type itemType = item.GetType();
-            // TODO: test
             this.hero.Inventory.Add(item);
-
-            this.screenUpdate.UpdateUi();
         }
 
         //private bool CanAffordWeapon<T>()

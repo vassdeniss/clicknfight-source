@@ -2,11 +2,6 @@
 {
     public interface IUiRefreshers
     {
-        void UpdateScreenPotion();
-        void UpdateScreenUpgradedPotion();
-        void UpdateScreenSuperPotion();
-        void UpdateScreenUltraPotion();
-
         void UpdateUi();
 
         void UpdateScreenHeal();

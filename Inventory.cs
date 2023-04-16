@@ -29,12 +29,9 @@ namespace ClickNFight
             this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Inventory.Consumables);
             this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Inventory.Weapons);
 
-            runes.Text = "Runes:";
-            ores.Text = "Ingots:";
-            picks.Text = "Pickaxes:";
-
-            // "Super Health Potion" "Heal Value: 55"
-            // "Ultra Health Potion" "Heal Value: 115"
+            this.runes.Text = "Runes:";
+            this.ores.Text = "Ingots:";
+            this.picks.Text = "Pickaxes:";
 
             // "Diamond Sword" "Total Damage: " + Engine.diamondSword * 4, 3;
             // "Silver Sword" "Total Damage: 1";

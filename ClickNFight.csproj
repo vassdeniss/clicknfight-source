@@ -113,6 +113,8 @@
     <Compile Include="HeroInventory.cs" />
     <Compile Include="Items\Consumables\Consumable.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="Items\Consumables\UltraHealthPotion.cs" />
+    <Compile Include="Items\Consumables\SuperHealthPotion.cs" />
     <Compile Include="Items\Consumables\UpgradedHealthPotion.cs" />
     <Compile Include="Items\Consumables\ConsumablesSettings.cs" />
     <Compile Include="Items\Item.cs" />

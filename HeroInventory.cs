@@ -13,11 +13,19 @@ namespace ClickNFight
             this.UnlockedItems = new HashSet<Item>
             {
                 new Potion(),
+                new UpgradedHealthPotion(),
+                new SuperHealthPotion(),
+                new UltraHealthPotion(),
+                new WoodenSword(),
+                new StoneSword(),
+                new IronSword(),
             };
             this.Consumables = new List<Consumable>
             {
                 new Potion(),
                 new UpgradedHealthPotion(),
+                new SuperHealthPotion(),
+                new UltraHealthPotion(),
             };
             this.Weapons = new List<Weapon>
             {

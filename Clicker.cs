@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace ClickNFight
 {
@@ -223,7 +222,7 @@ namespace ClickNFight
                     wizardPrice = ClickEngine.wizardPrice
                 };
 
-                string JSONSave = JsonConvert.SerializeObject(save);
+                //string JSONSave = JsonConvert.SerializeObject(save);
                 string directoryPath = string.Format(@"Saves\", Application.StartupPath);
                 string path = String.Format(@"{0}\Saves\" + Engine.name + "'s Clicker Save.json", Application.StartupPath);
                 string path2 = String.Format(@"{0}\Saves\" + Engine.name + "'s Clicker MD5Hash.txt", Application.StartupPath);
@@ -235,7 +234,7 @@ namespace ClickNFight
                     File.Delete(path);
                     using (var tw = new StreamWriter(path, true))
                     {
-                        tw.WriteLine(JSONSave.ToString());
+                        //tw.WriteLine(JSONSave.ToString());
                         tw.Close();
                     }
                 }
@@ -243,7 +242,7 @@ namespace ClickNFight
                 {
                     using (var tw = new StreamWriter(path, true))
                     {
-                        tw.WriteLine(JSONSave.ToString());
+                        //tw.WriteLine(JSONSave.ToString());
                         tw.Close();
                     }
                 }
@@ -284,124 +283,124 @@ namespace ClickNFight
 
         private void load_Click(object sender, EventArgs e)
         {
-            bool bEqual = false;
-            string path = String.Format(@"{0}\Saves\" + Engine.name + "'s Clicker Save.json", Application.StartupPath);
+        //    bool bEqual = false;
+        //    string path = String.Format(@"{0}\Saves\" + Engine.name + "'s Clicker Save.json", Application.StartupPath);
 
-            try
-            {
-                sSourceData2 = String.Format(path);
-                tmpSource2 = File.ReadAllBytes(sSourceData2);
-                tmpNewHash = new MD5CryptoServiceProvider().ComputeHash(tmpSource2);
+        //    try
+        //    {
+        //        sSourceData2 = String.Format(path);
+        //        tmpSource2 = File.ReadAllBytes(sSourceData2);
+        //        tmpNewHash = new MD5CryptoServiceProvider().ComputeHash(tmpSource2);
 
-                int j;
-                StringBuilder sOutput2 = new StringBuilder(tmpNewHash.Length);
-                for (j = 0; j < tmpNewHash.Length; j++)
-                {
-                    sOutput2.Append(tmpNewHash[j].ToString("X2"));
-                }
+        //        int j;
+        //        StringBuilder sOutput2 = new StringBuilder(tmpNewHash.Length);
+        //        for (j = 0; j < tmpNewHash.Length; j++)
+        //        {
+        //            sOutput2.Append(tmpNewHash[j].ToString("X2"));
+        //        }
 
-                string md5 = "";
-                string path2 = String.Format(@"{0}\Saves\" + Engine.name + "'s Clicker MD5Hash.txt", Application.StartupPath);
+        //        string md5 = "";
+        //        string path2 = String.Format(@"{0}\Saves\" + Engine.name + "'s Clicker MD5Hash.txt", Application.StartupPath);
 
-                using (var tw = new StreamReader(path2, true))
-                {
-                    md5 = tw.ReadToEnd();
-                    tw.Close();
-                }
+        //        using (var tw = new StreamReader(path2, true))
+        //        {
+        //            md5 = tw.ReadToEnd();
+        //            tw.Close();
+        //        }
 
-                int k;
-                StringBuilder result = new StringBuilder(md5.Length);
-                for (k = 0; k < md5.Length - 2; k++)
-                {
-                    result.Append(md5[k].ToString());
-                }
+        //        int k;
+        //        StringBuilder result = new StringBuilder(md5.Length);
+        //        for (k = 0; k < md5.Length - 2; k++)
+        //        {
+        //            result.Append(md5[k].ToString());
+        //        }
 
-                if (sOutput2.Length == result.Length)
-                {
-                    int i = 0;
-                    while ((i < sOutput2.Length) && (sOutput2[i] == result[i]))
-                    {
-                        i += 1;
-                    }
-                    if (i == sOutput2.Length)
-                    {
-                        bEqual = true;
-                    }
-                }
+        //        if (sOutput2.Length == result.Length)
+        //        {
+        //            int i = 0;
+        //            while ((i < sOutput2.Length) && (sOutput2[i] == result[i]))
+        //            {
+        //                i += 1;
+        //            }
+        //            if (i == sOutput2.Length)
+        //            {
+        //                bEqual = true;
+        //            }
+        //        }
 
-                var confirmResult = MessageBox.Show("Are you sure you want to load your saved game? Any unsaved progress will be lost!", "Warning!", MessageBoxButtons.YesNo);
+        //        var confirmResult = MessageBox.Show("Are you sure you want to load your saved game? Any unsaved progress will be lost!", "Warning!", MessageBoxButtons.YesNo);
 
-                if (confirmResult == DialogResult.Yes && bEqual == true)
-                {
-                    string json = "";
-                    string path3 = String.Format(@"{0}\Saves\" + Engine.name + "'s Clicker Save.json", Application.StartupPath);
-                    using (var tw = new StreamReader(path3, true))
-                    {
-                        json = tw.ReadToEnd();
-                        tw.Close();
-                    }
-                    ClickerSaving load = JsonConvert.DeserializeObject<ClickerSaving>(json);
+        //        if (confirmResult == DialogResult.Yes && bEqual == true)
+        //        {
+        //            string json = "";
+        //            string path3 = String.Format(@"{0}\Saves\" + Engine.name + "'s Clicker Save.json", Application.StartupPath);
+        //            using (var tw = new StreamReader(path3, true))
+        //            {
+        //                json = tw.ReadToEnd();
+        //                tw.Close();
+        //            }
+        //            //ClickerSaving load = JsonConvert.DeserializeObject<ClickerSaving>(json);
 
-                    ClickEngine.totalClicks = load.totalClicks;
-                    ClickEngine.clickers = load.clickers;
-                    ClickEngine.clickersPrice = load.clickerPrice;
-                    ClickEngine.warrior = load.woodenSword;
-                    ClickEngine.warriorPrice = load.woodenPrice;
-                    ClickEngine.knight = load.stoneSword;
-                    ClickEngine.knightPrice = load.stonePrice;
-                    ClickEngine.mage = load.mage;
-                    ClickEngine.magePrice = load.magePrice;
-                    ClickEngine.wizard = load.wizard;
-                    ClickEngine.wizardPrice = load.wizardPrice;
+        //            ClickEngine.totalClicks = load.totalClicks;
+        //            ClickEngine.clickers = load.clickers;
+        //            ClickEngine.clickersPrice = load.clickerPrice;
+        //            ClickEngine.warrior = load.woodenSword;
+        //            ClickEngine.warriorPrice = load.woodenPrice;
+        //            ClickEngine.knight = load.stoneSword;
+        //            ClickEngine.knightPrice = load.stonePrice;
+        //            ClickEngine.mage = load.mage;
+        //            ClickEngine.magePrice = load.magePrice;
+        //            ClickEngine.wizard = load.wizard;
+        //            ClickEngine.wizardPrice = load.wizardPrice;
 
-                    click.Text = "Clicks: " + ClickEngine.totalClicks;
+        //            click.Text = "Clicks: " + ClickEngine.totalClicks;
 
-                    if (ClickEngine.clickers > 0)
-                    {
-                        passiveTimer.Interval = 1000;
-                        passiveTimer.Enabled = true;
-                        passive.Text = "Clickers: " + ClickEngine.clickers;
-                    }
+        //            if (ClickEngine.clickers > 0)
+        //            {
+        //                passiveTimer.Interval = 1000;
+        //                passiveTimer.Enabled = true;
+        //                passive.Text = "Clickers: " + ClickEngine.clickers;
+        //            }
 
-                    if (ClickEngine.warrior > 0)
-                    {
-                        warriorTimer.Interval = 1000;
-                        warriorTimer.Enabled = true;
-                        warriorTotal.Text = "Warriors: " + ClickEngine.warrior;
-                    }
+        //            if (ClickEngine.warrior > 0)
+        //            {
+        //                warriorTimer.Interval = 1000;
+        //                warriorTimer.Enabled = true;
+        //                warriorTotal.Text = "Warriors: " + ClickEngine.warrior;
+        //            }
 
-                    if (ClickEngine.knight > 0)
-                    {
-                        knightTimer.Interval = 1000;
-                        knightTimer.Enabled = true;
-                        knightTotal.Text = "Knights: " + ClickEngine.knight;
-                    }
+        //            if (ClickEngine.knight > 0)
+        //            {
+        //                knightTimer.Interval = 1000;
+        //                knightTimer.Enabled = true;
+        //                knightTotal.Text = "Knights: " + ClickEngine.knight;
+        //            }
 
-                    if (ClickEngine.mage > 0)
-                    {
-                        mageTotal.Text = "Mages: " + ClickEngine.mage;
-                        mageTimer.Interval = 1000;
-                        mageTimer.Enabled = true;
-                    }
+        //            if (ClickEngine.mage > 0)
+        //            {
+        //                mageTotal.Text = "Mages: " + ClickEngine.mage;
+        //                mageTimer.Interval = 1000;
+        //                mageTimer.Enabled = true;
+        //            }
 
-                    if (ClickEngine.wizard > 0)
-                    {
-                        wizardTotal.Text = "Wizards: " + ClickEngine.wizard;
-                        wizardTimer.Interval = 1000;
-                        wizardTimer.Enabled = true;
-                    }
-                }
-                else if (confirmResult == DialogResult.Yes && bEqual == false)
-                {
-                    MessageBox.Show("Save has been tampered with!" + "\r\n" + "Save cannot be loaded." + "\r\n" + "Why cheat?", "Error!", MessageBoxButtons.OK);
-                }
-            }
-            catch (Exception e12)
-            {
-                MessageBox.Show("No save file detected!", "Warning!", MessageBoxButtons.OK);
-            }
+        //            if (ClickEngine.wizard > 0)
+        //            {
+        //                wizardTotal.Text = "Wizards: " + ClickEngine.wizard;
+        //                wizardTimer.Interval = 1000;
+        //                wizardTimer.Enabled = true;
+        //            }
+        //        }
+        //        else if (confirmResult == DialogResult.Yes && bEqual == false)
+        //        {
+        //            MessageBox.Show("Save has been tampered with!" + "\r\n" + "Save cannot be loaded." + "\r\n" + "Why cheat?", "Error!", MessageBoxButtons.OK);
+        //        }
+        //    }
+        //    catch (Exception e12)
+        //    {
+        //        MessageBox.Show("No save file detected!", "Warning!", MessageBoxButtons.OK);
+        //    }
         }
 
-        // Save;Load
+        //// Save;Load
     }
 }

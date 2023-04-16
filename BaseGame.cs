@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
 using ClickNFight.Items.Weapons;
-using Newtonsoft.Json;
 using ConsumablesSettings = ClickNFight.Items.Consumables.ConsumablesSettings;
 
 namespace ClickNFight
@@ -96,26 +95,6 @@ namespace ClickNFight
                     defenceLabel.Text = "Defence: " + Engine.defence + " (Decreases damage by " + Engine.defenceReduction + ")";
                 }
             }
-        }
-
-        public void UpdateScreenPotion()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateScreenUpgradedPotion()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateScreenSuperPotion()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateScreenUltraPotion()
-        {
-            throw new NotImplementedException();
         }
 
         void IUiRefreshers.UpdateUi()
@@ -391,32 +370,6 @@ namespace ClickNFight
         //    heroHealthPointsLabel.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
         //}
 
-        // Updates only the health potion
-
-        //void IUiRefreshers.UpdateScreenPotion()
-        //{
-        //    potionMenu.Items.Add("Health Potion");
-
-        //    clickerencyLabel.Text = "Clickerency: " + Engine.count.ToString();
-        //}
-
-        // Updates only the upgraded health potion 
-
-        //void IUiRefreshers.UpdateScreenUpgradedPotion()
-        //{
-        //    potionMenu.Items.Add("Upgraded Health Potion");
-
-        //    clickerencyLabel.Text = "Clickerency: " + Engine.count.ToString();
-        //}
-
-        // Updates only the super health potion 
-
-        //void IUiRefreshers.UpdateScreenSuperPotion()
-        //{
-        //    potionMenu.Items.Add("Super Health Potion");
-
-        //    clickerencyLabel.Text = "Clickerency: " + Engine.count.ToString();
-        //}
 
         // Updates only the ultra health potion
 
@@ -731,7 +684,7 @@ namespace ClickNFight
             if (Engine.level >= 3)
             {
                 f2.buyStoneSword.Enabled = true;
-                f2.buyUPT.Enabled = true;
+                //f2.buyUPT.Enabled = true;
             }
 
             if (Engine.level >= 4)
@@ -744,7 +697,7 @@ namespace ClickNFight
             {
                 f2.buyFR.Enabled = true;
                 f2.buyAR.Enabled = true;
-                f2.buySHP.Enabled = true;
+                //f2.buySHP.Enabled = true;
                 f2.buyGP.Enabled = true;
             }
 
@@ -759,7 +712,7 @@ namespace ClickNFight
             if (Engine.level >= 7)
             {
                 f2.buyWR.Enabled = true;
-                f2.buyUUHP.Enabled = true;
+                //f2.buyUUHP.Enabled = true;
                 f2.buyLR.Enabled = true;
                 f2.buyCP.Enabled = true;
             }
