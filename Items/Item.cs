@@ -6,6 +6,8 @@
 
         public abstract int BuyPrice { get; set; }
 
+        public abstract int Limit { get; set; }
+
         public abstract string ShopInformation();
     }
 }

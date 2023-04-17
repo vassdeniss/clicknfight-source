@@ -26,7 +26,7 @@ namespace ClickNFight
             : this()
         {
             this.hero = hero;
-            this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Inventory.Consumables);
+            this.potionsTextBox.Text = this.GenerateText("Consumables:", this.hero.Inventory.test_items_new);
             this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Inventory.Weapons);
 
             this.runes.Text = "Runes:";
@@ -223,6 +223,36 @@ namespace ClickNFight
             foreach (KeyValuePair<string, int> descriptionCount in dic)
             {
                 sb.AppendLine(descriptionCount.Key);
+                sb.AppendLine($"Count: {descriptionCount.Value}");
+            }
+
+            return sb.ToString();
+        }
+
+        private string GenerateText<T>(string labelText, IDictionary<T, int> collection)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(labelText);
+            //Dictionary<string, int> dic = new Dictionary<string, int>();
+            //foreach (T item in collection)
+            //{
+            //    if (!dic.ContainsKey(item.ToString()))
+            //    {
+            //        dic.Add(item.ToString(), 0);
+            //    }
+
+            //    dic[item.ToString()]++;
+            //}
+
+            foreach (KeyValuePair<T, int> descriptionCount in collection)
+            {
+                if (descriptionCount.Value <= 0)
+                {
+                    continue;
+                }
+
+                sb.AppendLine(descriptionCount.Key.ToString());
                 sb.AppendLine($"Count: {descriptionCount.Value}");
             }
 

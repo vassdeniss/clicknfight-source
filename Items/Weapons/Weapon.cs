@@ -5,8 +5,6 @@ namespace ClickNFight.Items.Weapons
 {
     public abstract class Weapon : Item
     {
-        public abstract int Limit { get; set; }
-
         public abstract double DamageMultiplier { get; set; }
 
         public override string ShopInformation()

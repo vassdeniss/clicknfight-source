@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http.Headers;
 
 using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
@@ -33,9 +34,23 @@ namespace ClickNFight
                 new StoneSword(),
                 new IronSword(),
             };
+            this.ConsumablesTest = new Dictionary<Consumable, int>();
+            this.test_items_new = new Dictionary<Item, int>()
+            {
+                {
+                    new Potion(), 0
+                },
+                {
+                    new WoodenSword(), 0
+                }
+            };
         }
 
         public HashSet<Item> UnlockedItems { get; }
+
+        public IDictionary<Item, int> test_items_new { get; }
+
+        public IDictionary<Consumable, int> ConsumablesTest { get; }
 
         public ICollection<Consumable> Consumables { get; }
 
@@ -43,8 +58,17 @@ namespace ClickNFight
 
         public void Add(Item item)
         {
+            this.test_items_new[item]++;
+
             if (item is Consumable consumable)
             {
+                if (!this.ConsumablesTest.ContainsKey(consumable))
+                {
+                    this.ConsumablesTest.Add(consumable, 0);
+                }
+
+                this.ConsumablesTest[consumable]++;
+
                 this.Consumables.Add(consumable);
             }
             else if (item is Weapon weapon)
@@ -63,6 +87,12 @@ namespace ClickNFight
             {
                 this.Weapons.Remove(weapon);
             }
+        }
+
+        public bool HasCapacity(Item item)
+        {
+            return this.test_items_new[item] == -1 
+                || this.test_items_new[item] < item.Limit;
         }
     }
 }

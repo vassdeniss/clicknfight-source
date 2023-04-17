@@ -34,8 +34,13 @@ namespace ClickNFight
         {
             this.hero = hero;
 
-            foreach (Item item in this.hero.Inventory.UnlockedItems)
+            foreach (Item item in this.hero.Inventory.test_items_new.Keys)
             {
+                if (!this.hero.Inventory.HasCapacity(item))
+                {
+                    continue;
+                }
+
                 this.itemPickerComboBox.Items.Add(item);
             }
 
@@ -618,6 +623,14 @@ namespace ClickNFight
                 throw new InstanceNotFoundException();
             }
 
+            if (!this.hero.Inventory.HasCapacity(item))
+            {
+                MessageBox.Show("You have reached the items limit",
+                    "Warning!",
+                    MessageBoxButtons.OK);
+                return;
+            }
+
             if (this.hero.Clickerency < item.BuyPrice)
             {
                 MessageBox.Show("You don't have enough clicks to buy",
@@ -634,29 +647,12 @@ namespace ClickNFight
             this.soundPlayer.Play();
             this.hero.Clickerency -= item.BuyPrice;
             this.hero.Inventory.Add(item);
+            //item.Limit--;
+
+            foreach (var i in this.hero.Inventory.test_items_new)
+            {
+                MessageBox.Show($"{i.Key}\r\n{i.Value}");
+            }
         }
-
-        //private bool CanAffordWeapon<T>()
-        //    where T : Weapon, new()
-        //{
-        //    T genericWeapon = new T();
-        //    if (this.hero.Weapons.OfType<T>().Count() > genericWeapon.Limit)
-        //    {
-        //        MessageBox.Show("You have reached the buy limit",
-        //            "Warning!",
-        //            MessageBoxButtons.OK);
-        //        return false;
-        //    }
-
-        //    if (this.hero.Clickerency < genericWeapon.BuyPrice)
-        //    {
-        //        MessageBox.Show("You don't have enough clicks to buy",
-        //            "Warning!",
-        //            MessageBoxButtons.OK);
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
     }
 }

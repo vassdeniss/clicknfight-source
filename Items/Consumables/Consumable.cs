@@ -6,7 +6,7 @@ namespace ClickNFight.Items.Consumables
     public abstract class Consumable : Item
     {
         public abstract int HealAmount { get; set; }
-
+    
         public sealed override string ShopInformation()
         {
             StringBuilder sb = new StringBuilder();
