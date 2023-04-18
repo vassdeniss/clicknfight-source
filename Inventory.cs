@@ -3,6 +3,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using ClickNFight.Items.Consumables;
+using ClickNFight.Items.Pickaxes;
 using ClickNFight.Items.Weapons;
 
 namespace ClickNFight
@@ -29,10 +30,11 @@ namespace ClickNFight
 
             this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Inventory.Consumables);
             this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Inventory.Weapons);
+            this.picksTextBox.Text = this.GenerateText<Pickaxe>("Pickaxes:", this.hero.Inventory.Pickaxes);
 
-            this.runes.Text = "Runes:";
+            this.runesTextBox.Text = "Runes:";
             this.ores.Text = "Ingots:";
-            this.picks.Text = "Pickaxes:";
+            //this.picks.Text = "Pickaxes:";
 
             // "Silver Sword" "Total Damage: 1";
             // "Gold Sword" "Total Damage: 2";
@@ -44,133 +46,127 @@ namespace ClickNFight
             if (Engine.airRunes > 0)
             {
                 string invAR = "\r\n" + "Air Runes" + "\r\n" + "Count: " + Engine.airRunes + "\r\n";
-                runes.Text += invAR;
+                runesTextBox.Text += invAR;
             }
 
             if (Engine.fireRunes > 0)
             {
                 string invFR = "\r\n" + "Fire Runes" + "\r\n" + "Count: " + Engine.fireRunes + "\r\n";
-                runes.Text += invFR;
+                runesTextBox.Text += invFR;
             }
 
             if (Engine.earthRunes > 0)
             {
                 string invER = "\r\n" + "Earth Runes" + "\r\n" + "Count: " + Engine.earthRunes + "\r\n";
-                runes.Text += invER;
+                runesTextBox.Text += invER;
             }
 
             if (Engine.mindRunes > 0)
             {
                 string invMR = "\r\n" + "Mind Runes" + "\r\n" + "Count: " + Engine.mindRunes + "\r\n";
-                runes.Text += invMR;
+                runesTextBox.Text += invMR;
             }
 
             if (Engine.waterRunes > 0)
             {
                 string invWR = "\r\n" + "Water Runes" + "\r\n" + "Count: " + Engine.waterRunes + "\r\n";
-                runes.Text += invWR;
+                runesTextBox.Text += invWR;
             }
 
             if (Engine.lavaRunes > 0)
             {
                 string invLR = "\r\n" + "Lava Runes" + "\r\n" + "Count: " + Engine.lavaRunes + "\r\n";
-                runes.Text += invLR;
+                runesTextBox.Text += invLR;
             }
 
             if (Engine.natureRunes > 0)
             {
                 string invNR = "\r\n" + "Nature Runes" + "\r\n" + "Count: " + Engine.natureRunes + "\r\n";
-                runes.Text += invNR;
+                runesTextBox.Text += invNR;
             }
 
             if (Engine.electricRunes > 0)
             {
                 string invElR = "\r\n" + "Electric Runes" + "\r\n" + "Count: " + Engine.electricRunes + "\r\n";
-                runes.Text += invElR;
+                runesTextBox.Text += invElR;
             }
 
             if (Engine.steamRunes > 0)
             {
                 string invSR = "\r\n" + "Steam Runes" + "\r\n" + "Count: " + Engine.steamRunes + "\r\n";
-                runes.Text += invSR;
+                runesTextBox.Text += invSR;
             }
 
             if (Engine.reviveRunes > 0)
             {
                 string invRR = "\r\n" + "Revive Runes" + "\r\n" + "Count: " + Engine.reviveRunes + "\r\n";
-                runes.Text += invRR;
+                runesTextBox.Text += invRR;
             }
 
             if (Engine.bloodRunes > 0)
             {
                 string invBR = "\r\n" + "Blood Runes" + "\r\n" + "Count: " + Engine.bloodRunes + "\r\n";
-                runes.Text += invBR;
+                runesTextBox.Text += invBR;
             }
 
             if (Engine.cosmicRunes > 0)
             {
                 string invCR = "\r\n" + "Cosmic Runes" + "\r\n" + "Count: " + Engine.cosmicRunes + "\r\n";
-                runes.Text += invCR;
+                runesTextBox.Text += invCR;
             }
 
             if (Engine.lifeRunes > 0)
             {
                 string invLR = "\r\n" + "Life Runes" + "\r\n" + "Count: " + Engine.lifeRunes + "\r\n";
-                runes.Text += invLR;
+                runesTextBox.Text += invLR;
             }
 
             if (Engine.wrathRunes > 0)
             {
                 string invWR = "\r\n" + "Wrath Runes" + "\r\n" + "Count: " + Engine.wrathRunes + "\r\n";
-                runes.Text += invWR;
+                runesTextBox.Text += invWR;
             }
 
             if (Engine.astralRunes > 0)
             {
                 string invAAR = "\r\n" + "Astral Runes" + "\r\n" + "Count: " + Engine.astralRunes + "\r\n";
-                runes.Text += invAAR;
+                runesTextBox.Text += invAAR;
             }
 
             if (Engine.soulRunes > 0)
             {
                 string invSoS = "\r\n" + "Soul Runes" + "\r\n" + "Count: " + Engine.soulRunes + "\r\n";
-                runes.Text += invSoS;
-            }
-
-            if (Engine.level >= 3)
-            {
-                string invCP = "\r\n" + "Copper Pickaxe" + "\r\n";
-                picks.Text += invCP;
+                runesTextBox.Text += invSoS;
             }
 
             if (Engine.silverPick == true)
             {
                 string invSP = "\r\n" + "Silver Pickaxe" + "\r\n";
-                picks.Text += invSP;
+                picksTextBox.Text += invSP;
             }
 
             if (Engine.goldPick == true)
             {
                 string invSP = "\r\n" + "Gold Pickaxe" + "\r\n";
-                picks.Text += invSP;
+                picksTextBox.Text += invSP;
             }
 
             if (Engine.platPick == true)
             {
                 string invPP = "\r\n" + "Platinum Pickaxe" + "\r\n";
-                picks.Text += invPP;
+                picksTextBox.Text += invPP;
             }
 
             if (Engine.cobPick == true)
             {
                 string invCP = "\r\n" + "Cobalt Pickaxe" + "\r\n";
-                picks.Text += invCP;
+                picksTextBox.Text += invCP;
             }
 
             if (Engine.starPick == true)
             {
                 string invSP = "\r\n" + "Star Pickaxe" + "\r\n";
-                picks.Text += invSP;
+                picksTextBox.Text += invSP;
             }
 
             if (Engine.silverOreTake > 0)
@@ -214,6 +210,20 @@ namespace ClickNFight
             {
                 sb.AppendLine(item.Key.ToString());
                 sb.AppendLine($"Count: {item.Value}");
+            }
+
+            return sb.ToString();
+        }
+
+        private string GenerateText<T>(string labelText, IEnumerable<T> collection)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(labelText);
+
+            foreach (T item in collection)
+            {
+                sb.AppendLine(item.ToString());
             }
 
             return sb.ToString();

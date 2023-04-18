@@ -30,12 +30,12 @@
         {
             this.potionsTextBox = new System.Windows.Forms.TextBox();
             this.weaponsTextBox = new System.Windows.Forms.TextBox();
-            this.runes = new System.Windows.Forms.TextBox();
+            this.runesTextBox = new System.Windows.Forms.TextBox();
             this.ores = new System.Windows.Forms.TextBox();
-            this.picks = new System.Windows.Forms.TextBox();
+            this.picksTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox2
+            // potionsTextBox
             // 
             this.potionsTextBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.potionsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -49,7 +49,7 @@
             this.potionsTextBox.TabIndex = 2;
             this.potionsTextBox.TabStop = false;
             // 
-            // neznam
+            // weaponsTextBox
             // 
             this.weaponsTextBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.weaponsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -63,19 +63,19 @@
             this.weaponsTextBox.TabIndex = 3;
             this.weaponsTextBox.TabStop = false;
             // 
-            // runes
+            // runesTextBox
             // 
-            this.runes.Cursor = System.Windows.Forms.Cursors.Default;
-            this.runes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.runes.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.runes.Location = new System.Drawing.Point(433, 12);
-            this.runes.Multiline = true;
-            this.runes.Name = "runes";
-            this.runes.ReadOnly = true;
-            this.runes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.runes.Size = new System.Drawing.Size(216, 212);
-            this.runes.TabIndex = 4;
-            this.runes.TabStop = false;
+            this.runesTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.runesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.runesTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.runesTextBox.Location = new System.Drawing.Point(433, 12);
+            this.runesTextBox.Multiline = true;
+            this.runesTextBox.Name = "runesTextBox";
+            this.runesTextBox.ReadOnly = true;
+            this.runesTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.runesTextBox.Size = new System.Drawing.Size(216, 212);
+            this.runesTextBox.TabIndex = 4;
+            this.runesTextBox.TabStop = false;
             // 
             // ores
             // 
@@ -91,28 +91,28 @@
             this.ores.TabIndex = 5;
             this.ores.TabStop = false;
             // 
-            // picks
+            // picksTextBox
             // 
-            this.picks.Cursor = System.Windows.Forms.Cursors.Default;
-            this.picks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.picks.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.picks.Location = new System.Drawing.Point(655, 12);
-            this.picks.Multiline = true;
-            this.picks.Name = "picks";
-            this.picks.ReadOnly = true;
-            this.picks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.picks.Size = new System.Drawing.Size(216, 212);
-            this.picks.TabIndex = 6;
-            this.picks.TabStop = false;
+            this.picksTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.picksTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.picksTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.picksTextBox.Location = new System.Drawing.Point(655, 12);
+            this.picksTextBox.Multiline = true;
+            this.picksTextBox.Name = "picksTextBox";
+            this.picksTextBox.ReadOnly = true;
+            this.picksTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.picksTextBox.Size = new System.Drawing.Size(216, 212);
+            this.picksTextBox.TabIndex = 6;
+            this.picksTextBox.TabStop = false;
             // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 232);
-            this.Controls.Add(this.picks);
+            this.Controls.Add(this.picksTextBox);
             this.Controls.Add(this.ores);
-            this.Controls.Add(this.runes);
+            this.Controls.Add(this.runesTextBox);
             this.Controls.Add(this.weaponsTextBox);
             this.Controls.Add(this.potionsTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -127,8 +127,8 @@
 
         private System.Windows.Forms.TextBox potionsTextBox;
         private System.Windows.Forms.TextBox weaponsTextBox;
-        private System.Windows.Forms.TextBox runes;
+        private System.Windows.Forms.TextBox runesTextBox;
         private System.Windows.Forms.TextBox ores;
-        private System.Windows.Forms.TextBox picks;
+        private System.Windows.Forms.TextBox picksTextBox;
     }
 }

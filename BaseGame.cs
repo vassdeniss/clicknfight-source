@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
 using ClickNFight.Items.Weapons;
-using ConsumablesSettings = ClickNFight.Items.Consumables.ConsumablesSettings;
+using ConsumablesSettings = ClickNFight.Items.Consumables.ConsumableSettings;
 
 namespace ClickNFight
 {
@@ -50,6 +50,8 @@ namespace ClickNFight
 
             this.Icon = Properties.Resources.icon;
             this.KeyPreview = true;
+
+            this.mineButton.Enabled = true;
         }
 
         private void Keydown(object sender, KeyEventArgs e)
@@ -82,7 +84,7 @@ namespace ClickNFight
                     levelLabel.Text = "Level: " + Engine.level + "/" + "10";
                     magicMenuButton.Enabled = true;
                     campMenuButton.Enabled = true;
-                    mineMenuButton.Enabled = true;
+                    mineButton.Enabled = true;
                     runeCraftingButton.Enabled = true;
                 }
             }
@@ -754,10 +756,9 @@ namespace ClickNFight
             //newGame.ShowDialog();
         }
 
-        private void btMine_Click(object sender, EventArgs e)
+        private void MineButton_Click(object sender, EventArgs e)
         {
-            Mine mine = new Mine();
-            mine.newSwords = this;
+            Mine mine = new Mine(this.hero);
             mine.ShowDialog();
         }
 
@@ -893,7 +894,7 @@ namespace ClickNFight
                         "You have leveled up! You are now level 3!\nYou have unlocked:\n\n- Mining!\n- Stone Sword\n- Upgraded Health Potion\n\n+ 20 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
                         "Congratulations!",
                         MessageBoxButtons.OK);
-                    this.mineMenuButton.Enabled = true;
+                    this.mineButton.Enabled = true;
                     break;
                 case 4:
                     MessageBox.Show("You have leveled up! You are now level 4!\nYou have unlocked:\n\n- Silver Pickaxe\n- Gold Ore!\n- Iron Sword\n\n+ 30 Total HP\n+ 1 Total Defence\n\nHealth Restored!",

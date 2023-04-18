@@ -52,7 +52,7 @@
             this.levelLabel = new System.Windows.Forms.Label();
             this.newGameButton = new System.Windows.Forms.Button();
             this.newPlus = new System.Windows.Forms.Label();
-            this.mineMenuButton = new System.Windows.Forms.Button();
+            this.mineButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.nameSave = new System.Windows.Forms.Label();
             this.campMenuButton = new System.Windows.Forms.Button();
@@ -62,7 +62,7 @@
             // 
             // fightButton
             // 
-            this.fightButton.Location = new System.Drawing.Point(188, 12);
+            this.fightButton.Location = new System.Drawing.Point(12, 11);
             this.fightButton.Name = "fightButton";
             this.fightButton.Size = new System.Drawing.Size(169, 85);
             this.fightButton.TabIndex = 0;
@@ -92,7 +92,7 @@
             // 
             // shopButton
             // 
-            this.shopButton.Location = new System.Drawing.Point(188, 193);
+            this.shopButton.Location = new System.Drawing.Point(12, 193);
             this.shopButton.Name = "shopButton";
             this.shopButton.Size = new System.Drawing.Size(169, 85);
             this.shopButton.TabIndex = 3;
@@ -113,7 +113,7 @@
             // 
             // InventoryButton
             // 
-            this.InventoryButton.Location = new System.Drawing.Point(188, 102);
+            this.InventoryButton.Location = new System.Drawing.Point(12, 102);
             this.InventoryButton.Name = "InventoryButton";
             this.InventoryButton.Size = new System.Drawing.Size(169, 85);
             this.InventoryButton.TabIndex = 5;
@@ -213,7 +213,7 @@
             // magicMenuButton
             // 
             this.magicMenuButton.Enabled = false;
-            this.magicMenuButton.Location = new System.Drawing.Point(13, 102);
+            this.magicMenuButton.Location = new System.Drawing.Point(387, 258);
             this.magicMenuButton.Name = "magicMenuButton";
             this.magicMenuButton.Size = new System.Drawing.Size(169, 85);
             this.magicMenuButton.TabIndex = 20;
@@ -233,7 +233,7 @@
             // runeCraftingButton
             // 
             this.runeCraftingButton.Enabled = false;
-            this.runeCraftingButton.Location = new System.Drawing.Point(13, 193);
+            this.runeCraftingButton.Location = new System.Drawing.Point(592, 243);
             this.runeCraftingButton.Name = "runeCraftingButton";
             this.runeCraftingButton.Size = new System.Drawing.Size(169, 85);
             this.runeCraftingButton.TabIndex = 22;
@@ -244,7 +244,7 @@
             // finalBossButton
             // 
             this.finalBossButton.Enabled = false;
-            this.finalBossButton.Location = new System.Drawing.Point(13, 12);
+            this.finalBossButton.Location = new System.Drawing.Point(429, 140);
             this.finalBossButton.Name = "finalBossButton";
             this.finalBossButton.Size = new System.Drawing.Size(169, 85);
             this.finalBossButton.TabIndex = 23;
@@ -308,16 +308,16 @@
             this.newPlus.Size = new System.Drawing.Size(0, 29);
             this.newPlus.TabIndex = 28;
             // 
-            // mineMenuButton
+            // mineButton
             // 
-            this.mineMenuButton.Enabled = false;
-            this.mineMenuButton.Location = new System.Drawing.Point(13, 284);
-            this.mineMenuButton.Name = "mineMenuButton";
-            this.mineMenuButton.Size = new System.Drawing.Size(169, 85);
-            this.mineMenuButton.TabIndex = 30;
-            this.mineMenuButton.Text = "Mine!";
-            this.mineMenuButton.UseVisualStyleBackColor = true;
-            this.mineMenuButton.Click += new System.EventHandler(this.btMine_Click);
+            this.mineButton.Enabled = false;
+            this.mineButton.Location = new System.Drawing.Point(651, 137);
+            this.mineButton.Name = "mineButton";
+            this.mineButton.Size = new System.Drawing.Size(169, 85);
+            this.mineButton.TabIndex = 30;
+            this.mineButton.Text = "Mine!";
+            this.mineButton.UseVisualStyleBackColor = true;
+            this.mineButton.Click += new System.EventHandler(this.MineButton_Click);
             // 
             // exitButton
             // 
@@ -344,7 +344,7 @@
             // campMenuButton
             // 
             this.campMenuButton.Enabled = false;
-            this.campMenuButton.Location = new System.Drawing.Point(188, 284);
+            this.campMenuButton.Location = new System.Drawing.Point(251, 198);
             this.campMenuButton.Name = "campMenuButton";
             this.campMenuButton.Size = new System.Drawing.Size(169, 85);
             this.campMenuButton.TabIndex = 33;
@@ -382,7 +382,7 @@
             this.Controls.Add(this.campMenuButton);
             this.Controls.Add(this.nameSave);
             this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.mineMenuButton);
+            this.Controls.Add(this.mineButton);
             this.Controls.Add(this.newPlus);
             this.Controls.Add(this.newGameButton);
             this.Controls.Add(this.levelLabel);
@@ -444,7 +444,7 @@
         private System.Windows.Forms.Button exitButton;
         public System.Windows.Forms.Label nameSave;
         public System.Windows.Forms.Label easterAndrej;
-        public System.Windows.Forms.Button mineMenuButton;
+        public System.Windows.Forms.Button mineButton;
         public System.Windows.Forms.Button campMenuButton;
         private System.Windows.Forms.Label xpTrackerLabel;
         public System.Windows.Forms.Label receivedXpLabel;

@@ -4,10 +4,10 @@
     {
         public Potion()
         {
-            this.Name = ConsumablesSettings.PotionName;
-            this.HealAmount = ConsumablesSettings.PotionHealAmount;
-            this.BuyPrice = ConsumablesSettings.PotionBuyPrice;
-            this.Limit = ConsumablesSettings.PotionLimit;
+            this.Name = ConsumableSettings.PotionName;
+            this.HealAmount = ConsumableSettings.PotionHealAmount;
+            this.BuyPrice = ConsumableSettings.PotionBuyPrice;
+            this.Limit = ConsumableSettings.PotionLimit;
         }
 
         public sealed override string Name { get; set; }

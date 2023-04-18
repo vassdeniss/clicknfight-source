@@ -4,10 +4,10 @@
     {
         public UltraHealthPotion()
         {
-            this.Name = ConsumablesSettings.UltraHealthPotionName;
-            this.HealAmount = ConsumablesSettings.UltraHealthPotionHealAmount;
-            this.BuyPrice = ConsumablesSettings.UltraHealthPotionBuyPrice;
-            this.Limit = ConsumablesSettings.UltraHealthPotionLimit;
+            this.Name = ConsumableSettings.UltraHealthPotionName;
+            this.HealAmount = ConsumableSettings.UltraHealthPotionHealAmount;
+            this.BuyPrice = ConsumableSettings.UltraHealthPotionBuyPrice;
+            this.Limit = ConsumableSettings.UltraHealthPotionLimit;
         }
 
         public sealed override string Name { get; set; }

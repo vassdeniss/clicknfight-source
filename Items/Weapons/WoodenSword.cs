@@ -4,10 +4,10 @@
     {
         public WoodenSword()
         {
-            this.Name = WeaponsSettings.WoodenSwordName;
-            this.Limit = WeaponsSettings.WoodenSwordLimit;
-            this.DamageMultiplier = WeaponsSettings.WoodenSwordMultiplier;
-            this.BuyPrice = WeaponsSettings.WoodenSwordBuyPrice;
+            this.Name = WeaponSettings.WoodenSwordName;
+            this.Limit = WeaponSettings.WoodenSwordLimit;
+            this.DamageMultiplier = WeaponSettings.WoodenSwordMultiplier;
+            this.BuyPrice = WeaponSettings.WoodenSwordBuyPrice;
         }
 
         public sealed override string Name { get; set; }

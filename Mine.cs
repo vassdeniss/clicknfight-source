@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ClickNFight.Items.Pickaxes;
 
 namespace ClickNFight
 {
@@ -33,12 +34,16 @@ namespace ClickNFight
         int cobOreTake;
         int starOreTake;
 
+        private readonly Hero hero;
+        private Pickaxe currentPick;
+
         public Mine()
         {
             InitializeComponent();
             this.Icon = Properties.Resources.icon;
 
-            cbPick.Items.Add("Copper Pickaxe");
+
+            //pickaxeComboBox.Items.Add("Copper Pickaxe");
             cbOre.Items.Add("Silver Ore");
 
             if (Engine.level >= 4)
@@ -60,98 +65,36 @@ namespace ClickNFight
             {
                 cbOre.Items.Add("Stardust Ore");
             }
-
-            if (Engine.silverPick == true)
-            {
-                cbPick.Items.Add("Silver Pickaxe");
-            }
-
-            if (Engine.goldPick == true)
-            {
-                cbPick.Items.Add("Gold Pickaxe");
-            }
-
-            if (Engine.platPick == true)
-            {
-                cbPick.Items.Add("Platinum Pickaxe");
-            }
-
-            if (Engine.cobPick == true)
-            {
-                cbPick.Items.Add("Cobalt Pickaxe");
-            }
-
-            if (Engine.starPick == true)
-            {
-                cbPick.Items.Add("Star Pickaxe");
-            }
         }
 
-        private void pickPick_Click(object sender, EventArgs e)
+        public Mine(Hero hero)
+            : this()
         {
+            this.hero = hero;
 
-            if (cbPick.SelectedIndex > -1)
+            foreach (Pickaxe pick in this.hero.Inventory.Pickaxes)
             {
-                if (cbPick.SelectedItem.ToString() == "Copper Pickaxe")
-                {
-                    isCopperPickEquipped = true;
-                    if (isCopperPickEquipped == true)
-                    {
-                        txPick.Text = "Pickaxe Equipped: Copper Pickaxe";
-                    }
-                }
-                else isCopperPickEquipped = false;
-
-                if (cbPick.SelectedItem.ToString() == "Silver Pickaxe")
-                {
-                    isSilverPickEquipped = true;
-                    if (isSilverPickEquipped == true)
-                    {
-                        txPick.Text = "Pickaxe Equipped: Silver Pickaxe";
-                    }
-                }
-                else isSilverPickEquipped = false;
-
-                if (cbPick.SelectedItem.ToString() == "Gold Pickaxe")
-                {
-                    isGoldPickEquipped = true;
-                    if (isGoldPickEquipped == true)
-                    {
-                        txPick.Text = "Pickaxe Equipped: Gold Pickaxe";
-                    }
-                }
-                else isGoldOrePicked = false;
-
-                if (cbPick.SelectedItem.ToString() == "Platinum Pickaxe")
-                {
-                    isPlatinumPickEquipped = true;
-                    if (isPlatinumPickEquipped == true)
-                    {
-                        txPick.Text = "Pickaxe Equipped: Platinum Pickaxe";
-                    }
-                }
-                else isPlatinumPickEquipped = false;
-
-                if (cbPick.SelectedItem.ToString() == "Cobalt Pickaxe")
-                {
-                    isCobaltPickEquipped = true;
-                    if (isCobaltPickEquipped == true)
-                    {
-                        txPick.Text = "Pickaxe Equipped: Cobalt Pickaxe";
-                    }
-                }
-                else isCobaltPickEquipped = false;
-
-                if (cbPick.SelectedItem.ToString() == "Star Pickaxe")
-                {
-                    isStarPickEquipped = true;
-                    if (isStarPickEquipped == true)
-                    {
-                        txPick.Text = "Pickaxe Equipped: Star Pickaxe";
-                    }
-                }
-                else isStarPickEquipped = false;
+                this.pickaxeComboBox.Items.Add(pick);
             }
+
+            this.pickaxeComboBox.Text = "Choose a pickaxe";
+
+            this.currentPick = null;
+        }
+
+        private void PickaxeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.pickaxeComboBox.SelectedIndex is -1)
+            {
+                MessageBox.Show(
+                    "Select a pickaxe from the list",
+                    "Warning!",
+                    MessageBoxButtons.OK);
+                return;
+            }
+
+            this.currentPick = this.pickaxeComboBox.SelectedItem as Pickaxe;
+            this.equippedPickLabel.Text = $"Pickaxe Equipped: {this.currentPick.Name}";
         }
 
         private void orePicker_Click(object sender, EventArgs e)
@@ -217,13 +160,13 @@ namespace ClickNFight
 
         private void button3_Click(object sender, EventArgs e)
         {
-            // Copper on SIlver = Good 
+            // Copper on Silver = Good 
             // Copper on Gold = Bad 
             // Copper on Platinum = Bad
             // Copper on Cobalt = Bad 
             // Cooper on Star = Bad
 
-            // Silver on SIlver = Better
+            // Silver on Silver = Better
             // Silver on Gold = Good 
             // Silver on Platinum = Bad
             // Silver on Cobalt = Bad 
@@ -237,7 +180,7 @@ namespace ClickNFight
 
             // Platinum on Silver = Godlike
             // Platinum on Gold = Amazing 
-            // Platinum on Platium = Better 
+            // Platinum on Platinum = Better 
             // Platinum on Cobalt = Good
             // Platinum on Star = Bad
 
@@ -833,7 +776,5 @@ namespace ClickNFight
             cobaltTotal.Text = "Cobalt Ore Mined: " + Engine.cobaltOreTotal;
             starTotal.Text = "Stardust Ore Mined: " + Engine.starOreTotal;
         }
-
-        public IUiRefreshers newSwords;
     }
 } 

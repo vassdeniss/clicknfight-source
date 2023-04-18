@@ -1,6 +1,6 @@
 ﻿namespace ClickNFight.Items.Consumables
 {
-    public static class ConsumablesSettings
+    public static class ConsumableSettings
     {
         public const string PotionName = "Health Potion";
         public const int PotionHealAmount = 10;

@@ -3,6 +3,7 @@ using System.Linq;
 
 using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
+using ClickNFight.Items.Pickaxes;
 using ClickNFight.Items.Weapons;
 
 namespace ClickNFight
@@ -23,6 +24,7 @@ namespace ClickNFight
                 { new StoneSword(), 0 },
                 { new IronSword(), 0 },
                 { new DiamondSword(), 1 },
+                { new CopperPickaxe(), 1 },
             };
         }
         
@@ -38,9 +40,15 @@ namespace ClickNFight
                 .Where((kv) => kv.Key is Weapon && kv.Value > 0)
                 .ToDictionary((kv) => (Weapon)kv.Key, kv => kv.Value);
 
-        public void UnlockItem(Item item)
+        public IEnumerable<Pickaxe> Pickaxes
+            => this.inventory
+                .Where((kv) => kv.Key is Pickaxe && kv.Value > 0)
+                .Select((kv) => (Pickaxe)kv.Key)
+                .ToList();
+
+        public void UnlockItem(Item item, int count = 0)
         {
-            this.inventory.Add(item, 0);
+            this.inventory.Add(item, count);
         }
 
         public void Add(Item item)

@@ -113,15 +113,20 @@
     <Compile Include="HeroInventory.cs" />
     <Compile Include="Items\Consumables\Consumable.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="Items\Consumables\ConsumableType.cs" />
     <Compile Include="Items\Consumables\UltraHealthPotion.cs" />
     <Compile Include="Items\Consumables\SuperHealthPotion.cs" />
     <Compile Include="Items\Consumables\UpgradedHealthPotion.cs" />
-    <Compile Include="Items\Consumables\ConsumablesSettings.cs" />
+    <Compile Include="Items\Consumables\ConsumableSettings.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Pickaxes\CopperPickaxe.cs" />
+    <Compile Include="Items\Pickaxes\Pickaxe.cs" />
+    <Compile Include="Items\Pickaxes\PickaxeSettings.cs" />
+    <Compile Include="Items\Pickaxes\SilverPickaxe.cs" />
     <Compile Include="Items\Weapons\DiamondSword.cs" />
     <Compile Include="Items\Weapons\IronSword.cs" />
     <Compile Include="Items\Weapons\StoneSword.cs" />
-    <Compile Include="Items\Weapons\WeaponsSettings.cs" />
+    <Compile Include="Items\Weapons\WeaponSettings.cs" />
     <Compile Include="MiningOres.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,6 +1,6 @@
 ﻿namespace ClickNFight.Items.Weapons
 {
-    public static class WeaponsSettings
+    public static class WeaponSettings
     {
         public const string WoodenSwordName = "Wooden Sword";
         public const int WoodenSwordLimit = 10;

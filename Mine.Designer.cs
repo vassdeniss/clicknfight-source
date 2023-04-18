@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.button3 = new System.Windows.Forms.Button();
-            this.cbPick = new System.Windows.Forms.ComboBox();
+            this.pickaxeComboBox = new System.Windows.Forms.ComboBox();
             this.cbOre = new System.Windows.Forms.ComboBox();
-            this.pickPick = new System.Windows.Forms.Button();
             this.orePicker = new System.Windows.Forms.Button();
             this.lbOre = new System.Windows.Forms.Label();
-            this.txPick = new System.Windows.Forms.Label();
+            this.equippedPickLabel = new System.Windows.Forms.Label();
             this.txOre = new System.Windows.Forms.Label();
             this.titalSilver = new System.Windows.Forms.Label();
             this.totalGold = new System.Windows.Forms.Label();
@@ -54,13 +53,14 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // cbPick
+            // pickaxeComboBox
             // 
-            this.cbPick.FormattingEnabled = true;
-            this.cbPick.Location = new System.Drawing.Point(12, 152);
-            this.cbPick.Name = "cbPick";
-            this.cbPick.Size = new System.Drawing.Size(225, 21);
-            this.cbPick.TabIndex = 3;
+            this.pickaxeComboBox.FormattingEnabled = true;
+            this.pickaxeComboBox.Location = new System.Drawing.Point(12, 152);
+            this.pickaxeComboBox.Name = "pickaxeComboBox";
+            this.pickaxeComboBox.Size = new System.Drawing.Size(225, 21);
+            this.pickaxeComboBox.TabIndex = 3;
+            this.pickaxeComboBox.SelectedIndexChanged += new System.EventHandler(this.PickaxeComboBox_SelectedIndexChanged);
             // 
             // cbOre
             // 
@@ -69,16 +69,6 @@
             this.cbOre.Name = "cbOre";
             this.cbOre.Size = new System.Drawing.Size(225, 21);
             this.cbOre.TabIndex = 4;
-            // 
-            // pickPick
-            // 
-            this.pickPick.Location = new System.Drawing.Point(58, 179);
-            this.pickPick.Name = "pickPick";
-            this.pickPick.Size = new System.Drawing.Size(122, 25);
-            this.pickPick.TabIndex = 5;
-            this.pickPick.Text = "Pick!";
-            this.pickPick.UseVisualStyleBackColor = true;
-            this.pickPick.Click += new System.EventHandler(this.pickPick_Click);
             // 
             // orePicker
             // 
@@ -100,15 +90,15 @@
             this.lbOre.TabIndex = 7;
             this.lbOre.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txPick
+            // equippedPickLabel
             // 
-            this.txPick.AutoSize = true;
-            this.txPick.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txPick.Location = new System.Drawing.Point(7, 9);
-            this.txPick.Name = "txPick";
-            this.txPick.Size = new System.Drawing.Size(180, 25);
-            this.txPick.TabIndex = 9;
-            this.txPick.Text = "Pickaxe Equipped: \r\n";
+            this.equippedPickLabel.AutoSize = true;
+            this.equippedPickLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.equippedPickLabel.Location = new System.Drawing.Point(7, 9);
+            this.equippedPickLabel.Name = "equippedPickLabel";
+            this.equippedPickLabel.Size = new System.Drawing.Size(180, 25);
+            this.equippedPickLabel.TabIndex = 9;
+            this.equippedPickLabel.Text = "Pickaxe Equipped: \r\n";
             // 
             // txOre
             // 
@@ -181,12 +171,11 @@
             this.Controls.Add(this.totalGold);
             this.Controls.Add(this.titalSilver);
             this.Controls.Add(this.txOre);
-            this.Controls.Add(this.txPick);
+            this.Controls.Add(this.equippedPickLabel);
             this.Controls.Add(this.lbOre);
             this.Controls.Add(this.orePicker);
-            this.Controls.Add(this.pickPick);
             this.Controls.Add(this.cbOre);
-            this.Controls.Add(this.cbPick);
+            this.Controls.Add(this.pickaxeComboBox);
             this.Controls.Add(this.button3);
             this.Name = "Mine";
             this.Text = "Mine";
@@ -199,12 +188,11 @@
         #endregion
 
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox cbPick;
+        private System.Windows.Forms.ComboBox pickaxeComboBox;
         private System.Windows.Forms.ComboBox cbOre;
-        private System.Windows.Forms.Button pickPick;
         private System.Windows.Forms.Button orePicker;
         private System.Windows.Forms.Label lbOre;
-        private System.Windows.Forms.Label txPick;
+        private System.Windows.Forms.Label equippedPickLabel;
         private System.Windows.Forms.Label txOre;
         private System.Windows.Forms.Label titalSilver;
         private System.Windows.Forms.Label totalGold;
