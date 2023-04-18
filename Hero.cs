@@ -15,7 +15,7 @@
             this.TotalXp = 250;
             this.Cps = 0;
             this.MonstersSlain = 0.0;
-            this.Clickerency = 100;
+            this.Clickerency = 1000000;
 
             this.Inventory = new HeroInventory();
         }

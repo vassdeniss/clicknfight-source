@@ -784,10 +784,6 @@ namespace ClickNFight
                 {
                     Engine.silverSword = true;
                     Engine.silverSwordAdd = 1;
-                    if (newSwords != null)
-                    {
-                        newSwords.UpdateUi();
-                    }
                     var yay = MessageBox.Show("You have unlocked The SIlver Sword!", "Congratulations!", MessageBoxButtons.OK);
                 }
             }
@@ -798,10 +794,6 @@ namespace ClickNFight
                     Engine.goldSword = true;
                     Engine.goldSwordAdd = 2;
                     var yay = MessageBox.Show("You have unlocked The Gold Sword!", "Congratulations!", MessageBoxButtons.OK);
-                    if (newSwords != null)
-                    {
-                        newSwords.UpdateUi();
-                    }
                 }
             }
             else if (Engine.platinumOreTotal == 100)
@@ -811,10 +803,6 @@ namespace ClickNFight
                     Engine.platinumSword = true;
                     Engine.platinumSwordAdd = 3;
                     var yay = MessageBox.Show("You have unlocked The Platinum Sword!", "Congratulations!", MessageBoxButtons.OK);
-                    if (newSwords != null)
-                    {
-                        newSwords.UpdateUi();
-                    }
                 }
             }
             else if (Engine.cobaltOreTotal == 100)
@@ -824,10 +812,6 @@ namespace ClickNFight
                     Engine.cobaltSword = true;
                     Engine.cobaltSwordAdd = 4;
                     var yay = MessageBox.Show("You have unlocked The Cobalt Sword!", "Congratulations!", MessageBoxButtons.OK);
-                    if (newSwords != null)
-                    {
-                        newSwords.UpdateUi();
-                    }
                 }
             }
             else if (Engine.starOreTotal == 100)
@@ -837,10 +821,6 @@ namespace ClickNFight
                     Engine.starSword = true;
                     Engine.starSwordAdd = 5;
                     var yay = MessageBox.Show("You have unlocked The Star Sword!", "Congratulations!", MessageBoxButtons.OK);
-                    if (newSwords != null)
-                    {
-                        newSwords.UpdateUi();
-                    }
                 }
             }
         }

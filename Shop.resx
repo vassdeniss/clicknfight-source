@@ -117,25 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>Upgraded Health Potion
-Regenerates health by 25 points 
-30 Clicks
-No buy limit
-
-Super Health Potion
-Regenerates health by 55 points 
-60 Clicks
-No buy limit
-
-Ultra Health Potion
-Regenerates health by 115 points 
-100Clicks
-No buy limit
-
-
-</value>
-  </data>
   <data name="textBox2.Text" xml:space="preserve">
     <value>Wooden Sword
 Increases clicks by 0.5

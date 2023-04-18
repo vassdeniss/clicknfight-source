@@ -26,7 +26,7 @@ namespace ClickNFight
             : this()
         {
             this.hero = hero;
-            this.potionsTextBox.Text = this.GenerateText("Consumables:", this.hero.Inventory.test_items_new);
+            this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Inventory.Consumables);
             this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Inventory.Weapons);
 
             this.runes.Text = "Runes:";
@@ -249,7 +249,7 @@ namespace ClickNFight
             {
                 if (descriptionCount.Value <= 0)
                 {
-                    continue;
+                    //continue;
                 }
 
                 sb.AppendLine(descriptionCount.Key.ToString());

@@ -2,8 +2,6 @@
 {
     public interface IUiRefreshers
     {
-        void UpdateUi();
-
         void UpdateScreenHeal();
         void UpdateScreenHeal2();
         void UpdateScreenHeal3();

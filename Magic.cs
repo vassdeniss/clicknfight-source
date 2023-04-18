@@ -77,10 +77,6 @@ namespace ClickNFight
                 Engine.defence = Engine.defence + 1;
                 Engine.defenceReduction = Engine.defenceReduction + 1;
 
-                if (owo != null)
-                {
-                    owo.UpdateUi();
-                }
 
                 defenceCooldown.Interval = 300000;
                 defenceCooldown.Tick += defenceCooldown_Tick;
@@ -107,10 +103,6 @@ namespace ClickNFight
             Engine.defence = Engine.defence - 1;
             Engine.defenceReduction = Engine.defenceReduction - 1;
 
-            if (owo != null)
-            {
-                owo.UpdateUi();
-            }
 
             defenceBoost.Stop();
         }
@@ -123,11 +115,6 @@ namespace ClickNFight
                 Engine.lavaRunes = Engine.lavaRunes - 5;
                 Engine.defence = Engine.defence + 2;
                 Engine.defenceReduction = Engine.defenceReduction + 2;
-
-                if (owo != null)
-                {
-                    owo.UpdateUi();
-                }
 
                 extraDefenceCooldown.Interval = 600000;
                 extraDefenceCooldown.Tick += extraDefenceCooldown_Tick;
@@ -154,11 +141,6 @@ namespace ClickNFight
             Engine.defence = Engine.defence - 2;
             Engine.defenceReduction = Engine.defenceReduction - 2;
 
-            if (owo != null)
-            {
-                owo.UpdateUi();
-            }
-
             defenceBoost2.Enabled = false;
         }
 
@@ -172,11 +154,6 @@ namespace ClickNFight
                 Engine.astralRunes = Engine.astralRunes - 2;
                 Engine.defence = Engine.defence + 4;
                 Engine.defenceReduction = Engine.defenceReduction + 4;
-
-                if (owo != null)
-                {
-                    owo.UpdateUi();
-                }
 
                 defenceCooldown3.Interval = 900000;
                 defenceCooldown3.Tick += defenceCooldown3_Tick;
@@ -202,11 +179,6 @@ namespace ClickNFight
         {
             Engine.defence = Engine.defence - 4;
             Engine.defenceReduction = Engine.defenceReduction - 4;
-
-            if (owo != null)
-            {
-                owo.UpdateUi();
-            }
 
             defenceBoost3.Enabled = false;
         }

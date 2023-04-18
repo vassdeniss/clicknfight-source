@@ -34,7 +34,7 @@ namespace ClickNFight
         {
             this.hero = hero;
 
-            foreach (Item item in this.hero.Inventory.test_items_new.Keys)
+            foreach (Item item in this.hero.Inventory.Items)
             {
                 if (!this.hero.Inventory.HasCapacity(item))
                 {
@@ -52,63 +52,7 @@ namespace ClickNFight
         {
             Button button = (Button)sender;
 
-            Weapon weapon;
-            if (button.Equals(this.buyWoodenSword))
-            {
-                weapon = new WoodenSword();
-                //if (!this.CanAffordWeapon<WoodenSword>())
-                //{
-                //    return;
-                //}
-
-                //this.BuyItem<Weapon>(weapon, this.hero.Weapons);
-            }
-            else if (button.Equals(this.buyStoneSword))
-            {
-                weapon = new StoneSword();
-                //if (!this.CanAffordWeapon<StoneSword>())
-                //{
-                //    return;
-                //}
-
-                //this.BuyItem<Weapon>(weapon, this.hero.Weapons);
-            }
-            else if (button.Equals(this.buyIronSword))
-            {
-                weapon = new IronSword();
-                //if (!this.CanAffordWeapon<IronSword>())
-                //{
-                //    return;
-                //}
-
-                this.soundPlayer.Play();
-
-                this.hero.Clickerency -= weapon.BuyPrice;
-                //this.hero.Weapons.Add(weapon);
-
-                this.screenUpdate.UpdateUi();
-
-                //if (Engine.ironSword >= 5)
-                //{
-                //    var limit = MessageBox.Show("You have reached the buy limit", "Warning!", MessageBoxButtons.OK);
-                //}
-                if (Engine.count >= 350)
-                {
-                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-                    coin.Play();
-                    //Engine.ironSword++;
-                    Engine.count = Engine.count - 350;
-                    if (screenUpdate != null)
-                    {
-                        screenUpdate.UpdateUi();
-                    }
-                }
-                else
-                {
-                    var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-                }
-            }
-            else if (button.Equals(buyDS))
+            if (button.Equals(buyDS))
             {
                 if (Engine.diamondSword >= 3)
                 {
@@ -120,10 +64,6 @@ namespace ClickNFight
                     coin.Play();
                     Engine.diamondSword++;
                     Engine.count = Engine.count - 500;
-                    if (screenUpdate != null)
-                    {
-                        screenUpdate.UpdateUi();
-                    }
                 }
                 else
                 {
@@ -452,10 +392,6 @@ namespace ClickNFight
                         decimal profit = orePickSilver.Value * 10;
                         Engine.silverOreTake = Engine.silverOreTake - System.Convert.ToInt32(orePickSilver.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (screenUpdate != null)
-                        {
-                            screenUpdate.UpdateUi();
-                        }
                     }
                 }
                 else
@@ -482,10 +418,6 @@ namespace ClickNFight
                         decimal profit = orePickGold.Value * 20;
                         Engine.goldOreTake = Engine.goldOreTake - System.Convert.ToInt32(orePickGold.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (screenUpdate != null)
-                        {
-                            screenUpdate.UpdateUi();
-                        }
                     }
                 }
                 else
@@ -512,10 +444,6 @@ namespace ClickNFight
                         decimal profit = orePickPlat.Value * 30;
                         Engine.platinumOreTake = Engine.platinumOreTake - System.Convert.ToInt32(orePickPlat.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (screenUpdate != null)
-                        {
-                            screenUpdate.UpdateUi();
-                        }
                     }
                 }
                 else
@@ -542,10 +470,6 @@ namespace ClickNFight
                         decimal profit = orePickCob.Value * 40;
                         Engine.cobaltOreTake = Engine.cobaltOreTake - System.Convert.ToInt32(orePickCob.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (screenUpdate != null)
-                        {
-                            screenUpdate.UpdateUi();
-                        }
                     }
                 }
                 else
@@ -572,10 +496,6 @@ namespace ClickNFight
                         decimal profit = this.orePickStar.Value * 50;
                         Engine.starOreTake = Engine.starOreTake - System.Convert.ToInt32(orePickStar.Value);
                         Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                        if (screenUpdate != null)
-                        {
-                            screenUpdate.UpdateUi();
-                        }
                     }
                 }
                 else
@@ -585,21 +505,9 @@ namespace ClickNFight
             }
         }
 
-        // Interfaces 
-
-        public IUiRefreshers screenUpdate;
-
         private void ItemPickerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // TODO: Use '?'
             Item item = this.itemPickerComboBox.SelectedItem as Item;
-
-            //! Temporary
-            if (item is null)
-            {
-                throw new InstanceNotFoundException();
-            }
-
             this.itemDescriptionTextBox.Text = item.ShopInformation();
         }
 
@@ -614,14 +522,7 @@ namespace ClickNFight
                 return;
             }
 
-            // TODO: Use '?'
             Item item = this.itemPickerComboBox.SelectedItem as Item;
-
-            //! Temporary
-            if (item is null)
-            {
-                throw new InstanceNotFoundException();
-            }
 
             if (!this.hero.Inventory.HasCapacity(item))
             {
@@ -647,12 +548,6 @@ namespace ClickNFight
             this.soundPlayer.Play();
             this.hero.Clickerency -= item.BuyPrice;
             this.hero.Inventory.Add(item);
-            //item.Limit--;
-
-            foreach (var i in this.hero.Inventory.test_items_new)
-            {
-                MessageBox.Show($"{i.Key}\r\n{i.Value}");
-            }
         }
     }
 }

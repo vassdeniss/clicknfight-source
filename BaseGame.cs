@@ -97,10 +97,6 @@ namespace ClickNFight
             }
         }
 
-        void IUiRefreshers.UpdateUi()
-        {
-            this.UpdateUI();
-
             //int defence = 0;
 
             //clickerencyLabel.Text = "Clickerency: " + Engine.count.ToString();
@@ -268,7 +264,6 @@ namespace ClickNFight
             //        }
             //    }
             //}
-        }
 
         public void UpdateScreenHeal()
         {
@@ -670,78 +665,16 @@ namespace ClickNFight
         //    clickerencyEarnedLabel.Text = "";
         //}
 
-        private void BT2_Click(object sender, EventArgs e)
+        private void ShopButton_Click(object sender, EventArgs e)
         {
-            Shop f2 = new Shop(this.hero);
-
-            f2.buyWoodenSword.Enabled = true;
-
-            //if (Engine.level >= 2)
-            //{
-            //    f2.buySword.Enabled = true;
-            //}
-
-            if (Engine.level >= 3)
-            {
-                f2.buyStoneSword.Enabled = true;
-                //f2.buyUPT.Enabled = true;
-            }
-
-            if (Engine.level >= 4)
-            {
-                f2.buySP.Enabled = true;
-                f2.buyIronSword.Enabled = true;
-            }
-
-            if (Engine.level >= 5)
-            {
-                f2.buyFR.Enabled = true;
-                f2.buyAR.Enabled = true;
-                //f2.buySHP.Enabled = true;
-                f2.buyGP.Enabled = true;
-            }
-
-            if (Engine.level >= 6)
-            {
-                f2.buyER.Enabled = true;
-                f2.buyDS.Enabled = true;
-                f2.buyMR.Enabled = true;
-                f2.buyPP.Enabled = true;
-            }
-
-            if (Engine.level >= 7)
-            {
-                f2.buyWR.Enabled = true;
-                //f2.buyUUHP.Enabled = true;
-                f2.buyLR.Enabled = true;
-                f2.buyCP.Enabled = true;
-            }
-
-            if (Engine.level >= 8)
-            {
-                f2.buyNR.Enabled = true;
-                f2.buySdP.Enabled = true;
-            }
-
-            if (Engine.level >= 9)
-            {
-                f2.buyElR.Enabled = true;
-            }
-
-            if (Engine.level >= 10)
-            {
-                f2.buySR.Enabled = true;
-                f2.buyRR.Enabled = true;
-            }
-
-            f2.screenUpdate = this;
+            Shop shop = new Shop(this.hero);
 
             //f2.UpdateScreenInterface = this;
             //f2.updateNormalPotion = this;
             //f2.updatePotion = this;
             //f2.updateSuperPotion = this;
             //f2.updateUltraPotion = this;
-            f2.ShowDialog();
+            shop.ShowDialog();
 
             this.UpdateUI();
         }
@@ -847,8 +780,10 @@ namespace ClickNFight
 
         private void HealHero(string potionName)
         {
-            Consumable consumable = this.hero.Inventory.Consumables
-                .First(c => c.Name == potionName);
+            // TODO
+            Consumable consumable = null;
+            //Consumable consumable = this.hero.Inventory.test_items_new.Keys
+            //    .First(c => c.Name == potionName);
 
             this.hero.Health += consumable.HealAmount;
             this.maxHealthLabel.Visible = false;
@@ -862,7 +797,8 @@ namespace ClickNFight
                 this.healthBar.Value = this.hero.MaxHealth;
             }
 
-            this.hero.Inventory.Consumables.Remove(consumable);
+            // TODO
+            //this.hero.Inventory.Consumables.Remove(consumable);
 
             SoundPlayer player = new SoundPlayer(Properties.Resources.bottle);
             player.Play();
@@ -1010,7 +946,9 @@ namespace ClickNFight
             {
                 // TODO: test
                 sb.AppendLine($"- {item.Name}");
-                this.hero.Inventory.UnlockedItems.Add(item);
+
+                // TODO: method
+                //this.hero.Inventory.UnlockedItems.Add(item);
                 //if (!this.hero.UnlockedItems.ContainsKey(item.Name))
                 //{
                 //    this.hero.UnlockedItems.Add(item.Name, item);
@@ -1109,24 +1047,24 @@ namespace ClickNFight
 
         private void UpdateUI()
         {
-            this.heroHealthPointsLabel.Text = $"HitPoints: {this.hero.Health} / {this.hero.MaxHealth}";
-            this.healthBar.Value = this.hero.Health;
-            this.defenceLabel.Text = $"Defence: {this.hero.Defence} (Decreases Damage By {this.hero.DefenceReduction})";
-            this.CPS.Text = $"Clicks Per Second: {this.hero.Cps}";
-            this.levelLabel.Text = $"Level: {this.hero.Level} / 10"; // TODO: for now
-            this.xpTrackerLabel.Text = $"XP: {this.hero.CurrentXp} / {this.hero.TotalXp}";
-            this.clickerencyLabel.Text = $"Clickerency: {this.hero.Clickerency}";
-            this.monstersSlainLabel.Text = $"Monsters Slain: {this.hero.MonstersSlain}";
+            //this.heroHealthPointsLabel.Text = $"HitPoints: {this.hero.Health} / {this.hero.MaxHealth}";
+            //this.healthBar.Value = this.hero.Health;
+            //this.defenceLabel.Text = $"Defence: {this.hero.Defence} (Decreases Damage By {this.hero.DefenceReduction})";
+            //this.CPS.Text = $"Clicks Per Second: {this.hero.Cps}";
+            //this.levelLabel.Text = $"Level: {this.hero.Level} / 10"; // TODO: for now
+            //this.xpTrackerLabel.Text = $"XP: {this.hero.CurrentXp} / {this.hero.TotalXp}";
+            //this.clickerencyLabel.Text = $"Clickerency: {this.hero.Clickerency}";
+            //this.monstersSlainLabel.Text = $"Monsters Slain: {this.hero.MonstersSlain}";
 
-            this.maxHealthLabel.Visible = false;
+            //this.maxHealthLabel.Visible = false;
 
-            this.potionMenu.Items.Clear();
-            foreach (Consumable consumable in this.hero.Inventory.Consumables)
-            {
-                this.potionMenu.Items.Add($"{consumable.Name} {consumable.HealAmount}");
-            }
+            //this.potionMenu.Items.Clear();
+            //foreach (Consumable consumable in this.hero.Inventory.Consumables.Keys)
+            //{
+            //    this.potionMenu.Items.Add($"{consumable.Name} {consumable.HealAmount}");
+            //}
 
-            this.potionMenu.Text = "Select Potion";
+            //this.potionMenu.Text = "Select Potion";
         }
 
         private void FightButton_Click(object sender, EventArgs e)
@@ -1190,10 +1128,10 @@ namespace ClickNFight
                 = $"You got {this.monster.ClickerencyDrop} {multipleClickerencyEarned} from that monster";
 
             double xpMultiplier = 1;
-            foreach (Weapon weapon in this.hero.Inventory.Weapons)
-            {
-                xpMultiplier += weapon.DamageMultiplier;
-            }
+            //foreach (Weapon weapon in this.hero.Inventory.Weapons)
+            //{
+            //    xpMultiplier += weapon.DamageMultiplier;
+            //}
 
             //Engine.ironSwordAdd = Engine.ironSword * 2;
             //Engine.diamondSwordAdd = Engine.diamondSword * 4;

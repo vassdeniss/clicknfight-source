@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Net.Http.Headers;
+using System.Linq;
 
 using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
@@ -9,90 +9,54 @@ namespace ClickNFight
 {
     public class HeroInventory
     {
+        private IDictionary<Item, int> inventory;
+
         public HeroInventory()
         {
-            this.UnlockedItems = new HashSet<Item>
+            this.inventory = new Dictionary<Item, int>()
             {
-                new Potion(),
-                new UpgradedHealthPotion(),
-                new SuperHealthPotion(),
-                new UltraHealthPotion(),
-                new WoodenSword(),
-                new StoneSword(),
-                new IronSword(),
-            };
-            this.Consumables = new List<Consumable>
-            {
-                new Potion(),
-                new UpgradedHealthPotion(),
-                new SuperHealthPotion(),
-                new UltraHealthPotion(),
-            };
-            this.Weapons = new List<Weapon>
-            {
-                new WoodenSword(),
-                new StoneSword(),
-                new IronSword(),
-            };
-            this.ConsumablesTest = new Dictionary<Consumable, int>();
-            this.test_items_new = new Dictionary<Item, int>()
-            {
-                {
-                    new Potion(), 0
-                },
-                {
-                    new WoodenSword(), 0
-                }
+                { new Potion(), 5 },
+                { new UpgradedHealthPotion(), 0 },
+                { new SuperHealthPotion(), 0 },
+                { new UltraHealthPotion(), 1 },
+                { new WoodenSword(), 5 },
+                { new StoneSword(), 0 },
+                { new IronSword(), 0 },
             };
         }
+        
+        public ICollection<Item> Items => this.inventory.Keys.ToList();
 
-        public HashSet<Item> UnlockedItems { get; }
+        public IDictionary<Consumable, int> Consumables
+            => this.inventory
+                .Where((kv) => kv.Key is Consumable && kv.Value > 0)
+                .ToDictionary((kv) => (Consumable)kv.Key, kv => kv.Value);
 
-        public IDictionary<Item, int> test_items_new { get; }
-
-        public IDictionary<Consumable, int> ConsumablesTest { get; }
-
-        public ICollection<Consumable> Consumables { get; }
-
-        public ICollection<Weapon> Weapons { get; }
+        public IDictionary<Weapon, int> Weapons
+            => this.inventory
+                .Where((kv) => kv.Key is Weapon && kv.Value > 0)
+                .ToDictionary((kv) => (Weapon)kv.Key, kv => kv.Value);
 
         public void Add(Item item)
         {
-            this.test_items_new[item]++;
-
-            if (item is Consumable consumable)
-            {
-                if (!this.ConsumablesTest.ContainsKey(consumable))
-                {
-                    this.ConsumablesTest.Add(consumable, 0);
-                }
-
-                this.ConsumablesTest[consumable]++;
-
-                this.Consumables.Add(consumable);
-            }
-            else if (item is Weapon weapon)
-            {
-                this.Weapons.Add(weapon);
-            }
+            this.inventory[item]++;
         }
 
         public void Remove(Item item)
         {
-            if (item is Consumable consumable)
-            {
-                this.Consumables.Remove(consumable);
-            }
-            else if (item is Weapon weapon)
-            {
-                this.Weapons.Remove(weapon);
-            }
+            this.inventory[item]--;
         }
 
         public bool HasCapacity(Item item)
         {
-            return this.test_items_new[item] == -1 
-                || this.test_items_new[item] < item.Limit;
+            return item.Limit == -1 
+                || this.inventory[item] < item.Limit;
         }
+
+        //public T GetItem<T>(string name)
+        //    where T : class
+        //{
+        //    return this.inventory.Keys.First((x) => x.Name == name) as T;
+        //}
     }
 }

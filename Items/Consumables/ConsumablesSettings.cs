@@ -5,7 +5,7 @@
         public const string PotionName = "Health Potion";
         public const int PotionHealAmount = 10;
         public const int PotionBuyPrice = 15;
-        public const int PotionLimit = 3;
+        public const int PotionLimit = -1;
 
         public const string UpgradedHealthPotionName = "Upgraded Health Potion";
         public const int UpgradedHealthPotionHealAmount = 25;

@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop));
-            this.buyWoodenSword = new System.Windows.Forms.Button();
-            this.buyStoneSword = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.buyItemButton = new System.Windows.Forms.Button();
-            this.buyIronSword = new System.Windows.Forms.Button();
             this.buyFR = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
             this.buyAR = new System.Windows.Forms.Button();
@@ -46,7 +43,6 @@
             this.buyElR = new System.Windows.Forms.Button();
             this.buySR = new System.Windows.Forms.Button();
             this.buyRR = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -82,32 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.orePickStar)).BeginInit();
             this.SuspendLayout();
             // 
-            // buyWoodenSword
-            // 
-            this.buyWoodenSword.Enabled = false;
-            this.buyWoodenSword.Location = new System.Drawing.Point(650, 71);
-            this.buyWoodenSword.Margin = new System.Windows.Forms.Padding(4);
-            this.buyWoodenSword.Name = "buyWoodenSword";
-            this.buyWoodenSword.Size = new System.Drawing.Size(131, 27);
-            this.buyWoodenSword.TabIndex = 0;
-            this.buyWoodenSword.TabStop = false;
-            this.buyWoodenSword.Text = "Buy!";
-            this.buyWoodenSword.UseVisualStyleBackColor = true;
-            this.buyWoodenSword.Click += new System.EventHandler(this.allButtons_Click);
-            // 
-            // buyStoneSword
-            // 
-            this.buyStoneSword.Enabled = false;
-            this.buyStoneSword.Location = new System.Drawing.Point(650, 190);
-            this.buyStoneSword.Margin = new System.Windows.Forms.Padding(4);
-            this.buyStoneSword.Name = "buyStoneSword";
-            this.buyStoneSword.Size = new System.Drawing.Size(131, 27);
-            this.buyStoneSword.TabIndex = 4;
-            this.buyStoneSword.TabStop = false;
-            this.buyStoneSword.Text = "Buy!";
-            this.buyStoneSword.UseVisualStyleBackColor = true;
-            this.buyStoneSword.Click += new System.EventHandler(this.allButtons_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -130,19 +100,6 @@
             this.buyItemButton.Text = "Buy!";
             this.buyItemButton.UseVisualStyleBackColor = true;
             this.buyItemButton.Click += new System.EventHandler(this.BuyItem_click);
-            // 
-            // buyIronSword
-            // 
-            this.buyIronSword.Enabled = false;
-            this.buyIronSword.Location = new System.Drawing.Point(650, 310);
-            this.buyIronSword.Margin = new System.Windows.Forms.Padding(4);
-            this.buyIronSword.Name = "buyIronSword";
-            this.buyIronSword.Size = new System.Drawing.Size(131, 27);
-            this.buyIronSword.TabIndex = 23;
-            this.buyIronSword.TabStop = false;
-            this.buyIronSword.Text = "Buy!";
-            this.buyIronSword.UseVisualStyleBackColor = true;
-            this.buyIronSword.Click += new System.EventHandler(this.allButtons_Click);
             // 
             // buyFR
             // 
@@ -299,19 +256,6 @@
             this.buyRR.Text = "Buy!";
             this.buyRR.UseVisualStyleBackColor = true;
             this.buyRR.Click += new System.EventHandler(this.allButtons_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(13, 11);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(351, 488);
-            this.textBox1.TabIndex = 102;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // textBox2
             // 
@@ -666,7 +610,6 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buyRR);
             this.Controls.Add(this.buySR);
             this.Controls.Add(this.buyElR);
@@ -679,11 +622,8 @@
             this.Controls.Add(this.buyFR);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.buyAR);
-            this.Controls.Add(this.buyIronSword);
             this.Controls.Add(this.buyItemButton);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.buyStoneSword);
-            this.Controls.Add(this.buyWoodenSword);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Shop";
             this.Text = "       ";
@@ -699,9 +639,6 @@
 
         #endregion
         private System.Windows.Forms.Label label6;
-        public System.Windows.Forms.Button buyWoodenSword;
-        public System.Windows.Forms.Button buyStoneSword;
-        public System.Windows.Forms.Button buyIronSword;
         private System.Windows.Forms.Label label27;
         public System.Windows.Forms.Button buyDS;
         public System.Windows.Forms.Button buyItemButton;
@@ -715,7 +652,6 @@
         public System.Windows.Forms.Button buyElR;
         public System.Windows.Forms.Button buySR;
         public System.Windows.Forms.Button buyRR;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
