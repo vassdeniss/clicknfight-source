@@ -9,19 +9,20 @@ namespace ClickNFight
 {
     public class HeroInventory
     {
-        private IDictionary<Item, int> inventory;
+        private readonly IDictionary<Item, int> inventory;
 
         public HeroInventory()
         {
             this.inventory = new Dictionary<Item, int>()
             {
-                { new Potion(), 5 },
-                { new UpgradedHealthPotion(), 0 },
-                { new SuperHealthPotion(), 0 },
-                { new UltraHealthPotion(), 1 },
+                { new Potion(), 1 },
+                { new UpgradedHealthPotion(), 2 },
+                { new SuperHealthPotion(), 3 },
+                { new UltraHealthPotion(), 4 },
                 { new WoodenSword(), 5 },
                 { new StoneSword(), 0 },
                 { new IronSword(), 0 },
+                { new DiamondSword(), 1 },
             };
         }
         
@@ -36,6 +37,11 @@ namespace ClickNFight
             => this.inventory
                 .Where((kv) => kv.Key is Weapon && kv.Value > 0)
                 .ToDictionary((kv) => (Weapon)kv.Key, kv => kv.Value);
+
+        public void UnlockItem(Item item)
+        {
+            this.inventory.Add(item, 0);
+        }
 
         public void Add(Item item)
         {

@@ -46,7 +46,7 @@ namespace ClickNFight
             this.monster = new Monster();
 
             this.healthBar.Maximum = this.hero.MaxHealth;
-            this.UpdateUI();
+            this.UpdateUi();
 
             this.Icon = Properties.Resources.icon;
             this.KeyPreview = true;
@@ -365,16 +365,6 @@ namespace ClickNFight
         //    heroHealthPointsLabel.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
         //}
 
-
-        // Updates only the ultra health potion
-
-        //void IUiRefreshers.UpdateScreenUltraPotion()
-        //{
-        //    potionMenu.Items.Add("Ultra Health Potion");
-
-        //    clickerencyLabel.Text = "Clickerency: " + Engine.count.ToString();
-        //}
-
         //void IUiRefreshers.UpdateScreenButton()
         //{
         //    newGameButton.Visible = true;
@@ -676,7 +666,7 @@ namespace ClickNFight
             //f2.updateUltraPotion = this;
             shop.ShowDialog();
 
-            this.UpdateUI();
+            this.UpdateUi();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -778,137 +768,50 @@ namespace ClickNFight
             camp.ShowDialog();
         }
 
-        private void HealHero(string potionName)
+        private void HealHero(Consumable potion)
         {
-            // TODO
-            Consumable consumable = null;
-            //Consumable consumable = this.hero.Inventory.test_items_new.Keys
-            //    .First(c => c.Name == potionName);
-
-            this.hero.Health += consumable.HealAmount;
-            this.maxHealthLabel.Visible = false;
+            this.hero.Health += potion.HealAmount;
 
             try
             {
-                this.healthBar.Value += consumable.HealAmount;
+                this.healthBar.Value += potion.HealAmount;
             }
             catch (Exception)
             {
                 this.healthBar.Value = this.hero.MaxHealth;
             }
 
-            // TODO
-            //this.hero.Inventory.Consumables.Remove(consumable);
+            this.hero.Inventory.Remove(potion);
 
             SoundPlayer player = new SoundPlayer(Properties.Resources.bottle);
             player.Play();
 
-            this.UpdateUI();
+            this.UpdateUi();
         }
 
         private void HealButton_Click(object sender, EventArgs e)
         {
-            if (this.potionMenu.SelectedIndex < 0)
+            if (this.potionMenu.SelectedIndex is -1)
             {
-                this.maxHealthLabel.Visible = true;
-                this.maxHealthLabel.Text = "You haven't selected a potion to use";
+                MessageBox.Show(
+                    "You haven't selected a potion to use",
+                    "Warning!",
+                    MessageBoxButtons.OK);
                 return;
             }
 
-            string[] potionNameSplit = this.potionMenu.SelectedItem
-                .ToString()
-                .Split();
-
-            string potionName = string.Join(" ", potionNameSplit.Take(potionNameSplit.Length - 1).ToArray());
-
             if (this.hero.Health == this.hero.MaxHealth)
             {
-                maxHealthLabel.Visible = true;
-                maxHealthLabel.Text = "You have maximum health";
+                MessageBox.Show(
+                    "You have maximum health",
+                    "Warning!",
+                    MessageBoxButtons.OK);
+
+                return;
             }
-            else if (potionName == ConsumablesSettings.PotionName)
-            {
-                this.HealHero(potionName);
-            }
-            else if (potionMenu.SelectedItem.ToString() == "Upgraded Health Potion")
-            {
-                SoundPlayer heal = new SoundPlayer(Properties.Resources.bottle);
-                heal.Play();
-
-                Engine.upgradedPotion = Engine.upgradedPotion - 1;
-                maxHealthLabel.Visible = false;
-                Engine.health = Engine.health + 25;
-
-                try
-                {
-                    healthBar.Value = healthBar.Value + 25;
-                }
-                catch (Exception e2)
-                {
-                    healthBar.Value = Engine.totalHealth;
-                }
-
-
-                if (Engine.health > Engine.totalHealth)
-                {
-                    Engine.health = Engine.totalHealth;
-                }
-
-                heroHealthPointsLabel.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
-                potionMenu.Items.Remove(potionMenu.SelectedItem);
-            }
-            else if (potionMenu.SelectedItem.ToString() == "Super Health Potion")
-            {
-                SoundPlayer heal = new SoundPlayer(Properties.Resources.bottle);
-                heal.Play();
-
-                Engine.superPotion = Engine.superPotion - 1;
-                maxHealthLabel.Visible = false;
-                Engine.health = Engine.health + 55;
-
-                try
-                {
-                    healthBar.Value = healthBar.Value + 55;
-                }
-                catch (Exception e10)
-                {
-                    healthBar.Value = Engine.totalHealth;
-                }
-
-                if (Engine.health > Engine.totalHealth)
-                {
-                    Engine.health = Engine.totalHealth;
-                }
-
-                heroHealthPointsLabel.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
-                potionMenu.Items.Remove(potionMenu.SelectedItem);
-            }
-            else if (potionMenu.SelectedItem.ToString() == "Ultra Health Potion")
-            {
-                SoundPlayer heal = new SoundPlayer(Properties.Resources.bottle);
-                heal.Play();
-
-                Engine.ultraPotion = Engine.ultraPotion - 1;
-                maxHealthLabel.Visible = false;
-                Engine.health = Engine.health + 115;
-
-                try
-                {
-                    healthBar.Value = healthBar.Value + 115;
-                }
-                catch (Exception e10)
-                {
-                    healthBar.Value = Engine.totalHealth;
-                }
-
-                if (Engine.health > Engine.totalHealth)
-                {
-                    Engine.health = Engine.totalHealth;
-                }
-
-                heroHealthPointsLabel.Text = "HItPoints: " + Engine.health + " / " + Engine.totalHealth;
-                potionMenu.Items.Remove(potionMenu.SelectedItem);
-            }
+            
+            Consumable potion = this.potionMenu.SelectedItem as Consumable;
+            this.HealHero(potion);
         }
 
         class Monster
@@ -944,15 +847,9 @@ namespace ClickNFight
             sb.AppendLine();
             foreach (Item item in items)
             {
-                // TODO: test
                 sb.AppendLine($"- {item.Name}");
 
-                // TODO: method
-                //this.hero.Inventory.UnlockedItems.Add(item);
-                //if (!this.hero.UnlockedItems.ContainsKey(item.Name))
-                //{
-                //    this.hero.UnlockedItems.Add(item.Name, item);
-                //}
+                this.hero.Inventory.UnlockItem(item);
             }
             sb.AppendLine();
             sb.AppendLine($"+ {hp} Total HP");
@@ -988,11 +885,6 @@ namespace ClickNFight
                         this.UnlockItems(this.hero.Level, 10, 1, new WoodenSword()),
                         "Congratulations!",
                         MessageBoxButtons.OK);
-                    //this.hero.UnlockedItems.Add(new WoodenSword());
-                    //MessageBox.Show(
-                    //    "You have leveled up! You are now level 2!\nYou have unlocked:\n\n- Wooden Sword\n\n+ 10 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
-                    //    "Congratulations!",
-                    //    MessageBoxButtons.OK);
                     break;
                 case 3:
                     //this.hero.UnlockedItems.Add(new StoneSword());
@@ -1045,26 +937,25 @@ namespace ClickNFight
             }
         }
 
-        private void UpdateUI()
+        private void UpdateUi()
         {
-            //this.heroHealthPointsLabel.Text = $"HitPoints: {this.hero.Health} / {this.hero.MaxHealth}";
-            //this.healthBar.Value = this.hero.Health;
-            //this.defenceLabel.Text = $"Defence: {this.hero.Defence} (Decreases Damage By {this.hero.DefenceReduction})";
-            //this.CPS.Text = $"Clicks Per Second: {this.hero.Cps}";
-            //this.levelLabel.Text = $"Level: {this.hero.Level} / 10"; // TODO: for now
-            //this.xpTrackerLabel.Text = $"XP: {this.hero.CurrentXp} / {this.hero.TotalXp}";
-            //this.clickerencyLabel.Text = $"Clickerency: {this.hero.Clickerency}";
-            //this.monstersSlainLabel.Text = $"Monsters Slain: {this.hero.MonstersSlain}";
+            this.heroHealthPointsLabel.Text = $"HitPoints: {this.hero.Health} / {this.hero.MaxHealth}";
+            this.healthBar.Value = this.hero.Health;
+            this.defenceLabel.Text = $"Defence: {this.hero.Defence} (Decreases Damage By {this.hero.DefenceReduction})";
+            this.CPS.Text = $"Clicks Per Second: {this.hero.Cps}";
+            this.levelLabel.Text = $"Level: {this.hero.Level} / 10"; // TODO: for now
+            this.xpTrackerLabel.Text = $"XP: {this.hero.CurrentXp} / {this.hero.TotalXp}";
+            this.clickerencyLabel.Text = $"Clickerency: {this.hero.Clickerency}";
+            this.monstersSlainLabel.Text = $"Monsters Slain: {this.hero.MonstersSlain}";
 
-            //this.maxHealthLabel.Visible = false;
+            this.potionMenu.Items.Clear();
+            foreach (Consumable consumable in this.hero.Inventory.Consumables.Keys)
+            {
+                this.potionMenu.Items.Add(consumable);
+            }
 
-            //this.potionMenu.Items.Clear();
-            //foreach (Consumable consumable in this.hero.Inventory.Consumables.Keys)
-            //{
-            //    this.potionMenu.Items.Add($"{consumable.Name} {consumable.HealAmount}");
-            //}
-
-            //this.potionMenu.Text = "Select Potion";
+            this.potionMenu.Text = "Select Potion";
+            this.potionMenu.DisplayMember = "ShortToString";
         }
 
         private void FightButton_Click(object sender, EventArgs e)
@@ -1113,7 +1004,7 @@ namespace ClickNFight
             {
                 this.hero.Health = 0;
 
-                this.UpdateUI();
+                this.UpdateUi();
 
                 Death gameOver = new Death();
                 gameOver.ShowDialog();
@@ -1128,16 +1019,11 @@ namespace ClickNFight
                 = $"You got {this.monster.ClickerencyDrop} {multipleClickerencyEarned} from that monster";
 
             double xpMultiplier = 1;
-            //foreach (Weapon weapon in this.hero.Inventory.Weapons)
-            //{
-            //    xpMultiplier += weapon.DamageMultiplier;
-            //}
+            foreach (KeyValuePair<Weapon, int> kvp in this.hero.Inventory.Weapons)
+            {
+                xpMultiplier += kvp.Key.DamageMultiplier * kvp.Value;
+            }
 
-            //Engine.ironSwordAdd = Engine.ironSword * 2;
-            //Engine.diamondSwordAdd = Engine.diamondSword * 4;
-            //Engine.count2 = Engine.count2 + Engine.stoneSwordAdd;
-            //Engine.count2 = Engine.count2 + Engine.ironSwordAdd;
-            //Engine.count2 = Engine.count2 + Engine.diamondSwordAdd;
             //Engine.count2 = Engine.count2 + Engine.excaliburAdd;
             //Engine.count2 = Engine.count2 + Engine.fireboltAdd;
             //Engine.count2 = Engine.count2 + Engine.waterwaveAdd;
@@ -1329,7 +1215,7 @@ namespace ClickNFight
                 this.LevelUpHero();
             }
 
-            this.UpdateUI();
+            this.UpdateUi();
         }
 
         // Refactored

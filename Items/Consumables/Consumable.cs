@@ -19,6 +19,8 @@ namespace ClickNFight.Items.Consumables
             return sb.ToString();
         }
 
+        public string ShortToString => $"{this.Name} {this.HealAmount}HP";
+
         public override string ToString()
         {
             return $"{this.Name}{Environment.NewLine}Heal Amount: {this.HealAmount}";

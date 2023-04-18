@@ -16,5 +16,10 @@
         public const int IronSwordLimit = 5;
         public const double IronSwordMultiplier = 2;
         public const int IronSwordBuyPrice = 350;
+
+        public const string DiamondSwordName = "Diamond Sword";
+        public const int DiamondSwordLimit = 3;
+        public const double DiamondSwordMultiplier = 4;
+        public const int DiamondSwordBuyPrice = 500;
     }
 }

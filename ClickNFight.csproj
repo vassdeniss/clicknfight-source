@@ -118,6 +118,7 @@
     <Compile Include="Items\Consumables\UpgradedHealthPotion.cs" />
     <Compile Include="Items\Consumables\ConsumablesSettings.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Weapons\DiamondSword.cs" />
     <Compile Include="Items\Weapons\IronSword.cs" />
     <Compile Include="Items\Weapons\StoneSword.cs" />
     <Compile Include="Items\Weapons\WeaponsSettings.cs" />

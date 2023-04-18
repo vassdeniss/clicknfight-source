@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Management.Instrumentation;
 using System.Media;
 using System.Windows.Forms;
 
 using ClickNFight.Items;
-using ClickNFight.Items.Weapons;
 
 namespace ClickNFight
 {
@@ -50,26 +48,6 @@ namespace ClickNFight
 
         private void allButtons_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-
-            if (button.Equals(buyDS))
-            {
-                if (Engine.diamondSword >= 3)
-                {
-                    var limit = MessageBox.Show("You have reached the buy limit", "Warning!", MessageBoxButtons.OK);
-                }
-                else if (Engine.count >= 500)
-                {
-                    SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-                    coin.Play();
-                    Engine.diamondSword++;
-                    Engine.count = Engine.count - 500;
-                }
-                else
-                {
-                    var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-                }
-            }
             //else if (button.Equals(buyAR))
             //{
             //    if (Engine.count >= 30)
