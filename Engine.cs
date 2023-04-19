@@ -37,10 +37,6 @@
         public static double cobaltSwordAdd;
         public static double starSwordAdd;
 
-        public static int upgradedPotion;
-        public static int superPotion;
-        public static int ultraPotion;
-
         public static int airRunes;
         public static int fireRunes;
         public static int earthRunes;

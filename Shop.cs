@@ -489,7 +489,7 @@ namespace ClickNFight
             this.itemDescriptionTextBox.Text = item.ShopInformation();
         }
 
-        private void BuyItem_click(object sender, EventArgs e)
+        private void BuyItem_Click(object sender, EventArgs e)
         {
             if (this.itemPickerComboBox.SelectedIndex is -1)
             {
@@ -500,7 +500,11 @@ namespace ClickNFight
                 return;
             }
 
-            Item item = this.itemPickerComboBox.SelectedItem as Item;
+            BuyableItem item = this.itemPickerComboBox.SelectedItem as BuyableItem;
+            if (item is null)
+            {
+                throw new InvalidOperationException("Item is not buyable!");
+            }
 
             if (!this.hero.Inventory.HasCapacity(item))
             {
@@ -510,6 +514,20 @@ namespace ClickNFight
                 return;
             }
 
+            if (!item.CanAfford(hero, out string failMessage))
+            {
+                MessageBox.Show(
+                    failMessage,
+                    "Warning!",
+                    MessageBoxButtons.OK);
+                return;
+            }
+
+            this.soundPlayer.Play();
+            item.BuyItem(this.hero);
+
+            return;
+
             if (this.hero.Clickerency < item.BuyPrice)
             {
                 MessageBox.Show("You don't have enough clicks to buy",
@@ -518,13 +536,14 @@ namespace ClickNFight
                 return;
             }
 
+
             this.BuyItem(item);
         }
 
-        private void BuyItem(Item item)
+        private void BuyItem(BuyableItem item)
         {
             this.soundPlayer.Play();
-            this.hero.Clickerency -= item.BuyPrice;
+            //this.hero.Clickerency -= item.BuyPrice;
             this.hero.Inventory.Add(item);
         }
     }

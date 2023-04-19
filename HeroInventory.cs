@@ -3,6 +3,7 @@ using System.Linq;
 
 using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
+using ClickNFight.Items.Ores;
 using ClickNFight.Items.Pickaxes;
 using ClickNFight.Items.Weapons;
 
@@ -16,7 +17,7 @@ namespace ClickNFight
         {
             this.inventory = new Dictionary<Item, int>()
             {
-                { new Potion(), 1 },
+                { new HealthPotion(), 1 },
                 { new UpgradedHealthPotion(), 2 },
                 { new SuperHealthPotion(), 3 },
                 { new UltraHealthPotion(), 4 },
@@ -25,6 +26,12 @@ namespace ClickNFight
                 { new IronSword(), 0 },
                 { new DiamondSword(), 1 },
                 { new CopperPickaxe(), 1 },
+                { new SilverPickaxe(), 1 },
+                { new Ore(OreType.Silver), 21 },
+                { new Ore(OreType.Gold), 0 },
+                { new Ore(OreType.Platinum), 0 },
+                { new Ore(OreType.Cobalt), 0 },
+                { new Ore(OreType.Star), 0 },
             };
         }
         
@@ -46,19 +53,34 @@ namespace ClickNFight
                 .Select((kv) => (Pickaxe)kv.Key)
                 .ToList();
 
+        public IDictionary<Ore, int> Ores
+            => this.inventory
+                .Where((kv) => kv.Key is Ore)
+                .ToDictionary((kv) => (Ore)kv.Key, (kv) => kv.Value);
+
         public void UnlockItem(Item item, int count = 0)
         {
             this.inventory.Add(item, count);
         }
 
-        public void Add(Item item)
+        public void Add(Item item, int count = 1)
         {
-            this.inventory[item]++;
+            this.inventory[item] += count;
         }
 
-        public void Remove(Item item)
+        public void Remove(Item item, int count = 1)
         {
-            this.inventory[item]--;
+            this.inventory[item] -= count;
+            if (this.inventory[item] < 0)
+            {
+                this.inventory[item] = 0;
+            }
+        }
+
+        public T GetItem<T>()
+            where T : class
+        {
+            return this.inventory.Keys.FirstOrDefault((item) => item is T) as T;
         }
 
         public bool HasCapacity(Item item)

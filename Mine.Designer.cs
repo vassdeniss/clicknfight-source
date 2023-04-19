@@ -28,30 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
+            this.mineButton = new System.Windows.Forms.Button();
             this.pickaxeComboBox = new System.Windows.Forms.ComboBox();
-            this.cbOre = new System.Windows.Forms.ComboBox();
-            this.orePicker = new System.Windows.Forms.Button();
-            this.lbOre = new System.Windows.Forms.Label();
-            this.equippedPickLabel = new System.Windows.Forms.Label();
-            this.txOre = new System.Windows.Forms.Label();
-            this.titalSilver = new System.Windows.Forms.Label();
-            this.totalGold = new System.Windows.Forms.Label();
-            this.platinumTotal = new System.Windows.Forms.Label();
-            this.cobaltTotal = new System.Windows.Forms.Label();
-            this.starTotal = new System.Windows.Forms.Label();
+            this.oreComboBox = new System.Windows.Forms.ComboBox();
+            this.pickLabel = new System.Windows.Forms.Label();
+            this.oreLabel = new System.Windows.Forms.Label();
+            this.oreStatsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button3
+            // mineButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(243, 152);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(278, 116);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Mine!";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.mineButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mineButton.Location = new System.Drawing.Point(243, 152);
+            this.mineButton.Name = "mineButton";
+            this.mineButton.Size = new System.Drawing.Size(278, 116);
+            this.mineButton.TabIndex = 2;
+            this.mineButton.Text = "Mine!";
+            this.mineButton.UseVisualStyleBackColor = true;
+            this.mineButton.Click += new System.EventHandler(this.MineButton_Click);
             // 
             // pickaxeComboBox
             // 
@@ -62,124 +56,58 @@
             this.pickaxeComboBox.TabIndex = 3;
             this.pickaxeComboBox.SelectedIndexChanged += new System.EventHandler(this.PickaxeComboBox_SelectedIndexChanged);
             // 
-            // cbOre
+            // oreComboBox
             // 
-            this.cbOre.FormattingEnabled = true;
-            this.cbOre.Location = new System.Drawing.Point(12, 210);
-            this.cbOre.Name = "cbOre";
-            this.cbOre.Size = new System.Drawing.Size(225, 21);
-            this.cbOre.TabIndex = 4;
+            this.oreComboBox.FormattingEnabled = true;
+            this.oreComboBox.Location = new System.Drawing.Point(12, 179);
+            this.oreComboBox.Name = "oreComboBox";
+            this.oreComboBox.Size = new System.Drawing.Size(225, 21);
+            this.oreComboBox.TabIndex = 4;
+            this.oreComboBox.SelectedIndexChanged += new System.EventHandler(this.OreComboBox_SelectedIndexChanged);
             // 
-            // orePicker
+            // pickLabel
             // 
-            this.orePicker.Location = new System.Drawing.Point(58, 234);
-            this.orePicker.Name = "orePicker";
-            this.orePicker.Size = new System.Drawing.Size(122, 25);
-            this.orePicker.TabIndex = 6;
-            this.orePicker.Text = "Pick!";
-            this.orePicker.UseVisualStyleBackColor = true;
-            this.orePicker.Click += new System.EventHandler(this.orePicker_Click);
+            this.pickLabel.AutoSize = true;
+            this.pickLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pickLabel.Location = new System.Drawing.Point(7, 9);
+            this.pickLabel.Name = "pickLabel";
+            this.pickLabel.Size = new System.Drawing.Size(180, 25);
+            this.pickLabel.TabIndex = 9;
+            this.pickLabel.Text = "Pickaxe Equipped: \r\n";
             // 
-            // lbOre
+            // oreLabel
             // 
-            this.lbOre.AutoSize = true;
-            this.lbOre.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOre.Location = new System.Drawing.Point(306, 102);
-            this.lbOre.Name = "lbOre";
-            this.lbOre.Size = new System.Drawing.Size(0, 31);
-            this.lbOre.TabIndex = 7;
-            this.lbOre.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.oreLabel.AutoSize = true;
+            this.oreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oreLabel.Location = new System.Drawing.Point(7, 34);
+            this.oreLabel.Name = "oreLabel";
+            this.oreLabel.Size = new System.Drawing.Size(115, 25);
+            this.oreLabel.TabIndex = 10;
+            this.oreLabel.Text = "Ore Picked:\r\n";
             // 
-            // equippedPickLabel
+            // oreStatsLabel
             // 
-            this.equippedPickLabel.AutoSize = true;
-            this.equippedPickLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equippedPickLabel.Location = new System.Drawing.Point(7, 9);
-            this.equippedPickLabel.Name = "equippedPickLabel";
-            this.equippedPickLabel.Size = new System.Drawing.Size(180, 25);
-            this.equippedPickLabel.TabIndex = 9;
-            this.equippedPickLabel.Text = "Pickaxe Equipped: \r\n";
-            // 
-            // txOre
-            // 
-            this.txOre.AutoSize = true;
-            this.txOre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txOre.Location = new System.Drawing.Point(7, 34);
-            this.txOre.Name = "txOre";
-            this.txOre.Size = new System.Drawing.Size(115, 25);
-            this.txOre.TabIndex = 10;
-            this.txOre.Text = "Ore Picked:\r\n";
-            // 
-            // titalSilver
-            // 
-            this.titalSilver.AutoSize = true;
-            this.titalSilver.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titalSilver.Location = new System.Drawing.Point(7, 298);
-            this.titalSilver.Name = "titalSilver";
-            this.titalSilver.Size = new System.Drawing.Size(164, 25);
-            this.titalSilver.TabIndex = 11;
-            this.titalSilver.Text = "Silver Ore Mined:";
-            // 
-            // totalGold
-            // 
-            this.totalGold.AutoSize = true;
-            this.totalGold.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalGold.Location = new System.Drawing.Point(7, 323);
-            this.totalGold.Name = "totalGold";
-            this.totalGold.Size = new System.Drawing.Size(156, 25);
-            this.totalGold.TabIndex = 12;
-            this.totalGold.Text = "Gold Ore Mined:";
-            // 
-            // platinumTotal
-            // 
-            this.platinumTotal.AutoSize = true;
-            this.platinumTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.platinumTotal.Location = new System.Drawing.Point(7, 348);
-            this.platinumTotal.Name = "platinumTotal";
-            this.platinumTotal.Size = new System.Drawing.Size(190, 25);
-            this.platinumTotal.TabIndex = 13;
-            this.platinumTotal.Text = "Platinum Ore Mined:";
-            // 
-            // cobaltTotal
-            // 
-            this.cobaltTotal.AutoSize = true;
-            this.cobaltTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cobaltTotal.Location = new System.Drawing.Point(7, 373);
-            this.cobaltTotal.Name = "cobaltTotal";
-            this.cobaltTotal.Size = new System.Drawing.Size(172, 25);
-            this.cobaltTotal.TabIndex = 14;
-            this.cobaltTotal.Text = "Cobalt Ore Mined:";
-            // 
-            // starTotal
-            // 
-            this.starTotal.AutoSize = true;
-            this.starTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.starTotal.Location = new System.Drawing.Point(7, 398);
-            this.starTotal.Name = "starTotal";
-            this.starTotal.Size = new System.Drawing.Size(188, 25);
-            this.starTotal.TabIndex = 15;
-            this.starTotal.Text = "Stardust Ore Mined:";
+            this.oreStatsLabel.AutoSize = true;
+            this.oreStatsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oreStatsLabel.Location = new System.Drawing.Point(7, 298);
+            this.oreStatsLabel.Name = "oreStatsLabel";
+            this.oreStatsLabel.Size = new System.Drawing.Size(164, 25);
+            this.oreStatsLabel.TabIndex = 11;
+            this.oreStatsLabel.Text = "Silver Ore Mined:";
             // 
             // Mine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 434);
-            this.Controls.Add(this.starTotal);
-            this.Controls.Add(this.cobaltTotal);
-            this.Controls.Add(this.platinumTotal);
-            this.Controls.Add(this.totalGold);
-            this.Controls.Add(this.titalSilver);
-            this.Controls.Add(this.txOre);
-            this.Controls.Add(this.equippedPickLabel);
-            this.Controls.Add(this.lbOre);
-            this.Controls.Add(this.orePicker);
-            this.Controls.Add(this.cbOre);
+            this.Controls.Add(this.oreStatsLabel);
+            this.Controls.Add(this.oreLabel);
+            this.Controls.Add(this.pickLabel);
+            this.Controls.Add(this.oreComboBox);
             this.Controls.Add(this.pickaxeComboBox);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.mineButton);
             this.Name = "Mine";
             this.Text = "Mine";
-            this.Load += new System.EventHandler(this.Mine_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,17 +115,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button mineButton;
         private System.Windows.Forms.ComboBox pickaxeComboBox;
-        private System.Windows.Forms.ComboBox cbOre;
-        private System.Windows.Forms.Button orePicker;
-        private System.Windows.Forms.Label lbOre;
-        private System.Windows.Forms.Label equippedPickLabel;
-        private System.Windows.Forms.Label txOre;
-        private System.Windows.Forms.Label titalSilver;
-        private System.Windows.Forms.Label totalGold;
-        private System.Windows.Forms.Label platinumTotal;
-        private System.Windows.Forms.Label cobaltTotal;
-        private System.Windows.Forms.Label starTotal;
+        private System.Windows.Forms.ComboBox oreComboBox;
+        private System.Windows.Forms.Label pickLabel;
+        private System.Windows.Forms.Label oreLabel;
+        private System.Windows.Forms.Label oreStatsLabel;
     }
 }

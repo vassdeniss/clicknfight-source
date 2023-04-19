@@ -3,7 +3,7 @@ using System.Text;
 
 namespace ClickNFight.Items.Weapons
 {
-    public abstract class Weapon : Item
+    public abstract class Weapon : BuyableItem
     {
         public abstract double DamageMultiplier { get; set; }
 

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 using ClickNFight.Items.Consumables;
+using ClickNFight.Items.Ores;
 using ClickNFight.Items.Pickaxes;
 using ClickNFight.Items.Weapons;
 
@@ -31,10 +33,13 @@ namespace ClickNFight
             this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Inventory.Consumables);
             this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Inventory.Weapons);
             this.picksTextBox.Text = this.GenerateText<Pickaxe>("Pickaxes:", this.hero.Inventory.Pickaxes);
+            this.oresTextBox.Text = this.GenerateText<Ore>(
+                "Ingots:",
+                this.hero.Inventory.Ores
+                    .Where((kv) => kv.Value > 0)
+                    .ToDictionary((kv) => kv.Key, (kv) => kv.Value));
 
             this.runesTextBox.Text = "Runes:";
-            this.ores.Text = "Ingots:";
-            //this.picks.Text = "Pickaxes:";
 
             // "Silver Sword" "Total Damage: 1";
             // "Gold Sword" "Total Damage: 2";
@@ -139,12 +144,6 @@ namespace ClickNFight
                 runesTextBox.Text += invSoS;
             }
 
-            if (Engine.silverPick == true)
-            {
-                string invSP = "\r\n" + "Silver Pickaxe" + "\r\n";
-                picksTextBox.Text += invSP;
-            }
-
             if (Engine.goldPick == true)
             {
                 string invSP = "\r\n" + "Gold Pickaxe" + "\r\n";
@@ -167,36 +166,6 @@ namespace ClickNFight
             {
                 string invSP = "\r\n" + "Star Pickaxe" + "\r\n";
                 picksTextBox.Text += invSP;
-            }
-
-            if (Engine.silverOreTake > 0)
-            {
-                string invSO = "\r\n" + "Silver Ingots" + "\r\n" + "Count: " + Engine.silverOreTake + "\r\n";
-                ores.Text += invSO;
-            }
-
-            if (Engine.goldOreTake > 0)
-            {
-                string invGO = "\r\n" + "Gold Ingots" + "\r\n" + "Count: " + Engine.goldOreTake + "\r\n";
-                ores.Text += invGO;
-            }
-
-            if (Engine.platinumOreTake > 0)
-            {
-                string invGO = "\r\n" + "Platinum Ingots" + "\r\n" + "Count: " + Engine.platinumOreTake + "\r\n";
-                ores.Text += invGO;
-            }
-
-            if (Engine.cobaltOreTake > 0)
-            {
-                string invCO = "\r\n" + "Cobalt Ingots" + "\r\n" + "Count: " + Engine.cobaltOreTake + "\r\n";
-                ores.Text += invCO;
-            }
-
-            if (Engine.starOreTake > 0)
-            {
-                string invSO = "\r\n" + "Star Ingots" + "\r\n" + "Count: " + Engine.starOreTake + "\r\n";
-                ores.Text += invSO;
             }
         }
 

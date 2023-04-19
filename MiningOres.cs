@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ClickNFight
@@ -7,25 +8,30 @@ namespace ClickNFight
     {
         public MiningOres()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.ControlBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Icon = Properties.Resources.icon;
         }
 
         private void MiningOres_Load(object sender, EventArgs e)
         {
-            mine.Interval = 1000;
-            mine.Enabled = true;
-            progressBar1.Value = 0;
+            this.mineTimer.Interval = 1000;
+            this.mineTimer.Enabled = true;
+            this.miningBar.Value = 0;
         }
 
-        private void mine_Tick(object sender, EventArgs e)
+        private void MineTimer_Tick(object sender, EventArgs e)
         {
-            if (progressBar1.Value < progressBar1.Maximum)
+            if (this.miningBar.Value < this.miningBar.Maximum)
             {
-                progressBar1.Value++;
+                this.miningBar.Value++;
             }
             else
             {
-                mine.Enabled = false;
+                this.mineTimer.Enabled = false;
                 this.Close();
             }
         }

@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.oreName = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.mine = new System.Windows.Forms.Timer(this.components);
+            this.miningBar = new System.Windows.Forms.ProgressBar();
+            this.mineTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // oreName
@@ -43,27 +43,27 @@
             this.oreName.Size = new System.Drawing.Size(0, 25);
             this.oreName.TabIndex = 24;
             // 
-            // progressBar1
+            // miningBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(30, 37);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(327, 35);
-            this.progressBar1.TabIndex = 25;
+            this.miningBar.Location = new System.Drawing.Point(30, 37);
+            this.miningBar.Name = "miningBar";
+            this.miningBar.Size = new System.Drawing.Size(327, 35);
+            this.miningBar.TabIndex = 25;
             // 
-            // mine
+            // mineTimer
             // 
-            this.mine.Tick += new System.EventHandler(this.mine_Tick);
+            this.mineTimer.Tick += new System.EventHandler(this.MineTimer_Tick);
             // 
             // MiningOres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 90);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.miningBar);
             this.Controls.Add(this.oreName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MiningOres";
-            this.Text = "CampingWood";
+            this.Text = "Mining...";
             this.Load += new System.EventHandler(this.MiningOres_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -73,7 +73,7 @@
         #endregion
 
         public System.Windows.Forms.Label oreName;
-        public System.Windows.Forms.Timer mine;
-        public System.Windows.Forms.ProgressBar progressBar1;
+        public System.Windows.Forms.Timer mineTimer;
+        public System.Windows.Forms.ProgressBar miningBar;
     }
 }

@@ -15,7 +15,7 @@
         public sealed override int HealAmount { get; set; }
 
         public sealed override int BuyPrice { get; set; }
-    
+
         public sealed override int Limit { get; set; }
     }
 }

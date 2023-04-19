@@ -1,4 +1,6 @@
-﻿namespace ClickNFight
+﻿using System.Collections.Generic;
+
+namespace ClickNFight
 {
     public class Hero
     {
@@ -18,6 +20,7 @@
             this.Clickerency = 1000000;
 
             this.Inventory = new HeroInventory();
+            this.MineStats = new Dictionary<string, int>();
         }
 
         public int Level { get; set; }
@@ -53,5 +56,7 @@
         public double Clickerency { get; set; }
 
         public HeroInventory Inventory { get; set; }
+
+        public IDictionary<string, int> MineStats { get; set; }
     }
 }

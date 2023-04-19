@@ -83,7 +83,7 @@
             this.buyItemButton.TabStop = false;
             this.buyItemButton.Text = "Buy!";
             this.buyItemButton.UseVisualStyleBackColor = true;
-            this.buyItemButton.Click += new System.EventHandler(this.BuyItem_click);
+            this.buyItemButton.Click += new System.EventHandler(this.BuyItem_Click);
             // 
             // buyFR
             // 

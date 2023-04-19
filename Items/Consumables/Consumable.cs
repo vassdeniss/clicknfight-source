@@ -3,33 +3,9 @@ using System.Text;
 
 namespace ClickNFight.Items.Consumables
 {
-    public class Consumable : Item
+    public abstract class Consumable : BuyableItem
     {
-        public Consumable(
-            ConsumableType type, 
-            string name, 
-            int healAmount, 
-            int buyPrice, 
-            int limit)
-        {
-            this.Name = name;
-            this.HealAmount = healAmount;
-            this.BuyPrice = buyPrice;
-            this.Limit = limit;
-
-            this.Type = type;
-            this.HealAmount = healAmount;
-        }
-
-        public sealed override string Name { get; set; }
-
-        public sealed override int BuyPrice { get; set; }
-
-        public sealed override int Limit { get; set; }
-
-        public ConsumableType Type { get; set; }
-
-        public int HealAmount { get; set; }
+        public abstract int HealAmount { get; set; }
 
         public sealed override string ShopInformation()
         {

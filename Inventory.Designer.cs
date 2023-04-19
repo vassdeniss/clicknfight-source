@@ -31,7 +31,7 @@
             this.potionsTextBox = new System.Windows.Forms.TextBox();
             this.weaponsTextBox = new System.Windows.Forms.TextBox();
             this.runesTextBox = new System.Windows.Forms.TextBox();
-            this.ores = new System.Windows.Forms.TextBox();
+            this.oresTextBox = new System.Windows.Forms.TextBox();
             this.picksTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -77,19 +77,19 @@
             this.runesTextBox.TabIndex = 4;
             this.runesTextBox.TabStop = false;
             // 
-            // ores
+            // oresTextBox
             // 
-            this.ores.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ores.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ores.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.ores.Location = new System.Drawing.Point(877, 12);
-            this.ores.Multiline = true;
-            this.ores.Name = "ores";
-            this.ores.ReadOnly = true;
-            this.ores.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ores.Size = new System.Drawing.Size(216, 212);
-            this.ores.TabIndex = 5;
-            this.ores.TabStop = false;
+            this.oresTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.oresTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oresTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.oresTextBox.Location = new System.Drawing.Point(877, 12);
+            this.oresTextBox.Multiline = true;
+            this.oresTextBox.Name = "oresTextBox";
+            this.oresTextBox.ReadOnly = true;
+            this.oresTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.oresTextBox.Size = new System.Drawing.Size(216, 212);
+            this.oresTextBox.TabIndex = 5;
+            this.oresTextBox.TabStop = false;
             // 
             // picksTextBox
             // 
@@ -111,7 +111,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 232);
             this.Controls.Add(this.picksTextBox);
-            this.Controls.Add(this.ores);
+            this.Controls.Add(this.oresTextBox);
             this.Controls.Add(this.runesTextBox);
             this.Controls.Add(this.weaponsTextBox);
             this.Controls.Add(this.potionsTextBox);
@@ -128,7 +128,7 @@
         private System.Windows.Forms.TextBox potionsTextBox;
         private System.Windows.Forms.TextBox weaponsTextBox;
         private System.Windows.Forms.TextBox runesTextBox;
-        private System.Windows.Forms.TextBox ores;
+        private System.Windows.Forms.TextBox oresTextBox;
         private System.Windows.Forms.TextBox picksTextBox;
     }
 }
