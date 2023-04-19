@@ -144,12 +144,6 @@ namespace ClickNFight
                 runesTextBox.Text += invSoS;
             }
 
-            if (Engine.goldPick == true)
-            {
-                string invSP = "\r\n" + "Gold Pickaxe" + "\r\n";
-                picksTextBox.Text += invSP;
-            }
-
             if (Engine.platPick == true)
             {
                 string invPP = "\r\n" + "Platinum Pickaxe" + "\r\n";

@@ -32,7 +32,7 @@ namespace ClickNFight
         {
             this.hero = hero;
 
-            foreach (Item item in this.hero.Inventory.Items)
+            foreach (Item item in this.hero.Inventory.BuyableItems)
             {
                 if (!this.hero.Inventory.HasCapacity(item))
                 {

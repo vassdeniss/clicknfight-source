@@ -27,6 +27,7 @@ namespace ClickNFight
                 { new DiamondSword(), 1 },
                 { new CopperPickaxe(), 1 },
                 { new SilverPickaxe(), 1 },
+                { new GoldPickaxe(), 0 },
                 { new Ore(OreType.Silver), 21 },
                 { new Ore(OreType.Gold), 0 },
                 { new Ore(OreType.Platinum), 0 },
@@ -35,7 +36,9 @@ namespace ClickNFight
             };
         }
         
-        public ICollection<Item> Items => this.inventory.Keys.ToList();
+        public ICollection<BuyableItem> BuyableItems => this.inventory.Keys
+            .OfType<BuyableItem>()
+            .ToList();
 
         public IDictionary<Consumable, int> Consumables
             => this.inventory

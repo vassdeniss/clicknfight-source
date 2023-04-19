@@ -7,6 +7,7 @@
         Platinum = 3,
         Cobalt = 4,
         Star = 5,
+        All = 6,
         NoType = 0,
     }
 }

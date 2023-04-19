@@ -12,7 +12,6 @@ namespace ClickNFight
         private const int Base = 120;
         private const int Step = 20;
 
-        bool isGoldPickEquipped = false;
         bool isPlatinumPickEquipped = false;
         bool isCobaltPickEquipped = false;
         bool isStarPickEquipped = false;
@@ -145,90 +144,7 @@ namespace ClickNFight
             MessageBox.Show(sb.ToString(), "Mined!", MessageBoxButtons.OK);
             return;
 
-            if (isGoldPickEquipped == true && isSilverOrePicked == true)
-            {
-                MiningOres mining = new MiningOres();
-                mining.miningBar.Maximum = 80;
-                mining.oreName.Text = "Mining Silver (Gold Pickaxe)";
-                mining.ShowDialog();
-                Engine.silverOreTotal++;
-                silverOreTake = silverOreTakeRandom.Next(1, 6);
-                Engine.silverOreTake = Engine.silverOreTake + silverOreTake;
-                if (silverOreTake < 2)
-                {
-                    MessageBox.Show("You have gained " + silverOreTake + " SIlver Ingot!" + "\r\n"
-                    + "Added to Invetory!", "Mined!", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("You have gained " + silverOreTake + " SIlver Ingots!" + "\r\n"
-                    + "Added to Invetory!", "Mined!", MessageBoxButtons.OK);
-                }
-                oreStatsLabel.Text = "Silver Ore Mined: " + Engine.silverOreTotal;
-            }
-            else if (isGoldPickEquipped == true && isGoldOrePicked == true)
-            {
-                MiningOres mining = new MiningOres();
-                mining.miningBar.Maximum = 100;
-                mining.oreName.Text = "Mining Gold (Gold Pickaxe)";
-                mining.ShowDialog();
-                Engine.goldOreTotal++;
-                goldOreTake = goldOreTakeRandom.Next(1, 6);
-                Engine.goldOreTake = Engine.goldOreTake + goldOreTake;
-                if (goldOreTake < 2)
-                {
-                    MessageBox.Show("You have gained " + goldOreTake + " Gold Ingot!" + "\r\n"
-                    + "Added to Invetory!", "Mined!", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("You have gained " + goldOreTake + " Gold Ingots!" + "\r\n"
-                    + "Added to Invetory!", "Mined!", MessageBoxButtons.OK);
-                }
-                //totalGold.Text = "Gold Ore Mined: " + Engine.goldOreTotal;
-            }
-            else if (isGoldPickEquipped == true && isPlatinumOrePicked == true)
-            {
-                MiningOres mining = new MiningOres();
-                mining.miningBar.Maximum = 120;
-                mining.oreName.Text = "Mining Platinum (Gold Pickaxe)";
-                mining.ShowDialog();
-                Engine.platinumOreTotal++;
-                platOreTake = platOreTakeRandom.Next(1, 6);
-                Engine.platinumOreTake = Engine.platinumOreTake + platOreTake;
-                if (platOreTake < 2)
-                {
-                    MessageBox.Show("You have gained " + platOreTake + " Platinum Ingot!" + "\r\n"
-                    + "Added to Invetory!", "Mined!", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("You have gained " + platOreTake + " Platinum Ingots!" + "\r\n"
-                    + "Added to Invetory!", "Mined!", MessageBoxButtons.OK);
-                }
-                //platinumTotal.Text = "Platinum Ore Mined: " + Engine.platinumOreTotal;
-            }
-            else if (isGoldPickEquipped == true && isCobaltOrePicked == true)
-            {
-                MiningOres mining = new MiningOres();
-                mining.miningBar.Maximum = 140;
-                mining.oreName.Text = "Mining Cobalt (Gold Pickaxe)";
-                mining.ShowDialog();
-                Engine.cobaltOreTotal++;
-                MessageBox.Show("You have gained 0 Cobalt Ingots!", "Mined!", MessageBoxButtons.OK);
-                //cobaltTotal.Text = "Cobalt Ore Mined: " + Engine.cobaltOreTotal;
-            }
-            else if (isGoldPickEquipped == true && isStarOrePicked == true)
-            {
-                MiningOres mining = new MiningOres();
-                mining.miningBar.Maximum = 160;
-                mining.oreName.Text = "Mining Star (Gold Pickaxe)";
-                mining.ShowDialog();
-                Engine.starOreTotal++;
-                MessageBox.Show("You have gained 0 Star Ingots!", "Mined!", MessageBoxButtons.OK);
-                //starTotal.Text = "Stardust Ore Mined: " + Engine.starOreTotal;
-            }
-            else if (isPlatinumPickEquipped == true && isSilverOrePicked == true)
+            if (isPlatinumPickEquipped == true && isSilverOrePicked == true)
             {
                 MiningOres mining = new MiningOres();
                 mining.miningBar.Maximum = 60;

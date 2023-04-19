@@ -69,7 +69,6 @@
 
         public static string name;
 
-        public static bool silverPick = false;
         public static bool goldPick = false;
         public static bool platPick = false;
         public static bool cobPick = false;
@@ -89,7 +88,5 @@
         public static int stone;
         public static int flint;
         public static int steel;
-
-        public static bool devTools = false;
     }
 }

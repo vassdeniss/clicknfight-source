@@ -122,6 +122,7 @@
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\Ores\Ore.cs" />
     <Compile Include="Items\Ores\OreType.cs" />
+    <Compile Include="Items\Pickaxes\GoldPickaxe.cs" />
     <Compile Include="Items\Pickaxes\SilverPickaxe.cs" />
     <Compile Include="Items\Pickaxes\CopperPickaxe.cs" />
     <Compile Include="Items\Pickaxes\Pickaxe.cs" />
