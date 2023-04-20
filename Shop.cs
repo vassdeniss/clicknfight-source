@@ -32,7 +32,7 @@ namespace ClickNFight
         {
             this.hero = hero;
 
-            foreach (Item item in this.hero.Inventory.BuyableItems)
+            foreach (BuyableItem item in this.hero.Inventory.BuyableItems)
             {
                 if (!this.hero.Inventory.HasCapacity(item))
                 {
@@ -228,121 +228,6 @@ namespace ClickNFight
             //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
             //    }
             //}
-            //else if (button.Equals(buySP))
-            //{
-            //    if (Engine.count >= 100 && Engine.silverOreTake >= 20 && Engine.silverPick == false)
-            //    {
-            //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play();
-            //        Engine.silverPick = true;
-            //        Engine.count = Engine.count - 100;
-            //        Engine.silverOreTake = Engine.silverOreTake - 20;
-            //        if (screenUpdate != null)
-            //        {
-            //            screenUpdate.UpdateUi();
-            //        }
-            //    }
-            //    else if (Engine.silverPick == true)
-            //    {
-            //        var notEnough = MessageBox.Show("You already have a silver pickaxe!", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //    else
-            //    {
-            //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //}
-            //else if (button.Equals(buyGP))
-            //{
-            //    if (Engine.count >= 200 && Engine.goldOreTake >= 30 && Engine.goldPick == false)
-            //    {
-            //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play();
-            //        Engine.goldPick = true;
-            //        Engine.count = Engine.count - 200;
-            //        Engine.goldOreTake = Engine.goldOreTake - 30;
-            //        if (screenUpdate != null)
-            //        {
-            //            screenUpdate.UpdateUi();
-            //        }
-            //    }
-            //    else if (Engine.goldPick == true)
-            //    {
-            //        var notEnough = MessageBox.Show("You already have a gold pickaxe!", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //    else
-            //    {
-            //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //}
-            //else if (button.Equals(buyPP))
-            //{
-            //    if (Engine.count >= 300 && Engine.platinumOreTake >= 40 && Engine.platPick == false)
-            //    {
-            //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play();
-            //        Engine.platPick = true;
-            //        Engine.count = Engine.count - 300;
-            //        Engine.platinumOreTake = Engine.platinumOreTake - 40;
-            //        if (screenUpdate != null)
-            //        {
-            //            screenUpdate.UpdateUi();
-            //        }
-            //    }
-            //    else if (Engine.platPick == true)
-            //    {
-            //        var notEnough = MessageBox.Show("You already have a platinum pickaxe!", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //    else
-            //    {
-            //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //}
-            //else if (button.Equals(buyCP))
-            //{
-            //    if (Engine.count >= 400 && Engine.cobaltOreTake >= 50 && Engine.cobPick == false)
-            //    {
-            //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play();
-            //        Engine.cobPick = true;
-            //        Engine.count = Engine.count - 400;
-            //        Engine.cobaltOreTake = Engine.cobaltOreTake - 50;
-            //        if (screenUpdate != null)
-            //        {
-            //            screenUpdate.UpdateUi();
-            //        }
-            //    }
-            //    else if (Engine.cobPick == true)
-            //    {
-            //        var notEnough = MessageBox.Show("You already have a cobalt pickaxe!", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //    else
-            //    {
-            //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //}
-            //else if (button.Equals(buySdP))
-            //{
-            //    if (Engine.count >= 500 && Engine.starOreTake >= 60 && Engine.starPick == false)
-            //    {
-            //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play();
-            //        Engine.starPick = true;
-            //        Engine.count = Engine.count - 500;
-            //        Engine.starOreTake = Engine.starOreTake - 70;
-            //        if (screenUpdate != null)
-            //        {
-            //            screenUpdate.UpdateUi();
-            //        }
-            //    }
-            //    else if (Engine.starPick == true)
-            //    {
-            //        var notEnough = MessageBox.Show("You already have a star pickaxe!", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //    else
-            //    {
-            //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //}
         }
 
         // Handles all sell buttons
@@ -525,26 +410,6 @@ namespace ClickNFight
 
             this.soundPlayer.Play();
             item.BuyItem(this.hero);
-
-            return;
-
-            if (this.hero.Clickerency < item.BuyPrice)
-            {
-                MessageBox.Show("You don't have enough clicks to buy",
-                    "Warning!",
-                    MessageBoxButtons.OK);
-                return;
-            }
-
-
-            this.BuyItem(item);
-        }
-
-        private void BuyItem(BuyableItem item)
-        {
-            this.soundPlayer.Play();
-            //this.hero.Clickerency -= item.BuyPrice;
-            this.hero.Inventory.Add(item);
         }
     }
 }

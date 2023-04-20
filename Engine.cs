@@ -69,18 +69,11 @@
 
         public static string name;
 
-        public static bool goldPick = false;
-        public static bool platPick = false;
-        public static bool cobPick = false;
-        public static bool starPick = false;
         public static int silverOreTake;
         public static int goldOreTake;
         public static int platinumOreTake;
         public static int cobaltOreTake;
         public static int starOreTake;
-        public static int silverOreTotal;
-        public static int goldOreTotal;
-        public static int platinumOreTotal;
         public static int cobaltOreTotal;
         public static int starOreTotal;
 

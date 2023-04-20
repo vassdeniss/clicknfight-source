@@ -50,21 +50,14 @@
             this.sellIngots = new System.Windows.Forms.TextBox();
             this.sellSilver = new System.Windows.Forms.Button();
             this.sellGO = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.buySP = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.orePickGold = new System.Windows.Forms.NumericUpDown();
             this.orePickSilver = new System.Windows.Forms.NumericUpDown();
-            this.buyGP = new System.Windows.Forms.Button();
             this.orePickPlat = new System.Windows.Forms.NumericUpDown();
             this.sellPO = new System.Windows.Forms.Button();
-            this.buyPP = new System.Windows.Forms.Button();
             this.orePickCob = new System.Windows.Forms.NumericUpDown();
             this.sellCO = new System.Windows.Forms.Button();
-            this.buyCP = new System.Windows.Forms.Button();
             this.orePickStar = new System.Windows.Forms.NumericUpDown();
             this.sellSO = new System.Windows.Forms.Button();
-            this.buySdP = new System.Windows.Forms.Button();
             this.itemPickerComboBox = new System.Windows.Forms.ComboBox();
             this.itemDescriptionTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.orePickGold)).BeginInit();
@@ -319,40 +312,6 @@
             this.sellGO.UseVisualStyleBackColor = true;
             this.sellGO.Click += new System.EventHandler(this.allSellButtons_Click);
             // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(51, 50);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(264, 397);
-            this.textBox6.TabIndex = 113;
-            this.textBox6.TabStop = false;
-            this.textBox6.Text = resources.GetString("textBox6.Text");
-            // 
-            // buySP
-            // 
-            this.buySP.Enabled = false;
-            this.buySP.Location = new System.Drawing.Point(302, 56);
-            this.buySP.Name = "buySP";
-            this.buySP.Size = new System.Drawing.Size(98, 22);
-            this.buySP.TabIndex = 114;
-            this.buySP.TabStop = false;
-            this.buySP.Text = "Buy!";
-            this.buySP.UseVisualStyleBackColor = true;
-            this.buySP.Click += new System.EventHandler(this.allButtons_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label4.Location = new System.Drawing.Point(14, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 25);
-            this.label4.TabIndex = 115;
-            this.label4.Text = "Pickaxes:";
-            // 
             // orePickGold
             // 
             this.orePickGold.Location = new System.Drawing.Point(619, 117);
@@ -366,18 +325,6 @@
             this.orePickSilver.Name = "orePickSilver";
             this.orePickSilver.Size = new System.Drawing.Size(52, 20);
             this.orePickSilver.TabIndex = 117;
-            // 
-            // buyGP
-            // 
-            this.buyGP.Enabled = false;
-            this.buyGP.Location = new System.Drawing.Point(302, 135);
-            this.buyGP.Name = "buyGP";
-            this.buyGP.Size = new System.Drawing.Size(98, 22);
-            this.buyGP.TabIndex = 118;
-            this.buyGP.TabStop = false;
-            this.buyGP.Text = "Buy!";
-            this.buyGP.UseVisualStyleBackColor = true;
-            this.buyGP.Click += new System.EventHandler(this.allButtons_Click);
             // 
             // orePickPlat
             // 
@@ -397,18 +344,6 @@
             this.sellPO.UseVisualStyleBackColor = true;
             this.sellPO.Click += new System.EventHandler(this.allSellButtons_Click);
             // 
-            // buyPP
-            // 
-            this.buyPP.Enabled = false;
-            this.buyPP.Location = new System.Drawing.Point(302, 215);
-            this.buyPP.Name = "buyPP";
-            this.buyPP.Size = new System.Drawing.Size(98, 22);
-            this.buyPP.TabIndex = 121;
-            this.buyPP.TabStop = false;
-            this.buyPP.Text = "Buy!";
-            this.buyPP.UseVisualStyleBackColor = true;
-            this.buyPP.Click += new System.EventHandler(this.allButtons_Click);
-            // 
             // orePickCob
             // 
             this.orePickCob.Location = new System.Drawing.Point(632, 236);
@@ -427,18 +362,6 @@
             this.sellCO.UseVisualStyleBackColor = true;
             this.sellCO.Click += new System.EventHandler(this.allSellButtons_Click);
             // 
-            // buyCP
-            // 
-            this.buyCP.Enabled = false;
-            this.buyCP.Location = new System.Drawing.Point(302, 295);
-            this.buyCP.Name = "buyCP";
-            this.buyCP.Size = new System.Drawing.Size(98, 22);
-            this.buyCP.TabIndex = 124;
-            this.buyCP.TabStop = false;
-            this.buyCP.Text = "Buy!";
-            this.buyCP.UseVisualStyleBackColor = true;
-            this.buyCP.Click += new System.EventHandler(this.allButtons_Click);
-            // 
             // orePickStar
             // 
             this.orePickStar.Location = new System.Drawing.Point(612, 295);
@@ -456,18 +379,6 @@
             this.sellSO.Text = "Sell!";
             this.sellSO.UseVisualStyleBackColor = true;
             this.sellSO.Click += new System.EventHandler(this.allSellButtons_Click);
-            // 
-            // buySdP
-            // 
-            this.buySdP.Enabled = false;
-            this.buySdP.Location = new System.Drawing.Point(302, 372);
-            this.buySdP.Name = "buySdP";
-            this.buySdP.Size = new System.Drawing.Size(98, 22);
-            this.buySdP.TabIndex = 127;
-            this.buySdP.TabStop = false;
-            this.buySdP.Text = "Buy!";
-            this.buySdP.UseVisualStyleBackColor = true;
-            this.buySdP.Click += new System.EventHandler(this.allButtons_Click);
             // 
             // itemPickerComboBox
             // 
@@ -495,21 +406,14 @@
             this.ClientSize = new System.Drawing.Size(1297, 857);
             this.Controls.Add(this.itemDescriptionTextBox);
             this.Controls.Add(this.itemPickerComboBox);
-            this.Controls.Add(this.buySdP);
             this.Controls.Add(this.sellSO);
             this.Controls.Add(this.orePickStar);
-            this.Controls.Add(this.buyCP);
             this.Controls.Add(this.sellCO);
             this.Controls.Add(this.orePickCob);
-            this.Controls.Add(this.buyPP);
             this.Controls.Add(this.sellPO);
             this.Controls.Add(this.orePickPlat);
-            this.Controls.Add(this.buyGP);
             this.Controls.Add(this.orePickSilver);
             this.Controls.Add(this.orePickGold);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.buySP);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.sellGO);
             this.Controls.Add(this.sellSilver);
             this.Controls.Add(this.sellIngots);
@@ -565,21 +469,14 @@
         private System.Windows.Forms.TextBox sellIngots;
         public System.Windows.Forms.Button sellSilver;
         public System.Windows.Forms.Button sellGO;
-        private System.Windows.Forms.TextBox textBox6;
-        public System.Windows.Forms.Button buySP;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown orePickGold;
         private System.Windows.Forms.NumericUpDown orePickSilver;
-        public System.Windows.Forms.Button buyGP;
         private System.Windows.Forms.NumericUpDown orePickPlat;
         public System.Windows.Forms.Button sellPO;
-        public System.Windows.Forms.Button buyPP;
         private System.Windows.Forms.NumericUpDown orePickCob;
         public System.Windows.Forms.Button sellCO;
-        public System.Windows.Forms.Button buyCP;
         private System.Windows.Forms.NumericUpDown orePickStar;
         public System.Windows.Forms.Button sellSO;
-        public System.Windows.Forms.Button buySdP;
         private System.Windows.Forms.ComboBox itemPickerComboBox;
         private System.Windows.Forms.TextBox itemDescriptionTextBox;
     }

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace ClickNFight
+namespace ClickNFight.Windows.Other
 {
     public partial class MiningOres : Form
     {

@@ -41,13 +41,6 @@ namespace ClickNFight
 
             this.runesTextBox.Text = "Runes:";
 
-            // "Silver Sword" "Total Damage: 1";
-            // "Gold Sword" "Total Damage: 2";
-            // "Platinum Sword" "Total Damage: 3";
-            // "Cobalt Sword" "Total Damage: 4";
-            // "Star Sword""Total Damage: 5";
-            // "Excalibur" "Total Damage: 999";
-
             if (Engine.airRunes > 0)
             {
                 string invAR = "\r\n" + "Air Runes" + "\r\n" + "Count: " + Engine.airRunes + "\r\n";
@@ -142,24 +135,6 @@ namespace ClickNFight
             {
                 string invSoS = "\r\n" + "Soul Runes" + "\r\n" + "Count: " + Engine.soulRunes + "\r\n";
                 runesTextBox.Text += invSoS;
-            }
-
-            if (Engine.platPick == true)
-            {
-                string invPP = "\r\n" + "Platinum Pickaxe" + "\r\n";
-                picksTextBox.Text += invPP;
-            }
-
-            if (Engine.cobPick == true)
-            {
-                string invCP = "\r\n" + "Cobalt Pickaxe" + "\r\n";
-                picksTextBox.Text += invCP;
-            }
-
-            if (Engine.starPick == true)
-            {
-                string invSP = "\r\n" + "Star Pickaxe" + "\r\n";
-                picksTextBox.Text += invSP;
             }
         }
 

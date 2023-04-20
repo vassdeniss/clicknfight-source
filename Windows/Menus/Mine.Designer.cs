@@ -1,4 +1,4 @@
-﻿namespace ClickNFight
+﻿namespace ClickNFight.Windows.Menus
 {
     partial class Mine
     {
@@ -39,9 +39,9 @@
             // mineButton
             // 
             this.mineButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mineButton.Location = new System.Drawing.Point(243, 152);
+            this.mineButton.Location = new System.Drawing.Point(12, 131);
             this.mineButton.Name = "mineButton";
-            this.mineButton.Size = new System.Drawing.Size(278, 116);
+            this.mineButton.Size = new System.Drawing.Size(326, 116);
             this.mineButton.TabIndex = 2;
             this.mineButton.Text = "Mine!";
             this.mineButton.UseVisualStyleBackColor = true;
@@ -50,18 +50,18 @@
             // pickaxeComboBox
             // 
             this.pickaxeComboBox.FormattingEnabled = true;
-            this.pickaxeComboBox.Location = new System.Drawing.Point(12, 152);
+            this.pickaxeComboBox.Location = new System.Drawing.Point(12, 77);
             this.pickaxeComboBox.Name = "pickaxeComboBox";
-            this.pickaxeComboBox.Size = new System.Drawing.Size(225, 21);
+            this.pickaxeComboBox.Size = new System.Drawing.Size(326, 21);
             this.pickaxeComboBox.TabIndex = 3;
             this.pickaxeComboBox.SelectedIndexChanged += new System.EventHandler(this.PickaxeComboBox_SelectedIndexChanged);
             // 
             // oreComboBox
             // 
             this.oreComboBox.FormattingEnabled = true;
-            this.oreComboBox.Location = new System.Drawing.Point(12, 179);
+            this.oreComboBox.Location = new System.Drawing.Point(12, 104);
             this.oreComboBox.Name = "oreComboBox";
-            this.oreComboBox.Size = new System.Drawing.Size(225, 21);
+            this.oreComboBox.Size = new System.Drawing.Size(326, 21);
             this.oreComboBox.TabIndex = 4;
             this.oreComboBox.SelectedIndexChanged += new System.EventHandler(this.OreComboBox_SelectedIndexChanged);
             // 
@@ -89,7 +89,7 @@
             // 
             this.oreStatsLabel.AutoSize = true;
             this.oreStatsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.oreStatsLabel.Location = new System.Drawing.Point(7, 298);
+            this.oreStatsLabel.Location = new System.Drawing.Point(7, 262);
             this.oreStatsLabel.Name = "oreStatsLabel";
             this.oreStatsLabel.Size = new System.Drawing.Size(164, 25);
             this.oreStatsLabel.TabIndex = 11;
@@ -99,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 434);
+            this.ClientSize = new System.Drawing.Size(350, 413);
             this.Controls.Add(this.oreStatsLabel);
             this.Controls.Add(this.oreLabel);
             this.Controls.Add(this.pickLabel);

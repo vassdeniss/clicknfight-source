@@ -1,4 +1,4 @@
-﻿namespace ClickNFight
+﻿namespace ClickNFight.Windows.Other
 {
     partial class MiningOres
     {
@@ -61,7 +61,6 @@
             this.ClientSize = new System.Drawing.Size(385, 90);
             this.Controls.Add(this.miningBar);
             this.Controls.Add(this.oreName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MiningOres";
             this.Text = "Mining...";
             this.Load += new System.EventHandler(this.MiningOres_Load);

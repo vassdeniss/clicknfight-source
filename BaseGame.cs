@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
 using ClickNFight.Items.Weapons;
+using ClickNFight.Windows.Menus;
+using ClickNFight.Windows.Other;
+using Newtonsoft.Json.Linq;
 using ConsumablesSettings = ClickNFight.Items.Consumables.ConsumableSettings;
 
 namespace ClickNFight
@@ -756,6 +759,7 @@ namespace ClickNFight
             //newGame.ShowDialog();
         }
 
+        // Refactored
         private void MineButton_Click(object sender, EventArgs e)
         {
             Mine mine = new Mine(this.hero);
@@ -769,27 +773,7 @@ namespace ClickNFight
             camp.ShowDialog();
         }
 
-        private void HealHero(Consumable potion)
-        {
-            this.hero.Health += potion.HealAmount;
-
-            try
-            {
-                this.healthBar.Value += potion.HealAmount;
-            }
-            catch (Exception)
-            {
-                this.healthBar.Value = this.hero.MaxHealth;
-            }
-
-            this.hero.Inventory.Remove(potion);
-
-            SoundPlayer player = new SoundPlayer(Properties.Resources.bottle);
-            player.Play();
-
-            this.UpdateUi();
-        }
-
+        // Refactored
         private void HealButton_Click(object sender, EventArgs e)
         {
             if (this.potionMenu.SelectedIndex is -1)
@@ -810,9 +794,31 @@ namespace ClickNFight
 
                 return;
             }
-            
+
             Consumable potion = this.potionMenu.SelectedItem as Consumable;
             this.HealHero(potion);
+        }
+
+        // Refactored
+        private void HealHero(Consumable potion)
+        {
+            this.hero.Health += potion.HealAmount;
+
+            try
+            {
+                this.healthBar.Value += potion.HealAmount;
+            }
+            catch (Exception)
+            {
+                this.healthBar.Value = this.hero.MaxHealth;
+            }
+
+            this.hero.Inventory.Remove(potion);
+
+            SoundPlayer player = new SoundPlayer(Properties.Resources.bottle);
+            player.Play();
+
+            this.UpdateUi();
         }
 
         class Monster
@@ -839,22 +845,28 @@ namespace ClickNFight
             public int MaxRandomClickerency { get; set; }
         }
 
-        private string UnlockItems(int level, int hp, int defence, params Item[] items)
+        private string UnlockItems(int level, Item[] items, string[] other = null)
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"You have leveled up! You are now level {level}!");
             sb.AppendLine("You have unlocked:");
             sb.AppendLine();
+            if (other != null)
+            {
+                foreach (string otherUnlock in other)
+                {
+                    sb.AppendLine($"- {otherUnlock}");
+                }
+            }
             foreach (Item item in items)
             {
                 sb.AppendLine($"- {item.Name}");
-
                 this.hero.Inventory.UnlockItem(item);
             }
             sb.AppendLine();
-            sb.AppendLine($"+ {hp} Total HP");
-            sb.AppendLine($"+ {defence} Total Defence");
+            sb.AppendLine($"+ {10 * this.hero.Level - 10} Total HP");
+            sb.AppendLine("+ 1 Total Defence");
             sb.AppendLine();
             sb.AppendLine("Health Restored!");
 
@@ -864,7 +876,7 @@ namespace ClickNFight
         private void LevelUpHero()
         {
             this.hero.Level++;
-            this.hero.MaxHealth += 10 * this.hero.Level;
+            this.hero.MaxHealth += 10 * this.hero.Level - 10;
             this.hero.Health = this.hero.MaxHealth;
             this.healthBar.Maximum = this.hero.MaxHealth;
             this.healthBar.Value = this.hero.MaxHealth;
@@ -879,30 +891,22 @@ namespace ClickNFight
             this.monster.MaxRandomClickerency += 6;
 
             // TODO: this can be done better
+            string message = string.Empty;
             switch (this.hero.Level)
             {
                 case 2:
-                    MessageBox.Show(
-                        this.UnlockItems(this.hero.Level, 10, 1, new WoodenSword()),
-                        "Congratulations!",
-                        MessageBoxButtons.OK);
+                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[2]);
                     break;
                 case 3:
-                    //this.hero.UnlockedItems.Add(new StoneSword());
-                    //this.hero.UnlockedItems.Add(new UpgradedHealthPotion());
-                    MessageBox.Show(
-                        "You have leveled up! You are now level 3!\nYou have unlocked:\n\n- Mining!\n- Stone Sword\n- Upgraded Health Potion\n\n+ 20 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
-                        "Congratulations!",
-                        MessageBoxButtons.OK);
+                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[3], new string[] { "Mining" });
                     this.mineButton.Enabled = true;
                     break;
                 case 4:
-                    MessageBox.Show("You have leveled up! You are now level 4!\nYou have unlocked:\n\n- Silver Pickaxe\n- Gold Ore!\n- Iron Sword\n\n+ 30 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
-                        "Congratulations!",
-                        MessageBoxButtons.OK);
+                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[4]);
                     break;
                 case 5:
-                    MessageBox.Show("You have leveled up! You are now level 5\nYou have unlocked:\n\n- Golden Pickaxe\n- Magic\n- Air Runes\n- Fire Runes\n- Super Health Potion\n\n+ 40 Total HP\n+ 1 Total Defence\n\nHealth Restored!", 
+                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[5], new string[] { "Magic" });
+                    MessageBox.Show("You have leveled up! You are now level 5\nYou have unlocked:\n\n- Air Runes\n- Fire Runes\n\n+ 40 Total HP\n+ 1 Total Defence\n\nHealth Restored!", 
                         "Congratulations!",
                         MessageBoxButtons.OK);
                     this.magicMenuButton.Enabled = true;
@@ -936,6 +940,11 @@ namespace ClickNFight
                     this.finalBossButton.Enabled = true;
                     break;
             }
+
+            MessageBox.Show(
+                message,
+                "Congratulations!",
+                MessageBoxButtons.OK);
         }
 
         private void UpdateUi()

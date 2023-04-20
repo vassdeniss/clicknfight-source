@@ -173,25 +173,4 @@ Used for casting high level magic spells
 No buy limit
 </value>
   </data>
-  <data name="textBox6.Text" xml:space="preserve">
-    <value>Silver Pickaxe 
-Allows gold to be mined
-100 Clicks and 20 Silver
-
-Gold Pickaxe 
-Allows platinum to be mined!
-200 Clicks and 30 Gold
-
-Platinum Pickaxe 
-Allows cobalt to be mined!
-300 Clicks and 40 Platinum
-
-Cobalt Pickaxe 
-Allows stardust to be mined!
-400 Clicks and 50 Cobalt
-
-Star Pickaxe
-Allows all ores to be mined!
-500 Clicks and 60 Stardut</value>
-  </data>
 </root>

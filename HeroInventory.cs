@@ -27,12 +27,20 @@ namespace ClickNFight
                 { new DiamondSword(), 1 },
                 { new CopperPickaxe(), 1 },
                 { new SilverPickaxe(), 1 },
-                { new GoldPickaxe(), 0 },
-                { new Ore(OreType.Silver), 21 },
+                { new GoldPickaxe(), 1 },
+                { new PlatinumPickaxe(), 1 },
+                { new CobaltPickaxe(), 1 },
+                { new StartPickaxe(), 1 },
+                { new Ore(OreType.Silver), 99 },
                 { new Ore(OreType.Gold), 0 },
                 { new Ore(OreType.Platinum), 0 },
                 { new Ore(OreType.Cobalt), 0 },
                 { new Ore(OreType.Star), 0 },
+                { new SilverSword(), 0 },
+                { new GoldSword(), 0 },
+                { new PlatinumSword(), 0 },
+                { new CobaltPickaxe(), 0 },
+                { new StarSword(), 0 },
             };
         }
         
@@ -63,6 +71,11 @@ namespace ClickNFight
 
         public void UnlockItem(Item item, int count = 0)
         {
+            if (this.inventory.ContainsKey(item))
+            {
+                return;
+            }
+
             this.inventory.Add(item, count);
         }
 
@@ -80,10 +93,9 @@ namespace ClickNFight
             }
         }
 
-        public T GetItem<T>()
-            where T : class
+        public bool HasItem(Item item)
         {
-            return this.inventory.Keys.FirstOrDefault((item) => item is T) as T;
+            return this.inventory.ContainsKey(item);
         }
 
         public bool HasCapacity(Item item)
@@ -91,11 +103,5 @@ namespace ClickNFight
             return item.Limit == -1 
                 || this.inventory[item] < item.Limit;
         }
-
-        //public T GetItem<T>(string name)
-        //    where T : class
-        //{
-        //    return this.inventory.Keys.First((x) => x.Name == name) as T;
-        //}
     }
 }

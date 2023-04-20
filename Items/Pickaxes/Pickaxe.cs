@@ -21,7 +21,7 @@ namespace ClickNFight.Items.Pickaxes
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine(this.Name);
-            sb.AppendLine($"Allows {this.Mines} to be mined");
+            sb.AppendLine($"Allows {this.Mines.ToString().ToLower()} to be mined");
             sb.AppendLine($"{this.BuyPrice} Clicks and {RequiredOre} {RequiredOreType}");
 
             return sb.ToString();

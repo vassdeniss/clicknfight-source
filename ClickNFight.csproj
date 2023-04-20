@@ -122,19 +122,28 @@
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\Ores\Ore.cs" />
     <Compile Include="Items\Ores\OreType.cs" />
+    <Compile Include="Items\Pickaxes\CobaltPickaxe.cs" />
     <Compile Include="Items\Pickaxes\GoldPickaxe.cs" />
+    <Compile Include="Items\Pickaxes\PlatinumPickaxe.cs" />
     <Compile Include="Items\Pickaxes\SilverPickaxe.cs" />
     <Compile Include="Items\Pickaxes\CopperPickaxe.cs" />
     <Compile Include="Items\Pickaxes\Pickaxe.cs" />
     <Compile Include="Items\Pickaxes\PickaxeSettings.cs" />
+    <Compile Include="Items\Pickaxes\StartPickaxe.cs" />
+    <Compile Include="Items\Weapons\CobaltSword.cs" />
     <Compile Include="Items\Weapons\DiamondSword.cs" />
+    <Compile Include="Items\Weapons\GoldSword.cs" />
     <Compile Include="Items\Weapons\IronSword.cs" />
+    <Compile Include="Items\Weapons\PlatinumSword.cs" />
+    <Compile Include="Items\Weapons\SilverSword.cs" />
+    <Compile Include="Items\Weapons\StarSword.cs" />
     <Compile Include="Items\Weapons\StoneSword.cs" />
     <Compile Include="Items\Weapons\WeaponSettings.cs" />
-    <Compile Include="MiningOres.cs">
+    <Compile Include="Utils.cs" />
+    <Compile Include="Windows\Other\MiningOres.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MiningOres.Designer.cs">
+    <Compile Include="Windows\Other\MiningOres.Designer.cs">
       <DependentUpon>MiningOres.cs</DependentUpon>
     </Compile>
     <Compile Include="CampingNight.cs">
@@ -156,10 +165,10 @@
       <DependentUpon>Crafting.cs</DependentUpon>
     </Compile>
     <Compile Include="Engine.cs" />
-    <Compile Include="Death.cs">
+    <Compile Include="Windows\Other\Death.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Death.Designer.cs">
+    <Compile Include="Windows\Other\Death.Designer.cs">
       <DependentUpon>Death.cs</DependentUpon>
     </Compile>
     <Compile Include="IUiRefreshers.cs" />
@@ -175,10 +184,10 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mine.cs">
+    <Compile Include="Windows\Menus\Mine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mine.Designer.cs">
+    <Compile Include="Windows\Menus\Mine.Designer.cs">
       <DependentUpon>Mine.cs</DependentUpon>
     </Compile>
     <Compile Include="Name.cs">
@@ -231,7 +240,7 @@
     <EmbeddedResource Include="ClickerShop.resx">
       <DependentUpon>ClickerShop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MiningOres.resx">
+    <EmbeddedResource Include="Windows\Other\MiningOres.resx">
       <DependentUpon>MiningOres.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CampingNight.resx">
@@ -243,7 +252,7 @@
     <EmbeddedResource Include="Crafting.resx">
       <DependentUpon>Crafting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Death.resx">
+    <EmbeddedResource Include="Windows\Other\Death.resx">
       <DependentUpon>Death.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory.resx">
@@ -255,7 +264,7 @@
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mine.resx">
+    <EmbeddedResource Include="Windows\Menus\Mine.resx">
       <DependentUpon>Mine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Name.resx">

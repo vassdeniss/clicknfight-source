@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ClickNFight
+namespace ClickNFight.Windows.Other
 {
     public partial class Death : Form
     {

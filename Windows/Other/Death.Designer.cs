@@ -1,4 +1,4 @@
-﻿namespace ClickNFight
+﻿namespace ClickNFight.Windows.Other
 {
     partial class Death
     {
@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.gameOverLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // gameOverLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(261, 78);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "You have died...\r\nGame over\r\n";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.gameOverLabel.AutoSize = true;
+            this.gameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameOverLabel.Location = new System.Drawing.Point(12, 9);
+            this.gameOverLabel.Name = "gameOverLabel";
+            this.gameOverLabel.Size = new System.Drawing.Size(261, 78);
+            this.gameOverLabel.TabIndex = 0;
+            this.gameOverLabel.Text = "You have died...\r\nGame over\r\n";
+            this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Death
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 95);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.gameOverLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Death";
             this.Text = "Game Over";
@@ -59,6 +59,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label gameOverLabel;
     }
 }

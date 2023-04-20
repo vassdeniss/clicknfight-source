@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using ClickNFight.Items;
+using ClickNFight.Items.Ores;
 
 namespace ClickNFight
 {
@@ -13,7 +16,7 @@ namespace ClickNFight
             this.Health = 200;
             this.Defence = 0;
             this.DefenceReduction = 0;
-            this.CurrentXp = 0;
+            this.CurrentXp = 249;
             this.TotalXp = 250;
             this.Cps = 0;
             this.MonstersSlain = 0.0;

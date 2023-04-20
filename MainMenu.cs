@@ -21,18 +21,18 @@ namespace ClickNFight
 
         private void Keydown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.Shift && e.Alt && e.KeyCode == Keys.D)
-            {
-                Engine.devTools = true;
-                if (Engine.devTools == true)
-                {
-                    dev.Visible = true;
-                }
-            }
-            else
-            {
-                Engine.devTools = false;
-            }
+            //if (e.Control && e.Shift && e.Alt && e.KeyCode == Keys.D)
+            //{
+            //    Engine.devTools = true;
+            //    if (Engine.devTools == true)
+            //    {
+            //        dev.Visible = true;
+            //    }
+            //}
+            //else
+            //{
+            //    Engine.devTools = false;
+            //}
 
             if (e.Control && e.Shift && e.Alt && e.KeyCode == Keys.G)
             {
