@@ -55,6 +55,7 @@ namespace ClickNFight
             this.KeyPreview = true;
 
             this.mineButton.Enabled = true;
+            this.magicButton.Enabled = true;
         }
 
         private void Keydown(object sender, KeyEventArgs e)
@@ -85,7 +86,7 @@ namespace ClickNFight
                 {
                     Engine.level = 10;
                     levelLabel.Text = "Level: " + Engine.level + "/" + "10";
-                    magicMenuButton.Enabled = true;
+                    magicButton.Enabled = true;
                     campMenuButton.Enabled = true;
                     mineButton.Enabled = true;
                     runeCraftingButton.Enabled = true;
@@ -909,7 +910,7 @@ namespace ClickNFight
                     MessageBox.Show("You have leveled up! You are now level 5\nYou have unlocked:\n\n- Air Runes\n- Fire Runes\n\n+ 40 Total HP\n+ 1 Total Defence\n\nHealth Restored!", 
                         "Congratulations!",
                         MessageBoxButtons.OK);
-                    this.magicMenuButton.Enabled = true;
+                    this.magicButton.Enabled = true;
                     break;
                 case 6:
                     MessageBox.Show("You have leveled up! You are now level 6!\nYou have unlocked:\n\n- Camping\n- Platinum Pickaxe\n- Defence Up spell!\n- Earth Runes\n- Healara spell!\n- Mind Runes\n- Diamond Sword\n\n+ 50 Total HP\n+ 1 Total Defence\n\nHealth Restored!",

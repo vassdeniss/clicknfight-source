@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ClickNFight.Items.Consumables;
 using ClickNFight.Items.Ores;
 using ClickNFight.Items.Pickaxes;
+using ClickNFight.Items.Runes;
 using ClickNFight.Items.Weapons;
 
 namespace ClickNFight
@@ -32,20 +33,13 @@ namespace ClickNFight
 
             this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Inventory.Consumables);
             this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Inventory.Weapons);
+            this.runesTextBox.Text = this.GenerateText<Rune>("Runes", this.hero.Inventory.Runes);
             this.picksTextBox.Text = this.GenerateText<Pickaxe>("Pickaxes:", this.hero.Inventory.Pickaxes);
             this.oresTextBox.Text = this.GenerateText<Ore>(
                 "Ingots:",
                 this.hero.Inventory.Ores
                     .Where((kv) => kv.Value > 0)
                     .ToDictionary((kv) => kv.Key, (kv) => kv.Value));
-
-            this.runesTextBox.Text = "Runes:";
-
-            if (Engine.airRunes > 0)
-            {
-                string invAR = "\r\n" + "Air Runes" + "\r\n" + "Count: " + Engine.airRunes + "\r\n";
-                runesTextBox.Text += invAR;
-            }
 
             if (Engine.fireRunes > 0)
             {

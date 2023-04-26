@@ -59,6 +59,11 @@
             this.defenceBoost3 = new System.Windows.Forms.Timer(this.components);
             this.reariseCooldown = new System.Windows.Forms.Timer(this.components);
             this.hpUp3 = new System.Windows.Forms.Timer(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.offensiveSpellsTab = new System.Windows.Forms.TabPage();
+            this.defensiveSpellsTab = new System.Windows.Forms.TabPage();
+            this.supportiveSpellsTab = new System.Windows.Forms.TabPage();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label6
@@ -258,11 +263,52 @@
             // 
             this.hpUp3.Tick += new System.EventHandler(this.hpUp3_Tick);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.offensiveSpellsTab);
+            this.tabControl1.Controls.Add(this.defensiveSpellsTab);
+            this.tabControl1.Controls.Add(this.supportiveSpellsTab);
+            this.tabControl1.Location = new System.Drawing.Point(213, 291);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(449, 99);
+            this.tabControl1.TabIndex = 25;
+            // 
+            // offensiveSpellsTab
+            // 
+            this.offensiveSpellsTab.Location = new System.Drawing.Point(4, 22);
+            this.offensiveSpellsTab.Name = "offensiveSpellsTab";
+            this.offensiveSpellsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.offensiveSpellsTab.Size = new System.Drawing.Size(441, 73);
+            this.offensiveSpellsTab.TabIndex = 0;
+            this.offensiveSpellsTab.Text = "Offensive Spells";
+            this.offensiveSpellsTab.UseVisualStyleBackColor = true;
+            // 
+            // defensiveSpellsTab
+            // 
+            this.defensiveSpellsTab.Location = new System.Drawing.Point(4, 22);
+            this.defensiveSpellsTab.Name = "defensiveSpellsTab";
+            this.defensiveSpellsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.defensiveSpellsTab.Size = new System.Drawing.Size(441, 73);
+            this.defensiveSpellsTab.TabIndex = 1;
+            this.defensiveSpellsTab.Text = "Defensive Spells";
+            this.defensiveSpellsTab.UseVisualStyleBackColor = true;
+            // 
+            // supportiveSpellsTab
+            // 
+            this.supportiveSpellsTab.Location = new System.Drawing.Point(4, 22);
+            this.supportiveSpellsTab.Name = "supportiveSpellsTab";
+            this.supportiveSpellsTab.Size = new System.Drawing.Size(441, 73);
+            this.supportiveSpellsTab.TabIndex = 2;
+            this.supportiveSpellsTab.Text = "Supportive Spells";
+            this.supportiveSpellsTab.UseVisualStyleBackColor = true;
+            // 
             // Magic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 222);
+            this.ClientSize = new System.Drawing.Size(843, 413);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.healara);
             this.Controls.Add(this.rearise);
             this.Controls.Add(this.cureraga);
@@ -278,6 +324,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Magic";
             this.Text = "Magic";
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +362,9 @@
         private System.Windows.Forms.Timer defenceBoost3;
         public System.Windows.Forms.Timer reariseCooldown;
         private System.Windows.Forms.Timer hpUp3;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage offensiveSpellsTab;
+        private System.Windows.Forms.TabPage defensiveSpellsTab;
+        private System.Windows.Forms.TabPage supportiveSpellsTab;
     }
 }

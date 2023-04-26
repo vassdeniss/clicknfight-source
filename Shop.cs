@@ -21,8 +21,8 @@ namespace ClickNFight
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Icon = Properties.Resources.icon;
 
-            this.itemDescriptionTextBox.Multiline = true;
-            this.itemDescriptionTextBox.ReadOnly = true;
+            this.buyItemDescriptionTextBox.Multiline = true;
+            this.buyItemDescriptionTextBox.ReadOnly = true;
 
             this.soundPlayer = new SoundPlayer(Properties.Resources.coin);
         }
@@ -39,33 +39,30 @@ namespace ClickNFight
                     continue;
                 }
 
-                this.itemPickerComboBox.Items.Add(item);
+                this.buyItemPickerComboBox.Items.Add(item);
             }
 
-            this.itemPickerComboBox.DisplayMember = "Name";
-            this.itemPickerComboBox.Text = "Select an item";
+            this.buyItemPickerComboBox.DisplayMember = "Name";
+            this.buyItemPickerComboBox.Text = "Select an item";
+
+            foreach (SellableItem item in this.hero.Inventory.SellableItems)
+            {
+                if (!this.hero.Inventory.HasItem(item))
+                {
+                    continue;
+                }
+
+                this.sellItemPickerComboBox.Items.Add(item);
+            }
+
+            this.sellItemPickerComboBox.DisplayMember = "Name";
+            this.sellItemPickerComboBox.Text = "Select an item";
+
+            this.sellPickNumericUpDown.Minimum = 0;
         }
 
         private void allButtons_Click(object sender, EventArgs e)
         {
-            //else if (button.Equals(buyAR))
-            //{
-            //    if (Engine.count >= 30)
-            //    {
-            //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play();
-            //        Engine.airRunes++;
-            //        Engine.count = Engine.count - 30;
-            //        if (screenUpdate != null)
-            //        {
-            //            screenUpdate.UpdateUi();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //}
             //else if (button.Equals(buyFR))
             //{
             //    if (Engine.count >= 50)
@@ -89,7 +86,7 @@ namespace ClickNFight
             //    if (Engine.count >= 50)
             //    {
             //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play(); 
+            //        coin.Play();
             //        Engine.earthRunes++;
             //        Engine.count = Engine.count - 50;
             //        if (screenUpdate != null)
@@ -126,7 +123,7 @@ namespace ClickNFight
             //    {
             //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
             //        coin.Play();
-            //        Engine.waterRunes++; 
+            //        Engine.waterRunes++;
             //        Engine.count = Engine.count - 60;
             //        if (screenUpdate != null)
             //        {
@@ -230,186 +227,89 @@ namespace ClickNFight
             //}
         }
 
-        // Handles all sell buttons
-
-        private void allSellButtons_Click(object sender, EventArgs e)
+        private void BuyItemPickerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Button sell = (Button)sender;
-
-            if (sell.Equals(sellSilver))
-            {
-                if (Engine.silverOreTake > 0)
-                {
-                    if (orePickSilver.Value == 0)
-                    {
-                        var notEnough = MessageBox.Show("Please select how much ingots to sell", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else if (orePickSilver.Value > Engine.silverOreTake)
-                    {
-                        var notEnough = MessageBox.Show("You don't have that much ingots to sell!", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin2);
-                        coin.Play();
-                        decimal profit = orePickSilver.Value * 10;
-                        Engine.silverOreTake = Engine.silverOreTake - System.Convert.ToInt32(orePickSilver.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                    }
-                }
-                else
-                {
-                    var notEnough = MessageBox.Show("You don't have anything to sell!", "Warning!", MessageBoxButtons.OK);
-                }
-            }
-            else if (sell.Equals(sellGO))
-            {
-                if (Engine.goldOreTake > 0)
-                {
-                    if (orePickGold.Value == 0)
-                    {
-                        var notEnough = MessageBox.Show("Please select how much ingots to sell", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else if (orePickGold.Value > Engine.goldOreTake)
-                    {
-                        var notEnough = MessageBox.Show("You don't have that much ingots to sell!", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin2);
-                        coin.Play();
-                        decimal profit = orePickGold.Value * 20;
-                        Engine.goldOreTake = Engine.goldOreTake - System.Convert.ToInt32(orePickGold.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                    }
-                }
-                else
-                {
-                    var notEnough = MessageBox.Show("You don't have anything to sell!", "Warning!", MessageBoxButtons.OK);
-                }
-            }
-            else if (sell.Equals(sellPO))
-            {
-                if (Engine.platinumOreTake > 0)
-                {
-                    if (orePickPlat.Value == 0)
-                    {
-                        var notEnough = MessageBox.Show("Please select how much ingots to sell", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else if (orePickPlat.Value > Engine.platinumOreTake)
-                    {
-                        var notEnough = MessageBox.Show("You don't have that much ingots to sell!", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin2);
-                        coin.Play();
-                        decimal profit = orePickPlat.Value * 30;
-                        Engine.platinumOreTake = Engine.platinumOreTake - System.Convert.ToInt32(orePickPlat.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                    }
-                }
-                else
-                {
-                    var notEnough = MessageBox.Show("You don't have anything to sell!", "Warning!", MessageBoxButtons.OK);
-                }
-            }
-            else if (sell.Equals(sellCO))
-            {
-                if (Engine.cobaltOreTake > 0)
-                {
-                    if (orePickCob.Value == 0)
-                    {
-                        var notEnough = MessageBox.Show("Please select how much ingots to sell", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else if (orePickCob.Value > Engine.cobaltOreTake)
-                    {
-                        var notEnough = MessageBox.Show("You don't have that much ingots to sell!", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin2);
-                        coin.Play();
-                        decimal profit = orePickCob.Value * 40;
-                        Engine.cobaltOreTake = Engine.cobaltOreTake - System.Convert.ToInt32(orePickCob.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                    }
-                }
-                else
-                {
-                    var notEnough = MessageBox.Show("You don't have anything to sell!", "Warning!", MessageBoxButtons.OK);
-                }
-            }
-            else if (sell.Equals(sellSO))
-            {
-                if (Engine.starOreTake > 0)
-                {
-                    if (orePickStar.Value == 0)
-                    {
-                        var notEnough = MessageBox.Show("Please select how much ingots to sell", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else if (orePickStar.Value > Engine.starOreTake)
-                    {
-                        var notEnough = MessageBox.Show("You don't have that much ingots to sell!", "Warning!", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin2);
-                        coin.Play();
-                        decimal profit = this.orePickStar.Value * 50;
-                        Engine.starOreTake = Engine.starOreTake - System.Convert.ToInt32(orePickStar.Value);
-                        Engine.count = Engine.count + System.Convert.ToInt32(profit);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("You don't have anything to sell!", "Warning!", MessageBoxButtons.OK);
-                }
-            }
+            BuyableItem item = this.buyItemPickerComboBox.SelectedItem as BuyableItem;
+            this.buyItemDescriptionTextBox.Text = item.ShopInformation();
         }
 
-        private void ItemPickerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void SellItemPickerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Item item = this.itemPickerComboBox.SelectedItem as Item;
-            this.itemDescriptionTextBox.Text = item.ShopInformation();
+            SellableItem item = this.sellItemPickerComboBox.SelectedItem as SellableItem;
+            this.sellItemDescriptionTextBox.Text = item.ShopInformation();
+            this.sellPickNumericUpDown.Maximum = this.hero.Inventory.GetCount(item);
         }
 
         private void BuyItem_Click(object sender, EventArgs e)
         {
-            if (this.itemPickerComboBox.SelectedIndex is -1)
+            if (this.buyItemPickerComboBox.SelectedIndex is -1)
             {
                 MessageBox.Show(
                     "Please select an item from the list!",
                     "Warning!",
-                    MessageBoxButtons.OK);
+                    MessageBoxButtons.OK
+                );
                 return;
             }
 
-            BuyableItem item = this.itemPickerComboBox.SelectedItem as BuyableItem;
+            BuyableItem item = this.buyItemPickerComboBox.SelectedItem as BuyableItem;
             if (item is null)
             {
-                throw new InvalidOperationException("Item is not buyable!");
+                MessageBox.Show("You cannot buy this item", "Warning!", MessageBoxButtons.OK);
+                return;
             }
 
             if (!this.hero.Inventory.HasCapacity(item))
             {
-                MessageBox.Show("You have reached the items limit",
+                MessageBox.Show(
+                    "You have reached the items limit",
                     "Warning!",
-                    MessageBoxButtons.OK);
+                    MessageBoxButtons.OK
+                );
                 return;
             }
 
             if (!item.CanAfford(hero, out string failMessage))
             {
-                MessageBox.Show(
-                    failMessage,
-                    "Warning!",
-                    MessageBoxButtons.OK);
+                MessageBox.Show(failMessage, "Warning!", MessageBoxButtons.OK);
                 return;
             }
 
             this.soundPlayer.Play();
             item.BuyItem(this.hero);
+        }
+
+        private void SellItem_Click(object sender, EventArgs e)
+        {
+            if (this.sellItemPickerComboBox.SelectedIndex is -1)
+            {
+                MessageBox.Show(
+                    "Please select an item from the list!",
+                    "Warning!",
+                    MessageBoxButtons.OK
+                );
+                return;
+            }
+
+            SellableItem item = this.sellItemPickerComboBox.SelectedItem as SellableItem;
+            if (item is null)
+            {
+                MessageBox.Show("You cannot sell this item", "Warning!", MessageBoxButtons.OK);
+                return;
+            }
+
+            if (!this.hero.Inventory.HasItem(item))
+            {
+                MessageBox.Show(
+                    "You don't have anyomore of this item to sell",
+                    "Warning!",
+                    MessageBoxButtons.OK
+                );
+                return;
+            }
+
+            this.soundPlayer.Play();
+            item.SellItem(this.hero, (int)this.sellPickNumericUpDown.Value);
         }
     }
 }

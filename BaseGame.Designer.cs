@@ -43,7 +43,7 @@
             this.healButton = new System.Windows.Forms.Button();
             this.defenceLabel = new System.Windows.Forms.Label();
             this.healthBar = new System.Windows.Forms.ProgressBar();
-            this.magicMenuButton = new System.Windows.Forms.Button();
+            this.magicButton = new System.Windows.Forms.Button();
             this.CPS = new System.Windows.Forms.Label();
             this.runeCraftingButton = new System.Windows.Forms.Button();
             this.finalBossButton = new System.Windows.Forms.Button();
@@ -210,16 +210,16 @@
             this.healthBar.Size = new System.Drawing.Size(233, 27);
             this.healthBar.TabIndex = 19;
             // 
-            // magicMenuButton
+            // magicButton
             // 
-            this.magicMenuButton.Enabled = false;
-            this.magicMenuButton.Location = new System.Drawing.Point(387, 258);
-            this.magicMenuButton.Name = "magicMenuButton";
-            this.magicMenuButton.Size = new System.Drawing.Size(169, 85);
-            this.magicMenuButton.TabIndex = 20;
-            this.magicMenuButton.Text = "Magic!";
-            this.magicMenuButton.UseVisualStyleBackColor = true;
-            this.magicMenuButton.Click += new System.EventHandler(this.button2_Click);
+            this.magicButton.Enabled = false;
+            this.magicButton.Location = new System.Drawing.Point(387, 258);
+            this.magicButton.Name = "magicButton";
+            this.magicButton.Size = new System.Drawing.Size(169, 85);
+            this.magicButton.TabIndex = 20;
+            this.magicButton.Text = "Magic!";
+            this.magicButton.UseVisualStyleBackColor = true;
+            this.magicButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // CPS
             // 
@@ -391,7 +391,7 @@
             this.Controls.Add(this.finalBossButton);
             this.Controls.Add(this.runeCraftingButton);
             this.Controls.Add(this.CPS);
-            this.Controls.Add(this.magicMenuButton);
+            this.Controls.Add(this.magicButton);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.defenceLabel);
             this.Controls.Add(this.healButton);
@@ -437,7 +437,7 @@
         public System.Windows.Forms.Button fightButton;
         public System.Windows.Forms.Button shopButton;
         public System.Windows.Forms.Button InventoryButton;
-        public System.Windows.Forms.Button magicMenuButton;
+        public System.Windows.Forms.Button magicButton;
         public System.Windows.Forms.Button runeCraftingButton;
         public System.Windows.Forms.Button finalBossButton;
         public System.Windows.Forms.Label newPlus;

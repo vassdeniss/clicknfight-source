@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using ClickNFight.Items;
-using ClickNFight.Items.Ores;
+﻿using System.Collections.Generic;
+
+using ClickNFight.Spells;
 
 namespace ClickNFight
 {
@@ -24,6 +23,7 @@ namespace ClickNFight
 
             this.Inventory = new HeroInventory();
             this.MineStats = new Dictionary<string, int>();
+            this.Spells = new List<Spell>();
         }
 
         public int Level { get; set; }
@@ -61,5 +61,7 @@ namespace ClickNFight
         public HeroInventory Inventory { get; set; }
 
         public IDictionary<string, int> MineStats { get; set; }
+
+        public ICollection<Spell> Spells { get; set; }
     }
 }

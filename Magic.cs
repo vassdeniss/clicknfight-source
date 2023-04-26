@@ -7,32 +7,119 @@ namespace ClickNFight
     {
         public Magic()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.Icon = Properties.Resources.icon;
             ToolTip description = new ToolTip();
-            description.SetToolTip(fireBolt, "2 Air and 3 Fire Runes" + "\r\n" + "+ 5 (Invinsible) Clicks Per Second" + "\r\n" +
-                "Duration: 1 minute" + "\r\n" + "Cooldown: 5 Minutes");
-            description.SetToolTip(waterWave, "4 Air, 5 Water and 3 Blood Rune" + "\r\n" + "+ 10 (Invinvible) Clicks Per Second" + "\r\n" +
-                "Duration: 2 minutes" + "\r\n" + "Cooldown: 10 Minutes");
-            description.SetToolTip(voltSwtich, "6 Air, 7 Electric, 5 Blood Runes and a Wrath Rune" + "\r\n" + "+ 20 (Invinsible) Clicks Per Second" + "\r\n" +
-                "Duration: 3 minutes" + "\r\n" + "Cooldown: 15 Minutes");
+            description.SetToolTip(
+                fireBolt,
+                "2 Air and 3 Fire Runes"
+                    + "\r\n"
+                    + "+ 5 (Invinsible) Clicks Per Second"
+                    + "\r\n"
+                    + "Duration: 1 minute"
+                    + "\r\n"
+                    + "Cooldown: 5 Minutes"
+            );
+            description.SetToolTip(
+                waterWave,
+                "4 Air, 5 Water and 3 Blood Rune"
+                    + "\r\n"
+                    + "+ 10 (Invinvible) Clicks Per Second"
+                    + "\r\n"
+                    + "Duration: 2 minutes"
+                    + "\r\n"
+                    + "Cooldown: 10 Minutes"
+            );
+            description.SetToolTip(
+                voltSwtich,
+                "6 Air, 7 Electric, 5 Blood Runes and a Wrath Rune"
+                    + "\r\n"
+                    + "+ 20 (Invinsible) Clicks Per Second"
+                    + "\r\n"
+                    + "Duration: 3 minutes"
+                    + "\r\n"
+                    + "Cooldown: 15 Minutes"
+            );
 
+            description.SetToolTip(
+                defenceUp,
+                "3 Air and 4 Earth Runes"
+                    + "\r\n"
+                    + "+ 1 Damage Reduction "
+                    + "\r\n"
+                    + "Duration: 1 minute"
+                    + "\r\n"
+                    + "Cooldown: 5 Minutes"
+            );
+            description.SetToolTip(
+                exDefence,
+                "4 Air, 5 Lava and 3 Cosmic Runes"
+                    + "\r\n"
+                    + "+ 2 Damage Reduction"
+                    + "\r\n"
+                    + "Duration: 2 minute"
+                    + "\r\n"
+                    + "Cooldown: 10 Minutes"
+            );
+            description.SetToolTip(
+                maxDefence,
+                "7 Air, 8 Steam, 6 Cosmic and 2 Astral Runes"
+                    + "\r\n"
+                    + "+ 4 Damage Reduction "
+                    + "\r\n"
+                    + "Duration: 3 minute"
+                    + "\r\n"
+                    + "Cooldown: 15 Minutes"
+            );
 
-            description.SetToolTip(defenceUp, "3 Air and 4 Earth Runes" + "\r\n" + "+ 1 Damage Reduction " + "\r\n" +
-                "Duration: 1 minute" + "\r\n" + "Cooldown: 5 Minutes");
-            description.SetToolTip(exDefence, "4 Air, 5 Lava and 3 Cosmic Runes" + "\r\n" + "+ 2 Damage Reduction" + "\r\n" +
-                "Duration: 2 minute" + "\r\n" + "Cooldown: 10 Minutes");
-            description.SetToolTip(maxDefence, "7 Air, 8 Steam, 6 Cosmic and 2 Astral Runes" + "\r\n" + "+ 4 Damage Reduction " + "\r\n" +
-                "Duration: 3 minute" + "\r\n" + "Cooldown: 15 Minutes");
-
-
-            description.SetToolTip(healara, "3 Air and 4 Mind Runes" + "\r\n" + "Tmmporary + 10 Max Health" + "\r\n" +
-                "Duration: 1 minute" + "\r\n" + "Cooldown: 5 Minutes");
-            description.SetToolTip(cureraga, "5 Air, 6 Nature and 4 Life Runes" + "\r\n" + "Temporary + 20 Max Health" + "\r\n" +
-                "Duration: 2 minute" + "\r\n" + "Cooldown: 10 Minutes");
-            description.SetToolTip(rearise, "7 Air, 6 Life, 8 Revive and 2 Soul Runes " + "\r\n" + "Temporary + 40 Max Health" + "\r\n" +
-                "Duration: 3 minute" + "\r\n" + "Cooldown: 15 Minutes");
+            description.SetToolTip(
+                healara,
+                "3 Air and 4 Mind Runes"
+                    + "\r\n"
+                    + "Tmmporary + 10 Max Health"
+                    + "\r\n"
+                    + "Duration: 1 minute"
+                    + "\r\n"
+                    + "Cooldown: 5 Minutes"
+            );
+            description.SetToolTip(
+                cureraga,
+                "5 Air, 6 Nature and 4 Life Runes"
+                    + "\r\n"
+                    + "Temporary + 20 Max Health"
+                    + "\r\n"
+                    + "Duration: 2 minute"
+                    + "\r\n"
+                    + "Cooldown: 10 Minutes"
+            );
+            description.SetToolTip(
+                rearise,
+                "7 Air, 6 Life, 8 Revive and 2 Soul Runes "
+                    + "\r\n"
+                    + "Temporary + 40 Max Health"
+                    + "\r\n"
+                    + "Duration: 3 minute"
+                    + "\r\n"
+                    + "Cooldown: 15 Minutes"
+            );
         }
+
+        // Common
+        // Cooldown time
+        // Last time
+
+        // Attack
+        // Attack raise
+
+        // Defence
+        // Defence raise
+        // Defence reduction
+
+        // Heal
+        // Heal HP
+        // Increase mas
+
+        // Disable buttons?
 
         private void fireBolt_Click(object sender, EventArgs e)
         {
@@ -52,7 +139,11 @@ namespace ClickNFight
             }
             else
             {
-                MessageBox.Show("You don't have enough runes to cast this spell", "Not enough runes", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "You don't have enough runes to cast this spell",
+                    "Not enough runes",
+                    MessageBoxButtons.OK
+                );
             }
         }
 
@@ -77,18 +168,21 @@ namespace ClickNFight
                 Engine.defence = Engine.defence + 1;
                 Engine.defenceReduction = Engine.defenceReduction + 1;
 
-
                 defenceCooldown.Interval = 300000;
                 defenceCooldown.Tick += defenceCooldown_Tick;
                 defenceCooldown.Start();
                 defenceUp.Enabled = false;
 
-                defenceBoost.Interval = 60000; 
-                defenceBoost.Start(); 
+                defenceBoost.Interval = 60000;
+                defenceBoost.Start();
             }
             else
             {
-                MessageBox.Show("You don't have enough runes to cast this spell", "Not enough runes", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "You don't have enough runes to cast this spell",
+                    "Not enough runes",
+                    MessageBoxButtons.OK
+                );
             }
         }
 
@@ -102,7 +196,6 @@ namespace ClickNFight
         {
             Engine.defence = Engine.defence - 1;
             Engine.defenceReduction = Engine.defenceReduction - 1;
-
 
             defenceBoost.Stop();
         }
@@ -126,7 +219,11 @@ namespace ClickNFight
             }
             else
             {
-                MessageBox.Show("You don't have enough runes to cast this spell", "Not enough runes", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "You don't have enough runes to cast this spell",
+                    "Not enough runes",
+                    MessageBoxButtons.OK
+                );
             }
         }
 
@@ -146,7 +243,12 @@ namespace ClickNFight
 
         private void maxDefence_Click(object sender, EventArgs e)
         {
-            if (Engine.airRunes >= 7 && Engine.steamRunes >= 8 && Engine.cosmicRunes >= 6 && Engine.astralRunes >= 2) 
+            if (
+                Engine.airRunes >= 7
+                && Engine.steamRunes >= 8
+                && Engine.cosmicRunes >= 6
+                && Engine.astralRunes >= 2
+            )
             {
                 Engine.airRunes = Engine.airRunes - 7;
                 Engine.steamRunes = Engine.steamRunes - 8;
@@ -165,7 +267,11 @@ namespace ClickNFight
             }
             else
             {
-                MessageBox.Show("You don't have enough runes to cast this spell", "Not enough runes", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "You don't have enough runes to cast this spell",
+                    "Not enough runes",
+                    MessageBoxButtons.OK
+                );
             }
         }
 
@@ -202,7 +308,11 @@ namespace ClickNFight
             }
             else
             {
-                MessageBox.Show("You don't have enough runes to cast this spell", "Not enough runes", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "You don't have enough runes to cast this spell",
+                    "Not enough runes",
+                    MessageBoxButtons.OK
+                );
             }
         }
 
@@ -231,7 +341,7 @@ namespace ClickNFight
 
                 if (healPlayer != null)
                 {
-                    healPlayer.UpdateScreenHeal(); 
+                    healPlayer.UpdateScreenHeal();
                 }
 
                 healaraCooldown.Interval = 300000;
@@ -244,7 +354,11 @@ namespace ClickNFight
             }
             else
             {
-                MessageBox.Show("You don't have enough runes to cast this spell", "Not enough runes", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "You don't have enough runes to cast this spell",
+                    "Not enough runes",
+                    MessageBoxButtons.OK
+                );
             }
         }
 
@@ -292,7 +406,11 @@ namespace ClickNFight
             }
             else
             {
-                MessageBox.Show("You don't have enough runes to cast this spell", "Not enough runes", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "You don't have enough runes to cast this spell",
+                    "Not enough runes",
+                    MessageBoxButtons.OK
+                );
             }
         }
 
@@ -315,7 +433,12 @@ namespace ClickNFight
 
         private void voltSwtich_Click(object sender, EventArgs e)
         {
-            if (Engine.airRunes >= 6 && Engine.bloodRunes >= 5 && Engine.electricRunes >= 7 && Engine.wrathRunes >= 1)
+            if (
+                Engine.airRunes >= 6
+                && Engine.bloodRunes >= 5
+                && Engine.electricRunes >= 7
+                && Engine.wrathRunes >= 1
+            )
             {
                 Engine.airRunes = Engine.airRunes - 6;
                 Engine.electricRunes = Engine.electricRunes - 7;
@@ -333,7 +456,11 @@ namespace ClickNFight
             }
             else
             {
-                MessageBox.Show("You don't have enough runes to cast this spell", "Not enough runes", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "You don't have enough runes to cast this spell",
+                    "Not enough runes",
+                    MessageBoxButtons.OK
+                );
             }
         }
 
@@ -351,7 +478,12 @@ namespace ClickNFight
 
         private void rearise_Click(object sender, EventArgs e)
         {
-            if (Engine.airRunes >= 7 && Engine.reviveRunes >= 8 && Engine.lifeRunes >= 6 && Engine.soulRunes >= 2)
+            if (
+                Engine.airRunes >= 7
+                && Engine.reviveRunes >= 8
+                && Engine.lifeRunes >= 6
+                && Engine.soulRunes >= 2
+            )
             {
                 Form1 bar = new Form1();
 
@@ -364,7 +496,7 @@ namespace ClickNFight
 
                 if (healPlayer3 != null)
                 {
-                    healPlayer3.UpdateScreenHeal3(); 
+                    healPlayer3.UpdateScreenHeal3();
                 }
 
                 reariseCooldown.Interval = 900000;
@@ -377,7 +509,11 @@ namespace ClickNFight
             }
             else
             {
-                MessageBox.Show("You don't have enough runes to cast this spell", "Not enough runes", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "You don't have enough runes to cast this spell",
+                    "Not enough runes",
+                    MessageBoxButtons.OK
+                );
             }
         }
 
@@ -397,8 +533,6 @@ namespace ClickNFight
                 healPlayer3.UpdateScreenHeal();
             }
         }
-
-
 
         public IUiRefreshers owo;
         public IUiRefreshers healPlayer;

@@ -1,10 +1,9 @@
-﻿using System;
+﻿using System.Text;
 
 namespace ClickNFight.Items.Ores
 {
-    public class Ore : Item
+    public class Ore : SellableItem
     {
-        // TODO: Temp
         public Ore(OreType type)
         {
             this.Type = type;
@@ -12,11 +11,14 @@ namespace ClickNFight.Items.Ores
             this.Name = $"{type} Ingots";
             this.Limit = -1;
             this.Strength = (int)type;
+            this.SellPrice = (int)type * 10;
         }
 
         public sealed override string Name { get; set; }
 
         public sealed override int Limit { get; set; }
+
+        public sealed override int SellPrice { get; set; }
 
         public OreType Type { get; set; }
 
@@ -26,7 +28,12 @@ namespace ClickNFight.Items.Ores
 
         public override string ShopInformation()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(this.Name);
+            sb.AppendLine($"Sell Price: {this.SellPrice} Clicks");
+
+            return sb.ToString();
         }
 
         public override string ToString()

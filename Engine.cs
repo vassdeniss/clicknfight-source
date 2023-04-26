@@ -4,55 +4,81 @@
     {
         // DUMMY PROPS
         public static int level;
-        public static double money;
-        public static double health;
-        public static int totalHealth;
-        public static int damage;
-        public static int defence;
-        public static double defenceReduction;
-        public static int XP;
-        public static int totalXP;
-        public static double monstersSlain;
+
+        public static double money { get; set; }
+
+        public static double health { get; set; }
+
+        public static int totalHealth { get; set; }
+
+        public static int damage { get; set; }
+
+        public static int defence { get; set; }
+
+        public static double defenceReduction { get; set; }
+
+        public static int XP { get; set; }
+
+        public static int totalXP { get; set; }
+
+        public static double monstersSlain { get; set; }
 
         public static double count;
         public static double count3;
 
-        public static int diamondSword;
-        public static int excalibur;
-        public static bool silverSword = false;
-        public static bool goldSword = false;
-        public static bool platinumSword = false;
-        public static bool cobaltSword = false;
-        public static bool starSword = false;
+        public static double diamondSwordAdd { get; set; }
 
-        public static double diamondSwordAdd;
-        public static double excaliburAdd;
-        public static double fireboltAdd;
-        public static double waterwaveAdd;
-        public static double voltswtichAdd;
-        public static double newgameAdd;
-        public static double silverSwordAdd;
-        public static double goldSwordAdd;
-        public static double platinumSwordAdd;
-        public static double cobaltSwordAdd;
-        public static double starSwordAdd;
+        public static double excaliburAdd { get; set; }
 
-        public static int airRunes;
-        public static int fireRunes;
-        public static int earthRunes;
-        public static int mindRunes;
-        public static int waterRunes;
-        public static int lavaRunes;
-        public static int natureRunes;
-        public static int electricRunes;
-        public static int steamRunes; 
-        public static int bloodRunes;
-        public static int cosmicRunes;
-        public static int lifeRunes;
-        public static int reviveRunes; 
-        public static int wrathRunes;
-        public static int astralRunes;
-        public static int soulRunes;
+        public static double fireboltAdd { get; set; }
+
+        public static double waterwaveAdd { get; set; }
+
+        public static double voltswtichAdd { get; set; }
+
+        public static double newgameAdd { get; set; }
+
+        public static double silverSwordAdd { get; set; }
+
+        public static double goldSwordAdd { get; set; }
+
+        public static double platinumSwordAdd { get; set; }
+
+        public static double cobaltSwordAdd { get; set; }
+
+        public static double starSwordAdd { get; set; }
+
+        public static int airRunes { get; set; }
+
+        public static int fireRunes { get; set; }
+
+        public static int earthRunes { get; set; }
+
+        public static int mindRunes { get; set; }
+
+        public static int waterRunes { get; set; }
+
+        public static int lavaRunes { get; set; }
+
+        public static int natureRunes { get; set; }
+
+        public static int electricRunes { get; set; }
+
+        public static int steamRunes { get; set; }
+
+        public static int bloodRunes { get; set; }
+
+        public static int cosmicRunes { get; set; }
+
+        public static int lifeRunes { get; set; }
+
+        public static int reviveRunes { get; set; }
+
+        public static int wrathRunes { get; set; }
+
+        public static int astralRunes { get; set; }
+
+        public static int soulRunes { get; set; }
 
         public static bool isBossDead = false;
         public static bool isNewGameOn = false;
@@ -65,21 +91,16 @@
         public static bool isNewGameDefenceOn2 = false;
         public static bool isNewGameDefenceOn3 = false;
 
-        public static string[] items;
+        public static string[] items { get; set; }
 
-        public static string name;
+        public static string name { get; set; }
 
-        public static int silverOreTake;
-        public static int goldOreTake;
-        public static int platinumOreTake;
-        public static int cobaltOreTake;
-        public static int starOreTake;
-        public static int cobaltOreTotal;
-        public static int starOreTotal;
+        public static int wood { get; set; }
 
-        public static int wood;
-        public static int stone;
-        public static int flint;
-        public static int steel;
+        public static int stone { get; set; }
+
+        public static int flint { get; set; }
+
+        public static int steel { get; set; }
     }
 }

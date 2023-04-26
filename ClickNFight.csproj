@@ -130,6 +130,11 @@
     <Compile Include="Items\Pickaxes\Pickaxe.cs" />
     <Compile Include="Items\Pickaxes\PickaxeSettings.cs" />
     <Compile Include="Items\Pickaxes\StartPickaxe.cs" />
+    <Compile Include="Items\Runes\AirRune.cs" />
+    <Compile Include="Items\Runes\Rune.cs" />
+    <Compile Include="Items\Runes\RuneLevelType.cs" />
+    <Compile Include="Items\Runes\RuneSettings.cs" />
+    <Compile Include="Items\SellableItem.cs" />
     <Compile Include="Items\Weapons\CobaltSword.cs" />
     <Compile Include="Items\Weapons\DiamondSword.cs" />
     <Compile Include="Items\Weapons\GoldSword.cs" />
@@ -139,6 +144,7 @@
     <Compile Include="Items\Weapons\StarSword.cs" />
     <Compile Include="Items\Weapons\StoneSword.cs" />
     <Compile Include="Items\Weapons\WeaponSettings.cs" />
+    <Compile Include="Spells\Spell.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Windows\Other\MiningOres.cs">
       <SubType>Form</SubType>
