@@ -63,16 +63,19 @@
             this.offensiveSpellsTab = new System.Windows.Forms.TabPage();
             this.defensiveSpellsTab = new System.Windows.Forms.TabPage();
             this.supportiveSpellsTab = new System.Windows.Forms.TabPage();
+            this.offensiveSpellsComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
+            this.offensiveSpellsTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 9);
+            this.label6.Location = new System.Drawing.Point(16, 11);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(160, 25);
+            this.label6.Size = new System.Drawing.Size(204, 29);
             this.label6.TabIndex = 12;
             this.label6.Text = "Offensive Spells:";
             // 
@@ -80,9 +83,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(255, 9);
+            this.label1.Location = new System.Drawing.Point(340, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 25);
+            this.label1.Size = new System.Drawing.Size(210, 29);
             this.label1.TabIndex = 13;
             this.label1.Text = "Defensive Spells:";
             // 
@@ -90,17 +94,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(492, 9);
+            this.label2.Location = new System.Drawing.Point(656, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 25);
+            this.label2.Size = new System.Drawing.Size(218, 29);
             this.label2.TabIndex = 14;
             this.label2.Text = "Supportive Spells:";
             // 
             // fireBolt
             // 
-            this.fireBolt.Location = new System.Drawing.Point(17, 54);
+            this.fireBolt.Location = new System.Drawing.Point(23, 66);
+            this.fireBolt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fireBolt.Name = "fireBolt";
-            this.fireBolt.Size = new System.Drawing.Size(155, 48);
+            this.fireBolt.Size = new System.Drawing.Size(207, 59);
             this.fireBolt.TabIndex = 15;
             this.fireBolt.TabStop = false;
             this.fireBolt.Text = "Fire Bolt";
@@ -110,9 +116,10 @@
             // exDefence
             // 
             this.exDefence.Enabled = false;
-            this.exDefence.Location = new System.Drawing.Point(258, 108);
+            this.exDefence.Location = new System.Drawing.Point(344, 133);
+            this.exDefence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exDefence.Name = "exDefence";
-            this.exDefence.Size = new System.Drawing.Size(155, 48);
+            this.exDefence.Size = new System.Drawing.Size(207, 59);
             this.exDefence.TabIndex = 17;
             this.exDefence.TabStop = false;
             this.exDefence.Text = "Extra Defence \r\n";
@@ -122,9 +129,10 @@
             // maxDefence
             // 
             this.maxDefence.Enabled = false;
-            this.maxDefence.Location = new System.Drawing.Point(258, 162);
+            this.maxDefence.Location = new System.Drawing.Point(344, 199);
+            this.maxDefence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maxDefence.Name = "maxDefence";
-            this.maxDefence.Size = new System.Drawing.Size(155, 48);
+            this.maxDefence.Size = new System.Drawing.Size(207, 59);
             this.maxDefence.TabIndex = 18;
             this.maxDefence.TabStop = false;
             this.maxDefence.Text = "Max Defence\r\n";
@@ -134,9 +142,10 @@
             // defenceUp
             // 
             this.defenceUp.Enabled = false;
-            this.defenceUp.Location = new System.Drawing.Point(258, 54);
+            this.defenceUp.Location = new System.Drawing.Point(344, 66);
+            this.defenceUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.defenceUp.Name = "defenceUp";
-            this.defenceUp.Size = new System.Drawing.Size(155, 48);
+            this.defenceUp.Size = new System.Drawing.Size(207, 59);
             this.defenceUp.TabIndex = 19;
             this.defenceUp.TabStop = false;
             this.defenceUp.Text = "Defence Up\r\n";
@@ -146,9 +155,10 @@
             // voltSwtich
             // 
             this.voltSwtich.Enabled = false;
-            this.voltSwtich.Location = new System.Drawing.Point(17, 162);
+            this.voltSwtich.Location = new System.Drawing.Point(23, 199);
+            this.voltSwtich.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.voltSwtich.Name = "voltSwtich";
-            this.voltSwtich.Size = new System.Drawing.Size(155, 48);
+            this.voltSwtich.Size = new System.Drawing.Size(207, 59);
             this.voltSwtich.TabIndex = 20;
             this.voltSwtich.TabStop = false;
             this.voltSwtich.Text = "Volt Switch\r\n";
@@ -158,9 +168,10 @@
             // waterWave
             // 
             this.waterWave.Enabled = false;
-            this.waterWave.Location = new System.Drawing.Point(17, 108);
+            this.waterWave.Location = new System.Drawing.Point(23, 133);
+            this.waterWave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.waterWave.Name = "waterWave";
-            this.waterWave.Size = new System.Drawing.Size(155, 48);
+            this.waterWave.Size = new System.Drawing.Size(207, 59);
             this.waterWave.TabIndex = 21;
             this.waterWave.TabStop = false;
             this.waterWave.Text = "Water Wave\r\n";
@@ -170,9 +181,10 @@
             // healara
             // 
             this.healara.Enabled = false;
-            this.healara.Location = new System.Drawing.Point(496, 54);
+            this.healara.Location = new System.Drawing.Point(661, 66);
+            this.healara.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.healara.Name = "healara";
-            this.healara.Size = new System.Drawing.Size(155, 48);
+            this.healara.Size = new System.Drawing.Size(207, 59);
             this.healara.TabIndex = 24;
             this.healara.TabStop = false;
             this.healara.Text = "Healara \r\n";
@@ -182,9 +194,10 @@
             // rearise
             // 
             this.rearise.Enabled = false;
-            this.rearise.Location = new System.Drawing.Point(496, 162);
+            this.rearise.Location = new System.Drawing.Point(661, 199);
+            this.rearise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rearise.Name = "rearise";
-            this.rearise.Size = new System.Drawing.Size(155, 48);
+            this.rearise.Size = new System.Drawing.Size(207, 59);
             this.rearise.TabIndex = 23;
             this.rearise.TabStop = false;
             this.rearise.Text = "ReArise\r\n";
@@ -194,9 +207,10 @@
             // cureraga
             // 
             this.cureraga.Enabled = false;
-            this.cureraga.Location = new System.Drawing.Point(496, 108);
+            this.cureraga.Location = new System.Drawing.Point(661, 133);
+            this.cureraga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cureraga.Name = "cureraga";
-            this.cureraga.Size = new System.Drawing.Size(155, 48);
+            this.cureraga.Size = new System.Drawing.Size(207, 59);
             this.cureraga.TabIndex = 22;
             this.cureraga.TabStop = false;
             this.cureraga.Text = "Cureraga\r\n";
@@ -268,46 +282,60 @@
             this.tabControl1.Controls.Add(this.offensiveSpellsTab);
             this.tabControl1.Controls.Add(this.defensiveSpellsTab);
             this.tabControl1.Controls.Add(this.supportiveSpellsTab);
-            this.tabControl1.Location = new System.Drawing.Point(213, 291);
+            this.tabControl1.Location = new System.Drawing.Point(284, 358);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(449, 99);
+            this.tabControl1.Size = new System.Drawing.Size(599, 122);
             this.tabControl1.TabIndex = 25;
             // 
             // offensiveSpellsTab
             // 
-            this.offensiveSpellsTab.Location = new System.Drawing.Point(4, 22);
+            this.offensiveSpellsTab.Controls.Add(this.offensiveSpellsComboBox);
+            this.offensiveSpellsTab.Location = new System.Drawing.Point(4, 25);
+            this.offensiveSpellsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.offensiveSpellsTab.Name = "offensiveSpellsTab";
-            this.offensiveSpellsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.offensiveSpellsTab.Size = new System.Drawing.Size(441, 73);
+            this.offensiveSpellsTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.offensiveSpellsTab.Size = new System.Drawing.Size(591, 93);
             this.offensiveSpellsTab.TabIndex = 0;
             this.offensiveSpellsTab.Text = "Offensive Spells";
             this.offensiveSpellsTab.UseVisualStyleBackColor = true;
             // 
             // defensiveSpellsTab
             // 
-            this.defensiveSpellsTab.Location = new System.Drawing.Point(4, 22);
+            this.defensiveSpellsTab.Location = new System.Drawing.Point(4, 25);
+            this.defensiveSpellsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.defensiveSpellsTab.Name = "defensiveSpellsTab";
-            this.defensiveSpellsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.defensiveSpellsTab.Size = new System.Drawing.Size(441, 73);
+            this.defensiveSpellsTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.defensiveSpellsTab.Size = new System.Drawing.Size(591, 93);
             this.defensiveSpellsTab.TabIndex = 1;
             this.defensiveSpellsTab.Text = "Defensive Spells";
             this.defensiveSpellsTab.UseVisualStyleBackColor = true;
             // 
             // supportiveSpellsTab
             // 
-            this.supportiveSpellsTab.Location = new System.Drawing.Point(4, 22);
+            this.supportiveSpellsTab.Location = new System.Drawing.Point(4, 25);
+            this.supportiveSpellsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.supportiveSpellsTab.Name = "supportiveSpellsTab";
-            this.supportiveSpellsTab.Size = new System.Drawing.Size(441, 73);
+            this.supportiveSpellsTab.Size = new System.Drawing.Size(591, 93);
             this.supportiveSpellsTab.TabIndex = 2;
             this.supportiveSpellsTab.Text = "Supportive Spells";
             this.supportiveSpellsTab.UseVisualStyleBackColor = true;
             // 
+            // offensiveSpellsComboBox
+            // 
+            this.offensiveSpellsComboBox.FormattingEnabled = true;
+            this.offensiveSpellsComboBox.Location = new System.Drawing.Point(7, 7);
+            this.offensiveSpellsComboBox.Name = "offensiveSpellsComboBox";
+            this.offensiveSpellsComboBox.Size = new System.Drawing.Size(105, 24);
+            this.offensiveSpellsComboBox.TabIndex = 0;
+            this.offensiveSpellsComboBox.SelectedIndexChanged += new System.EventHandler(this.SpellsComboBox_SelectedIndexChanged);
+            // 
             // Magic
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 413);
+            this.ClientSize = new System.Drawing.Size(1124, 508);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.healara);
             this.Controls.Add(this.rearise);
@@ -322,9 +350,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Magic";
             this.Text = "Magic";
             this.tabControl1.ResumeLayout(false);
+            this.offensiveSpellsTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,5 +396,6 @@
         private System.Windows.Forms.TabPage offensiveSpellsTab;
         private System.Windows.Forms.TabPage defensiveSpellsTab;
         private System.Windows.Forms.TabPage supportiveSpellsTab;
+        private System.Windows.Forms.ComboBox offensiveSpellsComboBox;
     }
 }

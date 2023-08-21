@@ -12,5 +12,10 @@ namespace ClickNFight.Items.Runes
         public static int AirRuneBuyPrice = 30;
         public static int AirRuneBuyLimit = -1;
         public static RuneLevelType AirRuneLevel = RuneLevelType.None;
+
+        public static string FireRuneName = "Fire Runes";
+        public static int FireRuneBuyPrice = 50;
+        public static int FireRuneBuyLimit = -1;
+        public static RuneLevelType FireRuneLevel = RuneLevelType.Low;
     }
 }

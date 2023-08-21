@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ClickNFight.Spells;
+using ClickNFight.Spells.Offensive;
+
+using System;
 using System.Windows.Forms;
 
 namespace ClickNFight
@@ -9,6 +12,15 @@ namespace ClickNFight
         {
             this.InitializeComponent();
             this.Icon = Properties.Resources.icon;
+
+            foreach (Spell spell in this.hero.Spells)
+            {
+                if (spell is OffensiveSpell)
+                {
+                    this.offensiveSpellsComboBox.Items.Add(spell);
+                }
+            }
+
             ToolTip description = new ToolTip();
             description.SetToolTip(
                 fireBolt,
@@ -120,6 +132,31 @@ namespace ClickNFight
         // Increase mas
 
         // Disable buttons?
+
+        private Hero hero;
+        private Spell spell;
+
+        private void CastButton_Clicked(object sender, EventArgs e)
+        {
+            if (this.spell is null)
+            {
+                return;
+            }
+
+            if (!this.spell.CanCast(this.hero, out string message))
+            {
+                MessageBox.Show(message, "Warning!", MessageBoxButtons.OK);
+                return;
+            }
+
+            this.spell.Cast(this.hero);
+        }
+
+        private void SpellsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox box = sender as ComboBox;
+            this.spell = box.SelectedItem as Spell;
+        }
 
         private void fireBolt_Click(object sender, EventArgs e)
         {

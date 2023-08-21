@@ -4,14 +4,14 @@ using static ClickNFight.Items.Runes.RuneSettings;
 
 namespace ClickNFight.Items.Runes
 {
-    public class AirRune : Rune
+    public class FireRune : Rune
     {
-        public AirRune()
+        public FireRune()
         {
-            this.Name = AirRuneName;
-            this.BuyPrice = AirRuneBuyPrice;
-            this.Limit = AirRuneBuyLimit;
-            this.Level = AirRuneLevel;
+            this.Name = FireRuneName;
+            this.BuyPrice = FireRuneBuyPrice;
+            this.Limit = FireRuneBuyLimit;
+            this.Level = FireRuneLevel;
         }
 
         public sealed override string Name { get; set; }
@@ -27,11 +27,11 @@ namespace ClickNFight.Items.Runes
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine(this.Name);
-            sb.AppendLine("Used for casting magic spells");
+            sb.AppendLine("Used for casting low level magic spells");
             sb.AppendLine($"{this.BuyPrice} Clicks");
             sb.AppendLine("No buy limit");
 
             return sb.ToString();
-        }
+        }   
     }
 }

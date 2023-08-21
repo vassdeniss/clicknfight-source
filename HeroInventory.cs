@@ -43,7 +43,8 @@ namespace ClickNFight
                 { new PlatinumSword(), 1 },
                 { new CobaltPickaxe(), 1 },
                 { new StarSword(), 1 },
-                { new AirRune(), 50 }
+                { new AirRune(), 50 },
+                { new FireRune(), 10 },
             };
         }
 
