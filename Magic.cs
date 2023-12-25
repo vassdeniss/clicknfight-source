@@ -1,5 +1,4 @@
 ﻿using ClickNFight.Spells;
-using ClickNFight.Spells.Offensive;
 
 using System;
 using System.Windows.Forms;
@@ -13,112 +12,106 @@ namespace ClickNFight
             this.InitializeComponent();
             this.Icon = Properties.Resources.icon;
 
-            foreach (Spell spell in this.hero.Spells)
-            {
-                if (spell is OffensiveSpell)
-                {
-                    this.offensiveSpellsComboBox.Items.Add(spell);
-                }
-            }
-
             ToolTip description = new ToolTip();
-            description.SetToolTip(
-                fireBolt,
-                "2 Air and 3 Fire Runes"
-                    + "\r\n"
-                    + "+ 5 (Invinsible) Clicks Per Second"
-                    + "\r\n"
-                    + "Duration: 1 minute"
-                    + "\r\n"
-                    + "Cooldown: 5 Minutes"
-            );
             description.SetToolTip(
                 waterWave,
                 "4 Air, 5 Water and 3 Blood Rune"
-                    + "\r\n"
-                    + "+ 10 (Invinvible) Clicks Per Second"
-                    + "\r\n"
-                    + "Duration: 2 minutes"
-                    + "\r\n"
-                    + "Cooldown: 10 Minutes"
+                + "\r\n"
+                + "+ 10 (Invinvible) Clicks Per Second"
+                + "\r\n"
+                + "Duration: 2 minutes"
+                + "\r\n"
+                + "Cooldown: 10 Minutes"
             );
             description.SetToolTip(
                 voltSwtich,
                 "6 Air, 7 Electric, 5 Blood Runes and a Wrath Rune"
-                    + "\r\n"
-                    + "+ 20 (Invinsible) Clicks Per Second"
-                    + "\r\n"
-                    + "Duration: 3 minutes"
-                    + "\r\n"
-                    + "Cooldown: 15 Minutes"
+                + "\r\n"
+                + "+ 20 (Invinsible) Clicks Per Second"
+                + "\r\n"
+                + "Duration: 3 minutes"
+                + "\r\n"
+                + "Cooldown: 15 Minutes"
             );
 
             description.SetToolTip(
                 defenceUp,
                 "3 Air and 4 Earth Runes"
-                    + "\r\n"
-                    + "+ 1 Damage Reduction "
-                    + "\r\n"
-                    + "Duration: 1 minute"
-                    + "\r\n"
-                    + "Cooldown: 5 Minutes"
+                + "\r\n"
+                + "+ 1 Damage Reduction "
+                + "\r\n"
+                + "Duration: 1 minute"
+                + "\r\n"
+                + "Cooldown: 5 Minutes"
             );
             description.SetToolTip(
                 exDefence,
                 "4 Air, 5 Lava and 3 Cosmic Runes"
-                    + "\r\n"
-                    + "+ 2 Damage Reduction"
-                    + "\r\n"
-                    + "Duration: 2 minute"
-                    + "\r\n"
-                    + "Cooldown: 10 Minutes"
+                + "\r\n"
+                + "+ 2 Damage Reduction"
+                + "\r\n"
+                + "Duration: 2 minute"
+                + "\r\n"
+                + "Cooldown: 10 Minutes"
             );
             description.SetToolTip(
                 maxDefence,
                 "7 Air, 8 Steam, 6 Cosmic and 2 Astral Runes"
-                    + "\r\n"
-                    + "+ 4 Damage Reduction "
-                    + "\r\n"
-                    + "Duration: 3 minute"
-                    + "\r\n"
-                    + "Cooldown: 15 Minutes"
+                + "\r\n"
+                + "+ 4 Damage Reduction "
+                + "\r\n"
+                + "Duration: 3 minute"
+                + "\r\n"
+                + "Cooldown: 15 Minutes"
             );
 
             description.SetToolTip(
                 healara,
                 "3 Air and 4 Mind Runes"
-                    + "\r\n"
-                    + "Tmmporary + 10 Max Health"
-                    + "\r\n"
-                    + "Duration: 1 minute"
-                    + "\r\n"
-                    + "Cooldown: 5 Minutes"
+                + "\r\n"
+                + "Tmmporary + 10 Max Health"
+                + "\r\n"
+                + "Duration: 1 minute"
+                + "\r\n"
+                + "Cooldown: 5 Minutes"
             );
             description.SetToolTip(
                 cureraga,
                 "5 Air, 6 Nature and 4 Life Runes"
-                    + "\r\n"
-                    + "Temporary + 20 Max Health"
-                    + "\r\n"
-                    + "Duration: 2 minute"
-                    + "\r\n"
-                    + "Cooldown: 10 Minutes"
+                + "\r\n"
+                + "Temporary + 20 Max Health"
+                + "\r\n"
+                + "Duration: 2 minute"
+                + "\r\n"
+                + "Cooldown: 10 Minutes"
             );
             description.SetToolTip(
                 rearise,
                 "7 Air, 6 Life, 8 Revive and 2 Soul Runes "
-                    + "\r\n"
-                    + "Temporary + 40 Max Health"
-                    + "\r\n"
-                    + "Duration: 3 minute"
-                    + "\r\n"
-                    + "Cooldown: 15 Minutes"
+                + "\r\n"
+                + "Temporary + 40 Max Health"
+                + "\r\n"
+                + "Duration: 3 minute"
+                + "\r\n"
+                + "Cooldown: 15 Minutes"
             );
         }
 
-        // Common
-        // Cooldown time
-        // Last time
+        public Magic(Hero hero)
+            : this()
+        {
+            this._hero = hero;
+
+            foreach (Spell spell in this._hero.Spells)
+            {
+                this.spellsComboBox.Items.Add(spell);
+            }
+
+            if (this._hero.ActiveSpell != null && this._hero.ActiveSpell.IsOnCooldown)
+            {
+                this.castButton.Enabled = false;
+            }
+        }
 
         // Attack
         // Attack raise
@@ -131,63 +124,29 @@ namespace ClickNFight
         // Heal HP
         // Increase mas
 
-        // Disable buttons?
+        private readonly Hero _hero;
 
-        private Hero hero;
-        private Spell spell;
-
-        private void CastButton_Clicked(object sender, EventArgs e)
+        private async void CastButton_Clicked(object sender, EventArgs e)
         {
-            if (this.spell is null)
+            if (this._hero.ActiveSpell is null)
             {
                 return;
             }
 
-            if (!this.spell.CanCast(this.hero, out string message))
+            if (!this._hero.ActiveSpell.CanCast(this._hero, out string message))
             {
                 MessageBox.Show(message, "Warning!", MessageBoxButtons.OK);
                 return;
             }
 
-            this.spell.Cast(this.hero);
+            await this._hero.ActiveSpell.Cast(this._hero);
         }
 
         private void SpellsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox box = sender as ComboBox;
-            this.spell = box.SelectedItem as Spell;
-        }
-
-        private void fireBolt_Click(object sender, EventArgs e)
-        {
-            if (Engine.fireRunes >= 3 && Engine.airRunes >= 2)
-            {
-                Engine.fireRunes = Engine.fireRunes - 3;
-                Engine.airRunes = Engine.airRunes - 2;
-                Engine.fireboltAdd = 5;
-
-                fireBolt.Enabled = false;
-                fireCooldown.Interval = 300000;
-                fireCooldown.Tick += fireCooldown_Tick;
-                fireCooldown.Enabled = true;
-
-                attackBoost.Interval = 60000;
-                attackBoost.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show(
-                    "You don't have enough runes to cast this spell",
-                    "Not enough runes",
-                    MessageBoxButtons.OK
-                );
-            }
-        }
-
-        private void fireCooldown_Tick(object sender, EventArgs e)
-        {
-            fireBolt.Enabled = true;
-            fireCooldown.Enabled = false;
+            this._hero.ActiveSpell = box?.SelectedItem as Spell;
+            this.spellInfoTextBox.Text = this._hero.ActiveSpell?.Description();
         }
 
         private void attackBoost_Tick(object sender, EventArgs e)
