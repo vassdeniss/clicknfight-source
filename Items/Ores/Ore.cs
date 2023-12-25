@@ -2,9 +2,9 @@
 
 namespace ClickNFight.Items.Ores
 {
-    public class Ore : SellableItem
+    public abstract class Ore : SellableItem
     {
-        public Ore(OreType type)
+        protected Ore(OreType type)
         {
             this.Type = type;
 
