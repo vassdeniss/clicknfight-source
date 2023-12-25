@@ -117,28 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox3.Text" xml:space="preserve">
-    <value>Air Runes
-Used for casting magic spells 
-30 Clicks 
-No buy limit
-
-Fire Runes
-Used for casting low level magic spells 
-50 Clicks 
-No buy limit
-
-Earth Runes
-Used for casting low level magic spells 
-50 Clicks 
-No buy limit
-
-Mind Runes
-Used for casting low level magic spells 
-50 Clicks 
-No buy limit
-</value>
-  </data>
   <data name="textBox4.Text" xml:space="preserve">
     <value>Water Runes 
 Used for casting mid level magic spells 

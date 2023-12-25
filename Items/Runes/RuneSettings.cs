@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClickNFight.Items.Runes
+﻿namespace ClickNFight.Items.Runes
 {
     public class RuneSettings
     {
@@ -17,5 +11,10 @@ namespace ClickNFight.Items.Runes
         public static int FireRuneBuyPrice = 50;
         public static int FireRuneBuyLimit = -1;
         public static RuneLevelType FireRuneLevel = RuneLevelType.Low;
+
+        public static string EarthRuneName = "Earth Runes";
+        public static int EarthRuneBuyPrice = 50;
+        public static int EarthRuneBuyLimit = -1;
+        public static RuneLevelType EarthRuneLevel = RuneLevelType.Low;
     }
 }

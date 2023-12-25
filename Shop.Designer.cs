@@ -30,10 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop));
             this.buyItemButton = new System.Windows.Forms.Button();
-            this.buyFR = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
             this.buyWR = new System.Windows.Forms.Button();
-            this.buyER = new System.Windows.Forms.Button();
             this.buyMR = new System.Windows.Forms.Button();
             this.buyLR = new System.Windows.Forms.Button();
             this.buyNR = new System.Windows.Forms.Button();
@@ -62,34 +60,24 @@
             // 
             // buyItemButton
             // 
-            this.buyItemButton.Location = new System.Drawing.Point(20, 51);
+            this.buyItemButton.Location = new System.Drawing.Point(27, 63);
+            this.buyItemButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyItemButton.Name = "buyItemButton";
-            this.buyItemButton.Size = new System.Drawing.Size(266, 22);
+            this.buyItemButton.Size = new System.Drawing.Size(355, 27);
             this.buyItemButton.TabIndex = 12;
             this.buyItemButton.TabStop = false;
             this.buyItemButton.Text = "Buy!";
             this.buyItemButton.UseVisualStyleBackColor = true;
             this.buyItemButton.Click += new System.EventHandler(this.BuyItem_Click);
             // 
-            // buyFR
-            // 
-            this.buyFR.Enabled = false;
-            this.buyFR.Location = new System.Drawing.Point(321, 601);
-            this.buyFR.Name = "buyFR";
-            this.buyFR.Size = new System.Drawing.Size(98, 22);
-            this.buyFR.TabIndex = 41;
-            this.buyFR.TabStop = false;
-            this.buyFR.Text = "Buy!";
-            this.buyFR.UseVisualStyleBackColor = true;
-            this.buyFR.Click += new System.EventHandler(this.allButtons_Click);
-            // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label27.Location = new System.Drawing.Point(13, 461);
+            this.label27.Location = new System.Drawing.Point(17, 567);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(74, 25);
+            this.label27.Size = new System.Drawing.Size(93, 29);
             this.label27.TabIndex = 39;
             this.label27.Text = "Runes:";
             // 
@@ -97,33 +85,23 @@
             // 
             this.buyWR.Enabled = false;
             this.buyWR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.buyWR.Location = new System.Drawing.Point(755, 501);
+            this.buyWR.Location = new System.Drawing.Point(1007, 617);
+            this.buyWR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyWR.Name = "buyWR";
-            this.buyWR.Size = new System.Drawing.Size(98, 22);
+            this.buyWR.Size = new System.Drawing.Size(131, 27);
             this.buyWR.TabIndex = 46;
             this.buyWR.TabStop = false;
             this.buyWR.Text = "Buy!";
             this.buyWR.UseVisualStyleBackColor = true;
             this.buyWR.Click += new System.EventHandler(this.allButtons_Click);
             // 
-            // buyER
-            // 
-            this.buyER.Enabled = false;
-            this.buyER.Location = new System.Drawing.Point(321, 721);
-            this.buyER.Name = "buyER";
-            this.buyER.Size = new System.Drawing.Size(98, 22);
-            this.buyER.TabIndex = 51;
-            this.buyER.TabStop = false;
-            this.buyER.Text = "Buy!";
-            this.buyER.UseVisualStyleBackColor = true;
-            this.buyER.Click += new System.EventHandler(this.allButtons_Click);
-            // 
             // buyMR
             // 
             this.buyMR.Enabled = false;
-            this.buyMR.Location = new System.Drawing.Point(321, 839);
+            this.buyMR.Location = new System.Drawing.Point(409, 763);
+            this.buyMR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyMR.Name = "buyMR";
-            this.buyMR.Size = new System.Drawing.Size(98, 22);
+            this.buyMR.Size = new System.Drawing.Size(131, 27);
             this.buyMR.TabIndex = 67;
             this.buyMR.TabStop = false;
             this.buyMR.Text = "Buy!";
@@ -134,9 +112,10 @@
             // 
             this.buyLR.Enabled = false;
             this.buyLR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.26F);
-            this.buyLR.Location = new System.Drawing.Point(755, 601);
+            this.buyLR.Location = new System.Drawing.Point(1007, 740);
+            this.buyLR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyLR.Name = "buyLR";
-            this.buyLR.Size = new System.Drawing.Size(98, 22);
+            this.buyLR.Size = new System.Drawing.Size(131, 27);
             this.buyLR.TabIndex = 77;
             this.buyLR.TabStop = false;
             this.buyLR.Text = "Buy!";
@@ -146,9 +125,10 @@
             // buyNR
             // 
             this.buyNR.Enabled = false;
-            this.buyNR.Location = new System.Drawing.Point(755, 701);
+            this.buyNR.Location = new System.Drawing.Point(1007, 863);
+            this.buyNR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyNR.Name = "buyNR";
-            this.buyNR.Size = new System.Drawing.Size(98, 22);
+            this.buyNR.Size = new System.Drawing.Size(131, 27);
             this.buyNR.TabIndex = 82;
             this.buyNR.TabStop = false;
             this.buyNR.Text = "Buy!";
@@ -158,9 +138,10 @@
             // buyElR
             // 
             this.buyElR.Enabled = false;
-            this.buyElR.Location = new System.Drawing.Point(738, 85);
+            this.buyElR.Location = new System.Drawing.Point(984, 105);
+            this.buyElR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyElR.Name = "buyElR";
-            this.buyElR.Size = new System.Drawing.Size(98, 22);
+            this.buyElR.Size = new System.Drawing.Size(131, 27);
             this.buyElR.TabIndex = 87;
             this.buyElR.TabStop = false;
             this.buyElR.Text = "Buy!";
@@ -170,9 +151,10 @@
             // buySR
             // 
             this.buySR.Enabled = false;
-            this.buySR.Location = new System.Drawing.Point(738, 182);
+            this.buySR.Location = new System.Drawing.Point(984, 224);
+            this.buySR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buySR.Name = "buySR";
-            this.buySR.Size = new System.Drawing.Size(98, 22);
+            this.buySR.Size = new System.Drawing.Size(131, 27);
             this.buySR.TabIndex = 92;
             this.buySR.TabStop = false;
             this.buySR.Text = "Buy!";
@@ -182,9 +164,10 @@
             // buyRR
             // 
             this.buyRR.Enabled = false;
-            this.buyRR.Location = new System.Drawing.Point(738, 282);
+            this.buyRR.Location = new System.Drawing.Point(984, 347);
+            this.buyRR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyRR.Name = "buyRR";
-            this.buyRR.Size = new System.Drawing.Size(98, 22);
+            this.buyRR.Size = new System.Drawing.Size(131, 27);
             this.buyRR.TabIndex = 97;
             this.buyRR.TabStop = false;
             this.buyRR.Text = "Buy!";
@@ -194,23 +177,25 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(19, 498);
+            this.textBox3.Location = new System.Drawing.Point(25, 613);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(296, 456);
+            this.textBox3.Size = new System.Drawing.Size(393, 560);
             this.textBox3.TabIndex = 104;
             this.textBox3.TabStop = false;
-            this.textBox3.Text = resources.GetString("textBox3.Text");
+            this.textBox3.Text = "Mind Runes\r\nUsed for casting low level magic spells \r\n50 Clicks \r\nNo buy limit\r\n";
             // 
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(434, 498);
+            this.textBox4.Location = new System.Drawing.Point(579, 613);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(315, 303);
+            this.textBox4.Size = new System.Drawing.Size(419, 372);
             this.textBox4.TabIndex = 105;
             this.textBox4.TabStop = false;
             this.textBox4.Text = resources.GetString("textBox4.Text");
@@ -218,11 +203,12 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(417, 82);
+            this.textBox5.Location = new System.Drawing.Point(556, 101);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(315, 300);
+            this.textBox5.Size = new System.Drawing.Size(419, 368);
             this.textBox5.TabIndex = 106;
             this.textBox5.TabStop = false;
             this.textBox5.Text = resources.GetString("textBox5.Text");
@@ -231,9 +217,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label1.Location = new System.Drawing.Point(429, 461);
+            this.label1.Location = new System.Drawing.Point(572, 567);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 25);
+            this.label1.Size = new System.Drawing.Size(209, 29);
             this.label1.TabIndex = 107;
             this.label1.Text = "Mid Level Runes:";
             // 
@@ -241,46 +228,52 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label2.Location = new System.Drawing.Point(412, 42);
+            this.label2.Location = new System.Drawing.Point(549, 52);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 25);
+            this.label2.Size = new System.Drawing.Size(220, 29);
             this.label2.TabIndex = 108;
             this.label2.Text = "High Level Runes:";
             // 
             // sellPickNumericUpDown
             // 
-            this.sellPickNumericUpDown.Location = new System.Drawing.Point(292, 50);
+            this.sellPickNumericUpDown.Location = new System.Drawing.Point(389, 62);
+            this.sellPickNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sellPickNumericUpDown.Name = "sellPickNumericUpDown";
             this.sellPickNumericUpDown.ReadOnly = true;
-            this.sellPickNumericUpDown.Size = new System.Drawing.Size(51, 20);
+            this.sellPickNumericUpDown.Size = new System.Drawing.Size(68, 22);
             this.sellPickNumericUpDown.TabIndex = 117;
             // 
             // buyItemPickerComboBox
             // 
             this.buyItemPickerComboBox.FormattingEnabled = true;
-            this.buyItemPickerComboBox.Location = new System.Drawing.Point(20, 21);
+            this.buyItemPickerComboBox.Location = new System.Drawing.Point(27, 26);
+            this.buyItemPickerComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyItemPickerComboBox.Name = "buyItemPickerComboBox";
-            this.buyItemPickerComboBox.Size = new System.Drawing.Size(266, 21);
+            this.buyItemPickerComboBox.Size = new System.Drawing.Size(353, 24);
             this.buyItemPickerComboBox.TabIndex = 128;
             this.buyItemPickerComboBox.SelectedIndexChanged += new System.EventHandler(this.BuyItemPickerComboBox_SelectedIndexChanged);
             // 
             // buyItemDescriptionTextBox
             // 
             this.buyItemDescriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.buyItemDescriptionTextBox.Location = new System.Drawing.Point(20, 83);
+            this.buyItemDescriptionTextBox.Location = new System.Drawing.Point(27, 102);
+            this.buyItemDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyItemDescriptionTextBox.Multiline = true;
             this.buyItemDescriptionTextBox.Name = "buyItemDescriptionTextBox";
-            this.buyItemDescriptionTextBox.Size = new System.Drawing.Size(266, 172);
+            this.buyItemDescriptionTextBox.ReadOnly = true;
+            this.buyItemDescriptionTextBox.Size = new System.Drawing.Size(434, 211);
             this.buyItemDescriptionTextBox.TabIndex = 129;
             // 
             // shopTabControl
             // 
             this.shopTabControl.Controls.Add(this.buyTabPage);
             this.shopTabControl.Controls.Add(this.sellTabPage);
-            this.shopTabControl.Location = new System.Drawing.Point(12, 12);
+            this.shopTabControl.Location = new System.Drawing.Point(16, 15);
+            this.shopTabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.shopTabControl.Name = "shopTabControl";
             this.shopTabControl.SelectedIndex = 0;
-            this.shopTabControl.Size = new System.Drawing.Size(369, 289);
+            this.shopTabControl.Size = new System.Drawing.Size(492, 356);
             this.shopTabControl.TabIndex = 130;
             // 
             // buyTabPage
@@ -288,10 +281,11 @@
             this.buyTabPage.Controls.Add(this.buyItemButton);
             this.buyTabPage.Controls.Add(this.buyItemPickerComboBox);
             this.buyTabPage.Controls.Add(this.buyItemDescriptionTextBox);
-            this.buyTabPage.Location = new System.Drawing.Point(4, 22);
+            this.buyTabPage.Location = new System.Drawing.Point(4, 25);
+            this.buyTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyTabPage.Name = "buyTabPage";
-            this.buyTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.buyTabPage.Size = new System.Drawing.Size(361, 263);
+            this.buyTabPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buyTabPage.Size = new System.Drawing.Size(484, 327);
             this.buyTabPage.TabIndex = 0;
             this.buyTabPage.Text = "Buy";
             this.buyTabPage.UseVisualStyleBackColor = true;
@@ -302,19 +296,21 @@
             this.sellTabPage.Controls.Add(this.sellItemPickerComboBox);
             this.sellTabPage.Controls.Add(this.sellItemDescriptionTextBox);
             this.sellTabPage.Controls.Add(this.sellPickNumericUpDown);
-            this.sellTabPage.Location = new System.Drawing.Point(4, 22);
+            this.sellTabPage.Location = new System.Drawing.Point(4, 25);
+            this.sellTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sellTabPage.Name = "sellTabPage";
-            this.sellTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.sellTabPage.Size = new System.Drawing.Size(361, 263);
+            this.sellTabPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sellTabPage.Size = new System.Drawing.Size(484, 327);
             this.sellTabPage.TabIndex = 1;
             this.sellTabPage.Text = "Sell";
             this.sellTabPage.UseVisualStyleBackColor = true;
             // 
             // sellItemButton
             // 
-            this.sellItemButton.Location = new System.Drawing.Point(20, 50);
+            this.sellItemButton.Location = new System.Drawing.Point(27, 62);
+            this.sellItemButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sellItemButton.Name = "sellItemButton";
-            this.sellItemButton.Size = new System.Drawing.Size(266, 22);
+            this.sellItemButton.Size = new System.Drawing.Size(355, 27);
             this.sellItemButton.TabIndex = 130;
             this.sellItemButton.TabStop = false;
             this.sellItemButton.Text = "Sell!";
@@ -324,28 +320,30 @@
             // sellItemPickerComboBox
             // 
             this.sellItemPickerComboBox.FormattingEnabled = true;
-            this.sellItemPickerComboBox.Location = new System.Drawing.Point(20, 20);
+            this.sellItemPickerComboBox.Location = new System.Drawing.Point(27, 25);
+            this.sellItemPickerComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sellItemPickerComboBox.Name = "sellItemPickerComboBox";
-            this.sellItemPickerComboBox.Size = new System.Drawing.Size(266, 21);
+            this.sellItemPickerComboBox.Size = new System.Drawing.Size(353, 24);
             this.sellItemPickerComboBox.TabIndex = 131;
             this.sellItemPickerComboBox.SelectedIndexChanged += new System.EventHandler(this.SellItemPickerComboBox_SelectedIndexChanged);
             // 
             // sellItemDescriptionTextBox
             // 
             this.sellItemDescriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.sellItemDescriptionTextBox.Location = new System.Drawing.Point(20, 82);
+            this.sellItemDescriptionTextBox.Location = new System.Drawing.Point(27, 101);
+            this.sellItemDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sellItemDescriptionTextBox.Multiline = true;
             this.sellItemDescriptionTextBox.Name = "sellItemDescriptionTextBox";
             this.sellItemDescriptionTextBox.ReadOnly = true;
-            this.sellItemDescriptionTextBox.Size = new System.Drawing.Size(266, 172);
+            this.sellItemDescriptionTextBox.Size = new System.Drawing.Size(430, 211);
             this.sellItemDescriptionTextBox.TabIndex = 132;
             // 
             // Shop
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(871, 857);
+            this.ClientSize = new System.Drawing.Size(1161, 1055);
             this.Controls.Add(this.shopTabControl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -358,10 +356,9 @@
             this.Controls.Add(this.buyNR);
             this.Controls.Add(this.buyLR);
             this.Controls.Add(this.buyMR);
-            this.Controls.Add(this.buyER);
             this.Controls.Add(this.buyWR);
-            this.Controls.Add(this.buyFR);
             this.Controls.Add(this.label27);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Shop";
             this.Text = "Shop";
             ((System.ComponentModel.ISupportInitialize)(this.sellPickNumericUpDown)).EndInit();
@@ -378,8 +375,6 @@
         #endregion
         private System.Windows.Forms.Label label27;
         public System.Windows.Forms.Button buyItemButton;
-        public System.Windows.Forms.Button buyFR;
-        public System.Windows.Forms.Button buyER;
         public System.Windows.Forms.Button buyMR;
         public System.Windows.Forms.Button buyWR;
         public System.Windows.Forms.Button buyLR;

@@ -8,8 +8,8 @@ namespace ClickNFight
 {
     public partial class Shop : Form
     {
-        private readonly Hero hero;
-        private readonly SoundPlayer soundPlayer;
+        private readonly Hero _hero;
+        private readonly SoundPlayer _soundPlayer;
 
         public Shop()
         {
@@ -24,17 +24,17 @@ namespace ClickNFight
             this.buyItemDescriptionTextBox.Multiline = true;
             this.buyItemDescriptionTextBox.ReadOnly = true;
 
-            this.soundPlayer = new SoundPlayer(Properties.Resources.coin);
+            this._soundPlayer = new SoundPlayer(Properties.Resources.coin);
         }
 
         public Shop(Hero hero)
             : this()
         {
-            this.hero = hero;
+            this._hero = hero;
 
-            foreach (BuyableItem item in this.hero.Inventory.BuyableItems)
+            foreach (BuyableItem item in this._hero.Inventory.BuyableItems)
             {
-                if (!this.hero.Inventory.HasCapacity(item))
+                if (!this._hero.Inventory.HasCapacity(item))
                 {
                     continue;
                 }
@@ -45,9 +45,9 @@ namespace ClickNFight
             this.buyItemPickerComboBox.DisplayMember = "Name";
             this.buyItemPickerComboBox.Text = "Select an item";
 
-            foreach (SellableItem item in this.hero.Inventory.SellableItems)
+            foreach (SellableItem item in this._hero.Inventory.SellableItems)
             {
-                if (!this.hero.Inventory.HasItem(item))
+                if (!this._hero.Inventory.HasItem(item))
                 {
                     continue;
                 }
@@ -63,42 +63,6 @@ namespace ClickNFight
 
         private void allButtons_Click(object sender, EventArgs e)
         {
-            //else if (button.Equals(buyFR))
-            //{
-            //    if (Engine.count >= 50)
-            //    {
-            //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play();
-            //        Engine.fireRunes++;
-            //        Engine.count = Engine.count - 50;
-            //        if (screenUpdate != null)
-            //        {
-            //            screenUpdate.UpdateUi();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //}
-            //else if (button.Equals(buyER))
-            //{
-            //    if (Engine.count >= 50)
-            //    {
-            //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play();
-            //        Engine.earthRunes++;
-            //        Engine.count = Engine.count - 50;
-            //        if (screenUpdate != null)
-            //        {
-            //            screenUpdate.UpdateUi();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //}
             //else if (button.Equals(buyMR))
             //{
             //    if (Engine.count >= 50)
@@ -237,7 +201,7 @@ namespace ClickNFight
         {
             SellableItem item = this.sellItemPickerComboBox.SelectedItem as SellableItem;
             this.sellItemDescriptionTextBox.Text = item.ShopInformation();
-            this.sellPickNumericUpDown.Maximum = this.hero.Inventory.GetCount(item);
+            this.sellPickNumericUpDown.Maximum = this._hero.Inventory.GetCount(item);
         }
 
         private void BuyItem_Click(object sender, EventArgs e)
@@ -259,7 +223,7 @@ namespace ClickNFight
                 return;
             }
 
-            if (!this.hero.Inventory.HasCapacity(item))
+            if (!this._hero.Inventory.HasCapacity(item))
             {
                 MessageBox.Show(
                     "You have reached the items limit",
@@ -269,14 +233,14 @@ namespace ClickNFight
                 return;
             }
 
-            if (!item.CanAfford(hero, out string failMessage))
+            if (!item.CanAfford(_hero, out string failMessage))
             {
                 MessageBox.Show(failMessage, "Warning!", MessageBoxButtons.OK);
                 return;
             }
 
-            this.soundPlayer.Play();
-            item.BuyItem(this.hero);
+            this._soundPlayer.Play();
+            item.BuyItem(this._hero);
         }
 
         private void SellItem_Click(object sender, EventArgs e)
@@ -298,7 +262,7 @@ namespace ClickNFight
                 return;
             }
 
-            if (!this.hero.Inventory.HasItem(item))
+            if (!this._hero.Inventory.HasItem(item))
             {
                 MessageBox.Show(
                     "You don't have anyomore of this item to sell",
@@ -308,8 +272,8 @@ namespace ClickNFight
                 return;
             }
 
-            this.soundPlayer.Play();
-            item.SellItem(this.hero, (int)this.sellPickNumericUpDown.Value);
+            this._soundPlayer.Play();
+            item.SellItem(this._hero, (int)this.sellPickNumericUpDown.Value);
         }
     }
 }
