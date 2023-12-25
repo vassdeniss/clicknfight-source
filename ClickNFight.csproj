@@ -120,8 +120,13 @@
     <Compile Include="Items\Consumables\UltraHealthPotion.cs" />
     <Compile Include="Items\Consumables\UpgradedHealthPotion.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Ores\CobaltOre.cs" />
+    <Compile Include="Items\Ores\GoldOre.cs" />
     <Compile Include="Items\Ores\Ore.cs" />
     <Compile Include="Items\Ores\OreType.cs" />
+    <Compile Include="Items\Ores\PlatinumOre.cs" />
+    <Compile Include="Items\Ores\SilverOre.cs" />
+    <Compile Include="Items\Ores\StarOre.cs" />
     <Compile Include="Items\Pickaxes\CobaltPickaxe.cs" />
     <Compile Include="Items\Pickaxes\GoldPickaxe.cs" />
     <Compile Include="Items\Pickaxes\PlatinumPickaxe.cs" />
@@ -131,6 +136,7 @@
     <Compile Include="Items\Pickaxes\PickaxeSettings.cs" />
     <Compile Include="Items\Pickaxes\StartPickaxe.cs" />
     <Compile Include="Items\Runes\AirRune.cs" />
+    <Compile Include="Items\Runes\EarthRune.cs" />
     <Compile Include="Items\Runes\FireRune.cs" />
     <Compile Include="Items\Runes\Rune.cs" />
     <Compile Include="Items\Runes\RuneLevelType.cs" />
