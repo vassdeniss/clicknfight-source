@@ -1,17 +1,15 @@
-﻿using System.Text;
-
-using static ClickNFight.Items.Runes.RuneSettings;
+﻿using static ClickNFight.Items.Runes.RuneSettings;
 
 namespace ClickNFight.Items.Runes
 {
-    public class FireRune : Rune
+    public class MindRune : Rune
     {
-        public FireRune()
+        public MindRune()
         {
-            this.Name = FireRuneName;
-            this.BuyPrice = FireRuneBuyPrice;
-            this.Limit = FireRuneBuyLimit;
-            this.Level = FireRuneLevel;
+            this.Name = MindRuneName;
+            this.BuyPrice = MindRuneBuyPrice;
+            this.Limit = MindRuneBuyLimit;
+            this.Level = MindRuneLevel;
         }
 
         public sealed override string Name { get; set; }

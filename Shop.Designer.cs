@@ -30,15 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop));
             this.buyItemButton = new System.Windows.Forms.Button();
-            this.label27 = new System.Windows.Forms.Label();
             this.buyWR = new System.Windows.Forms.Button();
-            this.buyMR = new System.Windows.Forms.Button();
             this.buyLR = new System.Windows.Forms.Button();
             this.buyNR = new System.Windows.Forms.Button();
             this.buyElR = new System.Windows.Forms.Button();
             this.buySR = new System.Windows.Forms.Button();
             this.buyRR = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,22 +67,11 @@
             this.buyItemButton.UseVisualStyleBackColor = true;
             this.buyItemButton.Click += new System.EventHandler(this.BuyItem_Click);
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label27.Location = new System.Drawing.Point(17, 567);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(93, 29);
-            this.label27.TabIndex = 39;
-            this.label27.Text = "Runes:";
-            // 
             // buyWR
             // 
             this.buyWR.Enabled = false;
             this.buyWR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.buyWR.Location = new System.Drawing.Point(1007, 617);
+            this.buyWR.Location = new System.Drawing.Point(486, 504);
             this.buyWR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyWR.Name = "buyWR";
             this.buyWR.Size = new System.Drawing.Size(131, 27);
@@ -95,24 +81,11 @@
             this.buyWR.UseVisualStyleBackColor = true;
             this.buyWR.Click += new System.EventHandler(this.allButtons_Click);
             // 
-            // buyMR
-            // 
-            this.buyMR.Enabled = false;
-            this.buyMR.Location = new System.Drawing.Point(409, 763);
-            this.buyMR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.buyMR.Name = "buyMR";
-            this.buyMR.Size = new System.Drawing.Size(131, 27);
-            this.buyMR.TabIndex = 67;
-            this.buyMR.TabStop = false;
-            this.buyMR.Text = "Buy!";
-            this.buyMR.UseVisualStyleBackColor = true;
-            this.buyMR.Click += new System.EventHandler(this.allButtons_Click);
-            // 
             // buyLR
             // 
             this.buyLR.Enabled = false;
             this.buyLR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.26F);
-            this.buyLR.Location = new System.Drawing.Point(1007, 740);
+            this.buyLR.Location = new System.Drawing.Point(486, 563);
             this.buyLR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyLR.Name = "buyLR";
             this.buyLR.Size = new System.Drawing.Size(131, 27);
@@ -125,7 +98,7 @@
             // buyNR
             // 
             this.buyNR.Enabled = false;
-            this.buyNR.Location = new System.Drawing.Point(1007, 863);
+            this.buyNR.Location = new System.Drawing.Point(496, 643);
             this.buyNR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buyNR.Name = "buyNR";
             this.buyNR.Size = new System.Drawing.Size(131, 27);
@@ -174,23 +147,10 @@
             this.buyRR.UseVisualStyleBackColor = true;
             this.buyRR.Click += new System.EventHandler(this.allButtons_Click);
             // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(25, 613);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(393, 560);
-            this.textBox3.TabIndex = 104;
-            this.textBox3.TabStop = false;
-            this.textBox3.Text = "Mind Runes\r\nUsed for casting low level magic spells \r\n50 Clicks \r\nNo buy limit\r\n";
-            // 
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(579, 613);
+            this.textBox4.Location = new System.Drawing.Point(20, 442);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -217,7 +177,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label1.Location = new System.Drawing.Point(572, 567);
+            this.label1.Location = new System.Drawing.Point(32, 397);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(209, 29);
@@ -343,21 +303,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1161, 1055);
+            this.ClientSize = new System.Drawing.Size(1161, 830);
             this.Controls.Add(this.shopTabControl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.buyRR);
             this.Controls.Add(this.buySR);
             this.Controls.Add(this.buyElR);
             this.Controls.Add(this.buyNR);
             this.Controls.Add(this.buyLR);
-            this.Controls.Add(this.buyMR);
             this.Controls.Add(this.buyWR);
-            this.Controls.Add(this.label27);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Shop";
             this.Text = "Shop";
@@ -373,16 +330,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label27;
         public System.Windows.Forms.Button buyItemButton;
-        public System.Windows.Forms.Button buyMR;
         public System.Windows.Forms.Button buyWR;
         public System.Windows.Forms.Button buyLR;
         public System.Windows.Forms.Button buyNR;
         public System.Windows.Forms.Button buyElR;
         public System.Windows.Forms.Button buySR;
         public System.Windows.Forms.Button buyRR;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label1;

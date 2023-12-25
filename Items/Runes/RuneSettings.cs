@@ -16,5 +16,10 @@
         public static int EarthRuneBuyPrice = 50;
         public static int EarthRuneBuyLimit = -1;
         public static RuneLevelType EarthRuneLevel = RuneLevelType.Low;
+
+        public static string MindRuneName = "Mind Runes";
+        public static int MindRuneBuyPrice = 50;
+        public static int MindRuneBuyLimit = -1;
+        public static RuneLevelType MindRuneLevel = RuneLevelType.Low;
     }
 }

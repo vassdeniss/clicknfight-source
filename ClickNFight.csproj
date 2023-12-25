@@ -138,6 +138,7 @@
     <Compile Include="Items\Runes\AirRune.cs" />
     <Compile Include="Items\Runes\EarthRune.cs" />
     <Compile Include="Items\Runes\FireRune.cs" />
+    <Compile Include="Items\Runes\MindRune.cs" />
     <Compile Include="Items\Runes\Rune.cs" />
     <Compile Include="Items\Runes\RuneLevelType.cs" />
     <Compile Include="Items\Runes\RuneSettings.cs" />

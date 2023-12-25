@@ -63,24 +63,6 @@ namespace ClickNFight
 
         private void allButtons_Click(object sender, EventArgs e)
         {
-            //else if (button.Equals(buyMR))
-            //{
-            //    if (Engine.count >= 50)
-            //    {
-            //        SoundPlayer coin = new SoundPlayer(Properties.Resources.coin);
-            //        coin.Play();
-            //        Engine.mindRunes++;
-            //        Engine.count = Engine.count - 50;
-            //        if (screenUpdate != null)
-            //        {
-            //            screenUpdate.UpdateUi();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        var notEnough = MessageBox.Show("You don't have enough clicks to buy", "Warning!", MessageBoxButtons.OK);
-            //    }
-            //}
             //else if (button.Equals(buyWR))
             //{
             //    if (Engine.count >= 60)

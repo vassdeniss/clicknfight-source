@@ -45,7 +45,8 @@ namespace ClickNFight
                 new StarSword(),
                 new AirRune(),
                 new FireRune(),
-                new EarthRune()
+                new EarthRune(),
+                new MindRune(),
             };
 
             this._inventory = new Dictionary<Type, int>
@@ -75,7 +76,8 @@ namespace ClickNFight
                 { typeof(StarSword), 1 },
                 { typeof(AirRune), 50 },
                 { typeof(FireRune), 10 },
-                { typeof(EarthRune), 20 }
+                { typeof(EarthRune), 20 },
+                { typeof(MindRune), 30 },
             };
         }
 

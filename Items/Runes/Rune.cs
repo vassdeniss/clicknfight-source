@@ -12,7 +12,7 @@ namespace ClickNFight.Items.Runes
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine(this.Name);
-            sb.AppendLine($"Used for casting {this.Level.ToString().ToLower()} level magic");
+            sb.AppendLine(this.Level == RuneLevelType.None ? "Used for casting magic" : $"Used for casting {this.Level.ToString().ToLower()} level magic");
             sb.AppendLine($"{this.BuyPrice} Clicks");
             sb.AppendLine("No buy limit");
 
