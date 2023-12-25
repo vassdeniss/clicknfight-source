@@ -1,29 +1,32 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Windows.Forms;
+﻿using ClickNFight.Items.Runes;
 
-using ClickNFight.Items;
-using ClickNFight.Items.Runes;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ClickNFight.Spells
 {
     public abstract class Spell
     {
-        public string Name { get; set; }
+        public abstract string Name { get; set; }
 
-        public IDictionary<Rune, int> Cost { get; set; }
+        public abstract IDictionary<Rune, int> Cost { get; set; }
 
-        public int DurationMilliseconds { get; set; }
+        public abstract int DurationMilliseconds { get; set; }
 
-        public int CooldownMilliseconds { get; set; }
+        public abstract int CooldownMilliseconds { get; set; }
 
-        public bool IsCast { get; set; }
-
-        public bool IsCooldown { get; set; }
+        public bool IsOnCooldown { get; set; }
 
         public bool CanCast(Hero hero, out string failMessage)
         {
+            if (this.IsOnCooldown)
+            {
+                failMessage = $"{this.Name} is on cooldown!";
+                return false;
+            }
+
             foreach (KeyValuePair<Rune, int> kvp in this.Cost)
             {
                 if (!hero.Inventory.HasItem(kvp.Key) 
@@ -38,45 +41,31 @@ namespace ClickNFight.Spells
             return true;
         }
 
-        public void Cast(Hero hero)
+        public virtual Task Cast(Hero hero)
         {
-            // Pay with runes
-
-            Thread cast = new Thread(() =>
+            foreach (KeyValuePair<Rune, int> kvp in this.Cost)
             {
-                this.IsCast = true;
-                Thread.Sleep(this.DurationMilliseconds);
-                this.IsCast = false;
+                hero.Inventory.Remove(kvp.Key, kvp.Value);
+            }
+
+            return Task.Run(async () =>
+            {
+                this.IsOnCooldown = true;
+                await Task.Delay(this.DurationMilliseconds);
                 MessageBox.Show(
                     $"{this.Name} expired!",
                     "Warning!",
                     MessageBoxButtons.OK);
-            });
 
-            cast.Start();
-
-            Thread cooldown = new Thread(() =>
-            {
-                cast.Join();
-                this.IsCooldown = true;
-                Thread.Sleep(this.CooldownMilliseconds);
-                this.IsCooldown = false;
+                await Task.Delay(this.CooldownMilliseconds);
+                this.IsOnCooldown = false;
                 MessageBox.Show(
                     $"{this.Name} is no longer on cooldown!",
                     "Warning!",
                     MessageBoxButtons.OK);
             });
-
-            cooldown.Start();
         }
 
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-
-
-
-            return string.Empty;
-        }
+        public abstract string Description();
     }
 }

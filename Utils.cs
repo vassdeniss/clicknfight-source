@@ -4,22 +4,30 @@ using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
 using ClickNFight.Items.Ores;
 using ClickNFight.Items.Pickaxes;
+using ClickNFight.Items.Runes;
 using ClickNFight.Items.Weapons;
+using ClickNFight.Spells;
+using ClickNFight.Spells.Offensive;
 
 namespace ClickNFight
 {
     public class Utils
     {
-        // TODO: auto unlock copper pick
         public static IDictionary<int, Item[]> ItemsPerLevel = new Dictionary<int, Item[]>()
         {
             { 2, new Item[] { new WoodenSword() } },
-            { 3, new Item[] { new StoneSword(), new UpgradedHealthPotion(), new CopperPickaxe(), new Ore(OreType.Silver) } },
-            { 4, new Item[] { new SilverPickaxe(), new Ore(OreType.Gold), new IronSword() } },
-            { 5, new Item[] { new GoldPickaxe(), new Ore(OreType.Platinum), new SuperHealthPotion() } },
+            { 3, new Item[] { new StoneSword(), new UpgradedHealthPotion(), new CopperPickaxe(), new SilverOre() } },
+            { 4, new Item[] { new SilverPickaxe(), new GoldOre(), new IronSword() } },
+            { 5, new Item[] { new GoldPickaxe(), new PlatinumOre(), new SuperHealthPotion(), new AirRune(), new FireRune() } },
+            { 6, new Item[] { new PlatinumPickaxe(), new EarthRune(), new DiamondSword() } }
             //{ 2, new Item[] { new WoodenSword() } },
             //{ 2, new Item[] { new WoodenSword() } },
             //{ 2, new Item[] { new WoodenSword() } },
+        };
+
+        public static IDictionary<int, Spell[]> SpellsPerLevel = new Dictionary<int, Spell[]>
+        {
+            { 5, new Spell[] { new FireBolt() } },
         };
 
         public static IDictionary<int, Weapon> MineSwords = new Dictionary<int, Weapon>()

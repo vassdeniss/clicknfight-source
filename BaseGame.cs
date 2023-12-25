@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Media;
-using System.Security.Cryptography;
-using System.Text;
-using System.Windows.Forms;
-using ClickNFight.Items;
+﻿using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
 using ClickNFight.Items.Weapons;
 using ClickNFight.Windows.Menus;
 using ClickNFight.Windows.Other;
+
+using System;
+using System.Collections.Generic;
+using System.Media;
+using System.Text;
+using System.Windows.Forms;
+using ClickNFight.Spells;
+
 //using Newtonsoft.Json.Linq;
-using ConsumablesSettings = ClickNFight.Items.Consumables.ConsumableSettings;
 
 namespace ClickNFight
 {
@@ -33,7 +32,6 @@ namespace ClickNFight
 
         // Instances 
 
-        Magic idk = new Magic();
         Crafting runeCrafting = new Crafting();
         Camping camp = new Camping();
 
@@ -661,61 +659,21 @@ namespace ClickNFight
         //    clickerencyEarnedLabel.Text = "";
         //}
 
+        // Refactored
         private void ShopButton_Click(object sender, EventArgs e)
         {
             Shop shop = new Shop(this.hero);
-
-            //f2.UpdateScreenInterface = this;
-            //f2.updateNormalPotion = this;
-            //f2.updatePotion = this;
-            //f2.updateSuperPotion = this;
-            //f2.updateUltraPotion = this;
             shop.ShowDialog();
-
             this.UpdateUi();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        // TODO: update ui on expire
+        // Refactored
+        private void MagicButton_Click(object sender, EventArgs e)
         {
-            idk.owo = this;
-            idk.healPlayer = this;
-            idk.healPlayer2 = this;
-            idk.healPlayer3 = this;
-
-            if (idk.healaraCooldown.Enabled == true || idk.defenceCooldown.Enabled == true || idk.waterCooldown.Enabled == true
-                || idk.extraDefenceCooldown.Enabled == true || idk.voltCooldown.Enabled == true || idk.defenceCooldown3.Enabled == true
-                || idk.reariseCooldown.Enabled == true)
-            {
-                idk.ShowDialog();
-            }
-            else
-            {
-                if (Engine.level >= 6)
-                {
-                    idk.defenceUp.Enabled = true;
-                    idk.healara.Enabled = true;
-                    if (Engine.level >= 7)
-                    {
-                        idk.waterWave.Enabled = true;
-                        idk.exDefence.Enabled = true;
-                        if (Engine.level >= 8)
-                        {
-                            idk.cureraga.Enabled = true;
-                            if (Engine.level >= 9)
-                            {
-                                idk.voltSwtich.Enabled = true;
-                                if (Engine.level >= 10)
-                                {
-                                    idk.maxDefence.Enabled = true;
-                                    idk.rearise.Enabled = true;
-                                }
-                            }
-                        }
-                    }
-                    idk.ShowDialog();
-                }
-                else idk.ShowDialog();
-            }
+            Magic magic = new Magic(this.hero);
+            magic.ShowDialog();
+            this.UpdateUi();
         }
 
         private void btCrafting_Click(object sender, EventArgs e)
@@ -853,6 +811,7 @@ namespace ClickNFight
             sb.AppendLine($"You have leveled up! You are now level {level}!");
             sb.AppendLine("You have unlocked:");
             sb.AppendLine();
+
             if (other != null)
             {
                 foreach (string otherUnlock in other)
@@ -860,23 +819,27 @@ namespace ClickNFight
                     sb.AppendLine($"- {otherUnlock}");
                 }
             }
+
             foreach (Item item in items)
             {
                 sb.AppendLine($"- {item.Name}");
                 this.hero.Inventory.UnlockItem(item);
             }
+
             sb.AppendLine();
             sb.AppendLine($"+ {10 * this.hero.Level - 10} Total HP");
             sb.AppendLine("+ 1 Total Defence");
             sb.AppendLine();
             sb.AppendLine("Health Restored!");
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
 
         private void LevelUpHero()
         {
-            this.hero.Level++;
+            //this.hero.Level++;
+            // Debug
+            this.hero.Level = 5;
             this.hero.MaxHealth += 10 * this.hero.Level - 10;
             this.hero.Health = this.hero.MaxHealth;
             this.healthBar.Maximum = this.hero.MaxHealth;
@@ -899,21 +862,25 @@ namespace ClickNFight
                     message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[2]);
                     break;
                 case 3:
-                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[3], new string[] { "Mining" });
+                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[3], new[] { "Mining" });
                     this.mineButton.Enabled = true;
                     break;
                 case 4:
                     message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[4]);
                     break;
                 case 5:
-                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[5], new string[] { "Magic" });
-                    MessageBox.Show("You have leveled up! You are now level 5\nYou have unlocked:\n\n- Air Runes\n- Fire Runes\n\n+ 40 Total HP\n+ 1 Total Defence\n\nHealth Restored!", 
-                        "Congratulations!",
-                        MessageBoxButtons.OK);
+                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[5], new[] { "Magic" });
+
+                    foreach (Spell spell in Utils.SpellsPerLevel[5])
+                    {
+                        this.hero.Spells.Add(spell);
+                    }
+
                     this.magicButton.Enabled = true;
                     break;
                 case 6:
-                    MessageBox.Show("You have leveled up! You are now level 6!\nYou have unlocked:\n\n- Camping\n- Platinum Pickaxe\n- Defence Up spell!\n- Earth Runes\n- Healara spell!\n- Mind Runes\n- Diamond Sword\n\n+ 50 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
+                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[6], new[] { "Camping" });
+                    MessageBox.Show("- Camping\n- Platinum Pickaxe\n- Defence Up spell!\n- Earth Runes\n- Healara spell!\n- Mind Runes\n- Diamond Sword",
                         "Congratulations!",
                         MessageBoxButtons.OK);
                     this.campMenuButton.Enabled = true;
