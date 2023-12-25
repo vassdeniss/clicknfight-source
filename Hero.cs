@@ -6,7 +6,7 @@ namespace ClickNFight
 {
     public class Hero
     {
-        private int health;
+        private int _health;
 
         public Hero()
         {
@@ -15,15 +15,15 @@ namespace ClickNFight
             this.Health = 200;
             this.Defence = 0;
             this.DefenceReduction = 0;
-            this.CurrentXp = 249;
-            this.TotalXp = 250;
+            this.CurrentXp = 549;
+            this.TotalXp = 500;
             this.Cps = 0;
             this.MonstersSlain = 0.0;
             this.Clickerency = 1000000;
 
             this.Inventory = new HeroInventory();
             this.MineStats = new Dictionary<string, int>();
-            this.Spells = new List<Spell>();
+            this.Spells = new HashSet<Spell>();
         }
 
         public int Level { get; set; }
@@ -32,7 +32,7 @@ namespace ClickNFight
 
         public int Health
         {
-            get => this.health;
+            get => this._health;
             set
             {
                 if (value > this.MaxHealth)
@@ -40,7 +40,7 @@ namespace ClickNFight
                     value = this.MaxHealth;
                 }
 
-                this.health = value;
+                this._health = value;
             }
         }
 
@@ -62,6 +62,8 @@ namespace ClickNFight
 
         public IDictionary<string, int> MineStats { get; set; }
 
-        public ICollection<Spell> Spells { get; set; }
+        public ISet<Spell> Spells { get; set; }
+
+        public Spell ActiveSpell { get; set; }
     }
 }
