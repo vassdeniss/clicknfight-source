@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mine));
             this.mineButton = new System.Windows.Forms.Button();
             this.pickaxeComboBox = new System.Windows.Forms.ComboBox();
             this.oreComboBox = new System.Windows.Forms.ComboBox();
@@ -39,9 +40,10 @@
             // mineButton
             // 
             this.mineButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mineButton.Location = new System.Drawing.Point(12, 131);
+            this.mineButton.Location = new System.Drawing.Point(16, 161);
+            this.mineButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mineButton.Name = "mineButton";
-            this.mineButton.Size = new System.Drawing.Size(326, 116);
+            this.mineButton.Size = new System.Drawing.Size(435, 143);
             this.mineButton.TabIndex = 2;
             this.mineButton.Text = "Mine!";
             this.mineButton.UseVisualStyleBackColor = true;
@@ -50,18 +52,20 @@
             // pickaxeComboBox
             // 
             this.pickaxeComboBox.FormattingEnabled = true;
-            this.pickaxeComboBox.Location = new System.Drawing.Point(12, 77);
+            this.pickaxeComboBox.Location = new System.Drawing.Point(16, 95);
+            this.pickaxeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pickaxeComboBox.Name = "pickaxeComboBox";
-            this.pickaxeComboBox.Size = new System.Drawing.Size(326, 21);
+            this.pickaxeComboBox.Size = new System.Drawing.Size(433, 24);
             this.pickaxeComboBox.TabIndex = 3;
             this.pickaxeComboBox.SelectedIndexChanged += new System.EventHandler(this.PickaxeComboBox_SelectedIndexChanged);
             // 
             // oreComboBox
             // 
             this.oreComboBox.FormattingEnabled = true;
-            this.oreComboBox.Location = new System.Drawing.Point(12, 104);
+            this.oreComboBox.Location = new System.Drawing.Point(16, 128);
+            this.oreComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.oreComboBox.Name = "oreComboBox";
-            this.oreComboBox.Size = new System.Drawing.Size(326, 21);
+            this.oreComboBox.Size = new System.Drawing.Size(433, 24);
             this.oreComboBox.TabIndex = 4;
             this.oreComboBox.SelectedIndexChanged += new System.EventHandler(this.OreComboBox_SelectedIndexChanged);
             // 
@@ -69,9 +73,10 @@
             // 
             this.pickLabel.AutoSize = true;
             this.pickLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pickLabel.Location = new System.Drawing.Point(7, 9);
+            this.pickLabel.Location = new System.Drawing.Point(9, 11);
+            this.pickLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pickLabel.Name = "pickLabel";
-            this.pickLabel.Size = new System.Drawing.Size(180, 25);
+            this.pickLabel.Size = new System.Drawing.Size(230, 29);
             this.pickLabel.TabIndex = 9;
             this.pickLabel.Text = "Pickaxe Equipped: \r\n";
             // 
@@ -79,9 +84,10 @@
             // 
             this.oreLabel.AutoSize = true;
             this.oreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.oreLabel.Location = new System.Drawing.Point(7, 34);
+            this.oreLabel.Location = new System.Drawing.Point(9, 42);
+            this.oreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.oreLabel.Name = "oreLabel";
-            this.oreLabel.Size = new System.Drawing.Size(115, 25);
+            this.oreLabel.Size = new System.Drawing.Size(145, 29);
             this.oreLabel.TabIndex = 10;
             this.oreLabel.Text = "Ore Picked:\r\n";
             // 
@@ -89,24 +95,31 @@
             // 
             this.oreStatsLabel.AutoSize = true;
             this.oreStatsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.oreStatsLabel.Location = new System.Drawing.Point(7, 262);
+            this.oreStatsLabel.Location = new System.Drawing.Point(9, 322);
+            this.oreStatsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.oreStatsLabel.Name = "oreStatsLabel";
-            this.oreStatsLabel.Size = new System.Drawing.Size(164, 25);
+            this.oreStatsLabel.Size = new System.Drawing.Size(208, 29);
             this.oreStatsLabel.TabIndex = 11;
             this.oreStatsLabel.Text = "Silver Ore Mined:";
             // 
             // Mine
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 413);
+            this.ClientSize = new System.Drawing.Size(467, 508);
             this.Controls.Add(this.oreStatsLabel);
             this.Controls.Add(this.oreLabel);
             this.Controls.Add(this.pickLabel);
             this.Controls.Add(this.oreComboBox);
             this.Controls.Add(this.pickaxeComboBox);
             this.Controls.Add(this.mineButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Mine";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mine";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -7,9 +7,6 @@ namespace ClickNFight.Windows.Other
         public Death()
         {
             this.InitializeComponent();
-            this.Icon = Properties.Resources.icon;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void Death_FormClosed(object sender, FormClosedEventArgs e)

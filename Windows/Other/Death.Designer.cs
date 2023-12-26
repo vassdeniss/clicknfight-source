@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Death));
             this.gameOverLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -35,21 +36,25 @@
             // 
             this.gameOverLabel.AutoSize = true;
             this.gameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameOverLabel.Location = new System.Drawing.Point(12, 9);
+            this.gameOverLabel.Location = new System.Drawing.Point(16, 11);
+            this.gameOverLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.gameOverLabel.Name = "gameOverLabel";
-            this.gameOverLabel.Size = new System.Drawing.Size(261, 78);
+            this.gameOverLabel.Size = new System.Drawing.Size(321, 96);
             this.gameOverLabel.TabIndex = 0;
             this.gameOverLabel.Text = "You have died...\r\nGame over\r\n";
             this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Death
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 95);
+            this.ClientSize = new System.Drawing.Size(380, 117);
             this.Controls.Add(this.gameOverLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Death";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game Over";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Death_FormClosed);
             this.ResumeLayout(false);
