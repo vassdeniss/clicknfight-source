@@ -336,9 +336,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Pokemon.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Bottle.wav" />
   </ItemGroup>
   <ItemGroup>
@@ -354,16 +351,7 @@
     <None Include="Resources\metal-small2.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FFI - Victory.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\coin2.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Battle-16bitFF.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\battle.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\victory.wav" />
@@ -371,6 +359,5 @@
   <ItemGroup>
     <None Include="Resources\mainMenu.wav" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,6 @@ namespace ClickNFight
         int bossDamageInflict;
         int finalHealth = Engine.totalHealth;
         SoundPlayer victory = new SoundPlayer(Properties.Resources.victory);
-        SoundPlayer battle = new SoundPlayer(Properties.Resources.battle); 
         Form1 god = new Form1(); 
 
         public Boss()

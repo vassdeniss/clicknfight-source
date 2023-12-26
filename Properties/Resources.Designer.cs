@@ -63,15 +63,6 @@ namespace ClickNFight.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream battle {
-            get {
-                return ResourceManager.GetStream("battle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
         internal static System.IO.UnmanagedMemoryStream bottle {
             get {
                 return ResourceManager.GetStream("bottle", resourceCulture);
