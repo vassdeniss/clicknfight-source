@@ -1,12 +1,16 @@
 ﻿using ClickNFight.Spells;
 
 using System;
+using System.Media;
 using System.Windows.Forms;
 
 namespace ClickNFight
 {
     public partial class Magic : Form
     {
+        private readonly Hero _hero;
+        private readonly SoundPlayer _soundPlayer;
+
         public Magic()
         {
             this.InitializeComponent();
@@ -85,6 +89,8 @@ namespace ClickNFight
                 + "\r\n"
                 + "Cooldown: 15 Minutes"
             );
+
+            this._soundPlayer = new SoundPlayer(Properties.Resources.magic);
         }
 
         public Magic(Hero hero)
@@ -107,8 +113,6 @@ namespace ClickNFight
         // Heal HP
         // Increase mas
 
-        private readonly Hero _hero;
-
         private async void CastButton_Clicked(object sender, EventArgs e)
         {
             if (this._hero.ActiveSpell is null)
@@ -122,6 +126,7 @@ namespace ClickNFight
                 return;
             }
 
+            this._soundPlayer.Play();
             await this._hero.ActiveSpell.Cast(this._hero);
         }
 

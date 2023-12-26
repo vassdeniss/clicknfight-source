@@ -359,5 +359,8 @@
   <ItemGroup>
     <None Include="Resources\mainMenu.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\magic.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

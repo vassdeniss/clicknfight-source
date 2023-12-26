@@ -100,6 +100,15 @@ namespace ClickNFight.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream magic {
+            get {
+                return ResourceManager.GetStream("magic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream mainMenu {
             get {
                 return ResourceManager.GetStream("mainMenu", resourceCulture);
