@@ -5,6 +5,7 @@ using ClickNFight.Spells.Offensive;
 
 using System.Collections.Generic;
 using System.Linq;
+using ClickNFight.Spells.Heal;
 
 namespace ClickNFight
 {
@@ -30,7 +31,8 @@ namespace ClickNFight
             this.Spells = new HashSet<Spell>
             {
                 new FireBolt(),
-                new DefenceUp()
+                new DefenceUp(),
+                new Healara(),
             };
         }
 

@@ -37,12 +37,9 @@
             this.maxDefence = new System.Windows.Forms.Button();
             this.voltSwtich = new System.Windows.Forms.Button();
             this.waterWave = new System.Windows.Forms.Button();
-            this.healara = new System.Windows.Forms.Button();
             this.rearise = new System.Windows.Forms.Button();
             this.cureraga = new System.Windows.Forms.Button();
             this.waterCooldown = new System.Windows.Forms.Timer(this.components);
-            this.healaraCooldown = new System.Windows.Forms.Timer(this.components);
-            this.hpUp = new System.Windows.Forms.Timer(this.components);
             this.attackBoost2 = new System.Windows.Forms.Timer(this.components);
             this.extraDefenceCooldown = new System.Windows.Forms.Timer(this.components);
             this.defenceBoost2 = new System.Windows.Forms.Timer(this.components);
@@ -155,19 +152,6 @@
             this.waterWave.UseVisualStyleBackColor = true;
             this.waterWave.Click += new System.EventHandler(this.button5_Click);
             // 
-            // healara
-            // 
-            this.healara.Enabled = false;
-            this.healara.Location = new System.Drawing.Point(661, 66);
-            this.healara.Margin = new System.Windows.Forms.Padding(4);
-            this.healara.Name = "healara";
-            this.healara.Size = new System.Drawing.Size(207, 59);
-            this.healara.TabIndex = 24;
-            this.healara.TabStop = false;
-            this.healara.Text = "Healara \r\n";
-            this.healara.UseVisualStyleBackColor = true;
-            this.healara.Click += new System.EventHandler(this.healara_Click);
-            // 
             // rearise
             // 
             this.rearise.Enabled = false;
@@ -193,14 +177,6 @@
             this.cureraga.Text = "Cureraga\r\n";
             this.cureraga.UseVisualStyleBackColor = true;
             this.cureraga.Click += new System.EventHandler(this.cureraga_Click);
-            // 
-            // healaraCooldown
-            // 
-            this.healaraCooldown.Tick += new System.EventHandler(this.healaraCooldown_Tick);
-            // 
-            // hpUp
-            // 
-            this.hpUp.Tick += new System.EventHandler(this.hpUp_Tick);
             // 
             // extraDefenceCooldown
             // 
@@ -268,7 +244,6 @@
             this.ClientSize = new System.Drawing.Size(884, 392);
             this.Controls.Add(this.spellInfoTextBox);
             this.Controls.Add(this.spellsComboBox);
-            this.Controls.Add(this.healara);
             this.Controls.Add(this.rearise);
             this.Controls.Add(this.cureraga);
             this.Controls.Add(this.waterWave);
@@ -298,12 +273,9 @@
         public System.Windows.Forms.Button maxDefence;
         public System.Windows.Forms.Button voltSwtich;
         public System.Windows.Forms.Button waterWave;
-        public System.Windows.Forms.Button healara;
         public System.Windows.Forms.Button rearise;
         public System.Windows.Forms.Button cureraga;
-        public System.Windows.Forms.Timer healaraCooldown;
         public System.Windows.Forms.Timer waterCooldown;
-        public System.Windows.Forms.Timer hpUp;
         private System.Windows.Forms.Timer attackBoost2;
         private System.Windows.Forms.Timer defenceBoost2;
         public System.Windows.Forms.Timer extraDefenceCooldown;

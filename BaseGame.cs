@@ -853,7 +853,7 @@ namespace ClickNFight
         {
             //this.hero.Level++;
             // Debug
-            this.hero.Level = 5;
+            this.hero.Level = 6;
             this.hero.MaxHealth += 10 * this.hero.Level - 10;
             this.hero.Health = this.hero.MaxHealth;
             this.healthBar.Maximum = this.hero.MaxHealth;
@@ -893,10 +893,13 @@ namespace ClickNFight
                     this.magicButton.Enabled = true;
                     break;
                 case 6:
-                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[6], new[] { "Camping", "Defence Up spell" });
-                    MessageBox.Show("- Camping\n- Platinum Pickaxe\n- Defence Up spell!\n- Earth Runes\n- Healara spell!\n- Mind Runes\n- Diamond Sword",
-                        "Congratulations!",
-                        MessageBoxButtons.OK);
+                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[6], new[] { "Camping", "Defence Up Spell", "Healara Spell" });
+
+                    foreach (Spell spell in Utils.SpellsPerLevel[6])
+                    {
+                        this.hero.Spells.Add(spell);
+                    }
+
                     this.campButton.Enabled = true;
                     break;
                 case 7:

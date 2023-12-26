@@ -104,10 +104,6 @@ namespace ClickNFight
             }
         }
 
-        // Heal
-        // Heal HP
-        // Increase mas
-
         private async void CastButton_Clicked(object sender, EventArgs e)
         {
             if (this._hero.ActiveSpell is null)
@@ -263,57 +259,6 @@ namespace ClickNFight
         {
             Engine.waterwaveAdd = 0;
             attackBoost2.Enabled = false;
-        }
-
-        private void healara_Click(object sender, EventArgs e)
-        {
-            if (Engine.airRunes >= 3 && Engine.mindRunes >= 4)
-            {
-                Form1 bar = new Form1();
-
-                Engine.airRunes = Engine.airRunes - 3;
-                Engine.mindRunes = Engine.mindRunes - 4;
-                Engine.health = Engine.health + 10;
-                Engine.totalHealth = Engine.totalHealth + 10;
-
-                if (healPlayer != null)
-                {
-                    healPlayer.UpdateScreenHeal();
-                }
-
-                healaraCooldown.Interval = 300000;
-                healaraCooldown.Tick += healaraCooldown_Tick;
-                healaraCooldown.Enabled = true;
-                healara.Enabled = false;
-
-                hpUp.Interval = 60000;
-                hpUp.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show(
-                    "You don't have enough runes to cast this spell",
-                    "Not enough runes",
-                    MessageBoxButtons.OK
-                );
-            }
-        }
-
-        private void healaraCooldown_Tick(object sender, EventArgs e)
-        {
-            healara.Enabled = true;
-            healaraCooldown.Stop();
-        }
-
-        private void hpUp_Tick(object sender, EventArgs e)
-        {
-            Engine.totalHealth = Engine.totalHealth - 10;
-            hpUp.Enabled = false;
-
-            if (healPlayer != null)
-            {
-                healPlayer.UpdateScreenHeal();
-            }
         }
 
         private void cureraga_Click(object sender, EventArgs e)

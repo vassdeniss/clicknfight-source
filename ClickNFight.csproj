@@ -154,6 +154,8 @@
     <Compile Include="Items\Weapons\WeaponSettings.cs" />
     <Compile Include="Spells\Defence\DefenceUp.cs" />
     <Compile Include="Spells\Defence\DefensiveSpell.cs" />
+    <Compile Include="Spells\Heal\Healara.cs" />
+    <Compile Include="Spells\Heal\HealingSpell.cs" />
     <Compile Include="Spells\Offense\FireBolt.cs" />
     <Compile Include="Spells\Offense\OffensiveSpell.cs" />
     <Compile Include="Spells\Spell.cs" />
