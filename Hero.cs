@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
-
+﻿using ClickNFight.Items.Weapons;
 using ClickNFight.Spells;
 using ClickNFight.Spells.Defence;
 using ClickNFight.Spells.Offensive;
+
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClickNFight
 {
     public class Hero
     {
-        private int _health;
+        private double _health;
+        private double _cps;
 
         public Hero()
         {
@@ -16,10 +19,10 @@ namespace ClickNFight
             this.MaxHealth = 200;
             this.Health = 200;
             this.Defence = 0;
+            this.Cps = 1;
             this.DamageReduction = 0;
             this.CurrentXp = 549;
             this.TotalXp = 500;
-            this.Cps = 0;
             this.MonstersSlain = 0.0;
             this.Clickerency = 1000000;
 
@@ -36,7 +39,7 @@ namespace ClickNFight
 
         public int MaxHealth { get; set; }
 
-        public int Health
+        public double Health
         {
             get => this._health;
             set
@@ -58,7 +61,11 @@ namespace ClickNFight
 
         public int TotalXp { get; set; }
 
-        public int Cps { get; set; }
+        public double Cps
+        {
+            get => this._cps + this.CalculateWeaponCps();
+            set => this._cps = value;
+        }
 
         public double MonstersSlain { get; set; }
 
@@ -71,5 +78,11 @@ namespace ClickNFight
         public ISet<Spell> Spells { get; set; }
 
         public Spell ActiveSpell { get; set; }
+
+        private double CalculateWeaponCps()
+        {
+            return this.Inventory.Weapons
+                .Sum(kvp => kvp.Key.DamageMultiplier * kvp.Value);
+        }
     }
 }

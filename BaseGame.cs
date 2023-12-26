@@ -782,6 +782,8 @@ namespace ClickNFight
 
         class Monster
         {
+            private double _damage;
+
             public Monster()
             {
                 this.MinRandomDamage = 0;
@@ -791,7 +793,18 @@ namespace ClickNFight
                 this.MaxRandomClickerency = 6;
             }
 
-            public int Damage { get; set; }
+            public double Damage
+            {
+                get => this._damage;
+                set
+                {
+                    this._damage = value;
+                    if (this._damage < 0)
+                    {
+                        this._damage = 0;
+                    }
+                }
+            }
 
             public int MinRandomDamage { get; set; }
 
@@ -918,7 +931,7 @@ namespace ClickNFight
         private void UpdateUi()
         {
             this.heroHealthPointsLabel.Text = $"HitPoints: {this.hero.Health} / {this.hero.MaxHealth}";
-            this.healthBar.Value = this.hero.Health;
+            this.healthBar.Value = (int)Math.Floor(this.hero.Health);
             this.defenceLabel.Text = $"Defence: {this.hero.Defence} (Decreases Damage By {this.hero.DamageReduction})";
             this.CPS.Text = $"Clicks Per Second: {this.hero.Cps}";
             this.levelLabel.Text = $"Level: {this.hero.Level} / 10"; // TODO: for now
@@ -943,6 +956,7 @@ namespace ClickNFight
             this.monster.Damage = statRandomizer.Next(
                 this.monster.MinRandomDamage,
                 this.monster.MaxRandomDamage);
+            this.monster.Damage -= this.hero.DamageReduction;
 
             this.monster.ClickerencyDrop = statRandomizer.Next(
                 this.monster.MinRandomClickerency,
@@ -951,12 +965,6 @@ namespace ClickNFight
             // TODO: reduce monster damage by heros defence
 
             #region More Werid Logic
-            //newDamage = Engine.damage - Engine.defenceReduction;
-            //if (newDamage < 0)
-            //{
-            //    newDamage = 0;
-            //}
-
             // TODO: ???
             //Engine.count = Engine.count + Engine.money;
 
@@ -1003,15 +1011,9 @@ namespace ClickNFight
             }
 
             //Engine.count2 = Engine.count2 + Engine.excaliburAdd;
-            //Engine.count2 = Engine.count2 + Engine.fireboltAdd;
             //Engine.count2 = Engine.count2 + Engine.waterwaveAdd;
             //Engine.count2 = Engine.count2 + Engine.voltswtichAdd;
             //Engine.count2 = Engine.count2 + Engine.newgameAdd;
-            //Engine.count2 = Engine.count2 + Engine.silverSwordAdd;
-            //Engine.count2 = Engine.count2 + Engine.goldSwordAdd;
-            //Engine.count2 = Engine.count2 + Engine.platinumSwordAdd;
-            //Engine.count2 = Engine.count2 + Engine.cobaltSwordAdd;
-            //Engine.count2 = Engine.count2 + Engine.starSwordAdd;
 
             Random xpRandomizer = new Random();
             int randomXp = xpRandomizer.Next(1, 6);
