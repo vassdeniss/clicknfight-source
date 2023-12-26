@@ -24,9 +24,9 @@ namespace ClickNFight
 
         private void button2_Click(object sender, EventArgs e)
         {
-            CampingMaterials material = new CampingMaterials();
-            material.gather.Text = "Gathering Wood!";
-            material.progressBar1.Maximum = 10;
+            GatheringResources material = new GatheringResources();
+            material.materialName.Text = "Gathering Wood!";
+            material.gatheringBar.Maximum = 10;
             material.ShowDialog();
             woodTake = woodTakeRandom.Next(1, 6);
             Engine.wood = Engine.wood + woodTake;
@@ -38,9 +38,9 @@ namespace ClickNFight
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CampingMaterials material = new CampingMaterials();
-            material.gather.Text = "Gathering Stone!";
-            material.progressBar1.Maximum = 15;
+            GatheringResources material = new GatheringResources();
+            material.materialName.Text = "Gathering Stone!";
+            material.gatheringBar.Maximum = 15;
             material.ShowDialog();
             stoneTake = stoneTakeRandom.Next(1, 6);
             Engine.stone = Engine.stone + stoneTake;
@@ -52,9 +52,9 @@ namespace ClickNFight
 
         private void getFlint_Click(object sender, EventArgs e)
         {
-            CampingMaterials material = new CampingMaterials();
-            material.gather.Text = "Gathering Flint!";
-            material.progressBar1.Maximum = 20;
+            GatheringResources material = new GatheringResources();
+            material.materialName.Text = "Gathering Flint!";
+            material.gatheringBar.Maximum = 20;
             flintTake = flintTakeRandom.Next(1, 6);
             Engine.flint = Engine.flint + flintTake;
             flintTotal.Text = "Flint: " + Engine.flint;
@@ -65,9 +65,9 @@ namespace ClickNFight
 
         private void getSteel_Click(object sender, EventArgs e)
         {
-            CampingMaterials material = new CampingMaterials();
-            material.gather.Text = "Gathering Steel!";
-            material.progressBar1.Maximum = 30;
+            GatheringResources material = new GatheringResources();
+            material.materialName.Text = "Gathering Steel!";
+            material.gatheringBar.Maximum = 30;
             material.ShowDialog();
             steelTake = steelTakeRandom.Next(1, 6);
             Engine.steel = Engine.steel + steelTake;

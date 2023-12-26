@@ -8,11 +8,6 @@ namespace ClickNFight.Windows.Other
         public MiningOres()
         {
             this.InitializeComponent();
-
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.ControlBox = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Icon = Properties.Resources.icon;
         }
 
         private void MiningOres_Load(object sender, EventArgs e)

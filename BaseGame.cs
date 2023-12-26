@@ -54,6 +54,7 @@ namespace ClickNFight
 
             this.mineButton.Enabled = true;
             this.magicButton.Enabled = true;
+            this.campButton.Enabled = true;
 
             Utils.UiUpdated += this.UpdateUi;
         }

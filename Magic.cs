@@ -60,16 +60,6 @@ namespace ClickNFight
             );
 
             description.SetToolTip(
-                healara,
-                "3 Air and 4 Mind Runes"
-                + "\r\n"
-                + "Tmmporary + 10 Max Health"
-                + "\r\n"
-                + "Duration: 1 minute"
-                + "\r\n"
-                + "Cooldown: 5 Minutes"
-            );
-            description.SetToolTip(
                 cureraga,
                 "5 Air, 6 Nature and 4 Life Runes"
                 + "\r\n"
