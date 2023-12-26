@@ -23,7 +23,7 @@ namespace ClickNFight.Spells
         {
             if (this.IsOnCooldown)
             {
-                failMessage = $"{this.Name} is on cooldown!";
+                failMessage = "Magic is on cooldown!";
                 return false;
             }
 

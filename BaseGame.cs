@@ -845,7 +845,7 @@ namespace ClickNFight
             this.healthBar.Maximum = this.hero.MaxHealth;
             this.healthBar.Value = this.hero.MaxHealth;
             this.hero.Defence++;
-            this.hero.DefenceReduction++;
+            this.hero.DamageReduction++;
             this.hero.CurrentXp = 0;
             this.hero.TotalXp += 50;
 
@@ -919,7 +919,7 @@ namespace ClickNFight
         {
             this.heroHealthPointsLabel.Text = $"HitPoints: {this.hero.Health} / {this.hero.MaxHealth}";
             this.healthBar.Value = this.hero.Health;
-            this.defenceLabel.Text = $"Defence: {this.hero.Defence} (Decreases Damage By {this.hero.DefenceReduction})";
+            this.defenceLabel.Text = $"Defence: {this.hero.Defence} (Decreases Damage By {this.hero.DamageReduction})";
             this.CPS.Text = $"Clicks Per Second: {this.hero.Cps}";
             this.levelLabel.Text = $"Level: {this.hero.Level} / 10"; // TODO: for now
             this.xpTrackerLabel.Text = $"XP: {this.hero.CurrentXp} / {this.hero.TotalXp}";
@@ -1199,7 +1199,7 @@ namespace ClickNFight
         // Refactored
         private void InventoryButton_Click(object sender, EventArgs e)
         {
-            Inventory inventory = new Inventory(this.hero);
+            Inventory inventory = new Inventory(this.hero.Inventory);
             inventory.ShowDialog();
         }
 

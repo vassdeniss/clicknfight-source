@@ -13,8 +13,6 @@ namespace ClickNFight
 {
     public partial class Inventory : Form
     {
-        private readonly Hero hero;
-
         public Inventory()
         {
             this.InitializeComponent();
@@ -26,38 +24,18 @@ namespace ClickNFight
             this.Icon = Properties.Resources.icon;
         }
 
-        public Inventory(Hero hero)
+        public Inventory(HeroInventory inventory)
             : this()
         {
-            this.hero = hero;
-
-            this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", this.hero.Inventory.Consumables);
-            this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", this.hero.Inventory.Weapons);
-            this.runesTextBox.Text = this.GenerateText<Rune>("Runes", this.hero.Inventory.Runes);
-            this.picksTextBox.Text = this.GenerateText<Pickaxe>("Pickaxes:", this.hero.Inventory.Pickaxes);
+            this.potionsTextBox.Text = this.GenerateText<Consumable>("Consumables:", inventory.Consumables);
+            this.weaponsTextBox.Text = this.GenerateText<Weapon>("Weapons:", inventory.Weapons);
+            this.runesTextBox.Text = this.GenerateText<Rune>("Runes", inventory.Runes);
+            this.picksTextBox.Text = this.GenerateText<Pickaxe>("Pickaxes:", inventory.Pickaxes);
             this.oresTextBox.Text = this.GenerateText<Ore>(
                 "Ingots:",
-                this.hero.Inventory.Ores
+                inventory.Ores
                     .Where((kv) => kv.Value > 0)
                     .ToDictionary((kv) => kv.Key, (kv) => kv.Value));
-
-            if (Engine.fireRunes > 0)
-            {
-                string invFR = "\r\n" + "Fire Runes" + "\r\n" + "Count: " + Engine.fireRunes + "\r\n";
-                runesTextBox.Text += invFR;
-            }
-
-            if (Engine.earthRunes > 0)
-            {
-                string invER = "\r\n" + "Earth Runes" + "\r\n" + "Count: " + Engine.earthRunes + "\r\n";
-                runesTextBox.Text += invER;
-            }
-
-            if (Engine.mindRunes > 0)
-            {
-                string invMR = "\r\n" + "Mind Runes" + "\r\n" + "Count: " + Engine.mindRunes + "\r\n";
-                runesTextBox.Text += invMR;
-            }
 
             if (Engine.waterRunes > 0)
             {
@@ -144,7 +122,7 @@ namespace ClickNFight
                 sb.AppendLine($"Count: {item.Value}");
             }
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
 
         private string GenerateText<T>(string labelText, IEnumerable<T> collection)
@@ -158,7 +136,7 @@ namespace ClickNFight
                 sb.AppendLine(item.ToString());
             }
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
     }
 }

@@ -17,10 +17,8 @@ namespace ClickNFight.Spells.Offensive
                 { new AirRune(), 2 },
                 { new FireRune(), 3 }
             };
-            //this.DurationMilliseconds = 60000;
-            this.DurationMilliseconds = 10000;
-            //this.CooldownMilliseconds = 300000;
-            this.CooldownMilliseconds = 1000;
+            this.DurationMilliseconds = 60000;
+            this.CooldownMilliseconds = 300000;
             this.CpsIncrease = 5;
         }
 

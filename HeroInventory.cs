@@ -106,7 +106,7 @@ namespace ClickNFight
 
         public IDictionary<Ore, int> Ores =>
             this._items
-                .Where(item => item is Ore && this._inventory[item.GetType()] > 0)
+                .Where(item => item is Ore)
                 .ToDictionary(item => (Ore)item, item => this._inventory[item.GetType()]);
 
         public IDictionary<Rune, int> Runes =>
