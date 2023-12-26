@@ -152,6 +152,8 @@
     <Compile Include="Items\Weapons\StarSword.cs" />
     <Compile Include="Items\Weapons\StoneSword.cs" />
     <Compile Include="Items\Weapons\WeaponSettings.cs" />
+    <Compile Include="Spells\Defence\DefenceUp.cs" />
+    <Compile Include="Spells\Defence\DefensiveSpell.cs" />
     <Compile Include="Spells\Offensive\FireBolt.cs" />
     <Compile Include="Spells\Offensive\OffensiveSpell.cs" />
     <Compile Include="Spells\Spell.cs" />

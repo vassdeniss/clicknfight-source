@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 
 using ClickNFight.Spells;
+using ClickNFight.Spells.Defence;
+using ClickNFight.Spells.Offensive;
 
 namespace ClickNFight
 {
@@ -14,7 +16,7 @@ namespace ClickNFight
             this.MaxHealth = 200;
             this.Health = 200;
             this.Defence = 0;
-            this.DefenceReduction = 0;
+            this.DamageReduction = 0;
             this.CurrentXp = 549;
             this.TotalXp = 500;
             this.Cps = 0;
@@ -23,7 +25,11 @@ namespace ClickNFight
 
             this.Inventory = new HeroInventory();
             this.MineStats = new Dictionary<string, int>();
-            this.Spells = new HashSet<Spell>();
+            this.Spells = new HashSet<Spell>
+            {
+                new FireBolt(),
+                new DefenceUp()
+            };
         }
 
         public int Level { get; set; }
@@ -46,7 +52,7 @@ namespace ClickNFight
 
         public int Defence { get; set; }
 
-        public int DefenceReduction { get; set; }
+        public int DamageReduction { get; set; }
 
         public int CurrentXp { get; set; }
 

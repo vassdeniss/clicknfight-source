@@ -35,16 +35,6 @@ namespace ClickNFight
             );
 
             description.SetToolTip(
-                defenceUp,
-                "3 Air and 4 Earth Runes"
-                + "\r\n"
-                + "+ 1 Damage Reduction "
-                + "\r\n"
-                + "Duration: 1 minute"
-                + "\r\n"
-                + "Cooldown: 5 Minutes"
-            );
-            description.SetToolTip(
                 exDefence,
                 "4 Air, 5 Lava and 3 Cosmic Runes"
                 + "\r\n"
@@ -113,13 +103,6 @@ namespace ClickNFight
             }
         }
 
-        // Attack
-        // Attack raise
-
-        // Defence
-        // Defence raise
-        // Defence reduction
-
         // Heal
         // Heal HP
         // Increase mas
@@ -145,55 +128,13 @@ namespace ClickNFight
         private void SpellsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox box = sender as ComboBox;
-            this._hero.ActiveSpell = box?.SelectedItem as Spell;
-            this.spellInfoTextBox.Text = this._hero.ActiveSpell?.Description();
-        }
+            Spell spell = box?.SelectedItem as Spell;
+            this.spellInfoTextBox.Text = spell?.Description();
 
-        private void attackBoost_Tick(object sender, EventArgs e)
-        {
-            Engine.fireboltAdd = 0;
-            attackBoost.Enabled = false;
-        }
-
-        private void defenceUp_Click(object sender, EventArgs e)
-        {
-            if (Engine.airRunes >= 3 && Engine.earthRunes >= 4)
+            if (this._hero.ActiveSpell == null || !this._hero.ActiveSpell.IsOnCooldown)
             {
-                Engine.airRunes = Engine.airRunes - 3;
-                Engine.earthRunes = Engine.earthRunes - 4;
-                Engine.defence = Engine.defence + 1;
-                Engine.defenceReduction = Engine.defenceReduction + 1;
-
-                defenceCooldown.Interval = 300000;
-                defenceCooldown.Tick += defenceCooldown_Tick;
-                defenceCooldown.Start();
-                defenceUp.Enabled = false;
-
-                defenceBoost.Interval = 60000;
-                defenceBoost.Start();
+                this._hero.ActiveSpell = spell;
             }
-            else
-            {
-                MessageBox.Show(
-                    "You don't have enough runes to cast this spell",
-                    "Not enough runes",
-                    MessageBoxButtons.OK
-                );
-            }
-        }
-
-        private void defenceCooldown_Tick(object sender, EventArgs e)
-        {
-            defenceUp.Enabled = true;
-            defenceCooldown.Stop();
-        }
-
-        private void defenceBoost_Tick(object sender, EventArgs e)
-        {
-            Engine.defence = Engine.defence - 1;
-            Engine.defenceReduction = Engine.defenceReduction - 1;
-
-            defenceBoost.Stop();
         }
 
         private void button1_Click(object sender, EventArgs e)

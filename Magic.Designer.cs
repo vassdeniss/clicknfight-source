@@ -35,17 +35,13 @@
             this.castButton = new System.Windows.Forms.Button();
             this.exDefence = new System.Windows.Forms.Button();
             this.maxDefence = new System.Windows.Forms.Button();
-            this.defenceUp = new System.Windows.Forms.Button();
             this.voltSwtich = new System.Windows.Forms.Button();
             this.waterWave = new System.Windows.Forms.Button();
             this.healara = new System.Windows.Forms.Button();
             this.rearise = new System.Windows.Forms.Button();
             this.cureraga = new System.Windows.Forms.Button();
             this.waterCooldown = new System.Windows.Forms.Timer(this.components);
-            this.defenceCooldown = new System.Windows.Forms.Timer(this.components);
-            this.defenceBoost = new System.Windows.Forms.Timer(this.components);
             this.healaraCooldown = new System.Windows.Forms.Timer(this.components);
-            this.attackBoost = new System.Windows.Forms.Timer(this.components);
             this.hpUp = new System.Windows.Forms.Timer(this.components);
             this.attackBoost2 = new System.Windows.Forms.Timer(this.components);
             this.extraDefenceCooldown = new System.Windows.Forms.Timer(this.components);
@@ -133,19 +129,6 @@
             this.maxDefence.UseVisualStyleBackColor = true;
             this.maxDefence.Click += new System.EventHandler(this.maxDefence_Click);
             // 
-            // defenceUp
-            // 
-            this.defenceUp.Enabled = false;
-            this.defenceUp.Location = new System.Drawing.Point(344, 66);
-            this.defenceUp.Margin = new System.Windows.Forms.Padding(4);
-            this.defenceUp.Name = "defenceUp";
-            this.defenceUp.Size = new System.Drawing.Size(207, 59);
-            this.defenceUp.TabIndex = 19;
-            this.defenceUp.TabStop = false;
-            this.defenceUp.Text = "Defence Up\r\n";
-            this.defenceUp.UseVisualStyleBackColor = true;
-            this.defenceUp.Click += new System.EventHandler(this.defenceUp_Click);
-            // 
             // voltSwtich
             // 
             this.voltSwtich.Enabled = false;
@@ -211,21 +194,9 @@
             this.cureraga.UseVisualStyleBackColor = true;
             this.cureraga.Click += new System.EventHandler(this.cureraga_Click);
             // 
-            // defenceCooldown
-            // 
-            this.defenceCooldown.Tick += new System.EventHandler(this.defenceCooldown_Tick);
-            // 
-            // defenceBoost
-            // 
-            this.defenceBoost.Tick += new System.EventHandler(this.defenceBoost_Tick);
-            // 
             // healaraCooldown
             // 
             this.healaraCooldown.Tick += new System.EventHandler(this.healaraCooldown_Tick);
-            // 
-            // attackBoost
-            // 
-            this.attackBoost.Tick += new System.EventHandler(this.attackBoost_Tick);
             // 
             // hpUp
             // 
@@ -302,7 +273,6 @@
             this.Controls.Add(this.cureraga);
             this.Controls.Add(this.waterWave);
             this.Controls.Add(this.voltSwtich);
-            this.Controls.Add(this.defenceUp);
             this.Controls.Add(this.maxDefence);
             this.Controls.Add(this.exDefence);
             this.Controls.Add(this.castButton);
@@ -323,11 +293,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Timer attackBoost;
         public System.Windows.Forms.Button castButton;
         public System.Windows.Forms.Button exDefence;
         public System.Windows.Forms.Button maxDefence;
-        public System.Windows.Forms.Button defenceUp;
         public System.Windows.Forms.Button voltSwtich;
         public System.Windows.Forms.Button waterWave;
         public System.Windows.Forms.Button healara;
@@ -335,8 +303,6 @@
         public System.Windows.Forms.Button cureraga;
         public System.Windows.Forms.Timer healaraCooldown;
         public System.Windows.Forms.Timer waterCooldown;
-        public System.Windows.Forms.Timer defenceCooldown;
-        public System.Windows.Forms.Timer defenceBoost;
         public System.Windows.Forms.Timer hpUp;
         private System.Windows.Forms.Timer attackBoost2;
         private System.Windows.Forms.Timer defenceBoost2;
