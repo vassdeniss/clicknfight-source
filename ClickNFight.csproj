@@ -154,8 +154,8 @@
     <Compile Include="Items\Weapons\WeaponSettings.cs" />
     <Compile Include="Spells\Defence\DefenceUp.cs" />
     <Compile Include="Spells\Defence\DefensiveSpell.cs" />
-    <Compile Include="Spells\Offensive\FireBolt.cs" />
-    <Compile Include="Spells\Offensive\OffensiveSpell.cs" />
+    <Compile Include="Spells\Offense\FireBolt.cs" />
+    <Compile Include="Spells\Offense\OffensiveSpell.cs" />
     <Compile Include="Spells\Spell.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Windows\Other\MiningOres.cs">
@@ -362,5 +362,6 @@
   <ItemGroup>
     <Content Include="Resources\magic.wav" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

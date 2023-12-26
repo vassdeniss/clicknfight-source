@@ -39,6 +39,7 @@ namespace ClickNFight.Spells.Defence
             await base.Cast(hero);
             hero.DamageReduction -= this.DefenceIncrease;
             hero.Defence -= this.DefenceIncrease;
+            await base.Cooldown();
         }
 
         public override string Description()
@@ -57,6 +58,5 @@ namespace ClickNFight.Spells.Defence
         {
             return $"{base.ToString()} {this.Name}";
         }
-
     }
 }

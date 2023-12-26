@@ -102,11 +102,6 @@ namespace ClickNFight
             {
                 this.spellsComboBox.Items.Add(spell);
             }
-
-            if (this._hero.ActiveSpell != null && this._hero.ActiveSpell.IsOnCooldown)
-            {
-                this.castButton.Enabled = false;
-            }
         }
 
         // Heal

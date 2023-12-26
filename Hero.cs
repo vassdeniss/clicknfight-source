@@ -11,7 +11,6 @@ namespace ClickNFight
     public class Hero
     {
         private double _health;
-        private double _cps;
 
         public Hero()
         {
@@ -61,11 +60,7 @@ namespace ClickNFight
 
         public int TotalXp { get; set; }
 
-        public double Cps
-        {
-            get => this._cps + this.CalculateWeaponCps();
-            set => this._cps = value;
-        }
+        public double Cps { get; set; }
 
         public double MonstersSlain { get; set; }
 
@@ -79,7 +74,7 @@ namespace ClickNFight
 
         public Spell ActiveSpell { get; set; }
 
-        private double CalculateWeaponCps()
+        public double CalculateWeaponCps()
         {
             return this.Inventory.Weapons
                 .Sum(kvp => kvp.Key.DamageMultiplier * kvp.Value);

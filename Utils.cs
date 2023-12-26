@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using ClickNFight.Items;
 using ClickNFight.Items.Consumables;
@@ -7,6 +8,7 @@ using ClickNFight.Items.Pickaxes;
 using ClickNFight.Items.Runes;
 using ClickNFight.Items.Weapons;
 using ClickNFight.Spells;
+using ClickNFight.Spells.Defence;
 using ClickNFight.Spells.Offensive;
 
 namespace ClickNFight
@@ -28,6 +30,7 @@ namespace ClickNFight
         public static IDictionary<int, Spell[]> SpellsPerLevel = new Dictionary<int, Spell[]>
         {
             { 5, new Spell[] { new FireBolt() } },
+            { 6, new Spell[] { new DefenceUp() } },
         };
 
         public static IDictionary<int, Weapon> MineSwords = new Dictionary<int, Weapon>()
@@ -38,5 +41,12 @@ namespace ClickNFight
             { 4, new CobaltSword() },
             { 5, new StarSword() },
         };
+
+        public static event Action UiUpdated;
+
+        public static void InvokeUiUpdate()
+        {
+            UiUpdated?.Invoke();
+        }
     }
 }

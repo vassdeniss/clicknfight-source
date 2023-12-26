@@ -54,6 +54,8 @@ namespace ClickNFight
 
             this.mineButton.Enabled = true;
             this.magicButton.Enabled = true;
+
+            Utils.UiUpdated += this.UpdateUi;
         }
 
         private void Keydown(object sender, KeyEventArgs e)
@@ -85,7 +87,7 @@ namespace ClickNFight
                     Engine.level = 10;
                     levelLabel.Text = "Level: " + Engine.level + "/" + "10";
                     magicButton.Enabled = true;
-                    campMenuButton.Enabled = true;
+                    campButton.Enabled = true;
                     mineButton.Enabled = true;
                     runeCraftingButton.Enabled = true;
                 }
@@ -667,7 +669,6 @@ namespace ClickNFight
             this.UpdateUi();
         }
 
-        // TODO: update ui on expire
         // Refactored
         private void MagicButton_Click(object sender, EventArgs e)
         {
@@ -892,11 +893,11 @@ namespace ClickNFight
                     this.magicButton.Enabled = true;
                     break;
                 case 6:
-                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[6], new[] { "Camping" });
+                    message = this.UnlockItems(this.hero.Level, Utils.ItemsPerLevel[6], new[] { "Camping", "Defence Up spell" });
                     MessageBox.Show("- Camping\n- Platinum Pickaxe\n- Defence Up spell!\n- Earth Runes\n- Healara spell!\n- Mind Runes\n- Diamond Sword",
                         "Congratulations!",
                         MessageBoxButtons.OK);
-                    this.campMenuButton.Enabled = true;
+                    this.campButton.Enabled = true;
                     break;
                 case 7:
                     MessageBox.Show("You have leveled up! You are now level 7!\nYou have unlocked:\n\n- Rune Crafting\n- Cobalt Pickaxe\n- Water Wave Spell!\n- Water Runes\n- Extra Defence Spell\n- Cosmic Runes\n- Lava Runes\n- Ultra Health Potion\n\n+ 60 Total HP\n+ 1 Total Defence\n\nHealth Restored!",
@@ -932,8 +933,9 @@ namespace ClickNFight
         {
             this.heroHealthPointsLabel.Text = $"HitPoints: {this.hero.Health} / {this.hero.MaxHealth}";
             this.healthBar.Value = (int)Math.Floor(this.hero.Health);
+            this.healthBar.Maximum = this.hero.MaxHealth;
             this.defenceLabel.Text = $"Defence: {this.hero.Defence} (Decreases Damage By {this.hero.DamageReduction})";
-            this.CPS.Text = $"Clicks Per Second: {this.hero.Cps}";
+            this.CPS.Text = $"Clicks Per Second: {this.hero.Cps + this.hero.CalculateWeaponCps()}";
             this.levelLabel.Text = $"Level: {this.hero.Level} / 10"; // TODO: for now
             this.xpTrackerLabel.Text = $"XP: {this.hero.CurrentXp} / {this.hero.TotalXp}";
             this.clickerencyLabel.Text = $"Clickerency: {this.hero.Clickerency}";
@@ -961,8 +963,6 @@ namespace ClickNFight
             this.monster.ClickerencyDrop = statRandomizer.Next(
                 this.monster.MinRandomClickerency,
                 this.monster.MaxRandomClickerency);
-
-            // TODO: reduce monster damage by heros defence
 
             #region More Werid Logic
             // TODO: ???
@@ -1004,11 +1004,7 @@ namespace ClickNFight
             this.clickerencyEarnedLabel.Text
                 = $"You got {this.monster.ClickerencyDrop} {multipleClickerencyEarned} from that monster";
 
-            double xpMultiplier = 1;
-            foreach (KeyValuePair<Weapon, int> kvp in this.hero.Inventory.Weapons)
-            {
-                xpMultiplier += kvp.Key.DamageMultiplier * kvp.Value;
-            }
+            double xpMultiplier = this.hero.CalculateWeaponCps() + 1;
 
             //Engine.count2 = Engine.count2 + Engine.excaliburAdd;
             //Engine.count2 = Engine.count2 + Engine.waterwaveAdd;

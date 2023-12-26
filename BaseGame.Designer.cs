@@ -55,7 +55,7 @@
             this.mineButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.nameSave = new System.Windows.Forms.Label();
-            this.campMenuButton = new System.Windows.Forms.Button();
+            this.campButton = new System.Windows.Forms.Button();
             this.xpTrackerLabel = new System.Windows.Forms.Label();
             this.receivedXpLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -63,7 +63,7 @@
             // fightButton
             // 
             this.fightButton.Location = new System.Drawing.Point(16, 14);
-            this.fightButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fightButton.Margin = new System.Windows.Forms.Padding(4);
             this.fightButton.Name = "fightButton";
             this.fightButton.Size = new System.Drawing.Size(225, 105);
             this.fightButton.TabIndex = 0;
@@ -96,7 +96,7 @@
             // shopButton
             // 
             this.shopButton.Location = new System.Drawing.Point(16, 238);
-            this.shopButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.shopButton.Margin = new System.Windows.Forms.Padding(4);
             this.shopButton.Name = "shopButton";
             this.shopButton.Size = new System.Drawing.Size(225, 105);
             this.shopButton.TabIndex = 3;
@@ -119,7 +119,7 @@
             // InventoryButton
             // 
             this.InventoryButton.Location = new System.Drawing.Point(16, 126);
-            this.InventoryButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InventoryButton.Margin = new System.Windows.Forms.Padding(4);
             this.InventoryButton.Name = "InventoryButton";
             this.InventoryButton.Size = new System.Drawing.Size(225, 105);
             this.InventoryButton.TabIndex = 5;
@@ -176,7 +176,7 @@
             this.potionMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.potionMenu.FormattingEnabled = true;
             this.potionMenu.Location = new System.Drawing.Point(17, 551);
-            this.potionMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.potionMenu.Margin = new System.Windows.Forms.Padding(4);
             this.potionMenu.Name = "potionMenu";
             this.potionMenu.Size = new System.Drawing.Size(308, 24);
             this.potionMenu.TabIndex = 14;
@@ -198,7 +198,7 @@
             // 
             this.healButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.healButton.Location = new System.Drawing.Point(335, 551);
-            this.healButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.healButton.Margin = new System.Windows.Forms.Padding(4);
             this.healButton.Name = "healButton";
             this.healButton.Size = new System.Drawing.Size(225, 26);
             this.healButton.TabIndex = 16;
@@ -220,7 +220,7 @@
             // 
             this.healthBar.BackColor = System.Drawing.Color.Red;
             this.healthBar.Location = new System.Drawing.Point(801, 86);
-            this.healthBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.healthBar.Margin = new System.Windows.Forms.Padding(4);
             this.healthBar.Name = "healthBar";
             this.healthBar.Size = new System.Drawing.Size(311, 33);
             this.healthBar.TabIndex = 19;
@@ -229,7 +229,7 @@
             // 
             this.magicButton.Enabled = false;
             this.magicButton.Location = new System.Drawing.Point(516, 318);
-            this.magicButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.magicButton.Margin = new System.Windows.Forms.Padding(4);
             this.magicButton.Name = "magicButton";
             this.magicButton.Size = new System.Drawing.Size(225, 105);
             this.magicButton.TabIndex = 20;
@@ -251,7 +251,7 @@
             // 
             this.runeCraftingButton.Enabled = false;
             this.runeCraftingButton.Location = new System.Drawing.Point(789, 299);
-            this.runeCraftingButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.runeCraftingButton.Margin = new System.Windows.Forms.Padding(4);
             this.runeCraftingButton.Name = "runeCraftingButton";
             this.runeCraftingButton.Size = new System.Drawing.Size(225, 105);
             this.runeCraftingButton.TabIndex = 22;
@@ -263,7 +263,7 @@
             // 
             this.finalBossButton.Enabled = false;
             this.finalBossButton.Location = new System.Drawing.Point(344, 370);
-            this.finalBossButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.finalBossButton.Margin = new System.Windows.Forms.Padding(4);
             this.finalBossButton.Name = "finalBossButton";
             this.finalBossButton.Size = new System.Drawing.Size(225, 105);
             this.finalBossButton.TabIndex = 23;
@@ -276,7 +276,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.AutoSize = true;
             this.button2.Location = new System.Drawing.Point(413, 599);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(232, 105);
             this.button2.TabIndex = 24;
@@ -289,7 +289,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.AutoSize = true;
             this.button3.Location = new System.Drawing.Point(653, 599);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(232, 105);
             this.button3.TabIndex = 25;
@@ -312,7 +312,7 @@
             // 
             this.newGameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.newGameButton.Location = new System.Drawing.Point(653, 487);
-            this.newGameButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.newGameButton.Margin = new System.Windows.Forms.Padding(4);
             this.newGameButton.Name = "newGameButton";
             this.newGameButton.Size = new System.Drawing.Size(232, 105);
             this.newGameButton.TabIndex = 27;
@@ -336,7 +336,7 @@
             // 
             this.mineButton.Enabled = false;
             this.mineButton.Location = new System.Drawing.Point(868, 169);
-            this.mineButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mineButton.Margin = new System.Windows.Forms.Padding(4);
             this.mineButton.Name = "mineButton";
             this.mineButton.Size = new System.Drawing.Size(225, 105);
             this.mineButton.TabIndex = 30;
@@ -349,7 +349,7 @@
             this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exitButton.AutoSize = true;
             this.exitButton.Location = new System.Drawing.Point(893, 599);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(232, 105);
             this.exitButton.TabIndex = 31;
@@ -368,17 +368,17 @@
             this.nameSave.Size = new System.Drawing.Size(0, 36);
             this.nameSave.TabIndex = 32;
             // 
-            // campMenuButton
+            // campButton
             // 
-            this.campMenuButton.Enabled = false;
-            this.campMenuButton.Location = new System.Drawing.Point(335, 244);
-            this.campMenuButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.campMenuButton.Name = "campMenuButton";
-            this.campMenuButton.Size = new System.Drawing.Size(225, 105);
-            this.campMenuButton.TabIndex = 33;
-            this.campMenuButton.Text = "Camping!";
-            this.campMenuButton.UseVisualStyleBackColor = true;
-            this.campMenuButton.Click += new System.EventHandler(this.btCamp_Click);
+            this.campButton.Enabled = false;
+            this.campButton.Location = new System.Drawing.Point(335, 244);
+            this.campButton.Margin = new System.Windows.Forms.Padding(4);
+            this.campButton.Name = "campButton";
+            this.campButton.Size = new System.Drawing.Size(225, 105);
+            this.campButton.TabIndex = 33;
+            this.campButton.Text = "Camping!";
+            this.campButton.UseVisualStyleBackColor = true;
+            this.campButton.Click += new System.EventHandler(this.btCamp_Click);
             // 
             // xpTrackerLabel
             // 
@@ -409,7 +409,7 @@
             this.ClientSize = new System.Drawing.Size(1141, 720);
             this.Controls.Add(this.receivedXpLabel);
             this.Controls.Add(this.xpTrackerLabel);
-            this.Controls.Add(this.campMenuButton);
+            this.Controls.Add(this.campButton);
             this.Controls.Add(this.nameSave);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.mineButton);
@@ -438,7 +438,7 @@
             this.Controls.Add(this.clickerencyLabel);
             this.Controls.Add(this.fightButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Click \'n Fight: The Fantasy Clicker RPG";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -476,7 +476,7 @@
         public System.Windows.Forms.Label nameSave;
         public System.Windows.Forms.Label easterAndrej;
         public System.Windows.Forms.Button mineButton;
-        public System.Windows.Forms.Button campMenuButton;
+        public System.Windows.Forms.Button campButton;
         private System.Windows.Forms.Label xpTrackerLabel;
         public System.Windows.Forms.Label receivedXpLabel;
     }

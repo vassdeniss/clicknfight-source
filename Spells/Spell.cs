@@ -1,4 +1,5 @@
-﻿using ClickNFight.Items.Runes;
+﻿using System;
+using ClickNFight.Items.Runes;
 
 using System.Collections.Generic;
 using System.Text;
@@ -56,7 +57,15 @@ namespace ClickNFight.Spells
                     $"{this.Name} expired!",
                     "Warning!",
                     MessageBoxButtons.OK);
+            });
+        }
 
+        public Task Cooldown()
+        {
+            Utils.InvokeUiUpdate();
+
+            return Task.Run(async () =>
+            {
                 await Task.Delay(this.CooldownMilliseconds);
                 this.IsOnCooldown = false;
                 MessageBox.Show(

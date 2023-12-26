@@ -37,6 +37,7 @@ namespace ClickNFight.Spells.Offensive
             hero.Cps += this.CpsIncrease;
             await base.Cast(hero);
             hero.Cps -= this.CpsIncrease;
+            await base.Cooldown();
         }
 
         public override string Description()
