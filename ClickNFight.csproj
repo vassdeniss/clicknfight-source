@@ -95,6 +95,8 @@
     <Compile Include="Camping.Designer.cs">
       <DependentUpon>Camping.cs</DependentUpon>
     </Compile>
+    <Compile Include="CampResources\Resource.cs" />
+    <Compile Include="CampResources\Stick.cs" />
     <Compile Include="ClickEngine.cs" />
     <Compile Include="Clicker.cs">
       <SubType>Form</SubType>

@@ -1,11 +1,11 @@
-﻿using ClickNFight.Items.Weapons;
+﻿using ClickNFight.CampResources;
 using ClickNFight.Spells;
 using ClickNFight.Spells.Defence;
+using ClickNFight.Spells.Heal;
 using ClickNFight.Spells.Offensive;
 
 using System.Collections.Generic;
 using System.Linq;
-using ClickNFight.Spells.Heal;
 
 namespace ClickNFight
 {
@@ -33,6 +33,10 @@ namespace ClickNFight
                 new FireBolt(),
                 new DefenceUp(),
                 new Healara(),
+            };
+            this.Resources = new Dictionary<Resource, int>
+            {
+                { new Stick(), 0 }
             };
         }
 
@@ -75,6 +79,8 @@ namespace ClickNFight
         public ISet<Spell> Spells { get; set; }
 
         public Spell ActiveSpell { get; set; }
+
+        public IDictionary<Resource, int> Resources { get; set; }
 
         public double CalculateWeaponCps()
         {

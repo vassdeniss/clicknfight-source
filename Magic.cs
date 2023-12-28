@@ -117,6 +117,7 @@ namespace ClickNFight
             Spell spell = box?.SelectedItem as Spell;
             this.spellInfoTextBox.Text = spell?.Description();
 
+            // TODO: try to make this a private field
             if (this._hero.ActiveSpell == null || !this._hero.ActiveSpell.IsOnCooldown)
             {
                 this._hero.ActiveSpell = spell;
